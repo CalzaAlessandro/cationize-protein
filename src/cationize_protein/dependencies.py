@@ -13,6 +13,7 @@ from pathlib import Path, PurePosixPath
 import platform
 import re
 import shutil
+import shlex
 import stat
 import subprocess
 import sys
@@ -482,7 +483,12 @@ def installer_main(argv: list[str] | None = None, *, root: Path) -> int:
             if not args.check:
                 print("Python package installation complete." if report['installation_complete'] else
                       "Python package installation incomplete; inspect the dependency report.")
-                print(f"Run with: {python} -m cationize_protein --help")
+                if os.name=='nt':
+                    print(f"Activate in PowerShell: & '{python.parent / 'Activate.ps1'}'")
+                else:
+                    activation=os.path.relpath(python.parent/'activate',Path.cwd())
+                    print('Activate: source '+shlex.quote(activation))
+                print('Then run: cationize-protein --help')
                 if solver == "apbs" and report["executables"]["apbs"]:
                     print(f"APBS executable: {report['executables']['apbs']}")
         complete=report['ready'] if args.check else report['installation_complete']

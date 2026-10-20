@@ -1,27 +1,33 @@
 """Conservative PDBFixer preparation of a native, protein-only input.
 
-Only new heavy-atom records are inserted. Supplied atom records, coordinates,
-residue states, identifiers and connectivity records are retained verbatim.
+Missing heavy atoms are inserted without moving supplied heavy coordinates.
+PROPKA assigns initial histidine charge states; ring H and labels are updated.
 Missing sequence, alternate conformers and nonstandard chemistry are not guessed.
 """
 from __future__ import annotations
 
 import importlib.metadata
 import io
+import math
 from pathlib import Path
 import tempfile
 
 from .preflight import _NATIVE_PARENT, _SIDE, check_pdb
 
 
-def prepare_pdb(source, output):
+def prepare_pdb(source, output, *, pH=7.4, protonation='propka'):
     """Add missing atoms in existing native residues to a new output directory.
 
     PDBFixer builds candidate coordinates; only added heavy atoms are copied
-    back into the source text. No hydrogens, residues, solvent or ions are added.
-    The workflow subsequently minimizes and audits protonation with PROPKA.
+    back into the source text. Initial histidine states and ring H are assigned
+    by default; fixed mode preserves supplied states. The workflow subsequently
+    minimizes and audits all supported native protonation changes with PROPKA.
     """
     source, output = Path(source), Path(output)
+    if not math.isfinite(pH) or not 0<=pH<=14:
+        raise ValueError('pH must be finite and between 0 and 14')
+    if protonation not in {'propka','fixed'}:
+        raise ValueError('Choose propka or fixed initial protonation')
     if output.exists() or output.is_symlink():
         raise ValueError('Preparation requires a new directory; existing output cannot be overwritten')
     raw = source.read_bytes()
@@ -100,10 +106,26 @@ def prepare_pdb(source, output):
     prepared = ''.join(line + ('' if line.endswith(('\n', '\r')) or i not in additions else '\n') +
                        ''.join(additions.get(i, [])) for i, line in enumerate(lines, 1))
     # Verify before creating persistent output; invalid inputs leave no directory.
+    histidines=[];audit_files={};histidine_csv=None
     with tempfile.TemporaryDirectory(prefix='cationize-prepare-') as tmp:
         candidate = Path(tmp)/'protein.pdb'
         candidate.write_bytes(prepared.encode('utf-8'))
         after = check_pdb(candidate)
+        if after['ok'] and protonation=='propka':
+            from .initial_histidines import assign_histidines
+            prepared,histidines=assign_histidines(candidate,Path(tmp)/'histidine_assignment',pH=pH)
+            if histidines:
+                original_heavy={(r['ordinal'],a['name']):a['coordinates_A'] for r in after['residues']
+                                for a in r['atoms'] if not a['hydrogen']}
+                candidate.write_text(prepared)
+                after=check_pdb(candidate)
+                actual_heavy={(r['ordinal'],a['name']):a['coordinates_A'] for r in after['residues']
+                              for a in r['atoms'] if not a['hydrogen']}
+                if original_heavy!=actual_heavy:
+                    raise ValueError('Initial histidine assignment changed heavy coordinates or identities')
+                audit=Path(tmp)/'histidine_assignment'
+                histidine_csv=(audit/'histidines.csv').read_bytes()
+                audit_files={path.name:path.read_bytes() for path in (audit/'audit').iterdir() if path.is_file()}
     if not after['ok']:
         raise ValueError('Repaired PDB did not pass validation: ' +
                          ' '.join(i['message'] for i in after['issues'] if i['severity'] == 'error'))
@@ -112,19 +134,28 @@ def prepare_pdb(source, output):
     log = ['PDB preparation: PASS', f'PDBFixer: {importlib.metadata.version("pdbfixer")}',
            f'Source SHA256: {before["source_sha256"]}',
            f'Residues: {before["residue_count"]}; added heavy atoms: {len(added_atoms)}',
-           'Supplied atom records, residue states, identifiers and connectivity records are preserved.',
+           'Supplied heavy-atom coordinates and residue identifiers are preserved.',
            'Missing loops/residues, alternate conformers and nonstandard chemistry are not rebuilt.',
-           'No hydrogens were added. The cationization workflow adds H and audits protonation with PROPKA.',
-           'Histidines require explicit HID/HIE/HIP states or diagnostic ring H before run.',
+           ('Initial histidine charge states were assigned with PROPKA; neutral tautomers use supplied evidence or OpenMM H-bond geometry.'
+            if histidines else 'No histidine H changes. The cationization workflow adds H and audits protonation with PROPKA.'),
+           'Other native side-chain and terminal states remain supplied; the workflow audits them after minimization.',
            'Coordinate/SEQRES checks do not establish completeness against an external reference sequence.',
            'Added atoms require the subsequent force-field minimization before structural interpretation.']
     log += [f'ADDED: {a["chain_id"] or "(blank)"}:{a["residue_id"]} '
             f'{a["residue_name"]} {a["atom_name"]}' for a in added_atoms]
+    log += [f'HISTIDINE: {r["chain_id"] or "(blank)"}:{r["residue_id"]} '
+            f'pKa={r["pKa"]:.2f}, pH={pH:g}, {r["source_state"]} -> {r["state"]}; '
+            f'{r["neutral_tautomer_method"]}'+(' (pKa within 0.5 of pH)' if r['borderline'] else '')
+            for r in histidines]
     log += [f'{issue["severity"].upper()}: {issue["message"]} {issue["action"]}'
             for issue in after['issues']]
     output.mkdir(parents=True, exist_ok=False)
     (output/'original.pdb').write_bytes(raw)
     (output/'protein.pdb').write_bytes(prepared.encode('utf-8'))
     (output/'preparation.log').write_text('\n'.join(log) + '\n')
+    if histidine_csv is not None:
+        (output/'histidines.csv').write_bytes(histidine_csv)
+        (output/'protonation').mkdir()
+        for name,content in audit_files.items():(output/'protonation'/name).write_bytes(content)
     return dict(pdb=str(output/'protein.pdb'), added_atoms=added_atoms, messages=log,
-                source_sha256=before['source_sha256'], ok=True)
+                source_sha256=before['source_sha256'], histidines=histidines, ok=True)

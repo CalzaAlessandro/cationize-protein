@@ -39,6 +39,8 @@ class DependencyTests(unittest.TestCase):
                 code=deps.installer_main([], root=root)
             self.assertEqual(code, 0)
             self.assertIn('Python package installation complete', output.getvalue())
+            self.assertIn('cationize-protein --help',output.getvalue())
+            self.assertIn('Activate',output.getvalue())
             self.assertIn('GROMACS', output.getvalue())
             self.assertIn('not found', output.getvalue())
             self.assertEqual(json.loads((environment/'cationize-protein-settings.json').read_text())['engine'],'openmm')

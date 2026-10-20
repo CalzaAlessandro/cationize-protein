@@ -173,7 +173,8 @@ def validate_inputs(config: WorkflowConfig):
                                             ('workflow.py', 'topology.py', 'electrostatics.py', 'sterics.py',
                                              'builder.py', 'openmm_backend.py', 'catalog.py', 'off.py',
                                              'forcefields.py','parameter_assignment.py','minimization.py','exports.py','amber_bundle.py',
-                                             'protonation.py','native_states.py','preflight.py','potential_solvers.py','gromacs_export.py')})
+                                             'protonation.py','native_states.py','preflight.py','potential_solvers.py','gromacs_export.py',
+                                             'residue_library.py')})
     output = Path(config.output_dir)
     if output.is_symlink():
         raise WorkflowError('Output directories must not be symlinks')
@@ -240,7 +241,7 @@ def _normalize_labels(structure):
     return structure
 
 
-def _pdb_structure(path, parameters, force_field='ff14SB', pH=7.4):
+def _pdb_structure(path, parameters, force_field='ff14SB', pH=7.4, *, allow_automatic_histidines=False):
     raw = []
     last = None
     for line in Path(path).read_text().splitlines():
@@ -274,8 +275,11 @@ def _pdb_structure(path, parameters, force_field='ff14SB', pH=7.4):
         elif residue.name == 'HIS':
             present = names & {'HD1', 'HE2'}
             if not present:
-                raise WorkflowError('Ambiguous HIS protonation; provide HID/HIE/HIP labels or explicit ring hydrogens')
-            variants.append('HIP' if len(present) == 2 else 'HID' if 'HD1' in present else 'HIE')
+                if not allow_automatic_histidines:
+                    raise WorkflowError('Ambiguous HIS protonation; use prepare for initial PROPKA assignment or provide HID/HIE/HIP labels')
+                variants.append(None)
+            else:
+                variants.append('HIP' if len(present) == 2 else 'HID' if 'HD1' in present else 'HIE')
         else:
             if original == 'CYX':
                 sulfur = next((atom for atom in residue.atoms() if atom.name == 'SG'), None)
@@ -683,6 +687,8 @@ def run(config: WorkflowConfig):
             _json(root / 'RUN.json', signature)
             _json(root / 'REFERENCE.json', dict(positions=reference, total_groups=total,
                                                initial_modified_groups=modified, stages=plan))
+        from .residue_library import export_residue_library
+        export_residue_library(config.parameters_dir,root/'residue_templates')
         if not (baseline/'STEP_COMPLETE.json').is_file():
             if not new:
                 structure,system=_initial_structure(config)

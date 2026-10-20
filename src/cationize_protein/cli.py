@@ -32,9 +32,11 @@ def parser():
     check=subcommands.add_parser('check',help='Read-only protein PDB adequacy check')
     check.add_argument('pdb',type=Path)
     check.add_argument('--json',type=Path,help='Write a new machine-readable report')
-    prepare=subcommands.add_parser('prepare', help='Prepare an initial native PDB with PDBFixer; add missing heavy atoms only')
+    prepare=subcommands.add_parser('prepare', help='Repair initial heavy atoms with PDBFixer and assign histidines with PROPKA')
     prepare.add_argument('pdb',type=Path,help='Native protein-only PDB; supplied coordinates and residue states are preserved')
     prepare.add_argument('--output',type=Path,required=True,help='New directory for original.pdb, protein.pdb and preparation.log')
+    prepare.add_argument('--ph',type=float,default=7.4,help='Initial histidine PROPKA pH (default: 7.4)')
+    prepare.add_argument('--protonation',choices=['propka','fixed'],default='propka',help='Default: PROPKA assigns histidine charge; fixed retains supplied states')
     doctor=subcommands.add_parser('doctor',help='Report Python dependencies and optional external programs')
     doctor.add_argument('--json',action='store_true',help='Print the dependency report as JSON; write no files')
     execute = subcommands.add_parser('run', help='Create or automatically resume a verified progressive run')
@@ -181,7 +183,7 @@ def main(argv=None):
     if args.command=='prepare':
         from .preparation import prepare_pdb
         try:
-            report=prepare_pdb(args.pdb,args.output)
+            report=prepare_pdb(args.pdb,args.output,pH=args.ph,protonation=args.protonation)
         except (ValueError,RuntimeError,OSError,ImportError) as exc:
             print(f'PDB preparation: FAIL\nERROR: {exc}',file=sys.stderr)
             return 1
