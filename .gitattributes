@@ -2,3 +2,7 @@
 parameters/** -text
 parameters/*.csv whitespace=cr-at-eol
 *.pdb -text whitespace=-blank-at-eol
+*.parm7 -text whitespace=-blank-at-eol
+*.rst7 -text whitespace=-blank-at-eol
+examples/HSA/residue_templates/** -text
+examples/**/*.csv -text whitespace=cr-at-eol

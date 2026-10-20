@@ -1,0 +1,34 @@
+{
+  "description": "Visualization of five existing minimized HSA chemical checkpoints; not an MD animation",
+  "residues": 585,
+  "percentages": [
+    0,
+    25,
+    50,
+    75,
+    100
+  ],
+  "source_example": "examples/HSA/<percent>/minimized.pdb",
+  "software": "VMD 1.9.4a57 / STRIDE / Tachyon / Pillow",
+  "structure_representation": "NewCartoon colored by secondary structure; AOChalky",
+  "modified_sites": "Licorice, heavy atoms colored by atom name",
+  "personal_vmdrc_ignored": true,
+  "alignment": "Common 585 CA least-squares fit to native minimum",
+  "view": "Domain I left, Domain III right, Domain II below; basis from native domain CA centers",
+  "visualization_only_aliases": "Native backbone atom aliases and parent residue names for cartoon/STRIDE recognition; originals preserved",
+  "image_processing": "Shared whitespace crop and isotropic resizing; shared GIF palette; no structure interpolation",
+  "crop": [
+    31,
+    90,
+    1023,
+    1052
+  ],
+  "gif_frame_duration_ms": 1800,
+  "source_sha256": {
+    "0": "7b0ead70a323891665f6159658d68e4447f96c0186ce3a8b826fda7f1b7510db",
+    "25": "f89450700b67e370981418ca5252cad34186d2f68b05c79247461e6e2edc30e5",
+    "50": "d0c3f5ec31b2258bd077423eddbef91f39eb19d6fdc2a6df096ef9c1513cf06d",
+    "75": "63ed62c0588decbf8e4f892dd12f743787dab9c42f8b6a54b6355e44f5efe84a",
+    "100": "aa3dbbd63308327792eaa6471bba587664da89661a4b8054448aed08770e0b5e"
+  }
+}

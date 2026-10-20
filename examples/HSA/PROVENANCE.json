@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "description": "Existing 585-residue HSA APBS series after minimization and residue renaming",
+  "source_dataset": "CATIONIZED_HSA/series_585_apbs",
+  "structure_source": "structures_named/<percent>/minimized.pdb",
+  "topology_source": "structures_named/<percent>/protein.parm7",
+  "coordinate_source": "<percent>/minimized.rst7",
+  "input_structure": "1n5u_native_ready.pdb",
+  "protein_residues": 585,
+  "disulfides": 17,
+  "modified_groups_total": 99,
+  "cumulative_set_inclusion_verified": true,
+  "topology_pdb_atom_order_verified": true,
+  "maximum_pdb_coordinate_rounding_A": 0.001,
+  "files_sha256": {
+    "0/minimized.pdb": "7b0ead70a323891665f6159658d68e4447f96c0186ce3a8b826fda7f1b7510db",
+    "0/protein.parm7": "a9df53f8ec8e66b8a57815651a1e1f3ccea65583aadcf5338a055a18fad73d40",
+    "0/minimized.rst7": "adacce988da9cca153254f8aca4360f1d62a965a47f897460d5e247c939b4acb",
+    "25/minimized.pdb": "f89450700b67e370981418ca5252cad34186d2f68b05c79247461e6e2edc30e5",
+    "25/protein.parm7": "0c62d2256b2b90a9cc8f88c8232916be1f0c16976ea9a8d13ab3077d3b5daff5",
+    "25/minimized.rst7": "ee1f5d5f2ca69162490da60aa2fc97e73920008740beef64825b2e624cd78a7f",
+    "50/minimized.pdb": "d0c3f5ec31b2258bd077423eddbef91f39eb19d6fdc2a6df096ef9c1513cf06d",
+    "50/protein.parm7": "210621cc4ef71bd6a72e149b5931d9cec397146f7be1746918d9c19fe9ff6727",
+    "50/minimized.rst7": "704b25f446d5ba112edc936a816be32534344dfbf7094af8630136313bd02282",
+    "75/minimized.pdb": "63ed62c0588decbf8e4f892dd12f743787dab9c42f8b6a54b6355e44f5efe84a",
+    "75/protein.parm7": "66c68bbcd1a4e3f6dc1fbed716d53196a2185e1fd92721cb978cf835c1b33898",
+    "75/minimized.rst7": "db427d9dee2f0ba126fa963de44b966db71ca042ad445e48906f401a6a899b6a",
+    "100/minimized.pdb": "aa3dbbd63308327792eaa6471bba587664da89661a4b8054448aed08770e0b5e",
+    "100/protein.parm7": "cbfddb199b6bec3b0dd99e069c8979791b6ead6ef05f44028ecfac16c6432db7",
+    "100/minimized.rst7": "1123d615b4469872137b844016975a5690e2d64d69194ea5b1d8025a379017d2"
+  },
+  "relation_to_software": "Precomputed HSA application; these are existing campaign artifacts, not a new run of this CLI release."
+}

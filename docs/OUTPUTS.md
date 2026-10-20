@@ -4,6 +4,7 @@
 
 ```text
 cationized_series/
+  residue_templates/          individual residue OFF libraries and metadata
   0/                         native baseline
   25/                        one requested percentage (same layout below)
     protein.pdb
@@ -99,3 +100,21 @@ every custom CMAP context.
 
 The fitted residue templates distributed with the package are distinct from
 the per-system OFF export. Format conversion never refits their charge sets.
+
+## Individual residue libraries
+
+Every run copies the validated custom library once into `residue_templates/`
+at the root of the series. For example, `residue_templates/ASC.lib` contains
+one internal Asp product; `ASX.lib` is its N-terminal form. All 32 accepted
+templates are copied with their original bytes, metadata and source hashes.
+These `.lib` files use Amber OFF format; `.off` is an alternative filename
+extension for the same format.
+
+The source copies are also in `parameters/` in the repository, or
+`share/cationize-protein/parameters/` inside an installed environment.
+
+Individual templates use their original Amber type names and require a
+compatible force field. They are separate from the complete `protein.lib`
+and its remapped, system-specific `parameters.frcmod`. The latter files must
+be used together with their printed type map. The ff19SB CMAP information
+remains in the numerical topology and XML/JSON bundle.

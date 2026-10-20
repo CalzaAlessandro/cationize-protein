@@ -18,12 +18,13 @@
     "amber_bundle.py": "8faa653cfa5067d8f979faec3bf3d3d9261e3582197f0f674e4b6f42b372cc8d",
     "builder.py": "61c3b7f391d9395450b389095ad8e5a28a8eee7594d09e95f7f4be9bf68b7d9a",
     "catalog.py": "a179a241924b08eef1db65a6f3a17ba32f3c17f343e6dbf48d7027152bc00548",
-    "cli.py": "d7928e9e127b35586002f16203221c3145951de23e75abfbe7e329967711050d",
-    "dependencies.py": "91aad47a2ad5ff4e7ce1526fa6f70caaac694da1bf95beed48df5a8ec11b5a58",
+    "cli.py": "a0ed262ad8528261bcfe9841087a31e7c6a59aab5946c5b6a6214e4a86490fbd",
+    "dependencies.py": "e6902f244ce9cc5478cdc6a69eabc6077d3d9fee4a1b04fdcbfc067a7a07dc15",
     "electrostatics.py": "d9824166454447fcaf531b4969dc73b30643a99649c539a17072423385b57692",
     "exports.py": "8ea018cc3343859b2d5211e3ac251fd49b6874c3dd39fb63e9dfd4f3e3ed3f25",
     "forcefields.py": "116c560e2886476c458ad6fcf8e5edb40a9a2fcafc881561bdf4736174a61ea1",
     "gromacs_export.py": "63319c91915a9124b6b7474d5c745a95fc76b36a023581125d2a42acb238a738",
+    "initial_histidines.py": "fd3774bea9c2dd57026eee699d1988926f40707ac936d2236736eec6fde3b5fc",
     "library_report.py": "fe671396ac537d0284211faf2251a5d409a4ea3b7281aa046d6c491e972d6944",
     "minimization.py": "211970758a707f90618d474567e8f1e8c1b8bee462ccbe588c90fd9195dcaf6b",
     "models.py": "aa7c3c105cdc74033ffd01caa26b8548d34a710cab41738997fdf72659678e32",
@@ -38,15 +39,16 @@
     "parameter_validation.py": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
     "potential_solvers.py": "fea030acd179993bd59567e00e52fb39d3248783c532d16364288689a16a6f19",
     "preflight.py": "f66dc6a50ce555a236ea098ce980d87e029b4c8fcd317c208296340b3a865cb6",
-    "preparation.py": "c9802c8fc7fa518d6ab69ff419464f26057a11ef7d169582ed72ae2c5fad6d40",
+    "preparation.py": "ebc155eaddeab3b620bca8ba8a38769f09a1fa5b795fd7e01277fe803b824408",
     "protonation.py": "7f37dac8f62d5e1d2e5bb622afb6b8ca7d91d97077f13d14fb6c33724affefed",
     "qm.py": "fc21c8dd145a524ee34dfd47bbd83f07db6cde90b1f85e2a7e3d640416da087b",
     "rename.py": "4332f368c3449c4d2a73b45c47922da56133fe096cd9fa7b53399dd4cf47f6d7",
+    "residue_library.py": "ff088be3fe8a9141e5e291f69616086f1041f0aedae19716245fb113c055ef56",
     "resources.py": "7578e5cdced0989319bdf23eaba88dbcf6d9e80b9a25fd2893d0605d125f1cbf",
     "resp.py": "bbbe904307f301b8fe9fc74ffc00735ca837afc4339544d7d8e382caf427f6f3",
     "sterics.py": "d0455dc20e0bb2912cfa180146ce5177cca08a90a0828782e51969e4654223f8",
     "topology.py": "b87ed4b199dcbe909472aa63b649fdcef419fcf9e5a01b14fd752801a18cc5a4",
-    "workflow.py": "83ac3a1780eb5215a32f4e07c4c41b0a4d0806bdb6ef284467fcc46dbc954e2d"
+    "workflow.py": "fb787e24edd5bf4de3bac016d627c5a95290ec911b38f527ab1ef475e6f4c4ac"
   },
   "accepted_parameter_bytes_unchanged": true,
   "parameter_file_count": 66,
@@ -120,7 +122,7 @@
   },
   "tests": {
     "macos": {
-      "count": 213,
+      "count": 220,
       "skips": 0,
       "passed": true
     },
@@ -286,5 +288,73 @@
   },
   "independent_code_review_completed": false,
   "independent_review_limitation": "Review service usage limit; author review completed",
-  "hsa_production_jobs_launched": false
+  "hsa_production_jobs_launched": false,
+  "initial_histidines": {
+    "propka_charge_assignment": true,
+    "neutral_tautomer": "Supplied evidence or OpenMM hydrogen-bond geometry",
+    "pH": 7.4,
+    "real_HSA_residues": 585,
+    "real_HSA_histidines": 16,
+    "real_HSA_state_counts": {
+      "HIE": 14,
+      "HIP": 2
+    },
+    "real_HSA_HIP_residue_ids": [
+      "67",
+      "247"
+    ],
+    "borderline_residue_ids": [
+      "247",
+      "367"
+    ],
+    "existing_HSA_campaign_structures_modified": false,
+    "other_native_state_changes_during_prepare": false
+  },
+  "residue_library_export": {
+    "template_count": 32,
+    "copy_hashes_verified": true,
+    "completed_serial_run": true,
+    "resume_verified": true
+  },
+  "hsa_example": {
+    "residues": 585,
+    "disulfides_per_level": 17,
+    "percentages": [
+      0,
+      25,
+      50,
+      75,
+      100
+    ],
+    "modified_residues": [
+      0,
+      25,
+      50,
+      74,
+      99
+    ],
+    "source_files_preserved": true,
+    "source_hashes": {
+      "0/minimized.pdb": "7b0ead70a323891665f6159658d68e4447f96c0186ce3a8b826fda7f1b7510db",
+      "0/protein.parm7": "a9df53f8ec8e66b8a57815651a1e1f3ccea65583aadcf5338a055a18fad73d40",
+      "0/minimized.rst7": "adacce988da9cca153254f8aca4360f1d62a965a47f897460d5e247c939b4acb",
+      "25/minimized.pdb": "f89450700b67e370981418ca5252cad34186d2f68b05c79247461e6e2edc30e5",
+      "25/protein.parm7": "0c62d2256b2b90a9cc8f88c8232916be1f0c16976ea9a8d13ab3077d3b5daff5",
+      "25/minimized.rst7": "ee1f5d5f2ca69162490da60aa2fc97e73920008740beef64825b2e624cd78a7f",
+      "50/minimized.pdb": "d0c3f5ec31b2258bd077423eddbef91f39eb19d6fdc2a6df096ef9c1513cf06d",
+      "50/protein.parm7": "210621cc4ef71bd6a72e149b5931d9cec397146f7be1746918d9c19fe9ff6727",
+      "50/minimized.rst7": "704b25f446d5ba112edc936a816be32534344dfbf7094af8630136313bd02282",
+      "75/minimized.pdb": "63ed62c0588decbf8e4f892dd12f743787dab9c42f8b6a54b6355e44f5efe84a",
+      "75/protein.parm7": "66c68bbcd1a4e3f6dc1fbed716d53196a2185e1fd92721cb978cf835c1b33898",
+      "75/minimized.rst7": "db427d9dee2f0ba126fa963de44b966db71ca042ad445e48906f401a6a899b6a",
+      "100/minimized.pdb": "aa3dbbd63308327792eaa6471bba587664da89661a4b8054448aed08770e0b5e",
+      "100/protein.parm7": "cbfddb199b6bec3b0dd99e069c8979791b6ead6ef05f44028ecfac16c6432db7",
+      "100/minimized.rst7": "1123d615b4469872137b844016975a5690e2d64d69194ea5b1d8025a379017d2"
+    },
+    "modified_charge_agreement_max_e": 2.7e-09,
+    "GIF_frames": 5,
+    "figure_kind": "Aligned minimized chemical checkpoints"
+  },
+  "venv_activation_short_command_tested": true,
+  "MODELLER_required": false
 }

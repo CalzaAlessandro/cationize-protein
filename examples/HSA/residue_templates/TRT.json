@@ -1,0 +1,744 @@
+{
+  "name": "TRT",
+  "parent": "TRP",
+  "context": "c_terminal",
+  "modified_groups": [
+    "terminal"
+  ],
+  "formal_charge": 1,
+  "source_unit": "CTRP",
+  "reused_from": null,
+  "disulfide": false,
+  "charge": 1,
+  "multiplicity": 1,
+  "source_note": "Amber installed residue types and native atoms; ACE/NME or explicit neutral disulfide partner fixed during RESP",
+  "source_library_sha256": {
+    "amino12.lib": "dcd92afbb7ee4c8a737f1ad47eb714618b6c186759c902cd5c06c22a5378df77",
+    "aminont12.lib": "a7a267adbe63c3559283204ffd135b37e14dac0f33a7eae76f94cba80a56b58c",
+    "aminoct12.lib": "4f45d160211ae20450ee59632012cba3ada60a5129de410da1bfbfd7f9a9a5f7"
+  },
+  "generation_sha256": "aa7c3c105cdc74033ffd01caa26b8548d34a710cab41738997fdf72659678e32",
+  "atoms": [
+    {
+      "name": "N",
+      "amber_type": "N",
+      "atomic_number": 7,
+      "initial_template_charge_e": -0.3821,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 1,
+      "model_index": 1,
+      "charge_e": -0.063487
+    },
+    {
+      "name": "H",
+      "amber_type": "H",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.2681,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 2,
+      "model_index": 2,
+      "charge_e": 0.134478
+    },
+    {
+      "name": "CA",
+      "amber_type": "CX",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.2084,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 3,
+      "model_index": 3,
+      "charge_e": -0.37064
+    },
+    {
+      "name": "HA",
+      "amber_type": "H1",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.1272,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 4,
+      "model_index": 4,
+      "charge_e": 0.255938
+    },
+    {
+      "name": "CB",
+      "amber_type": "CT",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.0742,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 5,
+      "model_index": 5,
+      "charge_e": -0.425244
+    },
+    {
+      "name": "HB2",
+      "amber_type": "HC",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0497,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 6,
+      "model_index": 6,
+      "charge_e": 0.231963
+    },
+    {
+      "name": "HB3",
+      "amber_type": "HC",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0497,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 7,
+      "model_index": 7,
+      "charge_e": 0.231963
+    },
+    {
+      "name": "CG",
+      "amber_type": "C*",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.0796,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 8,
+      "model_index": 8,
+      "charge_e": -0.214539
+    },
+    {
+      "name": "CD1",
+      "amber_type": "CW",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.1808,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 9,
+      "model_index": 9,
+      "charge_e": 0.047663
+    },
+    {
+      "name": "HD1",
+      "amber_type": "H4",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.2043,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 10,
+      "model_index": 10,
+      "charge_e": 0.160215
+    },
+    {
+      "name": "NE1",
+      "amber_type": "NA",
+      "atomic_number": 7,
+      "initial_template_charge_e": -0.3316,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 11,
+      "model_index": 11,
+      "charge_e": -0.556897
+    },
+    {
+      "name": "HE1",
+      "amber_type": "H",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.3413,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 12,
+      "model_index": 12,
+      "charge_e": 0.417124
+    },
+    {
+      "name": "CE2",
+      "amber_type": "CN",
+      "atomic_number": 6,
+      "initial_template_charge_e": 0.1222,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 13,
+      "model_index": 13,
+      "charge_e": 0.262395
+    },
+    {
+      "name": "CZ2",
+      "amber_type": "CA",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.2594,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 14,
+      "model_index": 14,
+      "charge_e": -0.332253
+    },
+    {
+      "name": "HZ2",
+      "amber_type": "HA",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.1567,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 15,
+      "model_index": 15,
+      "charge_e": 0.199718
+    },
+    {
+      "name": "CH2",
+      "amber_type": "CA",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.102,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 16,
+      "model_index": 16,
+      "charge_e": -0.135787
+    },
+    {
+      "name": "HH2",
+      "amber_type": "HA",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.1401,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 17,
+      "model_index": 17,
+      "charge_e": 0.166318
+    },
+    {
+      "name": "CZ3",
+      "amber_type": "CA",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.2287,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 18,
+      "model_index": 18,
+      "charge_e": -0.185954
+    },
+    {
+      "name": "HZ3",
+      "amber_type": "HA",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.1507,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 19,
+      "model_index": 19,
+      "charge_e": 0.155798
+    },
+    {
+      "name": "CE3",
+      "amber_type": "CA",
+      "atomic_number": 6,
+      "initial_template_charge_e": -0.1837,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 20,
+      "model_index": 20,
+      "charge_e": -0.292732
+    },
+    {
+      "name": "HE3",
+      "amber_type": "HA",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.1491,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 21,
+      "model_index": 21,
+      "charge_e": 0.169435
+    },
+    {
+      "name": "CD2",
+      "amber_type": "CB",
+      "atomic_number": 6,
+      "initial_template_charge_e": 0.1078,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 22,
+      "model_index": 22,
+      "charge_e": 0.233678
+    },
+    {
+      "name": "C",
+      "amber_type": "C",
+      "atomic_number": 6,
+      "initial_template_charge_e": 0.7658,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 23,
+      "model_index": 23,
+      "charge_e": 0.748085
+    },
+    {
+      "name": "O",
+      "amber_type": "O",
+      "atomic_number": 8,
+      "initial_template_charge_e": -0.8011,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 24,
+      "model_index": 24,
+      "charge_e": -0.637327
+    },
+    {
+      "name": "T1",
+      "amber_type": "N",
+      "atomic_number": 7,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 25,
+      "model_index": 31,
+      "charge_e": -0.679513
+    },
+    {
+      "name": "HT11",
+      "amber_type": "H",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 26,
+      "model_index": 32,
+      "charge_e": 0.344984
+    },
+    {
+      "name": "T2",
+      "amber_type": "CT",
+      "atomic_number": 6,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 27,
+      "model_index": 33,
+      "charge_e": 0.31873
+    },
+    {
+      "name": "HT21",
+      "amber_type": "H1",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 28,
+      "model_index": 34,
+      "charge_e": 0.018937
+    },
+    {
+      "name": "HT22",
+      "amber_type": "H1",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 29,
+      "model_index": 35,
+      "charge_e": 0.018937
+    },
+    {
+      "name": "T3",
+      "amber_type": "CT",
+      "atomic_number": 6,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 30,
+      "model_index": 36,
+      "charge_e": -0.027144
+    },
+    {
+      "name": "HT31",
+      "amber_type": "HP",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 31,
+      "model_index": 37,
+      "charge_e": 0.107052
+    },
+    {
+      "name": "HT32",
+      "amber_type": "HP",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 32,
+      "model_index": 38,
+      "charge_e": 0.107052
+    },
+    {
+      "name": "T4",
+      "amber_type": "N3",
+      "atomic_number": 7,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 33,
+      "model_index": 39,
+      "charge_e": -0.390899
+    },
+    {
+      "name": "HT41",
+      "amber_type": "H",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 34,
+      "model_index": 40,
+      "charge_e": 0.327317
+    },
+    {
+      "name": "HT42",
+      "amber_type": "H",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 35,
+      "model_index": 41,
+      "charge_e": 0.327317
+    },
+    {
+      "name": "HT43",
+      "amber_type": "H",
+      "atomic_number": 1,
+      "initial_template_charge_e": 0.0,
+      "residue": "TRT",
+      "residue_index": 1,
+      "central": true,
+      "index": 36,
+      "model_index": 42,
+      "charge_e": 0.327317
+    }
+  ],
+  "bonds": [
+    [
+      1,
+      2,
+      1.0
+    ],
+    [
+      1,
+      3,
+      1.0
+    ],
+    [
+      3,
+      4,
+      1.0
+    ],
+    [
+      3,
+      5,
+      1.0
+    ],
+    [
+      3,
+      23,
+      1.0
+    ],
+    [
+      5,
+      6,
+      1.0
+    ],
+    [
+      5,
+      7,
+      1.0
+    ],
+    [
+      5,
+      8,
+      1.0
+    ],
+    [
+      8,
+      9,
+      1.5
+    ],
+    [
+      8,
+      22,
+      1.5
+    ],
+    [
+      9,
+      10,
+      1.0
+    ],
+    [
+      9,
+      11,
+      1.5
+    ],
+    [
+      11,
+      12,
+      1.0
+    ],
+    [
+      11,
+      13,
+      1.5
+    ],
+    [
+      13,
+      14,
+      1.5
+    ],
+    [
+      13,
+      22,
+      1.5
+    ],
+    [
+      14,
+      15,
+      1.0
+    ],
+    [
+      14,
+      16,
+      1.5
+    ],
+    [
+      16,
+      17,
+      1.0
+    ],
+    [
+      16,
+      18,
+      1.5
+    ],
+    [
+      18,
+      19,
+      1.0
+    ],
+    [
+      18,
+      20,
+      1.5
+    ],
+    [
+      20,
+      21,
+      1.0
+    ],
+    [
+      20,
+      22,
+      1.5
+    ],
+    [
+      23,
+      24,
+      2.0
+    ],
+    [
+      23,
+      25,
+      1.0
+    ],
+    [
+      25,
+      26,
+      1.0
+    ],
+    [
+      25,
+      27,
+      1.0
+    ],
+    [
+      27,
+      28,
+      1.0
+    ],
+    [
+      27,
+      29,
+      1.0
+    ],
+    [
+      27,
+      30,
+      1.0
+    ],
+    [
+      30,
+      31,
+      1.0
+    ],
+    [
+      30,
+      32,
+      1.0
+    ],
+    [
+      30,
+      33,
+      1.0
+    ],
+    [
+      33,
+      34,
+      1.0
+    ],
+    [
+      33,
+      35,
+      1.0
+    ],
+    [
+      33,
+      36,
+      1.0
+    ]
+  ],
+  "central_atoms": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36
+  ],
+  "caps": [],
+  "chirality_CIP": {
+    "3": "S"
+  },
+  "torsions": [],
+  "model_provenance": {
+    "atom_mapping_sha256": "a8e376439addce0f64963a2f2efab544ac530bc996b7da555faedc225265b2d5",
+    "residue_to_capped_model_atom_ids": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42
+    ],
+    "cap_atom_ids": [
+      [
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ]
+    ],
+    "full_model_torsions": [
+      [
+        29,
+        1,
+        3,
+        23
+      ]
+    ]
+  }
+}

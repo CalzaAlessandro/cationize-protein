@@ -1,6 +1,6 @@
 # Implementation validation — 20 October 2026
 
-Tests use short peptides or synthetic systems. No HSA production was submitted
+Tests use short peptides, synthetic systems and the initial 585-residue HSA model. No HSA production was submitted
 or restarted. Original structures and accepted fitted RESP libraries were
 preserved. A machine-readable summary is in [validation/latest.json](../validation/latest.json).
 
@@ -13,14 +13,14 @@ calculations still require an installed solver; no alternative model is
 silently selected. Conda and venv recipes install the same project, but creation
 of a new Conda environment was not executed in this validation.
 
-The installed package passed **213 tests, with no skips**, including 11 initial
-PDB preparation tests. The earlier Linux run passed 202 tests before PDBFixer
+The installed package passed **220 tests, with no skips**, including initial
+PDB repair, PROPKA histidine assignment and residue-library export. The earlier Linux run passed 202 tests before PDBFixer
 preparation was added; the new preparation tests have currently run on macOS.
 Source files and installed Python modules were compared byte for byte.
 
 PDB preparation was tested on actual structures with missing side-chain,
-backbone and terminal atoms. It retained supplied atom records and declared
-residue/disulfide states. The repaired peptide passed parameter assignment.
+backbone and terminal atoms. It retained supplied heavy coordinates and declared disulfides.
+Histidine labels and ring H are updated when initial PROPKA is selected. The repaired peptide passed parameter assignment.
 Malformed records, alternate locations, missing SEQRES residues, cationized
 residues and existing output directories were rejected. A separate console
 example demonstrates one missing CA repaired and a truncated record rejected
@@ -94,3 +94,26 @@ review service reached its usage limit. The current changes received an author
 review and automated checks; no independent-review completion is claimed.
 Private environments, calculation outputs and development logs stay outside
 the source repository.
+
+## Initial histidines and the HSA example
+
+`prepare` was run on the full native HSA starting PDB at pH 7.4. PROPKA assigned
+14 HIE and two HIP states. The predicted pKas were 8.12 for His67 and 7.42 for
+His247. His247 is close to the selected pH and is flagged as borderline; its
+binary assignment represents the slightly more populated state from this
+single-structure estimate. The later minimized workflow audit remains separate.
+The existing minimized campaign structures were not changed.
+
+The 585-residue HSA example includes the five existing minimized PDB/topology/
+restart sets. All source hashes, atom identity/order and coordinate agreement
+were checked. The modification sets are cumulative, and all 17 disulfides are
+retained. Modified partial charges match the accepted libraries within
+2.7 × 10⁻⁹ e. The preview uses these actual structures; its five frames show
+chemical checkpoints, not MD motion. VMD used STRIDE and ignored .vmdrc.
+
+A new serial peptide run and resume passed with all three export formats and
+a root residue_templates directory containing 32 hash-verified libraries.
+An activated venv resolves the short cationize-protein command.
+
+Fetching structures and rebuilding whole missing residues are separate planned
+extensions. No MODELLER dependency or license key was added.

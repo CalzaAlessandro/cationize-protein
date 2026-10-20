@@ -20,14 +20,16 @@ public or installing the software on another computer.
 git clone https://github.com/CalzaAlessandro/cationize-protein.git
 cd cationize-protein
 python3 install.py
-.venv/bin/cationize-protein --help
+source .venv/bin/activate
+cationize-protein --help
 ```
 
 Cloning requires an authenticated account with repository access. Use
 `git status` and `git diff` to inspect local changes. Commit only intended
 source, documentation, tests and parameters. Environments, external binaries,
 `.env` files and `.development/` are ignored; production trajectories and
-private quantum calculations stay outside Git.
+private quantum calculations stay outside Git. The small precomputed HSA
+example is included intentionally.
 
 The optional GitHub Actions workflow is manual: open **Actions**, select
 **Python tests**, then **Run workflow**. It installs the Python package and

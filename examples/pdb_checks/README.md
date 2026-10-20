@@ -1,12 +1,12 @@
 # PDB check examples
 
 These files are synthetic test inputs, not HSA structures. Run the commands
-from the repository root after installation:
+from the repository root after activating the environment:
 
 ```sh
-.venv/bin/cationize-protein check examples/pdb_checks/reference_peptide.pdb
-.venv/bin/cationize-protein check examples/pdb_checks/missing_backbone_atom.pdb
-.venv/bin/cationize-protein check examples/pdb_checks/wrong_columns.pdb
+cationize-protein check examples/pdb_checks/reference_peptide.pdb
+cationize-protein check examples/pdb_checks/missing_backbone_atom.pdb
+cationize-protein check examples/pdb_checks/wrong_columns.pdb
 ```
 
 `reference_peptide.pdb` is the complete three-residue peptide used as the
@@ -24,7 +24,7 @@ no JSON report or new scientific output is created unless requested.
 To see that `run` also refuses the broken input:
 
 ```sh
-.venv/bin/cationize-protein run \
+cationize-protein run \
   --pdb examples/pdb_checks/missing_backbone_atom.pdb --output rejected_example \
   --engine openmm --solver coulomb --force-field ff14SB
 ```
@@ -36,7 +36,7 @@ not a statement that Coulomb and Poisson–Boltzmann are equivalent.
 An optional complete small-peptide demonstration is:
 
 ```sh
-.venv/bin/cationize-protein run \
+cationize-protein run \
   --pdb examples/pdb_checks/reference_peptide.pdb --output peptide_example \
   --engine openmm --solver coulomb --force-field ff14SB \
   --formats amber openmm gromacs
@@ -50,7 +50,7 @@ example. Larger proteins generally have finer percentage resolution.
 ## Repair with PDBFixer
 
 ```sh
-.venv/bin/cationize-protein prepare examples/pdb_checks/missing_backbone_atom.pdb \
+cationize-protein prepare examples/pdb_checks/missing_backbone_atom.pdb \
   --output repaired_peptide
 ```
 

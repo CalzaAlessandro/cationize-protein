@@ -1,76 +1,91 @@
-# Initial PDB preparation
+# Prepare the initial PDB
 
-`check` inspects the original text before a structure reader can discard
-ambiguity. `prepare` uses [PDBFixer](https://github.com/openmm/pdbfixer) to add
-missing heavy atoms to existing native protein residues. This step is separate
-from cationization and never modifies the source file.
+Activate your environment, then run:
 
 ```sh
-cationize-protein check input.pdb
+source .venv/bin/activate
 cationize-protein prepare input.pdb --output prepared
-cationize-protein check prepared/protein.pdb
-cationize-protein run --pdb prepared/protein.pdb --output series
 ```
 
-With the private installer, replace `cationize-protein` with
-`.venv/bin/cationize-protein`. `prepare --help` describes its two arguments.
+For Conda, use `conda activate cationize-protein` instead. `prepare` keeps the
+source unchanged and writes a new directory. To inspect a file without
+preparing it, use `cationize-protein check input.pdb`.
 
 ## Files
 
-```text
-prepared/
-  original.pdb       Exact copy of the input
-  protein.pdb        Input records plus newly built heavy atoms
-  preparation.log   Atom additions, checks and remaining preparation decisions
+| File | Contents |
+|---|---|
+| `original.pdb` | Exact copy of the input |
+| `protein.pdb` | Repaired heavy atoms and assigned histidine states |
+| `preparation.log` | Changes and remaining structural issues |
+| `histidines.csv` | pKa, pH, state and neutral-tautomer choice for each histidine |
+| `protonation/` | PROPKA input, mapping, logs and predictions |
+
+The last two entries are created when histidines are present and PROPKA is
+selected. Results and failure reasons are also printed on screen. An existing
+output directory is never overwritten.
+
+## Histidines
+
+PROPKA chooses the initial charge state at pH 7.4 by default. A histidine is
+assigned HIP when its predicted pKa exceeds the target pH; otherwise it is
+neutral. Use `--ph` to select another pH:
+
+```sh
+cationize-protein prepare input.pdb --output prepared --ph 7.4
+cationize-protein run --pdb prepared/protein.pdb --output series --ph 7.4
 ```
 
-The output directory must be new. Both successful preparation and failure
-reasons are printed on screen. Persistent output is created only after the
-repaired candidate passes the PDB checks; no JSON file is required.
+For neutral histidines, supplied HID/HIE labels or a diagnostic ring hydrogen
+are retained. Otherwise OpenMM selects HID or HIE from local hydrogen-bond
+geometry. PROPKA predicts ionization; it does not select a neutral tautomer.
+The CSV flags pKa values within 0.5 of the chosen pH for review.
 
-## What is repaired
+The program updates histidine residue labels and adds or removes the required
+ring hydrogens. Existing heavy-atom coordinates and identifiers are retained.
+Other native side-chain and terminal states remain as supplied during this
+step. The cationization workflow audits supported native protonation changes
+after minimization and after each chemical modification. Introduced ammonium
+groups stay +1.
 
-Missing side-chain atoms, isolated backbone atoms in an existing residue and
-terminal OXT atoms can be built. PDBFixer generates candidate coordinates with
-a fixed random seed. Only the new heavy-atom records are inserted into the
-original text. Existing atom coordinates, names, residue numbering, chain
-identifiers, protonation labels and SSBOND/CONECT records remain unchanged.
-Backbone or side-chain reconstruction still requires the subsequent force-field
-minimization and structural review. Preparation is not an experimental
-reconstruction of an unresolved conformation.
+The initial histidine calculation uses a temporary ff14SB protein model to
+establish the molecular graph and place hydrogens. PROPKA receives the heavy
+structure, not force-field atomic charges. The force field selected for the
+subsequent cationization run is assigned separately.
 
-PDBFixer is used only on native input. Cationized residues and other nonstandard
-groups are rejected rather than converted to standard amino acids. No CCD
-template is downloaded during preparation.
+To retain all supplied states during preparation:
 
-## What stops preparation
+```sh
+cationize-protein prepare input.pdb --output prepared --protonation fixed
+```
+
+In fixed mode, an unlabelled HIS still needs HID/HIE/HIP or diagnostic ring
+hydrogens before `run`.
+
+## Missing atoms and structural issues
+
+PDBFixer builds missing side-chain atoms, isolated backbone atoms in an
+existing residue and terminal OXT atoms. A fixed seed is used for this step.
+Only added heavy-atom records are inserted into the input text. Subsequent
+force-field minimization is needed before interpreting their conformations.
 
 | Finding | Required action |
 |---|---|
-| Missing residues identified from SEQRES | Supply a separately reviewed sequence/loop model |
-| A peptide gap or incompatible disulfide declaration | Correct or explicitly resolve the structural model |
-| Multiple models or alternate locations | Select one coherent model/conformer before preparation |
-| Ligands, solvent, ions, caps or nonstandard residues | Prepare a separate protein-only input; preserve the source |
+| Missing residues identified from SEQRES | Supply a reviewed sequence/loop model |
+| A peptide gap or incompatible disulfide declaration | Correct or resolve the structural model |
+| Multiple models or alternate locations | Select one coherent model or conformer |
+| Ligands, solvent, ions, caps or nonstandard residues | Prepare a separate protein-only input |
 | Truncated records or non-finite coordinates | Recover a correctly formatted coordinate file |
-| Existing output directory | Choose a new directory |
 
-If SEQRES is absent, a coordinate file cannot establish completeness against
-the intended sequence. Numbering gaps alone do not prove missing residues.
-Large coordinate gaps are flagged by the independent peptide geometry check.
+PDBFixer is used only on native input. Cationized residues are rejected rather
+than replaced by standard amino acids. Missing sequence cannot be inferred
+reliably from coordinate numbering alone. Without SEQRES or an external
+sequence, completeness beyond the supplied residues remains undetermined.
 
-## Protonation and disulfides
+Declared disulfides and CYX labels are retained. The checker verifies sulfur
+identities and geometry; the workflow then verifies the prepared bond graph.
 
-This command does not add or remove hydrogens and does not use PDBFixer's
-default pH assignment. The existing cationization protocol adds hydrogens,
-minimizes and runs PROPKA at the target pH, including after each chemical step.
-Specify HID/HIE/HIP or supply diagnostic histidine ring hydrogens before `run`;
-PROPKA does not assign a neutral histidine tautomer.
-
-Declared disulfide records and CYX labels are preserved. The PDB checker
-verifies declared sulfur identities and geometry; the subsequent workflow
-verifies that these bonds are present in the prepared molecular graph.
-
-## Reproducible broken-input examples
+## Broken-input examples
 
 ```sh
 cationize-protein prepare examples/pdb_checks/missing_backbone_atom.pdb \
@@ -79,10 +94,10 @@ cationize-protein prepare examples/pdb_checks/wrong_columns.pdb \
   --output invalid_example
 ```
 
-The first command adds one CA to the synthetic ASP–ASP–LEU peptide; the second
-fails before creating `invalid_example`. See the example folder for the
-unmodified source files and diagnostic output.
+The first command adds one missing CA to a synthetic ASP–ASP–LEU peptide. The
+second reports a truncated coordinate record and creates no output directory.
+See [the examples](../examples/pdb_checks/README.md) for the files and logs.
 
-PDBFixer's broader capabilities are described in its
-[official manual](https://github.com/openmm/pdbfixer/blob/master/Manual.html).
-This interface selects only heavy-atom preparation.
+Methods: [PDBFixer](https://github.com/openmm/pdbfixer),
+[PROPKA](https://propka.readthedocs.io/en/latest/quickstart.html) and
+[OpenMM hydrogen placement](https://docs.openmm.org/latest/api-python/generated/openmm.app.modeller.Modeller.html#openmm.app.modeller.Modeller.addHydrogens).
