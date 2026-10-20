@@ -1,0 +1,765 @@
+{
+  "schema": 1,
+  "forcefield": "ff14SB-compatible",
+  "fixed_introduced_ammonium": true,
+  "templates": [
+    {
+      "name": "ASC",
+      "parent": "ASP",
+      "context": "internal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 1,
+      "source_unit": "ASP",
+      "reused_from": "ASL",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "ea5b6047b6c48747c6d7afac936eb7003c5e6a331b6a588b1087ae0080f1d353"
+    },
+    {
+      "name": "ASX",
+      "parent": "ASP",
+      "context": "n_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 2,
+      "source_unit": "NASP",
+      "reused_from": "NSL",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "0bf41e2ce4f82af391acf498c44ea0bce33b27f7b1d846815e69bb7d37ef2f4d"
+    },
+    {
+      "name": "GLC",
+      "parent": "GLU",
+      "context": "internal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 1,
+      "source_unit": "GLU",
+      "reused_from": "GLS",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "450ab17a84c2dbc4ac7d09ac21388078c05f77ea4abc10ec7a271c0301979de3"
+    },
+    {
+      "name": "GLX",
+      "parent": "GLU",
+      "context": "n_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 2,
+      "source_unit": "NGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.999998,
+      "library_sha256": "67daadb73842533e9237c7a0c0a5b7820c58399f30e3167bdea735801fab8b9c",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.016127623157135423
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.018226092568229997
+        }
+      ]
+    },
+    {
+      "name": "ALT",
+      "parent": "ALA",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CALA",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999990000000001,
+      "library_sha256": "a00b40d26dc343f81b57bd2c52c09c1304c4fcf1e4e3656cd14d5d7722c5396c",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.030007814526659113
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02874757707293841
+        }
+      ]
+    },
+    {
+      "name": "ART",
+      "parent": "ARG",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CARG",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 2.000001,
+      "library_sha256": "18d56658a99bfab18121bb2a18b677cb489dba3012b162b231dbc79d9bf49a75",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.01533568493451273
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.015965314320393643
+        }
+      ]
+    },
+    {
+      "name": "ANT",
+      "parent": "ASN",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CASN",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "5dce7aeac288d441e85278c52a701f42d65b897e741c7d74d8f001b2264f9e00",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02927561593223139
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.027043058040544608
+        }
+      ]
+    },
+    {
+      "name": "AST",
+      "parent": "ASP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CASP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": -9.999999996956888e-07,
+      "library_sha256": "c4e43d7cef6aecf4fb5316b82253c310d7e7ba5483ad21f2b443675e78c85a5f",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.06702384016311601
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.12920296937697828
+        }
+      ]
+    },
+    {
+      "name": "CYT",
+      "parent": "CYS",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CCYS",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "dd4e257072bfdf8b9c5890d23e506c3038aa7f6787e639937f34567ed2777860",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.036637925473806406
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03725657317788143
+        }
+      ]
+    },
+    {
+      "name": "GNT",
+      "parent": "GLN",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CGLN",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.000001,
+      "library_sha256": "982d67d57cd6af88f25ae3f3eb589b1c00e5d3b27ed6ad4f7b894dbc301f503b",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.025427508574354534
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.028277206439753927
+        }
+      ]
+    },
+    {
+      "name": "GLT",
+      "parent": "GLU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 4.440892098500626e-16,
+      "library_sha256": "a4fb8dbe2fe6f3cd6b18a540ba0feb35540fdb7da628af92a74c473133593bee",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.10017571857706656
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.10186987201506857
+        }
+      ]
+    },
+    {
+      "name": "GYT",
+      "parent": "GLY",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CGLY",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999999,
+      "library_sha256": "afc040f7aecfba08173bc312b427c57830dd90b9fc1aa1de351bdae31d70f4ab",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.030663113447069578
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.031060258894077934
+        }
+      ]
+    },
+    {
+      "name": "HET",
+      "parent": "HIE",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CHIE",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0000020000000003,
+      "library_sha256": "046ada0554d3f4e3c2b2dc1f71363c3ea5eee94908733f18e5022d299f7445bd",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03245012267871332
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.032982445288376544
+        }
+      ]
+    },
+    {
+      "name": "ILT",
+      "parent": "ILE",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CILE",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999996,
+      "library_sha256": "ddeee15c9af19b1b191fac8be6974547643dce5922496d9f6a5bbb74a938108f",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.028160940019678084
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03437704037527826
+        }
+      ]
+    },
+    {
+      "name": "LET",
+      "parent": "LEU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CLEU",
+      "reused_from": "LCL",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "51e84211afeaeb4d0806abf46a55f3e960885a30adc24cfe362c26cb51f82845"
+    },
+    {
+      "name": "LYT",
+      "parent": "LYS",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CLYS",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.9999989999999999,
+      "library_sha256": "08469e38f69906cd31466502933f9fd1685b40661cb0fd47a7d1f2ecd119cf09",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.01930203228461859
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.018375685399366154
+        }
+      ]
+    },
+    {
+      "name": "MTT",
+      "parent": "MET",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CMET",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999999999999996,
+      "library_sha256": "e03d3f7981fe8f4f381d81c0395a58844e0c4a02197677b198e979b3b92df521",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03720906200462593
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03186571313600669
+        }
+      ]
+    },
+    {
+      "name": "PHT",
+      "parent": "PHE",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CPHE",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.999999,
+      "library_sha256": "ac4b420cd94ca38953b1d8989a0c7fbd35d515c266b3093977f92baca1e7a373",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.029556756962059
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.028013591406253976
+        }
+      ]
+    },
+    {
+      "name": "PRT",
+      "parent": "PRO",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CPRO",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0000010000000001,
+      "library_sha256": "a9ce4ba87db5b8819998f6fbf8c5efade070a7b4244ac491da87f3b4d9aa1e9c",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02152563952106706
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02160892826355437
+        }
+      ]
+    },
+    {
+      "name": "SET",
+      "parent": "SER",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CSER",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999990000000001,
+      "library_sha256": "a8ebc25f2836764ee9ea3b64bbb8ea966860d43457b82245a34205a42a1fcbbe",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.026314060246387275
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02451969272428656
+        }
+      ]
+    },
+    {
+      "name": "THT",
+      "parent": "THR",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CTHR",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999999,
+      "library_sha256": "eeded5200a4929e58891b6f077efed160f989fd4b160afef9f7a1454c75e304e",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02358075833712067
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.024150067098702013
+        }
+      ]
+    },
+    {
+      "name": "TRT",
+      "parent": "TRP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CTRP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999999,
+      "library_sha256": "8f9bdf6cbc630ed3dd29f9292045cfb94e4a4302ac5c8d34b2b86c8565be07b7",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03364696337936119
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.036830316948831654
+        }
+      ]
+    },
+    {
+      "name": "TYT",
+      "parent": "TYR",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CTYR",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0000000000000004,
+      "library_sha256": "bc9963cbd9543f73d48b338043916eb23ec343e453c191f9851fbdcc8ef98cfe",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03144645650344199
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.029983202649044558
+        }
+      ]
+    },
+    {
+      "name": "VAT",
+      "parent": "VAL",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CVAL",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "206ed218c4a7f309bc802dd9fc3af7ebf9a2f67cd28c0945ac74948eef8928ad",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02785907205249333
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02941359701773104
+        }
+      ]
+    },
+    {
+      "name": "HDT",
+      "parent": "HID",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CHID",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "abb886fb71367dc2e41e839e0bdd0fb704995c7d32db3fd5d21791a3c8fdd65b",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.032376737476818206
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03213842355845358
+        }
+      ]
+    },
+    {
+      "name": "HPT",
+      "parent": "HIP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CHIP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.9999980000000002,
+      "library_sha256": "6356816d7e94e58ffb9ca4aab4e7a6e70d6b412597d0fb8f813713c04fd84a68",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.01978006021995671
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.014753797478420847
+        }
+      ]
+    },
+    {
+      "name": "CXT",
+      "parent": "CYX",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CCYX",
+      "reused_from": null,
+      "disulfide": true,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999999999999999,
+      "library_sha256": "a447445a589d45fc77dfe035cf7e8896305f7622dc437edbe8214757f10fafe8",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.06330735065450922
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.04844683251110958
+        }
+      ]
+    },
+    {
+      "name": "CMT",
+      "parent": "CYM",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CCYM",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": -1.0000000000287557e-06,
+      "library_sha256": "774d0652faaad7c8bf7c535d759ffe69db1a9afe8d08ddf8ad7f9e5fb28493bd",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.11876172213257988
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.11505213238150665
+        }
+      ]
+    },
+    {
+      "name": "ASZ",
+      "parent": "ASP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CASP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": -2.220446049250313e-16,
+      "library_sha256": "0db4be67ce07f11c42aed9b1c121935d94374c5b303d3d3e20cbb1445b4b02bc",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.08969520639472683
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.09352591762729753
+        }
+      ]
+    },
+    {
+      "name": "ASD",
+      "parent": "ASP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side",
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CASP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 2.000003,
+      "library_sha256": "e225239b8b3bf37bd6a829363d604ea00e1ab5f313f2d5be142d3d0edd28cdb2",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.021894901823497695
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.016862611318410055
+        }
+      ]
+    },
+    {
+      "name": "GLZ",
+      "parent": "GLU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 9.999999999177334e-07,
+      "library_sha256": "533e111e617546090e5d9d02e321052be60db10b575d7f44ae5fe31237db3798",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.09795937190353288
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.10275607134869659
+        }
+      ]
+    },
+    {
+      "name": "GLD",
+      "parent": "GLU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side",
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 2.0,
+      "library_sha256": "c73c07da3f47e6bf6abfc64b8dc220d3db70e36eb83ca247997c6dc0c7959b64",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.017140639417149144
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.015774813797309377
+        }
+      ]
+    }
+  ]
+}

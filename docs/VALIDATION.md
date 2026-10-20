@@ -1,0 +1,96 @@
+# Implementation validation — 20 October 2026
+
+Tests use short peptides or synthetic systems. No HSA production was submitted
+or restarted. Original structures and accepted fitted RESP libraries were
+preserved. A machine-readable summary is in [validation/latest.json](../validation/latest.json).
+
+## Current standalone package
+
+A fresh private Python 3.12 installation on macOS installed the complete
+runtime, including PDBFixer 1.12.0, without Amber, GROMACS or APBS executables.
+The installation completed and reported missing external programs. APBS-based
+calculations still require an installed solver; no alternative model is
+silently selected. Conda and venv recipes install the same project, but creation
+of a new Conda environment was not executed in this validation.
+
+The installed package passed **213 tests, with no skips**, including 11 initial
+PDB preparation tests. The earlier Linux run passed 202 tests before PDBFixer
+preparation was added; the new preparation tests have currently run on macOS.
+Source files and installed Python modules were compared byte for byte.
+
+PDB preparation was tested on actual structures with missing side-chain,
+backbone and terminal atoms. It retained supplied atom records and declared
+residue/disulfide states. The repaired peptide passed parameter assignment.
+Malformed records, alternate locations, missing SEQRES residues, cationized
+residues and existing output directories were rejected. A separate console
+example demonstrates one missing CA repaired and a truncated record rejected
+without an output directory.
+
+A real ASP–ASP–LEU demonstration completed cumulative 0/25/50/75/100% checkpoints
+with OpenMM minimization, PROPKA and all three export formats. A second complete
+run started from the PDBFixer-repaired peptide. Both demonstrations selected
+screened-Coulomb ranking explicitly; they do not test a new APBS installation.
+Three available carboxyl groups produce rounded counts of 0, 1, 2, 2 and 3.
+
+## Current PDB and split GROMACS exports
+
+PDB atom identity/order and coordinates, moved relative ITP includes, the
+`CP_` atom-type namespace, disconnected chains, CMAP retention and composition
+with an independently defined synthetic ligand are covered by regression
+tests. No ligand-combination utility is provided.
+
+Three previously generated peptide systems were exported again using the
+current split ITP writer. ParmEd reloaded these files and OpenMM compared the
+physical graph, charges, LJ, exclusions, 1–4 terms, CMAP, energy and forces at
+identical original coordinates. All checks passed:
+
+| Profile | GROMACS round-trip energy error, kJ/mol | CMAP terms |
+|---|---:|---:|
+| ff14SB | 1.139 × 10⁻⁵ | 0 |
+| ff19SB | 1.132 × 10⁻⁵ | 1 |
+| ff99SBildn | 2.689 × 10⁻⁶ | 0 |
+
+These are serialization and physical-model round trips, not new GROMACS binary
+executions. The current split include layout has not yet been rerun in an
+external GROMACS executable.
+
+## Earlier independent engine qualification
+
+Before the standalone rename and ITP split, Amber 24/AmberTools 25 and GROMACS
+2025.4 evaluated the same physical peptide representations. These were vacuum
+CPU single points, not MD. Coordinates were identical; GROMACS coordinates used
+nine decimal places to remove ordinary GRO rounding.
+
+| Case | Absolute Amber difference, kJ/mol | Absolute GROMACS difference, kJ/mol |
+|---|---:|---:|
+| ff14_apbs | 0.029605 | 0.00036694 |
+| ff19SB_coulomb | 0.04594 | 0.00053912 |
+| ff99SBildn_coulomb | 0.041589 | 8.3444 × 10⁻⁵ |
+
+The ff19SB XML/JSON reconstruction retained its 24 × 24 CMAP and passed energy
+and force comparison. A conventional frcmod alone does not encode CMAP.
+Complete exports include actual 1–4 scaling derived from physical exceptions;
+these can differ from bare ParmEd torsion defaults.
+
+Earlier serial integration also covered APBS/PROPKA, Amber minimization,
+linear PBSA, native PDB input and verified resume. The capped-template matrix
+had 64 passing assignments for ff14SB and 62 each for ff19SB and ff99SBildn,
+including vacuum/GBn2 checks. CMT was explicitly unsupported under the latter
+two profiles because their distributed native CCYM template is absent. All
+32 chemical states were supported under ff14SB. Accepted custom RESP charges
+were not refitted or altered for this repository work.
+
+## Qualification limits
+
+These checks establish tested behavior and parameter conversion. They do not
+establish transferability to arbitrary proteins or replace experimental
+validation. No additional QM torsion fitting was performed for alternate
+profiles. Nonlinear PBSA remains unqualified; APBS is the earlier tested
+nonlinear reference. Old engines without CMAP support cannot run ff19SB
+correctly. Other engine releases require separate checks.
+
+A fresh independent code review was attempted but was unavailable because the
+review service reached its usage limit. The current changes received an author
+review and automated checks; no independent-review completion is claimed.
+Private environments, calculation outputs and development logs stay outside
+the source repository.

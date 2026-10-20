@@ -1,0 +1,4 @@
+# Preserve fitted parameter and fixed-column PDB bytes across platforms.
+parameters/** -text
+parameters/*.csv whitespace=cr-at-eol
+*.pdb -text whitespace=-blank-at-eol

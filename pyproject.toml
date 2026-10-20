@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cationize-protein"
+version = "0.1.0"
+description = "Progressive electrostatic-guided protein carboxyl amidation"
+requires-python = ">=3.10,<3.15"
+dependencies = ["numpy>=1.26", "scipy>=1.11", "ParmEd>=4.3", "openmm>=8.6", "propka>=3.5", "pdbfixer>=1.12,<2"]
+
+[project.scripts]
+cationize-protein = "cationize_protein.cli:main"
+
+[project.optional-dependencies]
+parameterization = ["rdkit"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.data-files]
+"share/cationize-protein/parameters" = ["parameters/*.lib", "parameters/*.json", "parameters/*.xml", "parameters/*.csv"]
+"share/cationize-protein/parameters/provenance" = ["parameters/provenance/*.py"]

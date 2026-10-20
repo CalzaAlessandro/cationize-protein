@@ -1,0 +1,11 @@
+PDB preparation: PASS
+PDBFixer: 1.12.0
+Source SHA256: fdf6da68324c5445170c7c0d62a8a2c1d1a1557a7a1fffdd668916111197bc2c
+Residues: 3; added heavy atoms: 1
+Supplied atom records, residue states, identifiers and connectivity records are preserved.
+Missing loops/residues, alternate conformers and nonstandard chemistry are not rebuilt.
+No hydrogens were added. The cationization workflow adds H and audits protonation with PROPKA.
+Histidines require explicit HID/HIE/HIP states or diagnostic ring H before run.
+Coordinate/SEQRES checks do not establish completeness against an external reference sequence.
+Added atoms require the subsequent force-field minimization before structural interpretation.
+ADDED: (blank):1 ASP CA

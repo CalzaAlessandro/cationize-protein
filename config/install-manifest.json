@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "python": {"minimum": "3.10", "maximum_exclusive": "3.15", "recommended": "3.12", "environment": ".venv"},
+  "apbs": {
+    "version": "3.4.1",
+    "release": "https://github.com/Electrostatics/apbs/releases/tag/v3.4.1",
+    "sha256_provenance": "Computed from official release assets on 2026-10-20; these are project pins, not upstream signatures.",
+    "assets": {
+      "Linux-x86_64": {
+        "url": "https://github.com/Electrostatics/apbs/releases/download/v3.4.1/APBS-3.4.1.Linux.zip",
+        "sha256": "750f6a2df7b5a82b69be5c4cb192115c02fa261d0ff52cf1d9632ed1eda8b4f0",
+        "bundle": "APBS-3.4.1.Linux"
+      },
+      "Darwin-x86_64": {
+        "url": "https://github.com/Electrostatics/apbs/releases/download/v3.4.1/APBS-3.4.1.Darwin.zip",
+        "sha256": "894bd87f3c4494483b9cd18c366f5d055e34c890e25d82d6035e318ffde3a890",
+        "bundle": "APBS-3.4.1.Darwin"
+      }
+    }
+  }
+}

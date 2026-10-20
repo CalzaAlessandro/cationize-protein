@@ -1,0 +1,2948 @@
+{
+  "catalog_templates": 32,
+  "accepted_templates": 32,
+  "templates": [
+    {
+      "name": "ASC",
+      "parent": "ASP",
+      "context": "internal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 1,
+      "source_unit": "ASP",
+      "reused_from": "ASL",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "ea5b6047b6c48747c6d7afac936eb7003c5e6a331b6a588b1087ae0080f1d353"
+    },
+    {
+      "name": "ASX",
+      "parent": "ASP",
+      "context": "n_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 2,
+      "source_unit": "NASP",
+      "reused_from": "NSL",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "0bf41e2ce4f82af391acf498c44ea0bce33b27f7b1d846815e69bb7d37ef2f4d"
+    },
+    {
+      "name": "GLC",
+      "parent": "GLU",
+      "context": "internal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 1,
+      "source_unit": "GLU",
+      "reused_from": "GLS",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "450ab17a84c2dbc4ac7d09ac21388078c05f77ea4abc10ec7a271c0301979de3"
+    },
+    {
+      "name": "GLX",
+      "parent": "GLU",
+      "context": "n_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 2,
+      "source_unit": "NGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.999998,
+      "library_sha256": "67daadb73842533e9237c7a0c0a5b7820c58399f30e3167bdea735801fab8b9c",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.016127623157135423
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.018226092568229997
+        }
+      ],
+      "fit": {
+        "name": "GLX",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "67daadb73842533e9237c7a0c0a5b7820c58399f30e3167bdea735801fab8b9c",
+        "charge": 1.999998,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.016127623157135423
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.018226092568229997
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "c28c1e3c5a3c2ab3625b8df2b45b4692ed43af580c3b5cb74d1e61d4537205e9",
+            "points": 8538
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "b321d7260dfd23ec1e7a22d7be159e60e07071022f1d0833c9c3d62e1511b92f",
+            "points": 8365
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "dba85dde0d5ef30b987ddc0a50f0591fac39ac6fd4462f5b9f0783e94e381a8c",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "863244ae0b8c03ae0b723e902bfd538fb16742e271f45473c9111669b0cfa900",
+          "extended": "92c6334908a996422844d26b58850f39ce38426236070f7561869bb38f4bb8ce"
+        }
+      },
+      "export_validation": {
+        "name": "GLX",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "161f3f973901cbbea94bad2df7e5313af4d502481130ebc7c4d201324c7e7e09",
+        "library_sha256": "67daadb73842533e9237c7a0c0a5b7820c58399f30e3167bdea735801fab8b9c",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 649.8805801688355,
+            "n_atoms": 34,
+            "n_bonds": 33
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -123.42404984201391,
+            "n_atoms": 34,
+            "n_bonds": 33
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 596.621002245959,
+            "n_atoms": 34,
+            "n_bonds": 33
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -134.35501971676774,
+            "n_atoms": 34,
+            "n_bonds": 33
+          }
+        ]
+      }
+    },
+    {
+      "name": "ALT",
+      "parent": "ALA",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CALA",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999990000000001,
+      "library_sha256": "a00b40d26dc343f81b57bd2c52c09c1304c4fcf1e4e3656cd14d5d7722c5396c",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.030007814526659113
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02874757707293841
+        }
+      ],
+      "fit": {
+        "name": "ALT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "a00b40d26dc343f81b57bd2c52c09c1304c4fcf1e4e3656cd14d5d7722c5396c",
+        "charge": 0.9999990000000001,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.030007814526659113
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.02874757707293841
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "0ba1f2d83e33786c98d72ef9f77f7ad2fbb745f45f3633113d718f88f31d51e5",
+            "points": 6886
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "e2a57124700746fdd838142fa914ddbfd7e41cc25aadff138b921c23e4755dbd",
+            "points": 7153
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "835396860a46eeaf45c4d5b1cf2457aa8982cc1a489926bf807c42018f8aa5b3",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "e0f7d98ea4cf2be6400a7e1376b06644c281408599c5174ff05708842c934e86",
+          "extended": "68e1343eb16ed3752e12632b848fe560fc64c866301ce2b4002c8597e53c7818"
+        }
+      },
+      "export_validation": {
+        "name": "ALT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "00796f621e5aad31f9aeb517b8359d0594358cfdb160b9f518a06d8e1d1d01ac",
+        "library_sha256": "a00b40d26dc343f81b57bd2c52c09c1304c4fcf1e4e3656cd14d5d7722c5396c",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -80.13352569877276,
+            "n_atoms": 28,
+            "n_bonds": 27
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -314.29132829550974,
+            "n_atoms": 28,
+            "n_bonds": 27
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 37.201628821312525,
+            "n_atoms": 28,
+            "n_bonds": 27
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -236.13594006114533,
+            "n_atoms": 28,
+            "n_bonds": 27
+          }
+        ]
+      }
+    },
+    {
+      "name": "ART",
+      "parent": "ARG",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CARG",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 2.000001,
+      "library_sha256": "18d56658a99bfab18121bb2a18b677cb489dba3012b162b231dbc79d9bf49a75",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.01533568493451273
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.015965314320393643
+        }
+      ],
+      "fit": {
+        "name": "ART",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "18d56658a99bfab18121bb2a18b677cb489dba3012b162b231dbc79d9bf49a75",
+        "charge": 2.000001,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.01533568493451273
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.015965314320393643
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "4ad1df711321efdc369aa330920a0da72f2f2a085458b74a76b44f44939c635c",
+            "points": 9695
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "f89e4330674af640946d8060fffa37f468f8e1fcee5eb4e76930272910819c4e",
+            "points": 9606
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "31badc5916aa74116cf32274288002be2a20112bb88fd31aad4abad12d2dde86",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "95db5bcbc124eb7d9b6d7f43974f65f90ccc5425e18e4499addfd118dbdf1975",
+          "extended": "33b27f578fb1a79eec37b298941b0f44666d88b8c8c0b00aabde56180e169696"
+        }
+      },
+      "export_validation": {
+        "name": "ART",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "932e77353014567c7aab6d43e8f7e2cf99f7990328c27bb5e890ed40bf2eb17c",
+        "library_sha256": "18d56658a99bfab18121bb2a18b677cb489dba3012b162b231dbc79d9bf49a75",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -620.9071841047116,
+            "n_atoms": 42,
+            "n_bonds": 41
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -1337.7332437800685,
+            "n_atoms": 42,
+            "n_bonds": 41
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -656.76381968012,
+            "n_atoms": 42,
+            "n_bonds": 41
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -1337.3192998443296,
+            "n_atoms": 42,
+            "n_bonds": 41
+          }
+        ]
+      }
+    },
+    {
+      "name": "ANT",
+      "parent": "ASN",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CASN",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "5dce7aeac288d441e85278c52a701f42d65b897e741c7d74d8f001b2264f9e00",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02927561593223139
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.027043058040544608
+        }
+      ],
+      "fit": {
+        "name": "ANT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "5dce7aeac288d441e85278c52a701f42d65b897e741c7d74d8f001b2264f9e00",
+        "charge": 1.0,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.02927561593223139
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.027043058040544608
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "37795a2bbd24d2d92dcb6c31be6edf42496f324ac0ecd07aaa47655dfb283d6a",
+            "points": 7818
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "13e93cf139b3adf1750d6ddfa0e6c30186fbe0d15424d419f03133b40f77d7c4",
+            "points": 8102
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "ad1dd5804b97bb1881ee46c709d0b351f394f0a08fb21bc68d8c2ead23c21529",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "fd2840f1e4f483bcf4c7eac126e58d7764f5fc13b4a160c95e1ae49434b22af0",
+          "extended": "0d09135ed26b03fc9ce524a4652ab8b0d9e62825517b00d4eee92c19d77a0efc"
+        }
+      },
+      "export_validation": {
+        "name": "ANT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "8b18dbaa76e4e3ecfbb3f224f6356a8549e192584803db899e32de7a33e4b1df",
+        "library_sha256": "5dce7aeac288d441e85278c52a701f42d65b897e741c7d74d8f001b2264f9e00",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -334.57477180230296,
+            "n_atoms": 32,
+            "n_bonds": 31
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -592.5732371750094,
+            "n_atoms": 32,
+            "n_bonds": 31
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -221.79419395508958,
+            "n_atoms": 32,
+            "n_bonds": 31
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -513.3715891360592,
+            "n_atoms": 32,
+            "n_bonds": 31
+          }
+        ]
+      }
+    },
+    {
+      "name": "AST",
+      "parent": "ASP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CASP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": -9.999999996956888e-07,
+      "library_sha256": "c4e43d7cef6aecf4fb5316b82253c310d7e7ba5483ad21f2b443675e78c85a5f",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.06702384016311601
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.12920296937697828
+        }
+      ],
+      "fit": {
+        "name": "AST",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "c4e43d7cef6aecf4fb5316b82253c310d7e7ba5483ad21f2b443675e78c85a5f",
+        "charge": -9.999999996956888e-07,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.06702384016311601
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.12920296937697828
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "eb0b558304ffda08a9156629983fe68ed29b6093706e9caa3cb94435b12a0acb",
+            "points": 7710
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "d8d4d43f45418003c6cda2094f5a6da6696d9abbd2e13f489e70ffebbef762da",
+            "points": 7344
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "8b1e92260681ad473812f1686591b00e8d7ac794735ed873e64e05add94be58c",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "4b71d45266b3903814d31cb9967a55f145d09b9b715a69dd134eac2f6dc00b7d",
+          "extended": "95e9ebf571520eb3348cc2a73981acd311a028530f13a0ffdd846da8f9ce8b01"
+        }
+      },
+      "export_validation": {
+        "name": "AST",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "496d9b62e50c73449f705efce0eacf35527b2649ccad98355a2b83a7752484d4",
+        "library_sha256": "c4e43d7cef6aecf4fb5316b82253c310d7e7ba5483ad21f2b443675e78c85a5f",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -337.4900073331024,
+            "n_atoms": 30,
+            "n_bonds": 29
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -598.7460060308811,
+            "n_atoms": 30,
+            "n_bonds": 29
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -430.1922038345293,
+            "n_atoms": 30,
+            "n_bonds": 29
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -596.3513978174501,
+            "n_atoms": 30,
+            "n_bonds": 29
+          }
+        ]
+      }
+    },
+    {
+      "name": "CYT",
+      "parent": "CYS",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CCYS",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "dd4e257072bfdf8b9c5890d23e506c3038aa7f6787e639937f34567ed2777860",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.036637925473806406
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03725657317788143
+        }
+      ],
+      "fit": {
+        "name": "CYT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "dd4e257072bfdf8b9c5890d23e506c3038aa7f6787e639937f34567ed2777860",
+        "charge": 1.0,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.036637925473806406
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.03725657317788143
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "1393f6e7e6d326c2dcd3dd2120843f3be2395a50da22846b53f0397ceea86584",
+            "points": 7873
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "5c5536a1babe6e2ded1cda001cb4ca0b2974bd405478ab37dde58502cb3dc082",
+            "points": 7677
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "fa47a263a75fa034e4dbcf2026e626bed48ce9b796d75031bcc9bf8c3b08e0f9",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "0aad5c8b78845ccfa8d8739b17ac5cb177b679379ab8d42d691e7c17ecc64362",
+          "extended": "d9b93a6c567185b308febbe00af51be384e2bf1a5abdd3bbdf5751cb627dc149"
+        }
+      },
+      "export_validation": {
+        "name": "CYT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "4d01de6efcd8ad2b1815e4252bef458ad6a3bd5c40cb3539d524c7baf2119333",
+        "library_sha256": "dd4e257072bfdf8b9c5890d23e506c3038aa7f6787e639937f34567ed2777860",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -3.2060449667026276,
+            "n_atoms": 29,
+            "n_bonds": 28
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -269.3851598386956,
+            "n_atoms": 29,
+            "n_bonds": 28
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 75.54502439460765,
+            "n_atoms": 29,
+            "n_bonds": 28
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -214.15239547376245,
+            "n_atoms": 29,
+            "n_bonds": 28
+          }
+        ]
+      }
+    },
+    {
+      "name": "GNT",
+      "parent": "GLN",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CGLN",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.000001,
+      "library_sha256": "982d67d57cd6af88f25ae3f3eb589b1c00e5d3b27ed6ad4f7b894dbc301f503b",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.025427508574354534
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.028277206439753927
+        }
+      ],
+      "fit": {
+        "name": "GNT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "982d67d57cd6af88f25ae3f3eb589b1c00e5d3b27ed6ad4f7b894dbc301f503b",
+        "charge": 1.000001,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.025427508574354534
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.028277206439753927
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "54b20fbf317de7ebf21f91482fb96c053fabdec0d10b3f7c7f4c6f39a0a35ea1",
+            "points": 8252
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "9a7aec34b5d0537b28a8d700dcb22403783853c51de68ba594f8b4e912400652",
+            "points": 8482
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "d0347ba739522ef428dd51e501535b1535f1a88e7bc202848b9aa64f2a420972",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "179922dfac1c8be3f842eaa4116b7ae57b23d1750da8b8ec464986ea354b663b",
+          "extended": "7fd1007f18dd723f69bdabecda51602d8048e98603dd44a82af92c3eebe210a1"
+        }
+      },
+      "export_validation": {
+        "name": "GNT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "fcb3378aedd609ca49d6417233dee4919f0768d0c79f7db25ee143dce7d169ce",
+        "library_sha256": "982d67d57cd6af88f25ae3f3eb589b1c00e5d3b27ed6ad4f7b894dbc301f503b",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -568.6428834425296,
+            "n_atoms": 35,
+            "n_bonds": 34
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -823.7890304086313,
+            "n_atoms": 35,
+            "n_bonds": 34
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -508.7130682670216,
+            "n_atoms": 35,
+            "n_bonds": 34
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -785.4012751774299,
+            "n_atoms": 35,
+            "n_bonds": 34
+          }
+        ]
+      }
+    },
+    {
+      "name": "GLT",
+      "parent": "GLU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 4.440892098500626e-16,
+      "library_sha256": "a4fb8dbe2fe6f3cd6b18a540ba0feb35540fdb7da628af92a74c473133593bee",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.10017571857706656
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.10186987201506857
+        }
+      ],
+      "fit": {
+        "name": "GLT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "a4fb8dbe2fe6f3cd6b18a540ba0feb35540fdb7da628af92a74c473133593bee",
+        "charge": 4.440892098500626e-16,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.10017571857706656
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.10186987201506857
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "c27ad7200e5270dc795a13912de7b7d3492e9554eb465995c1d428d6a62f88ae",
+            "points": 7868
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "237850784873e6998abed0217fd39472edb1d5e2adad60cfe887669dd398904b",
+            "points": 7745
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "ffec35cacf3b8ba4d6e223d6445f26de6efc9dc273de9261496450cc95692d52",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "f51c5b1a490ce594bda6d081295a5f8caec05621c192e90c10d31f8bf456cc4f",
+          "extended": "b56d2735968ad2f5f22044e8d3908d59c42aef331c4efa025cfbf4be4a864fca"
+        }
+      },
+      "export_validation": {
+        "name": "GLT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "9e6e5685f0b2a0de8d37145b4042d5932e61816611d873253e4efbf085279d21",
+        "library_sha256": "a4fb8dbe2fe6f3cd6b18a540ba0feb35540fdb7da628af92a74c473133593bee",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -758.924243571685,
+            "n_atoms": 33,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -890.3231684893549,
+            "n_atoms": 33,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -694.4079845800886,
+            "n_atoms": 33,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -829.0235385400789,
+            "n_atoms": 33,
+            "n_bonds": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "GYT",
+      "parent": "GLY",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CGLY",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999999,
+      "library_sha256": "afc040f7aecfba08173bc312b427c57830dd90b9fc1aa1de351bdae31d70f4ab",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.030663113447069578
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.031060258894077934
+        }
+      ],
+      "fit": {
+        "name": "GYT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "afc040f7aecfba08173bc312b427c57830dd90b9fc1aa1de351bdae31d70f4ab",
+        "charge": 0.9999979999999999,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.030663113447069578
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.031060258894077934
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "be345bc7717ac3fa3d95d3e0f8bd1a01ae01a955adaf32d13146c3ed8b60fe6b",
+            "points": 6611
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "f19cbb820b43607b451074fbaf5a20f215934ec672367cc1cddbc3c3f94b5b45",
+            "points": 6751
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "5ff0d68d89c056a6084c177f0da8dffe05a40c8d81adadae105ebea0603f944a",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "f10883d5fcb6121c433fdec075dde245482b19cdeed28388e1d68e94f0823035",
+          "extended": "b74c75045e6168132b95380bc429f68e54f387bdf1288588b539cb4e7fdd92fe"
+        }
+      },
+      "export_validation": {
+        "name": "GYT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "bba40e4f1fc06359541b56345abee6a46bf5b729ee24de46586894313dd2040e",
+        "library_sha256": "afc040f7aecfba08173bc312b427c57830dd90b9fc1aa1de351bdae31d70f4ab",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -108.09771882945093,
+            "n_atoms": 25,
+            "n_bonds": 24
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -371.46461673592825,
+            "n_atoms": 25,
+            "n_bonds": 24
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -78.14895957396644,
+            "n_atoms": 25,
+            "n_bonds": 24
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -362.08192223538606,
+            "n_atoms": 25,
+            "n_bonds": 24
+          }
+        ]
+      }
+    },
+    {
+      "name": "HET",
+      "parent": "HIE",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CHIE",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0000020000000003,
+      "library_sha256": "046ada0554d3f4e3c2b2dc1f71363c3ea5eee94908733f18e5022d299f7445bd",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03245012267871332
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.032982445288376544
+        }
+      ],
+      "fit": {
+        "name": "HET",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "046ada0554d3f4e3c2b2dc1f71363c3ea5eee94908733f18e5022d299f7445bd",
+        "charge": 1.0000020000000003,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.03245012267871332
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.032982445288376544
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "257c63c0fc8c03eed580cfc0a588110ff0e4afd9a0d892a47162bada2f2bfac0",
+            "points": 8430
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "7e1a539c99ad4a6e2733645820a29f1dc1244da179da181af4e5f9566b27d337",
+            "points": 8394
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "aaffb485001c7781a8ac6efe4ea080994bdf9818852d1265001d0b4376b8a774",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "81a904f813bd4645da5b9b323a895ebdc2ddef11f340d75eba6e35aaab2b4b7d",
+          "extended": "f2ffa3e7e01fb58735d4d4cb66ba368308600475ee10b21593c2aaa3678a1385"
+        }
+      },
+      "export_validation": {
+        "name": "HET",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "722b4b372bba6a99be83389fc5904644bf0b2f1d695b779f936d7a6408c334dc",
+        "library_sha256": "046ada0554d3f4e3c2b2dc1f71363c3ea5eee94908733f18e5022d299f7445bd",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 42.81026255367469,
+            "n_atoms": 35,
+            "n_bonds": 35
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -211.98094149774028,
+            "n_atoms": 35,
+            "n_bonds": 35
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 138.21759088720074,
+            "n_atoms": 35,
+            "n_bonds": 35
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -128.21262721656763,
+            "n_atoms": 35,
+            "n_bonds": 35
+          }
+        ]
+      }
+    },
+    {
+      "name": "ILT",
+      "parent": "ILE",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CILE",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999996,
+      "library_sha256": "ddeee15c9af19b1b191fac8be6974547643dce5922496d9f6a5bbb74a938108f",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.028160940019678084
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03437704037527826
+        }
+      ],
+      "fit": {
+        "name": "ILT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "ddeee15c9af19b1b191fac8be6974547643dce5922496d9f6a5bbb74a938108f",
+        "charge": 0.9999979999999996,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.028160940019678084
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.03437704037527826
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "505daa9ff83eaa58ec74e21a8bc288ed7edacca393e82d7e82c15b6ee16cbf2f",
+            "points": 8234
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "8d72714c04fca5a1877dd58cec8fe093e8c3fdcdefac6c33a3971aa4a9e13fc5",
+            "points": 8446
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "9e8bfde1bf6229a3076a47399a755198b72291b60e30f237ece9f5c8b4905818",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "10907ca5b909c682b12e8c0e65d0489241d4719ba882e26c348e5ff879aef5f8",
+          "extended": "9e26cf5d8d56363383266d187dd35801bc3149fc68be77eba69aac671def32fc"
+        }
+      },
+      "export_validation": {
+        "name": "ILT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "7fd515faa157f3794e6a6402783c8e31637a5459803e2dcfadc151377d5c80b7",
+        "library_sha256": "ddeee15c9af19b1b191fac8be6974547643dce5922496d9f6a5bbb74a938108f",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -77.6583972056208,
+            "n_atoms": 37,
+            "n_bonds": 36
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -303.95279221874915,
+            "n_atoms": 37,
+            "n_bonds": 36
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 41.321348521795656,
+            "n_atoms": 37,
+            "n_bonds": 36
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -228.32882753181354,
+            "n_atoms": 37,
+            "n_bonds": 36
+          }
+        ]
+      }
+    },
+    {
+      "name": "LET",
+      "parent": "LEU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CLEU",
+      "reused_from": "LCL",
+      "disulfide": false,
+      "status": "reused_validated_HSA_template",
+      "library_sha256": "51e84211afeaeb4d0806abf46a55f3e960885a30adc24cfe362c26cb51f82845"
+    },
+    {
+      "name": "LYT",
+      "parent": "LYS",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CLYS",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.9999989999999999,
+      "library_sha256": "08469e38f69906cd31466502933f9fd1685b40661cb0fd47a7d1f2ecd119cf09",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.01930203228461859
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.018375685399366154
+        }
+      ],
+      "fit": {
+        "name": "LYT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "08469e38f69906cd31466502933f9fd1685b40661cb0fd47a7d1f2ecd119cf09",
+        "charge": 1.9999989999999999,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.01930203228461859
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.018375685399366154
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "9f75c3c42158038992243bef357071f8197cce2a629cad5f90778b66f09037fc",
+            "points": 9537
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "0c5134419462de259c05a1ff4b7410861d80d574995a4deff9b00aa7e5c635bc",
+            "points": 9458
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "09c1535cff31d504cc6c273eaaa42ed6224fd18beffe092df4b7ab2be97a3ced",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "920f83b509aaef05277d338122e2fdf9c019fa33b534ab51035d3c7d9461ac93",
+          "extended": "b4ae2cfd2a36e879e339f1012ce5f5a311aab70447b45a7cc6c5725c61c8b526"
+        }
+      },
+      "export_validation": {
+        "name": "LYT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "111558c068454a4c0cce582a238d5053ee78213d018e8d040b10bf4fb8b5a7bb",
+        "library_sha256": "08469e38f69906cd31466502933f9fd1685b40661cb0fd47a7d1f2ecd119cf09",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 341.5507376150992,
+            "n_atoms": 40,
+            "n_bonds": 39
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -385.69625043148864,
+            "n_atoms": 40,
+            "n_bonds": 39
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 393.8809869156669,
+            "n_atoms": 40,
+            "n_bonds": 39
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -339.5169616250977,
+            "n_atoms": 40,
+            "n_bonds": 39
+          }
+        ]
+      }
+    },
+    {
+      "name": "MTT",
+      "parent": "MET",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CMET",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999999999999996,
+      "library_sha256": "e03d3f7981fe8f4f381d81c0395a58844e0c4a02197677b198e979b3b92df521",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03720906200462593
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03186571313600669
+        }
+      ],
+      "fit": {
+        "name": "MTT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "e03d3f7981fe8f4f381d81c0395a58844e0c4a02197677b198e979b3b92df521",
+        "charge": 0.9999999999999996,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.03720906200462593
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.03186571313600669
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "31991953de1747fe36ebbd40cada08aed38ff9ff6733bb3f46e881a6e232b938",
+            "points": 9011
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "99992a77c2189d7b513dc762c08b9f05208a522017185b35c33bec649f8fddce",
+            "points": 8799
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "fedc25c2ce5bed0a1f500fe3f92856c6817a0e51758b29aefbe7910a4a96318b",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "6669db3e82322571b2bf280bd6f840d4368680e95534050a15836df97243774c",
+          "extended": "93336274fc13b6c2f5d7543a5d5dfb18bc00cb6564998390809b9e3bf12d6f43"
+        }
+      },
+      "export_validation": {
+        "name": "MTT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "937a44615e7c9cdc98a26c4ae29a78ee54e4191ca18b66308d787c873aba1baa",
+        "library_sha256": "e03d3f7981fe8f4f381d81c0395a58844e0c4a02197677b198e979b3b92df521",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -32.01383836365364,
+            "n_atoms": 35,
+            "n_bonds": 34
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -295.4485160338151,
+            "n_atoms": 35,
+            "n_bonds": 34
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 2.884692317516059,
+            "n_atoms": 35,
+            "n_bonds": 34
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -258.27807072013803,
+            "n_atoms": 35,
+            "n_bonds": 34
+          }
+        ]
+      }
+    },
+    {
+      "name": "PHT",
+      "parent": "PHE",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CPHE",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.999999,
+      "library_sha256": "ac4b420cd94ca38953b1d8989a0c7fbd35d515c266b3093977f92baca1e7a373",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.029556756962059
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.028013591406253976
+        }
+      ],
+      "fit": {
+        "name": "PHT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "ac4b420cd94ca38953b1d8989a0c7fbd35d515c266b3093977f92baca1e7a373",
+        "charge": 0.999999,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.029556756962059
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.028013591406253976
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "436e030cd3fe25bd9d6ce1b44a17251cc21f4b0318942a7505affdbe9cab2720",
+            "points": 9302
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "4b6876fcc67dcb37fc4dcbb7118081557bc770b7626eb95dd6f7401f31625dc2",
+            "points": 8767
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "6b4bded1c55d00fef9feebdbdd2e05fd015da529bb8a0004c26b121face0b2ca",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "923034e63c6b366edb4e33996339547ff2379314bd7c3733d679415ddeaf7db1",
+          "extended": "fcf4595fa6707df327487dccf379a67ada248c796786f6e96e8fb87c7fd0ec72"
+        }
+      },
+      "export_validation": {
+        "name": "PHT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "1005ec1d49968e44a0b5c2dd79cfa31606a92f4055048242095fbabc2769994d",
+        "library_sha256": "ac4b420cd94ca38953b1d8989a0c7fbd35d515c266b3093977f92baca1e7a373",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 26.07425498059062,
+            "n_atoms": 38,
+            "n_bonds": 38
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -220.98132009518417,
+            "n_atoms": 38,
+            "n_bonds": 38
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 65.67025865428008,
+            "n_atoms": 38,
+            "n_bonds": 38
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -202.77710801581435,
+            "n_atoms": 38,
+            "n_bonds": 38
+          }
+        ]
+      }
+    },
+    {
+      "name": "PRT",
+      "parent": "PRO",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CPRO",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0000010000000001,
+      "library_sha256": "a9ce4ba87db5b8819998f6fbf8c5efade070a7b4244ac491da87f3b4d9aa1e9c",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02152563952106706
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02160892826355437
+        }
+      ],
+      "fit": {
+        "name": "PRT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "a9ce4ba87db5b8819998f6fbf8c5efade070a7b4244ac491da87f3b4d9aa1e9c",
+        "charge": 1.0000010000000001,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.02152563952106706
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.02160892826355437
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "ba2c55ea1a509a44c507f74246c6e4fd6a1d984d91316bfa56cbee30acc7a5ec",
+            "points": 7319
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "2fb52629806768f61a884190151ee780a4f94e9b910373d76c5afafea30f8e9c",
+            "points": 7377
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "8dbb90cfee05b006ad15062c39eeca2998e377370e267a49161f6952fb37820c",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "03a505305026b449a2ec7f84527e1b5eb9ea04a71b15b1bc9de7ab97a25e039d",
+          "extended": "e049572c39291f82408d81afba647cf6a033a1f9ac7dca51880742bca1d5c336"
+        }
+      },
+      "export_validation": {
+        "name": "PRT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "4925a85baf1c28f17c0cf2ea2f1103b226ac48efc880a16c7788738088f3e937",
+        "library_sha256": "a9ce4ba87db5b8819998f6fbf8c5efade070a7b4244ac491da87f3b4d9aa1e9c",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -16.421663539178933,
+            "n_atoms": 32,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -243.68161131286232,
+            "n_atoms": 32,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -29.636592355431603,
+            "n_atoms": 32,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -251.7891442985205,
+            "n_atoms": 32,
+            "n_bonds": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "SET",
+      "parent": "SER",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CSER",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999990000000001,
+      "library_sha256": "a8ebc25f2836764ee9ea3b64bbb8ea966860d43457b82245a34205a42a1fcbbe",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.026314060246387275
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02451969272428656
+        }
+      ],
+      "fit": {
+        "name": "SET",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "a8ebc25f2836764ee9ea3b64bbb8ea966860d43457b82245a34205a42a1fcbbe",
+        "charge": 0.9999990000000001,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.026314060246387275
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.02451969272428656
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "6a789a43faf6df1fc17171c6244ad9c68263a68f2f107ce630ef3882c5ca5a90",
+            "points": 7370
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "6731926990b1c6e2686ecae162d379cf07d649bd8731c50eb0eee6e84cbd8af3",
+            "points": 7334
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "070985772adb6ec315c982fe7a885c80c7e2220acb651a53532ae31ccdfa7982",
+        "fit_code_sha256": "bbbe904307f301b8fe9fc74ffc00735ca837afc4339544d7d8e382caf427f6f3",
+        "qm_input_sha256": {
+          "alpha": "087eedd79bf823d97f1374ebd0c2c13c62256529286e58fab4a56be5229d5ed2",
+          "extended": "ef1ef9fe9604623d92e58f4ed9b851d47991092124d7c8cf5fd9a0b7d9e6bfa5"
+        }
+      },
+      "export_validation": {
+        "name": "SET",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "67370cffad6895f96c53629c685950c4b8f7fc8d068570aa09c7f894a4fa6c8d",
+        "library_sha256": "a8ebc25f2836764ee9ea3b64bbb8ea966860d43457b82245a34205a42a1fcbbe",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -120.42702192126089,
+            "n_atoms": 29,
+            "n_bonds": 28
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -386.7145235937868,
+            "n_atoms": 29,
+            "n_bonds": 28
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -70.47268189879487,
+            "n_atoms": 29,
+            "n_bonds": 28
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -345.05153867530186,
+            "n_atoms": 29,
+            "n_bonds": 28
+          }
+        ]
+      }
+    },
+    {
+      "name": "THT",
+      "parent": "THR",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CTHR",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999999,
+      "library_sha256": "eeded5200a4929e58891b6f077efed160f989fd4b160afef9f7a1454c75e304e",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02358075833712067
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.024150067098702013
+        }
+      ],
+      "fit": {
+        "name": "THT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "eeded5200a4929e58891b6f077efed160f989fd4b160afef9f7a1454c75e304e",
+        "charge": 0.9999979999999999,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.02358075833712067
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.024150067098702013
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "5d9fa7177ca986ec3f91faedf707c234e85ee107874e7ffcad39706ff5f8eafc",
+            "points": 7820
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "5e39a291a6aa056a422c4c2598afc2b02cac7fac434a653a17c9de34d4da533c",
+            "points": 7672
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "2c7a0b02857410dc7bc77f3251993cc1aa731fe211199d1815d154884c2cb912",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "7db2381b6228b7af38962913e22a428316ac918b9c8a2ff1b235877d4d70f8e1",
+          "extended": "7087ed693ea853639aa205b4398a2a47870a879dcc50b14970d5c47a6c688d56"
+        }
+      },
+      "export_validation": {
+        "name": "THT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "58e7cbc8e7ef8e10e762d449186adaba95ee462f59069568bfae200b2059be2c",
+        "library_sha256": "eeded5200a4929e58891b6f077efed160f989fd4b160afef9f7a1454c75e304e",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -487.2766119143352,
+            "n_atoms": 32,
+            "n_bonds": 31
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -746.6157437667814,
+            "n_atoms": 32,
+            "n_bonds": 31
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -433.8624103610768,
+            "n_atoms": 32,
+            "n_bonds": 31
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -705.9567880428253,
+            "n_atoms": 32,
+            "n_bonds": 31
+          }
+        ]
+      }
+    },
+    {
+      "name": "TRT",
+      "parent": "TRP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CTRP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999979999999999,
+      "library_sha256": "8f9bdf6cbc630ed3dd29f9292045cfb94e4a4302ac5c8d34b2b86c8565be07b7",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03364696337936119
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.036830316948831654
+        }
+      ],
+      "fit": {
+        "name": "TRT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "8f9bdf6cbc630ed3dd29f9292045cfb94e4a4302ac5c8d34b2b86c8565be07b7",
+        "charge": 0.9999979999999999,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.03364696337936119
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.036830316948831654
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "dddb10c9dff354bf9016a71dc48a8ba1158f40b003a5d12ee3949f8319354f4c",
+            "points": 10179
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "f6a4ee7b85bab2a6901f1915de9e272d6ddc24bfabbe0394cf2fcfa02af50773",
+            "points": 9393
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "a8e376439addce0f64963a2f2efab544ac530bc996b7da555faedc225265b2d5",
+        "fit_code_sha256": "bbbe904307f301b8fe9fc74ffc00735ca837afc4339544d7d8e382caf427f6f3",
+        "qm_input_sha256": {
+          "alpha": "d48d7b0efc7b965db8f2d60eef8c2a2ee798703ff2000eb177c7c939acea78b9",
+          "extended": "70f2a2e32acd8e018cca914695678291c07b7c2af06af88d6daa430e7ee16641"
+        }
+      },
+      "export_validation": {
+        "name": "TRT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "8976c2a2ec370a1ab7755b429bcdfd068b92757b8c20d06ffd1aff6f317fe532",
+        "library_sha256": "8f9bdf6cbc630ed3dd29f9292045cfb94e4a4302ac5c8d34b2b86c8565be07b7",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 69.40741076823687,
+            "n_atoms": 42,
+            "n_bonds": 43
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -187.90250144591207,
+            "n_atoms": 42,
+            "n_bonds": 43
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 136.21579680580334,
+            "n_atoms": 42,
+            "n_bonds": 43
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -112.4178866378241,
+            "n_atoms": 42,
+            "n_bonds": 43
+          }
+        ]
+      }
+    },
+    {
+      "name": "TYT",
+      "parent": "TYR",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CTYR",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0000000000000004,
+      "library_sha256": "bc9963cbd9543f73d48b338043916eb23ec343e453c191f9851fbdcc8ef98cfe",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.03144645650344199
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.029983202649044558
+        }
+      ],
+      "fit": {
+        "name": "TYT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "bc9963cbd9543f73d48b338043916eb23ec343e453c191f9851fbdcc8ef98cfe",
+        "charge": 1.0000000000000004,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.03144645650344199
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.029983202649044558
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "3299d4d7c0dc6924741fd78a48b82af21c2b46ecefa3a1a7ee8e094463833748",
+            "points": 9125
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "e157fc55f8bffd6bbb8a73b9b676ec1ce2f2ee78af4006d6c68d7e8400161c8b",
+            "points": 9560
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "5e498aa1d081cceba5a12c353424353d7ad6b24f272b6e45ad20e7ae2972094c",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "11c485594cbdaa71c7aa55c2d316d70d5808325ebba442beed9240e9a6fa9078",
+          "extended": "4569ffa8024b4b5787ec33819079bc95493fb189acbc345145e4effc05c182e5"
+        }
+      },
+      "export_validation": {
+        "name": "TYT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "c1104aa274ed49c4f838fe5f214cb625a73f2e8d7b7957bf612e0450ef9aca2e",
+        "library_sha256": "bc9963cbd9543f73d48b338043916eb23ec343e453c191f9851fbdcc8ef98cfe",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -72.53196050922743,
+            "n_atoms": 39,
+            "n_bonds": 39
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -337.44200013429526,
+            "n_atoms": 39,
+            "n_bonds": 39
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 0.8843239898913708,
+            "n_atoms": 39,
+            "n_bonds": 39
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -277.11699314276603,
+            "n_atoms": 39,
+            "n_bonds": 39
+          }
+        ]
+      }
+    },
+    {
+      "name": "VAT",
+      "parent": "VAL",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CVAL",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "206ed218c4a7f309bc802dd9fc3af7ebf9a2f67cd28c0945ac74948eef8928ad",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.02785907205249333
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.02941359701773104
+        }
+      ],
+      "fit": {
+        "name": "VAT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "206ed218c4a7f309bc802dd9fc3af7ebf9a2f67cd28c0945ac74948eef8928ad",
+        "charge": 1.0,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.02785907205249333
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.02941359701773104
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "c6b6849864528574911d853888b746e44d14ec5e904fe01eea0f3d761d3b889e",
+            "points": 7822
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "c37f7c41e97f1d8ee0def88b1f9957707b0da3b51c6b6eb7d9ea1bba56b7c41b",
+            "points": 7985
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "2ad3f0b6e3750f45843e6acc20461e670bfed80aaab41002a7d49fdcfc184bbb",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "353f7eeb53776915bb4f2e8228d139d412f500f0e05cfb4e578e3766d3f7de8d",
+          "extended": "7441d10bec7ae1e14705b34a8c2c909b17aa014a78c74fdfc480af5323f9199b"
+        }
+      },
+      "export_validation": {
+        "name": "VAT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "16852d0f26acdad493813c397ebd858d5f0c83751cfc4b5496e7dce3c4d281d8",
+        "library_sha256": "206ed218c4a7f309bc802dd9fc3af7ebf9a2f67cd28c0945ac74948eef8928ad",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -481.4513903061849,
+            "n_atoms": 34,
+            "n_bonds": 33
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -708.741270860655,
+            "n_atoms": 34,
+            "n_bonds": 33
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -370.88850012119786,
+            "n_atoms": 34,
+            "n_bonds": 33
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -634.6804580320756,
+            "n_atoms": 34,
+            "n_bonds": 33
+          }
+        ]
+      }
+    },
+    {
+      "name": "HDT",
+      "parent": "HID",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CHID",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.0,
+      "library_sha256": "abb886fb71367dc2e41e839e0bdd0fb704995c7d32db3fd5d21791a3c8fdd65b",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.032376737476818206
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.03213842355845358
+        }
+      ],
+      "fit": {
+        "name": "HDT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "abb886fb71367dc2e41e839e0bdd0fb704995c7d32db3fd5d21791a3c8fdd65b",
+        "charge": 1.0,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.032376737476818206
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.03213842355845358
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "d20a47c035710f4f29ce225198c0edface6a94b426114cd89654b6a9db589455",
+            "points": 8213
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "2e90d9fe23fe0fc8958523c984e29a32436f68f164f6002718620a019b32054e",
+            "points": 8201
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "abf11a605a53aad886e6fd93721e100c63b37595f42453488ebf30bacd8ef1dd",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "92d1c647f3619cfbff3d92f91ba21dafea19e26998ab87c230777e9bb0aa493c",
+          "extended": "36988d2ee4f469a54781eff2426412a9a46b7e807eacc196019ee0be474745f2"
+        }
+      },
+      "export_validation": {
+        "name": "HDT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "609d50b14977631078075842a2039dfb05a9492c90dcb5c8687aa9f3d3fa2ee8",
+        "library_sha256": "abb886fb71367dc2e41e839e0bdd0fb704995c7d32db3fd5d21791a3c8fdd65b",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 102.48360910392383,
+            "n_atoms": 35,
+            "n_bonds": 35
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -170.29167528333465,
+            "n_atoms": 35,
+            "n_bonds": 35
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 130.3611849965912,
+            "n_atoms": 35,
+            "n_bonds": 35
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -140.27431259424236,
+            "n_atoms": 35,
+            "n_bonds": 35
+          }
+        ]
+      }
+    },
+    {
+      "name": "HPT",
+      "parent": "HIP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CHIP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 1.9999980000000002,
+      "library_sha256": "6356816d7e94e58ffb9ca4aab4e7a6e70d6b412597d0fb8f813713c04fd84a68",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.01978006021995671
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.014753797478420847
+        }
+      ],
+      "fit": {
+        "name": "HPT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "6356816d7e94e58ffb9ca4aab4e7a6e70d6b412597d0fb8f813713c04fd84a68",
+        "charge": 1.9999980000000002,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.01978006021995671
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.014753797478420847
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "92e0f7a41aab1033f936e7fc5688d5c8315c4499e50d4e3ea2cdd0f5757cefab",
+            "points": 8623
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "245957131c7f44b3b693db1aea5bc97f7d13055fed5d57650f4b6b6642134464",
+            "points": 9009
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "4dc707a641dc9489d60d484a3cf3a86bd2183111dee20f0f842269b1a9d08b5f",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "6bbe9db13af9a6ababbc92a4441c547edf6f5655c20404641f4aee50cffaaade",
+          "extended": "1204d6016572683f670c7e92cbf06b5df819e45b9d13cbcd0200f473fb6d735e"
+        }
+      },
+      "export_validation": {
+        "name": "HPT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "10c8954c29c797f16d8fc96bc8e435031447d806320aeafa1d4e6e734a2ea6a1",
+        "library_sha256": "6356816d7e94e58ffb9ca4aab4e7a6e70d6b412597d0fb8f813713c04fd84a68",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 484.1770639633577,
+            "n_atoms": 36,
+            "n_bonds": 36
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -204.85883326793862,
+            "n_atoms": 36,
+            "n_bonds": 36
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 606.5221483340054,
+            "n_atoms": 36,
+            "n_bonds": 36
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -115.65985090753281,
+            "n_atoms": 36,
+            "n_bonds": 36
+          }
+        ]
+      }
+    },
+    {
+      "name": "CXT",
+      "parent": "CYX",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 1,
+      "source_unit": "CCYX",
+      "reused_from": null,
+      "disulfide": true,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 0.9999999999999999,
+      "library_sha256": "a447445a589d45fc77dfe035cf7e8896305f7622dc437edbe8214757f10fafe8",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.06330735065450922
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.04844683251110958
+        }
+      ],
+      "fit": {
+        "name": "CXT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "a447445a589d45fc77dfe035cf7e8896305f7622dc437edbe8214757f10fafe8",
+        "charge": 0.9999999999999999,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.06330735065450922
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.04844683251110958
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "620ecde41c61cb8b475b743073edc795e525bc5d5193c4b234fbe3192e40d57f",
+            "points": 11773
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "a4abb308698185c17d2da3a70a9b087a2703fd8ee3102cfd86046c4514dea6f2",
+            "points": 12012
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "5d57dbce09945b08b442a35b34e5fbbee63475b6cf6f6e70f4a4a777bf56dd22",
+        "fit_code_sha256": "bbbe904307f301b8fe9fc74ffc00735ca837afc4339544d7d8e382caf427f6f3",
+        "qm_input_sha256": {
+          "alpha": "f1b6799d08ca42a6e2c4e61fe5064022c49ed301e14354595fd812016c508ca8",
+          "extended": "80b57328772529a6efd79a40e39c4d269f6aeaff9cfc2160e60d7572737ae5c4"
+        }
+      },
+      "export_validation": {
+        "name": "CXT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "15760b302507cdecf8cea02281321f7c8f12fc6cf93fcc184dbb8a8cc2694cd2",
+        "library_sha256": "a447445a589d45fc77dfe035cf7e8896305f7622dc437edbe8214757f10fafe8",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -9.061257758953492,
+            "n_atoms": 50,
+            "n_bonds": 49
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -258.1881087147797,
+            "n_atoms": 50,
+            "n_bonds": 49
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 116.84342275330977,
+            "n_atoms": 50,
+            "n_bonds": 49
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -173.6295815177687,
+            "n_atoms": 50,
+            "n_bonds": 49
+          }
+        ]
+      }
+    },
+    {
+      "name": "CMT",
+      "parent": "CYM",
+      "context": "c_terminal",
+      "modified_groups": [
+        "terminal"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CCYM",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": -1.0000000000287557e-06,
+      "library_sha256": "774d0652faaad7c8bf7c535d759ffe69db1a9afe8d08ddf8ad7f9e5fb28493bd",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.11876172213257988
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.11505213238150665
+        }
+      ],
+      "fit": {
+        "name": "CMT",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "774d0652faaad7c8bf7c535d759ffe69db1a9afe8d08ddf8ad7f9e5fb28493bd",
+        "charge": -1.0000000000287557e-06,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.11876172213257988
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.11505213238150665
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "bbfde5a45b8b5bf24977f9b94519b97e5eb2fed6cfa113860e42a79c7abac7a2",
+            "points": 7444
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "afa547d830219e0d4dc1a5afaa157e41927909d42026ddd3914ac361665154fb",
+            "points": 7211
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "eb401e29ae343204fa67e0dc98420fb9c827b2d1459c3e7630de2c813827a986",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "b3d8b984253fcc2e3cfffefe97ccd0f0e0701a9407925e374bf7ed4f67d9d79d",
+          "extended": "431707b1fa413a4919845d12eff6cc332316bc58326f15d752397893f4c63962"
+        }
+      },
+      "export_validation": {
+        "name": "CMT",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "249ce06399f2ae6826d330da777372be7a99bbf46a69e45685e85fb60ea91814",
+        "library_sha256": "774d0652faaad7c8bf7c535d759ffe69db1a9afe8d08ddf8ad7f9e5fb28493bd",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -174.9014487481702,
+            "n_atoms": 28,
+            "n_bonds": 27
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -308.3395787709444,
+            "n_atoms": 28,
+            "n_bonds": 27
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -117.89986633548791,
+            "n_atoms": 28,
+            "n_bonds": 27
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -253.24802156385203,
+            "n_atoms": 28,
+            "n_bonds": 27
+          }
+        ]
+      }
+    },
+    {
+      "name": "ASZ",
+      "parent": "ASP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CASP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": -2.220446049250313e-16,
+      "library_sha256": "0db4be67ce07f11c42aed9b1c121935d94374c5b303d3d3e20cbb1445b4b02bc",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.08969520639472683
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.09352591762729753
+        }
+      ],
+      "fit": {
+        "name": "ASZ",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "0db4be67ce07f11c42aed9b1c121935d94374c5b303d3d3e20cbb1445b4b02bc",
+        "charge": -2.220446049250313e-16,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.08969520639472683
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.09352591762729753
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "9d87963d8cb99ce9c07c114ba8242ac2f359d5cf7ffa974a6b471b156bb23298",
+            "points": 7500
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "0b8329a91c3a135985019029035a7285a346650369a04e15f7445bcfcc0b7f6e",
+            "points": 7428
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "6e37805bc1d5c3e098da9fd1e8d65fe16dfd1aa6db7c467e486e1d87760a3117",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "7cb936c292506873e4f0098f4af7b2f97cbbf956c76df8d2ab1fd7dcbc3a7955",
+          "extended": "77f6f4fe639e3e41ed8761f4584f6b55adb55ed8ac09420f4f5e7ac853dc41c4"
+        }
+      },
+      "export_validation": {
+        "name": "ASZ",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "09632fac2f4d8a174944d4c9780548b3c091c20dd2d71ec0353186bab007e221",
+        "library_sha256": "0db4be67ce07f11c42aed9b1c121935d94374c5b303d3d3e20cbb1445b4b02bc",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -320.9315166083404,
+            "n_atoms": 30,
+            "n_bonds": 29
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -465.41600091246147,
+            "n_atoms": 30,
+            "n_bonds": 29
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -283.1431122252521,
+            "n_atoms": 30,
+            "n_bonds": 29
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -421.21497969518407,
+            "n_atoms": 30,
+            "n_bonds": 29
+          }
+        ]
+      }
+    },
+    {
+      "name": "ASD",
+      "parent": "ASP",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side",
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CASP",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 2.000003,
+      "library_sha256": "e225239b8b3bf37bd6a829363d604ea00e1ab5f313f2d5be142d3d0edd28cdb2",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.021894901823497695
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.016862611318410055
+        }
+      ],
+      "fit": {
+        "name": "ASD",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "e225239b8b3bf37bd6a829363d604ea00e1ab5f313f2d5be142d3d0edd28cdb2",
+        "charge": 2.000003,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.021894901823497695
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.016862611318410055
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "c799379a6d0570a2b88f7f3794fd41044da4cec80a6f45960107be1e7a1031a2",
+            "points": 9440
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "fb3cee3b610a08bb07a485fb9b8cff5c9e6d6cc0e001e064d997ab66e3955f95",
+            "points": 10060
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "ff88c9758dc325158a94376f1570d70a040e03152244b13a3841a299a579c19d",
+        "fit_code_sha256": "bbbe904307f301b8fe9fc74ffc00735ca837afc4339544d7d8e382caf427f6f3",
+        "qm_input_sha256": {
+          "alpha": "83b42f24be2c1059c23f85dc3708220772da924b192da95ea22d48be9a1d309c",
+          "extended": "b03cd4612ce0ae6d237d2a649a29e096430d79ec4a74c3d8ddeb7ccee218b9a6"
+        }
+      },
+      "export_validation": {
+        "name": "ASD",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "d614a577e8e84a20bc8ecd5230ca4320a011b65b76ccb2e050fc996fa45466e8",
+        "library_sha256": "e225239b8b3bf37bd6a829363d604ea00e1ab5f313f2d5be142d3d0edd28cdb2",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 282.5017715180727,
+            "n_atoms": 41,
+            "n_bonds": 40
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -429.3532401505696,
+            "n_atoms": 41,
+            "n_bonds": 40
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 335.0277226078397,
+            "n_atoms": 41,
+            "n_bonds": 40
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -429.4810322385449,
+            "n_atoms": 41,
+            "n_bonds": 40
+          }
+        ]
+      }
+    },
+    {
+      "name": "GLZ",
+      "parent": "GLU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side"
+      ],
+      "formal_charge": 0,
+      "source_unit": "CGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 9.999999999177334e-07,
+      "library_sha256": "533e111e617546090e5d9d02e321052be60db10b575d7f44ae5fe31237db3798",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.09795937190353288
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.10275607134869659
+        }
+      ],
+      "fit": {
+        "name": "GLZ",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "533e111e617546090e5d9d02e321052be60db10b575d7f44ae5fe31237db3798",
+        "charge": 9.999999999177334e-07,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.09795937190353288
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.10275607134869659
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "2a3b1d8b68f98430177fe0979b4655c980edd041f743637833f0ebd2b67fb7f9",
+            "points": 7816
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "f2f5d8a1ecd99dac33cc0580585ad4539fa0a0c6afb62ba5127049ab44dc6383",
+            "points": 7640
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "a5c0ce66646a8f361e5512b7ec3aef7838025b0da567c5eed901478e5f33ba40",
+        "fit_code_sha256": "848e2310c68aeefb19d8a599284bf866a17e87f88cdece69fe0fc1fc6705d436",
+        "qm_input_sha256": {
+          "alpha": "082b9b1dc2374c259a9bfe53b0490b558baad465c5e9380a1972b636c7e42a88",
+          "extended": "cb42c2f73aa99fc149067fbfb778877c14dcbe72b63c4ab22bfe2dfb578cdf7a"
+        }
+      },
+      "export_validation": {
+        "name": "GLZ",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "cec53f5b9679ea9a61b74bd5ca6b70dee497f76dfa0ed3aa89767eff363f9d1d",
+        "library_sha256": "533e111e617546090e5d9d02e321052be60db10b575d7f44ae5fe31237db3798",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -370.15254572296703,
+            "n_atoms": 33,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -502.6829802465651,
+            "n_atoms": 33,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -367.3943690013957,
+            "n_atoms": 33,
+            "n_bonds": 32
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -483.9534475017637,
+            "n_atoms": 33,
+            "n_bonds": 32
+          }
+        ]
+      }
+    },
+    {
+      "name": "GLD",
+      "parent": "GLU",
+      "context": "c_terminal",
+      "modified_groups": [
+        "side",
+        "terminal"
+      ],
+      "formal_charge": 2,
+      "source_unit": "CGLU",
+      "reused_from": null,
+      "disulfide": false,
+      "status": "RESP_capped_Amber_and_OpenMM_validated",
+      "charge_e": 2.0,
+      "library_sha256": "c73c07da3f47e6bf6abfc64b8dc220d3db70e36eb83ca247997c6dc0c7959b64",
+      "metrics": [
+        {
+          "conformation": "alpha",
+          "relative_RMS": 0.017140639417149144
+        },
+        {
+          "conformation": "extended",
+          "relative_RMS": 0.015774813797309377
+        }
+      ],
+      "fit": {
+        "name": "GLD",
+        "status": "RESP_and_capped_topology_validated",
+        "library_sha256": "c73c07da3f47e6bf6abfc64b8dc220d3db70e36eb83ca247997c6dc0c7959b64",
+        "charge": 2.0,
+        "metrics": [
+          {
+            "conformation": "alpha",
+            "relative_RMS": 0.017140639417149144
+          },
+          {
+            "conformation": "extended",
+            "relative_RMS": 0.015774813797309377
+          }
+        ],
+        "QM": [
+          {
+            "conformation": "alpha",
+            "qm_log_sha256": "39feba7042a8e431073c0a42fdf2606b8a50a6c7080d7169651bd50a36c349aa",
+            "points": 10244
+          },
+          {
+            "conformation": "extended",
+            "qm_log_sha256": "1076e17e54eadddff60406bad13376198e91acaf2eedb1e3b527871d7ae570f7",
+            "points": 10562
+          }
+        ],
+        "forcefield": "ff14SB atom types and bonded analogy; torsions not refitted",
+        "geometry_validation": "QM bonds and inherited stereochemistry checked; no full-protein transferability claim",
+        "model_sha256": "0c9e09531eae3dd3d4df07deb2cd2782fe2938a7d3a7bab4d5260ef6c3584bb9",
+        "fit_code_sha256": "bbbe904307f301b8fe9fc74ffc00735ca837afc4339544d7d8e382caf427f6f3",
+        "qm_input_sha256": {
+          "alpha": "8f9250a7fde242afa592a34d08fb229b22c4b04acf4ab305d71a8db216d52962",
+          "extended": "bb06b7fe0be9669c884711fb66340659676241d7d84d711924c8cf50dbc5f04e"
+        }
+      },
+      "export_validation": {
+        "name": "GLD",
+        "status": "RESP_capped_Amber_and_OpenMM_validated",
+        "fit_marker_sha256": "78dae388c3737af4470a26c4942c1632113b6e558fc97368d90ea7da5910c88a",
+        "library_sha256": "c73c07da3f47e6bf6abfc64b8dc220d3db70e36eb83ca247997c6dc0c7959b64",
+        "validation_code_sha256": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
+        "backend_code_sha256": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
+        "evidence": [
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 18.22229479642112,
+            "n_atoms": 44,
+            "n_bonds": 43
+          },
+          {
+            "conformer": "alpha",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -670.4960429508825,
+            "n_atoms": 44,
+            "n_bonds": 43
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": false,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": 136.77788838778184,
+            "n_atoms": 44,
+            "n_bonds": 43
+          },
+          {
+            "conformer": "extended",
+            "implicit_GBn2": true,
+            "charge_max_error_e": 0.0,
+            "potential_energy_kJ_mol": -593.2065148172501,
+            "n_atoms": 44,
+            "n_bonds": 43
+          }
+        ]
+      }
+    }
+  ]
+}

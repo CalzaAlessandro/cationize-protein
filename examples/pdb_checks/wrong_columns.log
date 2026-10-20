@@ -1,0 +1,3 @@
+PDB check: FAIL; 0 residues, 1 atoms
+ERROR: Line 1: truncated atom record. Provide fixed-column PDB atom records with complete coordinates.
+WARNING: No hydrogen coordinates are present. Add hydrogens during preparation with an explicit pH and residue-state policy.

@@ -1,0 +1,2 @@
+PDB preparation: FAIL
+ERROR: Initial PDB cannot be repaired automatically: Line 1: truncated atom record. Provide fixed-column PDB atom records with complete coordinates.

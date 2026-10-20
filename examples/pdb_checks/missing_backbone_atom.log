@@ -1,0 +1,2 @@
+PDB check: FAIL; 3 residues, 45 atoms
+ERROR: Residue ordinal 1 is missing heavy atoms: CA. Supply a complete backbone/loop model from an explicitly reviewed reconstruction; no automatic backbone rebuilding is performed.

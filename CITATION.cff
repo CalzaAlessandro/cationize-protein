@@ -1,0 +1,8 @@
+cff-version: 1.2.0
+message: "Private development version; citation details will accompany a versioned release."
+title: cationize-protein
+type: software
+authors:
+  - family-names: Calza
+    given-names: Alessandro
+repository-code: https://github.com/CalzaAlessandro/cationize-protein
