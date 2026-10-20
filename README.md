@@ -16,9 +16,9 @@ It selects one site at a time from the electrostatic potential, rotates the
 new group to reduce clashes, minimizes the structure and checks protonation
 with PROPKA. Each checkpoint retains the modifications made earlier.
 
-[Install](#install) · [Prepare a protein](#prepare-a-protein) ·
+[Install](#install) · [Get a structure or sequence](#get-a-structure-or-sequence) · [Prepare a protein](#prepare-a-protein) ·
 [Run cationization](#run-cationization) · [Find your files](#find-your-files) ·
-[HSA example](#hsa-example) · [Options](#options)
+[HSA example](#hsa-example) · [Options](#options) · [Software](#software)
 
 ## Install
 
@@ -45,10 +45,27 @@ conda activate cationize-protein
 cationize-protein doctor
 ```
 
-Amber, GROMACS and APBS are separate programs. Installation reports whether
-they are present; you can add them later. APBS or Amber PBSA is needed for
+Amber, GROMACS, APBS, MODELLER and ESMFold2 are optional, separate installations.
+Installation and `doctor` report whether their code is present; you can add them
+later. Neither MODELLER nor ESMFold2 is downloaded by the standard installer.
+APBS or Amber PBSA is needed for
 Poisson–Boltzmann calculations. GROMACS is only needed to run GROMACS jobs,
 not to write its input files. See [installation details](docs/INSTALL.md).
+
+## Get a structure or sequence
+
+Skip this step if you already have your input files.
+
+```sh
+cationize-protein fetch --pdb 1N5U --uniprot P02768 --output downloaded
+```
+
+This saves the deposited PDB, UniProt metadata, the canonical sequence and a
+table of linked PDB structures. A uniquely annotated mature chain is saved
+separately as `mature.fasta`. Choose the sequence corresponding to the actual
+protein construct; a canonical sequence may include a signal peptide or propeptide.
+The download retains all deposited chains and ligands. Select a native
+protein-only structure before preparation. See [database retrieval](docs/FETCH.md).
 
 ## Prepare a protein
 
@@ -75,6 +92,31 @@ to be resolved before proceeding. The terminal explains what must be fixed.
 For inspection without changes, use `cationize-protein check input.pdb`.
 See [PDB preparation](docs/PDB_PREPARATION.md) and the
 [broken-input examples](examples/pdb_checks/README.md).
+
+### Optional structure modeling
+
+PDBFixer remains the default. If whole residues are missing, an optional
+modeler can produce a complete native structural candidate:
+
+```sh
+# MODELLER: incomplete native PDB plus its complete sequence
+cationize-protein model --method modeller --pdb incomplete.pdb \
+  --fasta mature.fasta --output modeled
+
+# ESMFold2-Fast: predict from the complete native sequence
+cationize-protein model --method esmfold --fasta mature.fasta --output predicted
+
+# Check and prepare the chosen model before cationization
+cationize-protein prepare modeled/protein.pdb --output prepared
+```
+
+Use `predicted/protein.pdb` in the last command for an ESMFold2 result.
+MODELLER requires its own licence; local ESMFold2 uses public model weights.
+These are full models: their existing regions may differ from the experimental
+PDB. Automatic grafting of predicted loops into an otherwise frozen structure
+is not implemented. The current modeling interface accepts one native chain.
+See [optional modeling](docs/MODELING.md) for installation discovery, outputs
+and the current validation limits.
 
 ## Run cationization
 
@@ -160,7 +202,7 @@ a Poisson–Boltzmann calculation.
 | `--probe-radius 1.369` | Positive probe LJ half-Rmin in Å |
 | `--protonation fixed` | Retain supplied protonation states |
 
-Use `cationize-protein --help`, `prepare --help` or `run --help` for the full
+Use `cationize-protein --help`, `prepare --help`, `model --help` or `run --help` for the full
 command descriptions. Advanced settings, installation troubleshooting and
 scientific qualification are documented in
 [installation](docs/INSTALL.md), [methods](docs/METHODS.md),
@@ -168,3 +210,23 @@ scientific qualification are documented in
 
 This repository is private during development. See [GitHub instructions](docs/GITHUB.md)
 for cloning, saving changes and granting collaborator access.
+
+## Software
+
+| Software and official link | Role | Installation |
+|---|---|---|
+| [OpenMM](https://openmm.org/) | Minimization, molecular systems and hydrogen placement | Included in the Python runtime |
+| [PDBFixer](https://github.com/openmm/pdbfixer) | Default repair of missing atoms in native residues | Included |
+| [PROPKA](https://github.com/jensengroup/propka) | Initial histidines and stepwise protonation audit | Included |
+| [ParmEd](https://parmed.github.io/ParmEd/html/index.html) | Topology handling and export | Included |
+| [Amber / AmberTools](https://ambermd.org/) | Optional Amber minimization and PBSA electrostatics | Separate |
+| [GROMACS](https://www.gromacs.org/) | Run exported GROMACS systems | Separate |
+| [APBS](https://www.poissonboltzmann.org/) | Poisson–Boltzmann electrostatics | Separate |
+| [MODELLER](https://salilab.org/modeller/) | Optional template-based native modeling | Separate; individual licence required |
+| [ESMFold2 / ESMFold2-Fast](https://huggingface.co/biohub/ESMFold2) | Optional prediction of native structures from sequence | Separate; [PyTorch](https://pytorch.org/) and compatible [Transformers](https://huggingface.co/docs/transformers/main/model_doc/esmfold2) |
+
+[NumPy](https://numpy.org/) and [SciPy](https://scipy.org/) are included for
+numerical calculations. Parameter development can additionally use
+[Gaussian](https://gaussian.com/) and AmberTools RESP; neither is needed to use
+the bundled residue library. The HSA preview was rendered with
+[VMD](https://www.ks.uiuc.edu/Research/vmd/), which is not a runtime dependency.

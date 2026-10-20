@@ -13,8 +13,9 @@ calculations still require an installed solver; no alternative model is
 silently selected. Conda and venv recipes install the same project, but creation
 of a new Conda environment was not executed in this validation.
 
-The installed package passed **220 tests, with no skips**, including initial
-PDB repair, PROPKA histidine assignment and residue-library export. The earlier Linux run passed 202 tests before PDBFixer
+The installed package passed **242 tests, with no skips**, including initial
+PDB repair, PROPKA histidine assignment, residue-library export, retrieval and
+optional modeling interfaces. The earlier Linux run passed 202 tests before PDBFixer
 preparation was added; the new preparation tests have currently run on macOS.
 Source files and installed Python modules were compared byte for byte.
 
@@ -89,9 +90,10 @@ profiles. Nonlinear PBSA remains unqualified; APBS is the earlier tested
 nonlinear reference. Old engines without CMAP support cannot run ff19SB
 correctly. Other engine releases require separate checks.
 
-A fresh independent code review was attempted but was unavailable because the
-review service reached its usage limit. The current changes received an author
-review and automated checks; no independent-review completion is claimed.
+The optional modeling changes received an independent source review. A reported
+invalid-sulfur error path was corrected and covered by a regression test.
+Earlier export changes received author review and the numerical checks above;
+an independent review of the whole package is not claimed.
 Private environments, calculation outputs and development logs stay outside
 the source repository.
 
@@ -115,5 +117,25 @@ A new serial peptide run and resume passed with all three export formats and
 a root residue_templates directory containing 32 hash-verified libraries.
 An activated venv resolves the short cationize-protein command.
 
-Fetching structures and rebuilding whole missing residues are separate planned
-extensions. No MODELLER dependency or license key was added.
+## Retrieval and optional modelers
+
+The actual `fetch` command downloaded public RCSB 1N5U and UniProt P02768
+records. It preserved the deposited PDB and canonical 609-residue sequence,
+extracted the uniquely annotated mature chain at positions 25–609 (585
+residues), and listed 189 linked PDB candidates. This macOS Python had no
+configured CA file; the network check used the trusted system bundle via
+`SSL_CERT_FILE=/etc/ssl/cert.pem`. TLS verification remained enabled.
+
+PDBFixer remains the default preparation. MODELLER and ESMFold2 are discovered
+without importing their engines, testing a licence or downloading weights.
+Actual CLI tests confirmed that both missing installations produce a clear
+error and create no model output. Interface tests cover separate interpreters,
+bad probe output, FASTA validation, template mapping, DOPE candidate selection,
+the ESMFold2 API contract, sequence/geometry rejection and failed-run diagnostics.
+The standalone worker tests use external API fixtures.
+
+Neither a licensed MODELLER calculation nor a real ESMFold2 prediction was
+executed. These modelers and their numerical results remain unqualified in
+this package. No MODELLER key, folding environment or model weights were
+installed. Automatic local grafting of predicted loops is not implemented;
+the optional command generates an explicitly identified full native candidate.

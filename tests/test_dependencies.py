@@ -314,7 +314,7 @@ class DependencyTests(unittest.TestCase):
             root = Path(tmp) / 'different checkout name'
             (root / 'src/cationize_protein').mkdir(parents=True)
             source = Path(__file__).resolve().parents[1]
-            for name in ['__init__.py', 'dependencies.py']:
+            for name in ['__init__.py', 'dependencies.py', 'optional_modelers.py']:
                 shutil.copy2(source / 'src/cationize_protein' / name, root / 'src/cationize_protein' / name)
             shutil.copy2(source / 'install.py', root / 'install.py')
             result = subprocess.run([sys.executable, str(root / 'install.py'), '--check', '--json'],

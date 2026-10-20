@@ -180,12 +180,15 @@ def inspect_dependencies(root: Path, python: str | Path | None = None,
                         amber if engine == "amber" else bool(programs.get(engine)))
     force_fields = _force_field_report(root, python or sys.executable)
     supported_ff = bool(force_fields.get(force_field, {}).get("supported"))
+    from .optional_modelers import inspect_modelers
+    modelers = inspect_modelers(python or sys.executable, environ)
     selected = {"engine": engine, "solver": solver, "force_field": force_field,
                 "engine_available": engine_available,
                 "solver_available": bool(capabilities.get(solver, {}).get("available")),
                 "force_field_supported": supported_ff}
     return {"schema_version": 1, "project_root": str(root), "python": py,
             "executables": programs, "capabilities": capabilities, "force_fields": force_fields,
+            "optional_modelers": modelers,
             "selected": selected,
             "ready": runtime and engine_available and selected["solver_available"] and supported_ff,
             "scope": "Dependencies only; chemistry, custom templates, solver output and exports require separate validation"}
@@ -201,6 +204,10 @@ def format_report(report: dict) -> str:
     lines.append("External programs (detected only; computational validation is separate):")
     lines.extend(f"  {name}: {path or 'not found'}" for name, path in report["executables"].items())
     lines.append("GROMACS: " + ("detected" if report['capabilities']['gromacs']['available'] else "not found (optional)"))
+    lines.append('Optional structure modeling (not required for PDBFixer preparation):')
+    for entry in report.get('optional_modelers', {}).values():
+        lines.append(f'  {entry["name"]}: {entry["reason"]}')
+        lines.append(f'    Python: {entry["python"]}; installation: {entry["url"]}')
     lines.append("Python runtime: " + ("complete" if report['capabilities']['runtime']['available'] else "incomplete"))
     choice = report["selected"]
     lines.append(f"Selected: engine={choice['engine']}, potential={choice['solver']}, force field={choice['force_field']}")
@@ -217,7 +224,7 @@ def format_report(report: dict) -> str:
         lines.append(f"Force-field validation scope: {scope}")
     lines.append("Selected workflow dependencies are available." if report["ready"] else
                  "Some selected workflow dependencies are unavailable; install them before requesting that workflow.")
-    lines.append("Amber, GROMACS and APBS can be installed later; discovery is repeated on each check or run.")
+    lines.append("Amber, GROMACS, APBS, MODELLER and ESMFold2 can be installed later; discovery is repeated when requested.")
     lines.append(report["scope"])
     return "\n".join(lines)
 
@@ -422,7 +429,7 @@ def _select_python(explicit: str | None) -> str:
 
 
 def installer_main(argv: list[str] | None = None, *, root: Path) -> int:
-    parser = argparse.ArgumentParser(description="Install the complete Python package in a private venv; report optional Amber, GROMACS and APBS without downloading them.")
+    parser = argparse.ArgumentParser(description="Install the complete Python runtime in a private venv; report optional Amber, GROMACS, APBS, MODELLER and ESMFold2 without downloading them.")
     parser.add_argument("--check", action="store_true", help="Read-only checks; do not create or install anything")
     parser.add_argument("--venv", type=Path, help="Dedicated environment inside this checkout (default: .venv)")
     parser.add_argument("--python", help="Python used to create the venv (prefers python3.12)")

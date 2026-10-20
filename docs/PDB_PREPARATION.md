@@ -71,7 +71,7 @@ force-field minimization is needed before interpreting their conformations.
 
 | Finding | Required action |
 |---|---|
-| Missing residues identified from SEQRES | Supply a reviewed sequence/loop model |
+| Missing residues identified from SEQRES | Supply a reviewed sequence/loop model, optionally generated with `model` |
 | A peptide gap or incompatible disulfide declaration | Correct or resolve the structural model |
 | Multiple models or alternate locations | Select one coherent model or conformer |
 | Ligands, solvent, ions, caps or nonstandard residues | Prepare a separate protein-only input |
@@ -84,6 +84,15 @@ sequence, completeness beyond the supplied residues remains undetermined.
 
 Declared disulfides and CYX labels are retained. The checker verifies sulfur
 identities and geometry; the workflow then verifies the prepared bond graph.
+
+## Optional complete models
+
+MODELLER and ESMFold2 are separately selected with `cationize-protein model`;
+they do not replace the default PDBFixer preparation or run automatically when
+it finds a gap. Their outputs are full structural candidates and must be
+checked and passed to `prepare` before cationization. MODELLER requires its
+licence; ESMFold2 needs a compatible separate installation and public model
+weights. See [commands and validation status](MODELING.md).
 
 ## Broken-input examples
 

@@ -48,6 +48,8 @@ Python installation completes even if the following programs are absent:
 | Amber `pbsa` | Optional Poisson–Boltzmann solver | `AMBERHOME/bin`, then `PATH` |
 | APBS | Default Poisson–Boltzmann solver | Project `.tools/apbs/bin/apbs`, then `PATH` |
 | GROMACS `gmx` or `gmx_mpi` | Running GROMACS calculations | `PATH` |
+| MODELLER | Optional native comparative model from PDB + FASTA | `CATIONIZE_MODELLER_PYTHON`, otherwise active Python |
+| ESMFold2 | Optional native prediction from FASTA | `CATIONIZE_ESMFOLD_PYTHON`, otherwise active Python |
 
 OpenMM minimization and all three export formats work without Amber or
 GROMACS executables. Gaussian and Amber parameter-development tools are only
@@ -56,6 +58,11 @@ accepted library.
 
 Install external programs separately, then run `cationize-protein doctor`
 again. Detection is repeated, so reinstalling this package is unnecessary.
+MODELLER and ESMFold2 are not installed by the standard installer or Conda
+environment file. Their licence/model weights are not checked by `doctor`.
+See [optional modeling](MODELING.md) for official installation links, separate
+Python environments and commands. Their numerical modeling runs are not yet
+qualified in this package.
 For platforms supported by conda-forge, APBS and GROMACS can be installed with:
 
 ```sh
@@ -64,7 +71,7 @@ conda install -c conda-forge apbs gromacs
 
 Without Conda, follow the official [APBS installation guide](https://apbs.readthedocs.io/en/stable/getting/)
 and [GROMACS installation guide](https://manual.gromacs.org/current/install-guide/index.html).
-Amber must be obtained through its own distribution and licence.
+Amber must be obtained through its [official distribution](https://ambermd.org/).
 
 A requested solver or engine must be available before that calculation starts.
 The program never substitutes a different electrostatic model automatically.

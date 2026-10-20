@@ -26,6 +26,19 @@ def parser():
         description='Serial progressive carboxyl amidation, steric rotation, restrained minimization and PROPKA auditing. '
                     'Physical models and export formats are explicit; Slurm is optional and external.')
     subcommands = command.add_subparsers(dest='command', required=True)
+    retrieve = subcommands.add_parser('fetch', help='Download a deposited PDB and/or UniProt sequence record')
+    retrieve.add_argument('--pdb', help='Four-character PDB ID; deposited file is kept unchanged')
+    retrieve.add_argument('--uniprot', help='UniProt accession or entry name; no structure is chosen automatically')
+    retrieve.add_argument('--output', type=Path, required=True, help='New directory for downloaded records')
+    modeling = subcommands.add_parser('model', help='Optional full native model with installed MODELLER or ESMFold2; then use prepare')
+    modeling.add_argument('--method', choices=['modeller','esmfold'], required=True, help='Optional modeler; esmfold uses ESMFold2')
+    modeling.add_argument('--fasta', type=Path, required=True, help='One complete native chain, 20 canonical amino acids')
+    modeling.add_argument('--pdb', type=Path, help='Native incomplete template PDB; required for MODELLER only')
+    modeling.add_argument('--output', type=Path, required=True, help='New directory for model, provenance and logs')
+    modeling.add_argument('--python', help='Python of the optional modeler; otherwise its environment variable or current Python')
+    modeling.add_argument('--esmfold-model', choices=['fast','full'], default='fast', help='ESMFold2 checkpoint; default: fast, single sequence')
+    modeling.add_argument('--model-revision', default='main', help='Hugging Face checkpoint revision; resolved revision is recorded when available')
+    modeling.add_argument('--device', choices=['auto','cpu','cuda'], default='auto', help='ESMFold2 device; auto selects CUDA when available, otherwise CPU')
     fitting = subcommands.add_parser('parameterize', help='Develop new templates sequentially without Slurm')
     fitting.add_argument('--project', type=Path, required=True, help='Parameter-development project containing work/models')
     fitting.add_argument('--names', nargs='+', help='Template names in execution order; default: all 28 new-fit states')
@@ -161,6 +174,28 @@ def run_choices(args, settings, project):
 def main(argv=None):
     command = parser()
     args = command.parse_args(argv)
+    if args.command == 'model':
+        from .modeling import build_model
+        print(f'Optional native modeling: {args.method}; PDBFixer preparation remains the default.', flush=True)
+        try:
+            report = build_model(args.fasta,args.output,method=args.method,template=args.pdb,
+                esmfold_model=args.esmfold_model,device=args.device,python=args.python,revision=args.model_revision)
+        except (ValueError,RuntimeError,OSError,ImportError) as exc:
+            print(f'Native modeling: FAIL\nERROR: {exc}',file=sys.stderr)
+            return 1
+        print('\n'.join(report['messages']))
+        print(f'Structural candidate: {args.output}/protein.pdb')
+        return 0
+    if args.command == 'fetch':
+        from .fetch import fetch
+        try:
+            report = fetch(args.output, pdb_id=args.pdb, uniprot_id=args.uniprot)
+        except (ValueError, OSError) as exc:
+            print(f'Database retrieval: FAIL\nERROR: {exc}', file=sys.stderr)
+            return 1
+        print('\n'.join(report['messages']))
+        print(f'Downloaded records: {args.output}')
+        return 0
     if args.command=='doctor':
         from .dependencies import inspect_dependencies,format_report
         try:
