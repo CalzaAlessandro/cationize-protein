@@ -396,13 +396,13 @@
     "hsa_50_4k.png": "457fa00cc29359ca149e0dd3e354899d7bc50931267284a88bcedb0dcdafd3d6",
     "hsa_75_4k.png": "8937612bc584df706f0a0539acb35ca91760df5df2dc960b5838d7006d66bbde",
     "hsa_100_4k.png": "9520d75f16e1ac37f36d667aed341413159c16c5fc22700d8fffc5c32fcf6ed8",
-    "hsa_workflow.png": "4f76293c7fb81f9f83c21833263be1c673b71df644cb42aa2eeaa94ad4efb915",
+    "hsa_workflow.png": "d975dc4e43bae0482cd2a0af7ffefc9f2c7dad632e4fe11406132bec9a1c35d7",
     "hsa_0_4k_dark.png": "5e0defe19943118f9ce78c38ca5cd2ea64b3a4a982c2da5c3c299300baae8256",
     "hsa_25_4k_dark.png": "a07249003cc02b3a7406fa0087fd276bb12c28f466cde744cd7444a87bfd2d1b",
     "hsa_50_4k_dark.png": "7c03fe1aaafbf5c2440f4af593feb6c6865b6425925c002fcf85fc4786fb7a9e",
     "hsa_75_4k_dark.png": "45302b782395d141b88413a629323b71673e6073fb8b6287e296d529d38e6def",
     "hsa_100_4k_dark.png": "a5b98b98750adc0bc77fc264ac9859684fad49fa2da36f4c389d3a16fcfd7a61",
-    "hsa_workflow_dark.png": "33e7e74903e94952344a43b659142bdb888df47a45f3b31432d400bb5b409f07"
+    "hsa_workflow_dark.png": "3aaecbaaa1c6c2f570875967cc74559b8bb5ad83a2c48f1c2d3b76eb063495fc"
   },
   "output_bytes": {
     "banner.svg": 42102,
@@ -412,13 +412,13 @@
     "hsa_50_4k.png": 1084647,
     "hsa_75_4k.png": 1188649,
     "hsa_100_4k.png": 1303827,
-    "hsa_workflow.png": 2231794,
+    "hsa_workflow.png": 2216728,
     "hsa_0_4k_dark.png": 1247640,
     "hsa_25_4k_dark.png": 1360483,
     "hsa_50_4k_dark.png": 1466724,
     "hsa_75_4k_dark.png": 1574376,
     "hsa_100_4k_dark.png": 1678628,
-    "hsa_workflow_dark.png": 2904727
+    "hsa_workflow_dark.png": 2889951
   },
   "scene_sha256": {
     "light": {
@@ -491,14 +491,14 @@
     ".development/compose_hsa_workflow.py"
   ],
   "qa_previews": ".development/hsa_workflow/qa",
-  "visual_qa": "Inspected enlarged text on light and dark backgrounds. All annotations fit; workflow labels use 110 px text and modified-site counts/charges use 80 px. Molecular coordinates, camera, colors and opacities are unchanged.",
+  "visual_qa": "Inspected final workflow at 1150 px width on white and dark backgrounds; no clipped labels or white text outlines.",
   "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability",
   "workflow_text_sizes_px": {
     "percent": 110,
     "modified_residue_count": 80,
     "charge": 80,
     "cycle_title": 76,
-    "step_labels": 110
+    "step_labels": 76
   },
   "full_resolution_text_sizes_px": {
     "title": 110,
