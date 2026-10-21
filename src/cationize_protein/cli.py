@@ -67,7 +67,7 @@ def parser():
     execute.add_argument('--force-field',choices=_CHOICES['force_field'],help='Optional: choose interactively for a new terminal run; noninteractive default ff14SB or saved preference')
     execute.add_argument('--engine',choices=_CHOICES['engine'],help='Optional minimizer: choose at runtime; noninteractive default openmm or saved preference')
     execute.add_argument('--engine-executable',help='Installed serial sander/pmemd executable; never downloaded')
-    execute.add_argument('--solver',choices=_CHOICES['solver'],help='Optional potential model: choose at runtime; noninteractive default apbs or saved preference. Coulomb is an approximation')
+    execute.add_argument('--solver',choices=_CHOICES['solver'],help='Potential model; default coulomb (included screened approximation) or saved preference. APBS/PBSA require separate executables')
     execute.add_argument('--apbs',help='APBS executable; default: private installation or PATH')
     execute.add_argument('--pbsa',help='Installed Amber PBSA executable when --solver pbsa is selected')
     execute.add_argument('--pbsa-nonlinear',action='store_true',help='PBSA only: full nonlinear PB with damped SOR; default PBSA is linear ICCG. APBS remains nonlinear')
@@ -126,7 +126,7 @@ def run_choices(args, settings, project):
     This reads configuration only. Full input and checkpoint validation remains
     authoritative in workflow.validate_inputs before scientific execution.
     """
-    defaults = {'engine':'openmm', 'solver':'apbs', 'force_field':'ff14SB'}
+    defaults = {'engine':'openmm', 'solver':'coulomb', 'force_field':'ff14SB'}
     output = Path(args.output)
     previous = {}
     if output.is_symlink():
@@ -204,7 +204,7 @@ def main(argv=None):
             project=Path(settings.get('project_root',Path(__file__).resolve().parents[2]))
             report=inspect_dependencies(project,sys.executable,
                 **{key:settings.get(key,default) for key,default in
-                   {'engine':'openmm','solver':'apbs','force_field':'ff14SB'}.items()})
+                   {'engine':'openmm','solver':'coulomb','force_field':'ff14SB'}.items()})
         except (ValueError,OSError) as exc:
             command.error(str(exc))
         print(json.dumps(report,indent=2) if args.json else format_report(report))

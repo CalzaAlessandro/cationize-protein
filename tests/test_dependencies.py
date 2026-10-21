@@ -44,6 +44,8 @@ class DependencyTests(unittest.TestCase):
             self.assertIn('GROMACS', output.getvalue())
             self.assertIn('not found', output.getvalue())
             self.assertEqual(json.loads((environment/'cationize-protein-settings.json').read_text())['engine'],'openmm')
+            self.assertEqual(json.loads((environment/'cationize-protein-settings.json').read_text())['solver'],'coulomb')
+            self.assertIn('Selected workflow dependencies are available.',output.getvalue())
             self.assertFalse((root/'.tools').exists())
 
     def test_gromacs_is_detected_again_after_a_later_installation(self):

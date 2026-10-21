@@ -149,7 +149,7 @@ print(json.dumps({name:force_field_status(name) for name in json.loads(sys.argv[
 
 def inspect_dependencies(root: Path, python: str | Path | None = None,
                          environ: dict | None = None, engine: str = "openmm",
-                         solver: str = "apbs", force_field: str = "ff14SB") -> dict:
+                         solver: str = "coulomb", force_field: str = "ff14SB") -> dict:
     """Return a JSON-ready read-only report for one explicit engine/model choice.
 
     Executable detection is not a numerical validation or a licence determination.
@@ -434,7 +434,7 @@ def installer_main(argv: list[str] | None = None, *, root: Path) -> int:
     parser.add_argument("--venv", type=Path, help="Dedicated environment inside this checkout (default: .venv)")
     parser.add_argument("--python", help="Python used to create the venv (prefers python3.12)")
     parser.add_argument("--engine", choices=("openmm", "amber", "pmemd", "sander"), help="Optional saved minimizer preference; choose later at runtime (default: openmm)")
-    parser.add_argument("--solver", choices=("apbs", "pbsa", "coulomb"), help="Optional saved potential preference; no external download or substitution (default: apbs)")
+    parser.add_argument("--solver", choices=("apbs", "pbsa", "coulomb"), help="Saved potential preference (default: coulomb, included screened approximation); APBS/PBSA are separate installations")
     parser.add_argument("--force-field", choices=tuple(FORCE_FIELDS), help="Optional saved protein force-field preference; choose later at runtime (default: ff14SB)")
     parser.add_argument("--json", action="store_true", help="Emit a machine-readable dependency report")
     args = parser.parse_args(argv)
@@ -455,7 +455,7 @@ def installer_main(argv: list[str] | None = None, *, root: Path) -> int:
             raise DependencyError("Saved installation settings have an unsupported format.")
         force_field = validate_force_field(args.force_field or stored.get("force_field", "ff14SB"))
         engine = args.engine or stored.get("engine", "openmm")
-        solver = args.solver or stored.get("solver", "apbs")
+        solver = args.solver or stored.get("solver", "coulomb")
         if engine not in {"openmm", "amber", "pmemd", "sander"} or solver not in {"apbs", "pbsa", "coulomb"}:
             raise DependencyError("Saved installation settings contain an unknown engine or solver.")
         if args.check:

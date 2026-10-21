@@ -18,8 +18,8 @@
     "amber_bundle.py": "8faa653cfa5067d8f979faec3bf3d3d9261e3582197f0f674e4b6f42b372cc8d",
     "builder.py": "61c3b7f391d9395450b389095ad8e5a28a8eee7594d09e95f7f4be9bf68b7d9a",
     "catalog.py": "a179a241924b08eef1db65a6f3a17ba32f3c17f343e6dbf48d7027152bc00548",
-    "cli.py": "3c12f89f0fd24edb918267249ad64039c2519348241ead7c8d47b5641e49a83a",
-    "dependencies.py": "428227915c7c391e349641b0af4e8d52e7b53490fa1096c39b0741545bf97036",
+    "cli.py": "1d726dadd6721fb87e508cd9ffe835070368eac6a8f64159cdef8d6c308ec8f5",
+    "dependencies.py": "2b592660a00f06b79a3a04a312671cf9fefa67c747ef69288576c5487457dd2c",
     "electrostatics.py": "d9824166454447fcaf531b4969dc73b30643a99649c539a17072423385b57692",
     "exports.py": "8ea018cc3343859b2d5211e3ac251fd49b6874c3dd39fb63e9dfd4f3e3ed3f25",
     "fetch.py": "5a5f9cdaca4dc1f38985c38296d37abe8bc5825b3b8ef2ba7d803ce201f0068a",
@@ -127,7 +127,7 @@
   },
   "tests": {
     "macos": {
-      "count": 265,
+      "count": 268,
       "skips": 0,
       "passed": true
     },
@@ -140,7 +140,28 @@
   "installation": {
     "private_venv_passed": true,
     "missing_external_executables_reported": true,
-    "conda_environment_creation_tested": false
+    "conda_environment_creation_tested": false,
+    "fresh_defaults": {
+      "engine": "openmm",
+      "solver": "coulomb",
+      "force_field": "ff14SB"
+    },
+    "included_default_run_completed_without_APBS": true,
+    "saved_preferences_preserved": true,
+    "existing_APBS_PBSA_resume_validation": [
+      {
+        "solver": "apbs",
+        "pre_update_hashes_preserved": true,
+        "full_validation_passed": true,
+        "RUN_json_unchanged": true
+      },
+      {
+        "solver": "pbsa",
+        "pre_update_hashes_preserved": true,
+        "full_validation_passed": true,
+        "RUN_json_unchanged": true
+      }
+    ]
   },
   "pdbfixer": {
     "version": "1.12.0",
@@ -174,7 +195,9 @@
       "amber",
       "openmm",
       "gromacs"
-    ]
+    ],
+    "fresh_install_defaults_run": true,
+    "default_run_checkpoints_verified": 5
   },
   "serialization_roundtrips": [
     {
@@ -363,10 +386,20 @@
     "GIF_caption_removed": "Minimized chemical checkpoint",
     "image_style": "NewCartoon / Structure / AOChalky; modified residues Licorice / Name / AOChalky",
     "preview_hashes": {
-      "hsa_comparison.png": "66485dd389cb10f77b86e4f28db2278703a49499c3b671303d97e248b522af70",
-      "hsa_progressive.gif": "a3db4ba94fee13779eed6922834a11f6790264744e7df263b8b2bbcf67fe9ef8"
+      "hsa_comparison.png": "b1261d04ccd160a3c8e4199007f04f9936299deca14f10f380fd7a79950dfdc1",
+      "hsa_progressive.gif": "cc1ef9b92ce18e752fe3abf429c7334185490ab819acd8d0dac40915633701b7",
+      "hsa_progressive.apng": "e5d38c881477338e635b446b7bf9ea8e6c38506447ea2f2f8833824afe4e41fc"
     },
-    "secondary_structure_palette": "Standard VMD Structure colors"
+    "secondary_structure_palette": "Standard VMD Structure colors",
+    "preview_frontal_view": "Domain III left, Domain I right, Domain II below; open heart-shaped face, arm cleft visible",
+    "preview_transparency": {
+      "PNG": "full alpha",
+      "APNG": "full alpha",
+      "GIF": "palette alpha",
+      "coverage_pass_verified": true,
+      "white_molecular_pixels_preserved": true,
+      "light_dark_visual_QA": true
+    }
   },
   "venv_activation_short_command_tested": true,
   "MODELLER_required": false,
@@ -470,6 +503,86 @@
       "Default"
     ],
     "command_examples_parsed": 21,
-    "run_defaults_checked": 20
+    "run_defaults_checked": 20,
+    "single_token_ASCII_flag_labels": 44
+  },
+  "complex_tutorial": {
+    "cases": [
+      {
+        "case": "documented_ff14SB",
+        "atoms": 62,
+        "bonds": 60,
+        "disulfides": 0,
+        "cmap_terms": 0,
+        "max_coordinate_error_A": 4.9000000004184585e-06
+      },
+      {
+        "case": "documented_ff19SB",
+        "atoms": 84,
+        "bonds": 82,
+        "disulfides": 0,
+        "cmap_terms": 1,
+        "max_coordinate_error_A": 4.999999999810711e-06
+      },
+      {
+        "case": "documented_HSA25",
+        "atoms": 9508,
+        "bonds": 9614,
+        "disulfides": 17,
+        "cmap_terms": 0,
+        "max_coordinate_error_A": 5.000000015797923e-06
+      }
+    ],
+    "peptide_energy_checks": [
+      {
+        "profile": "ff14SB",
+        "atoms": 62,
+        "bonds": 60,
+        "cmap_terms": 0,
+        "exceptions": 308,
+        "exception_max_error": 3.526466230141523e-09,
+        "energies": [
+          {
+            "before_kJ_mol": -239.05104269871777,
+            "after_kJ_mol": -239.0510542678834,
+            "error_kJ_mol": -1.156916562194965e-05
+          },
+          {
+            "before_kJ_mol": -233.03534486302766,
+            "after_kJ_mol": -233.03535645115022,
+            "error_kJ_mol": -1.1588122561079217e-05
+          }
+        ]
+      },
+      {
+        "profile": "ff19SB",
+        "atoms": 84,
+        "bonds": 82,
+        "cmap_terms": 1,
+        "exceptions": 428,
+        "exception_max_error": 3.333660070214961e-09,
+        "energies": [
+          {
+            "before_kJ_mol": 1707.114430816311,
+            "after_kJ_mol": 1707.1144113115688,
+            "error_kJ_mol": -1.9504742112985696e-05
+          },
+          {
+            "before_kJ_mol": 1717.8647861507482,
+            "after_kJ_mol": 1717.8647666936836,
+            "error_kJ_mol": -1.9457064581729355e-05
+          }
+        ]
+      }
+    ],
+    "ligand": "Synthetic parameterized fixture; no ligand fitting",
+    "Amber_LEaP_executed": false,
+    "external_grompp_executed": false,
+    "documentation": "docs/COMPLEXES.md"
+  },
+  "review_of_default_changes": {
+    "independent_review_completed": true,
+    "resume_fingerprints_unchanged": true,
+    "whole_package_review": false
   }
 }

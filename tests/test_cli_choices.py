@@ -28,6 +28,36 @@ class RuntimeChoiceTests(unittest.TestCase):
         self.assertEqual(self.arguments('out').probe_radius, 1.369)
         self.assertEqual(self.arguments('out', '--probe-radius', '1.5').probe_radius, 1.5)
 
+    def test_fresh_noninteractive_run_defaults_need_only_the_python_runtime(self):
+        args=self.arguments('out')
+        with patch.object(cli.sys.stdin,'isatty',return_value=False):
+            selected=cli.run_choices(args,{},Path('.'))
+        self.assertEqual(selected,{'engine':'openmm','solver':'coulomb','force_field':'ff14SB'})
+
+    def test_accepting_fresh_defaults_works_when_external_solvers_are_absent(self):
+        args=self.arguments('out');available=self.availability()
+        available['solver'].update(apbs=False,pbsa=False)
+        with patch.object(cli.sys.stdin,'isatty',return_value=True), \
+             patch.object(cli,'_available_choices',return_value=available), \
+             patch('builtins.input',side_effect=['','','']),contextlib.redirect_stdout(io.StringIO()):
+            selected=cli.run_choices(args,{},Path('.'))
+        self.assertEqual(selected['solver'],'coulomb')
+
+    def test_resuming_an_apbs_run_retains_its_original_solver(self):
+        from dataclasses import replace
+        from test_workflow import WorkflowTests
+        from cationize_protein.workflow import validate_inputs
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);config=WorkflowTests().config(root)
+            original=validate_inputs(config);output=config.output_dir;output.mkdir()
+            content=json.dumps(original);(output/'RUN.json').write_text(content)
+            with patch.object(cli.sys.stdin,'isatty',return_value=False):
+                selected=cli.run_choices(self.arguments(output),{'solver':'coulomb'},root)
+            self.assertEqual(selected['solver'],'apbs')
+            resumed=replace(config,**selected)
+            self.assertEqual(validate_inputs(resumed),original)
+            self.assertEqual((output/'RUN.json').read_text(),content)
+
     def test_terminal_selections_override_installation_defaults_without_writing_files(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

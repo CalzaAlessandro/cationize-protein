@@ -9,25 +9,140 @@
     100
   ],
   "source_example": "examples/HSA/<percent>/minimized.pdb",
-  "software": "VMD 1.9.4a57 / STRIDE / Tachyon / Pillow",
-  "structure_representation": "NewCartoon colored by secondary structure using standard VMD colors; AOChalky",
-  "modified_sites": "Licorice, heavy atoms colored by atom name",
+  "software": "VMD 1.9.4a57 / STRIDE / Tachyon 0.99.1 / Pillow 12.3.0",
+  "structure_representation": "NewCartoon 0.3 20 4.1 0; colored by secondary structure using standard VMD colors; AOChalky",
+  "modified_sites": "Licorice 0.22 12 12; heavy atoms colored by atom name (C silver, N blue, O red)",
   "personal_vmdrc_ignored": true,
   "secondary_structure_palette": "Standard VMD Structure colors; no custom overrides",
-  "alignment": "Common 585 CA least-squares fit to native minimum",
-  "view": "Domain I left, Domain III right, Domain II below; basis from native domain CA centers",
-  "visualization_only_aliases": "Native backbone atom aliases and parent residue names for cartoon/STRIDE recognition; originals preserved",
-  "image_processing": "Shared whitespace crop and isotropic resizing; shared GIF palette with reserved annotation colors; no structure interpolation",
-  "crop": [
-    31,
-    90,
-    1024,
-    1052
+  "material_settings_AOChalky": [
+    0,
+    0,
+    0.85,
+    0.53,
+    0,
+    1,
+    0,
+    0,
+    0
   ],
+  "renderer_lighting": {
+    "ambient_occlusion": true,
+    "aoambient": 0.8,
+    "aodirect": 0.3,
+    "samples": 12,
+    "shadows": true,
+    "depthcue": false
+  },
+  "alignment": "Common 585 CA least-squares fit to native minimum; proper Kabsch rotation from previous private visualization copies",
+  "view": "Domain III left, Domain I right, Domain II below; open heart-shaped face, arm cleft visible",
+  "reference_image": "User-supplied frontal HSA view (mmr-29-02-13147-g01.jpg)",
+  "reference_image_sha256": "8aa55b208d9c54ce5172742d9285008e4451829ba3ae9d43708a42daab34e1fb",
+  "camera": {
+    "projection": "Orthographic",
+    "previous_basis": "Native domain CA centers",
+    "rotation_order": "y, x, z",
+    "yaw_degrees": 205,
+    "pitch_degrees": 20,
+    "roll_degrees": 0,
+    "rotate_matrix": [
+      [
+        -0.906308,
+        0.0,
+        -0.422618
+      ],
+      [
+        -0.144544,
+        0.939693,
+        0.309976
+      ],
+      [
+        0.397131,
+        0.34202,
+        -0.851651
+      ]
+    ],
+    "rotation_determinant": 1.000000662455332,
+    "scale": 0.024,
+    "center": "Common native CA origin; identity center_matrix for every checkpoint",
+    "same_for_all_checkpoints": true,
+    "reflection": false
+  },
+  "visualization_only_aliases": "Native backbone atom aliases and parent residue names for cartoon/STRIDE recognition; originals preserved",
+  "transparency": {
+    "method": "Independent flat-white geometry coverage render on black; identical orthographic primary rays to color pass",
+    "mask_material": "All geometry white, Ambient 1 Diffuse 0 Specular 0 Opacity 1, AO removed, black background",
+    "color_material": "Unchanged AOChalky and standard VMD secondary-structure/atom-name colors, black background",
+    "raw_passes_px": [
+      2200,
+      2200
+    ],
+    "renderer_antialias_samples": 0,
+    "mask_values": [
+      0,
+      255
+    ],
+    "downsampling": "Joint premultiplied RGBA Lanczos downsampling to 1100 px then shared isotropic panel resize",
+    "color_threshold_used": false,
+    "white_molecular_pixels_preserved": true,
+    "png": "Full RGBA alpha",
+    "apng": "Full RGBA alpha, full frames, source blend, background disposal",
+    "gif": "Binary alpha from independent coverage alpha >= 128; shared 255 opaque colors; reserved transparent index 255; background/disposal 2; no dithering",
+    "gif_frame_alpha_counts": [
+      {
+        "transparent_pixels": 582929,
+        "opaque_pixels": 97071,
+        "retained_bright_pixels": 9276
+      },
+      {
+        "transparent_pixels": 578107,
+        "opaque_pixels": 101893,
+        "retained_bright_pixels": 9380
+      },
+      {
+        "transparent_pixels": 575028,
+        "opaque_pixels": 104972,
+        "retained_bright_pixels": 8872
+      },
+      {
+        "transparent_pixels": 572537,
+        "opaque_pixels": 107463,
+        "retained_bright_pixels": 8851
+      },
+      {
+        "transparent_pixels": 568903,
+        "opaque_pixels": 111097,
+        "retained_bright_pixels": 9059
+      }
+    ]
+  },
+  "annotation_theme_treatment": "Dark/colored type with opaque white 2 px halo; transparent canvas; inspected against #ffffff and #0d1117",
+  "image_processing": "Common alpha-union crop and same isotropic size for every checkpoint; no structure interpolation; no color-based background removal",
+  "crop": [
+    160,
+    159,
+    975,
+    1022
+  ],
+  "resized_molecule_dimensions_px": {
+    "animation": [
+      633,
+      670
+    ],
+    "comparison": [
+      439,
+      465
+    ]
+  },
   "gif_frame_duration_ms": 1800,
+  "gif_frames": 5,
+  "gif_loop": 0,
   "gif_labels": "HSA cationization percentage, modified-residue count, and protein charge",
   "output_dimensions_px": {
     "hsa_progressive.gif": [
+      800,
+      850
+    ],
+    "hsa_progressive.apng": [
       800,
       850
     ],
@@ -37,21 +152,108 @@
     ]
   },
   "raw_render_dimensions_px": [
-    1100,
-    1100
+    2200,
+    2200
   ],
-  "raw_render_sha256": {
-    "0": "c941a72defdba47ff33bfac96f2002d2d78ecf5f26b2c2a6330022533cf1e37d",
-    "25": "83c9997931ace0f8baae732aeb9e4ba1fac5efe32e2e6c405a071db162aa9e8c",
-    "50": "56c8a5b17ff61acbf40e21f458487cf6499d226e2fd321e6c6673a1961b150c2",
-    "75": "327b0f7cbce6a43e13fc94b277c01be72ea5bf7d3120538c70672a900f4ae266",
-    "100": "c26a9669318263cb8b591f724a2851f08985cb10393e00a53d81e111c1afd253"
-  },
   "source_sha256": {
     "0": "7b0ead70a323891665f6159658d68e4447f96c0186ce3a8b826fda7f1b7510db",
     "25": "f89450700b67e370981418ca5252cad34186d2f68b05c79247461e6e2edc30e5",
     "50": "d0c3f5ec31b2258bd077423eddbef91f39eb19d6fdc2a6df096ef9c1513cf06d",
     "75": "63ed62c0588decbf8e4f892dd12f743787dab9c42f8b6a54b6355e44f5efe84a",
     "100": "aa3dbbd63308327792eaa6471bba587664da89661a4b8054448aed08770e0b5e"
-  }
+  },
+  "source_tree_files": 87,
+  "source_tree_byte_identical": true,
+  "rigid_geometry_qa": {
+    "0": {
+      "atom_count": 9228,
+      "fit_rmsd_A": 0.0004968649650735019,
+      "max_coordinate_deviation_A": 0.0008413118079364546,
+      "rotation_determinant": 1.0000000000000007
+    },
+    "25": {
+      "atom_count": 9503,
+      "fit_rmsd_A": 0.0004992109591793446,
+      "max_coordinate_deviation_A": 0.0008509892036745217,
+      "rotation_determinant": 0.9999999999999989
+    },
+    "50": {
+      "atom_count": 9777,
+      "fit_rmsd_A": 0.0005009222676611138,
+      "max_coordinate_deviation_A": 0.0008419825001818187,
+      "rotation_determinant": 0.999999999999999
+    },
+    "75": {
+      "atom_count": 10041,
+      "fit_rmsd_A": 0.0005014157574308962,
+      "max_coordinate_deviation_A": 0.000841126768213219,
+      "rotation_determinant": 0.9999999999999999
+    },
+    "100": {
+      "atom_count": 10316,
+      "fit_rmsd_A": 0.0005023696878181376,
+      "max_coordinate_deviation_A": 0.0008564721377842358,
+      "rotation_determinant": 0.9999999999999999
+    }
+  },
+  "gif_decoded_frame_alpha_matches_coverage": [
+    true,
+    true,
+    true,
+    true,
+    true
+  ],
+  "original_assets_backup": ".development/hsa_assets_before_transparency",
+  "raw_render_sha256": {
+    "0": {
+      "color": "33b2bfcc71e6193c483e873cf2d28d8ab64cb25fd9da6ea885535c075eceb395",
+      "coverage": "82abec9d84ab9a999506bedd7f42eb3ebee766e45820f19ed725898eaf10c389"
+    },
+    "25": {
+      "color": "0ee2bc456acd6938fb4ddadfc3ca89fce0bba4d447aa983cb004670fc814dd77",
+      "coverage": "c8496c3b9dc76c02e98c32e4c3c1f801aaed8b581560c8592f1e331d42633908"
+    },
+    "50": {
+      "color": "32b284272a693893e3190c7724c8feea62ad8c7cb2fc9ee843b971fe12ea6e13",
+      "coverage": "05c91bddd6bca8c63dee4c5a4ea7f52ae12d5498edef93e4ad1bc7bb2ba32eca"
+    },
+    "75": {
+      "color": "1d71d79587396fa8dd91870d9591132c725316da342bb2f55116b4938c898f6f",
+      "coverage": "1d2fcdc6da309f495a4d675e3fc5f96a1a428bb439cabf4d90cff0068c0dea09"
+    },
+    "100": {
+      "color": "1b09c72e111d32cdee3b015add9cb444b3482d430f80722d9dbb4a994bc03955",
+      "coverage": "40831fe9653fbf23734513e30317516e2c212ff9b298f78cfa2cb2639d19e661"
+    }
+  },
+  "scene_sha256": {
+    "0": "bcecf5ce2b58f194bc4b5d828096e1795519c292e60150b925b9790e5ce7bd5b",
+    "25": "895e56f7a8cd3f98112ed349d262aad88144ac943978eb8b9b4ee8c8ccd54a44",
+    "50": "4846f60f25cf8b5564d8a5f3c21c89560c72665b24c61beb886ddcc77bf727fe",
+    "75": "8c43c08bf90dc40a3a6e9106a2c64bd2e2521533324565abfed70843dd777d56",
+    "100": "0c49d16f55af2c3d85c08062300d2763d2cc8a29c9899fd41c5eb4529596b1b0"
+  },
+  "output_sha256": {
+    "hsa_comparison.png": "b1261d04ccd160a3c8e4199007f04f9936299deca14f10f380fd7a79950dfdc1",
+    "hsa_progressive.gif": "cc1ef9b92ce18e752fe3abf429c7334185490ab819acd8d0dac40915633701b7",
+    "hsa_progressive.apng": "e5d38c881477338e635b446b7bf9ea8e6c38506447ea2f2f8833824afe4e41fc"
+  },
+  "source_visualization_copies_sha256": {
+    "0": "61a13e7703b542dccec0dcc864990ec56712b9df49a72b511e1489c4a087f2f4",
+    "25": "faae13cd653ef4accafa4a079a00835a18fa3ba508a37621ee6165e9f2e837e5",
+    "50": "1e380c809226f7f69b3c73c0c1450a9d86df0205d2040e83ec236d441d4993f2",
+    "75": "dfe0a57e0bec938b1e8f0134ffe72a6e73205a3d04438ce946a556c91ff31782",
+    "100": "aa6fff3a3c3e384d038a32d1dc0d215acb5385024ded485b9ec70c5ec92e1754"
+  },
+  "reproducibility_scripts": [
+    ".development/prepare_hsa_secondary.py",
+    ".development/prepare_hsa_front.py",
+    ".development/render_hsa_front.py",
+    ".development/compose_hsa_front.py"
+  ],
+  "vmd_log": ".development/hsa_views_front/final_vmd.log",
+  "stride_error_scan": "No STRIDE error or VMD ERROR) found",
+  "qa_previews": ".development/hsa_views_front/qa",
+  "visual_qa": "Inspected final comparison on white and GitHub dark backgrounds, and decoded GIF endpoint frames; readable captions, intact white coils, no clipping",
+  "scientific_scope": "README visualization of supplied minimized checkpoints; no geometry editing or MD"
 }

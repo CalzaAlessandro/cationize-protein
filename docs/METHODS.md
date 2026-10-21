@@ -47,8 +47,8 @@ fixed cap charges; equivalent conformer charge sets; the expected residue
 charge within 3 × 10⁻⁵ e; finite ESP relative RMS below the documented 0.30
 screen; complete ff14SB capped-model parameters in tleap; and finite
 OpenMM energies/forces with exact fitted charge retention in both ff14SB
-and GBn2. The ESP threshold is a failure screen rather than a complete
-assessment of parameter quality. Model, log, library and source hashes
+and GBn2. The ESP threshold screens failed fits; parameter quality also
+requires independent validation. Model, log, library and source hashes
 connect all accepted outputs to the exact calculation.
 
 These checks establish internal consistency and capped-model
@@ -58,9 +58,15 @@ of broad transferability.
 
 ## Progressive site ranking and steric relaxation
 
-APBS solves nonlinear Poisson–Boltzmann electrostatics using the current
-protein charges and radii. Defaults are 298 K, solute/solvent dielectric
-constants 2/78.5 and 0.15 M symmetric monovalent salt. Candidate sampling
+The default screened-Coulomb solver evaluates the current atomic charges in
+a uniform solvent dielectric with Debye–Hückel screening. Its defaults are
+298 K, dielectric 78.5 and 0.15 M monovalent salt. This approximation omits
+the protein dielectric boundary and reaction field and runs entirely in Python.
+APBS and Amber PBSA provide optional Poisson–Boltzmann calculations; APBS uses
+the nonlinear equation with solute/solvent dielectric constants 2/78.5.
+Solver identity and settings are recorded for every run, and an existing run
+retains its recorded solver on resumption. The models can rank sites differently.
+Candidate sampling
 uses a 1 Å lattice in the union of 5 Å spheres around its two carboxylate
 oxygens. Points overlapping atomic LJ exclusion radii plus the explicitly
 selected positive-probe radius are removed. The most negative accessible
@@ -95,6 +101,6 @@ profile transfer, complete rebuild and engine compatibility checks.
 - [APBS documentation](https://apbs.readthedocs.io/en/latest/index.html) and
   [continuum-solvation background](https://apbs.readthedocs.io/en/latest/background.html).
 
-Gaussian/RESP development is separate from the Python/OpenMM/APBS runtime.
+Gaussian/RESP development is separate from the installed Python runtime.
 The repository does not redistribute Gaussian or standard Amber library
 files.

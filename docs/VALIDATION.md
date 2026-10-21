@@ -8,12 +8,13 @@ preserved. A machine-readable summary is in [validation/latest.json](../validati
 
 A fresh private Python 3.12 installation on macOS installed the complete
 runtime, including PDBFixer 1.12.0, without Amber, GROMACS or APBS executables.
-The installation completed and reported missing external programs. APBS-based
-calculations still require an installed solver; no alternative model is
-silently selected. Conda and venv recipes install the same project, but creation
+The installation completed and reported missing external programs. Fresh
+installations select OpenMM, screened Coulomb and ff14SB. APBS-based
+calculations still require an installed solver; a requested solver is never
+replaced automatically. Conda and venv recipes install the same project, but creation
 of a new Conda environment was not executed in this validation.
 
-The installed package passed **265 tests, with no skips**, including initial
+The installed package passed **268 tests, with no skips**, including initial
 PDB repair, PROPKA histidine assignment, residue-library export, retrieval and
 optional modeling interfaces. The earlier Linux run passed 202 tests before PDBFixer
 preparation was added; the new preparation tests have currently run on macOS.
@@ -32,6 +33,13 @@ with OpenMM minimization, PROPKA and all three export formats. A second complete
 run started from the PDBFixer-repaired peptide. Both demonstrations selected
 screened-Coulomb ranking explicitly; they do not test a new APBS installation.
 Three available carboxyl groups produce rounded counts of 0, 1, 2, 2 and 3.
+
+A third complete peptide run used only `--pdb` and `--output`. The fresh-install
+defaults completed all five checkpoints with OpenMM, screened Coulomb and
+PROPKA, without an APBS executable. Checkpoint hashes and exported artifacts
+were verified. Existing APBS/PBSA run records retained their solver choices,
+implementation fingerprints and unchanged `RUN.json` bytes during full resume
+validation. No APBS/PBSA calculation was performed for that compatibility check.
 
 ## Current PDB and split GROMACS exports
 
@@ -54,6 +62,16 @@ identical original coordinates. All checks passed:
 These are serialization and physical-model round trips, not new GROMACS binary
 executions. The current split include layout has not yet been rerun in an
 external GROMACS executable.
+
+The [complex-assembly tutorial](COMPLEXES.md) was checked with an ff14SB
+peptide, an ff19SB peptide and the 25% HSA example, each combined with an
+independently parameterized synthetic ligand. The documented ParmEd script
+retained atom order, bond graphs, all 17 HSA disulfides and the ff19SB CMAP.
+Coordinate round-trip errors were at most 5.1 × 10⁻⁶ Å. Two-coordinate
+energy checks for the peptide complexes differed by at most
+1.96 × 10⁻⁵ kJ/mol. LEaP and `gmx grompp` examples are documented but were
+not executed locally; ligand parameter fitting and production MD are outside
+these checks.
 
 ## Earlier independent engine qualification
 
@@ -185,3 +203,11 @@ The README's 21 command examples parse with the current CLI, and 20 documented
 again with NewCartoon, standard VMD Structure colors and AOChalky; the personal
 `.vmdrc` was bypassed, STRIDE completed without errors, and source structure
 hashes were unchanged.
+
+The current previews use a shared frontal orthographic view, with Domain III
+on the left, Domain I on the right and Domain II below. Transparent backgrounds
+come from an independent geometry-coverage render. PNG and animated PNG retain
+full alpha; GIF uses a transparent palette entry. Final images were inspected
+on white and dark backgrounds. White molecular features were retained, and
+all five GIF frames passed coverage-mask checks. Render settings and checksums
+are recorded in [HSA_PREVIEW.json](images/HSA_PREVIEW.json).

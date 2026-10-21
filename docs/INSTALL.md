@@ -3,7 +3,7 @@
 Use Python 3.12 if available. The package supports Python 3.10–3.14 subject
 to compatible dependency wheels. Choose either the local venv or Conda route.
 
-## Local venv
+## Python with a local venv
 
 From the repository folder:
 
@@ -38,6 +38,14 @@ Python dependencies. It does not create a nested `.venv`. A new Conda
 environment has not yet been exercised in the current validation; the tested
 installation uses the private venv.
 
+Activate it in each new terminal with `conda activate cationize-protein`.
+Use `conda deactivate` to leave it.
+
+Both installation methods include the default calculation: OpenMM
+minimization, screened-Coulomb site ranking and ff14SB parameters.
+Screened Coulomb is an approximation. Choose APBS or PBSA explicitly when
+you need Poisson–Boltzmann electrostatics.
+
 ## External programs
 
 Python installation completes even if the following programs are absent:
@@ -46,7 +54,7 @@ Python installation completes even if the following programs are absent:
 |---|---|---|
 | Amber `sander` or `pmemd` | Optional serial Amber minimization | `AMBERHOME/bin`, then `PATH` |
 | Amber `pbsa` | Optional Poisson–Boltzmann solver | `AMBERHOME/bin`, then `PATH` |
-| APBS | Default Poisson–Boltzmann solver | Project `.tools/apbs/bin/apbs`, then `PATH` |
+| APBS | Optional Poisson–Boltzmann solver | Project `.tools/apbs/bin/apbs`, then `PATH` |
 | GROMACS `gmx` or `gmx_mpi` | Running GROMACS calculations | `PATH` |
 | MODELLER | Optional native comparative model from PDB + FASTA | Explicit Python variable, otherwise active Python and Python interpreters on `PATH` |
 | ESMFold2 | Optional native prediction from FASTA | Explicit Python variable, otherwise active Python and Python interpreters on `PATH` |
@@ -77,20 +85,24 @@ Amber must be obtained through its [official distribution](https://ambermd.org/)
 
 A requested solver or engine must be available before that calculation starts.
 The program never substitutes a different electrostatic model automatically.
-`--solver coulomb` selects an explicit screened-Coulomb approximation.
+`--solver coulomb` selects the included screened-Coulomb approximation.
 
 ## Choose settings when running
 
 A new interactive `run` offers choices for minimizer, solver and force field.
-Defaults are OpenMM, APBS and ff14SB. You can set options directly instead:
+Fresh-install defaults are OpenMM, screened Coulomb and ff14SB. Set options
+directly with:
 
 ```sh
 cationize-protein run --pdb prepared/protein.pdb --output series \
-  --engine openmm --solver apbs --force-field ff14SB
+  --engine openmm --solver coulomb --force-field ff14SB
 ```
 
-Noninteractive runs use supplied options or saved defaults. A resumed run uses
-its recorded scientific choices. Probe radius defaults to 1.369 Å.
+Use `--solver apbs` or `--solver pbsa` after installing the chosen external
+solver. Noninteractive runs use supplied options, then saved preferences,
+then the fresh-install defaults. Existing preferences are retained, and a
+resumed run uses its recorded scientific choices. Probe radius defaults to
+1.369 Å.
 
 ## Check an installation without changing it
 
