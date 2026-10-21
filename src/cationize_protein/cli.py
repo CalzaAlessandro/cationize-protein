@@ -23,7 +23,7 @@ _CHOICES = {'engine': ('openmm', 'amber', 'sander', 'pmemd'),
 def parser():
     command = argparse.ArgumentParser(
         prog='cationize-protein',
-        description='Serial progressive carboxyl amidation, steric rotation, restrained minimization and PROPKA auditing. '
+        description='Serial progressive carboxyl amidation, steric rotation, restrained minimization and PROPKA protonation checks. '
                     'Physical models and export formats are explicit; Slurm is optional and external.')
     subcommands = command.add_subparsers(dest='command', required=True)
     retrieve = subcommands.add_parser('fetch', help='Download a deposited PDB and/or UniProt sequence record')

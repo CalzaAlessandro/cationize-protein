@@ -167,7 +167,7 @@ def check_pdb(path, output_path=None):
                   'Choose and record a histidine tautomer during hydrogen addition; PROPKA does not choose neutral tautomers.',residue_ordinal=r['ordinal'])
         elif r['residue_name'] in _NATIVE_PARENT:
             issue('explicit_protonation_state','info',f'Residue ordinal {r["ordinal"]} supplies state {r["residue_name"]}.',
-                  'Retain this state until a supported, persistent pH audit justifies a change.',residue_ordinal=r['ordinal'])
+                  'Retain this state until consecutive protonation checks support a change.',residue_ordinal=r['ordinal'])
 
     def atom_xyz(r, name):
         aliases={'N':'N1','C':'C2'} if _ALIASES.get(r['residue_name'],r['residue_name']) in {'ASC','GLC','ASX','LET'} else {}

@@ -171,7 +171,7 @@ def calculate(structure, output_dir, *, pH=7.4, fixed=False):
         from propka.molecular_container import MolecularContainer
         from propka.parameters import Parameters
     except ImportError as exc:
-        raise ImportError('PROPKA audit requires propka>=3.4,<4 in the project Python environment') from exc
+        raise ImportError('Protonation checks require propka>=3.4,<4 in the project Python environment') from exc
     pdb,mapping=prepare_input(structure)
     out=Path(output_dir);out.mkdir(parents=True,exist_ok=False)
     inp=out/'input.pdb';inp.write_text(pdb);_json(out/'mapping.json',mapping)
@@ -320,12 +320,12 @@ def assess_predictions(standard, fixed, previous_proposals=None, *, pH=7.4, supp
                 d.update(status='proposed_awaiting_persistence',reason=reason+' Retain supplied state until the same proposal recurs on the next chemical step.')
             else:
                 applicable[str(r['residue_ordinal'])]=target
-                d.update(status='applicable',reason=reason+' The same proposal recurred on two consecutive chemical-step audits.')
+                d.update(status='applicable',reason=reason+' The same change was predicted after two consecutive chemical steps.')
         decisions.append(d)
     return dict(proposed_native_states=proposals,applicable_native_states=applicable,decisions=decisions,
                 target_pH=pH,margin_pKa_units=1.,required_consecutive_steps=2,
                 supported_native_states=sorted(supported),
-                policy='Retain all held states; rebuild only applicable states, reparameterize, minimize and audit again. Unsupported proposals are explicit holds, never silent residue retyping.')
+                policy='Retain held states. Apply supported changes, reassign parameters, minimize and repeat the protonation check. Report predictions that lack a matching residue template.')
 
 
 def audit(structure, output_dir, previous_proposals=None, pH=7.4, *, supported_native_states=None):

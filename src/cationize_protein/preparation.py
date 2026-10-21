@@ -149,8 +149,8 @@ def prepare_pdb(source, output, *, pH=7.4, protonation='propka', uniprot_record=
            'Supplied heavy-atom coordinates and residue identifiers are preserved.',
            'Missing loops/residues, alternate conformers and nonstandard chemistry are not rebuilt.',
            ('Initial histidine charge states were assigned with PROPKA; neutral tautomers use supplied evidence or OpenMM H-bond geometry.'
-            if histidines else 'No histidine H changes. The cationization workflow adds H and audits protonation with PROPKA.'),
-           'Other native side-chain and terminal states remain supplied; the workflow audits them after minimization.',
+            if histidines else 'No histidine H changes. The cationization workflow adds H and checks protonation with PROPKA.'),
+           'Other native side-chain and terminal states remain supplied; the workflow checks them after minimization.',
            'Coordinate/SEQRES checks do not establish completeness against an external reference sequence.',
            'Added atoms require the subsequent force-field minimization before structural interpretation.']
     log += [f'ADDED: {a["chain_id"] or "(blank)"}:{a["residue_id"]} '

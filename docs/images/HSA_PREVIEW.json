@@ -1,6 +1,6 @@
 {
-  "description": "Static progressive HSA cationization workflow from five aligned minimized structures",
-  "scientific_scope": "Existing structures and accepted parameters unchanged; rigid camera changes and rendering only",
+  "description": "Static progressive HSA cationization workflow with light/dark display palettes",
+  "scientific_scope": "Existing structures and accepted parameters unchanged; display colors, opacity and text only",
   "source_example": "examples/HSA/<percent>/minimized.pdb",
   "residues": 585,
   "disulfides": 17,
@@ -15,12 +15,63 @@
     "VMD": "1.9.4a57-arm64-Rev12",
     "Tachyon": "0.99.1",
     "secondary_structure": "STRIDE",
-    "Pillow": "12.3.0"
+    "Pillow": "13.0.0"
   },
   "personal_vmdrc_ignored": true,
-  "structure_representation": "NewCartoon 0.3 20 4.1 0; Structure colors; AOChalky copy at opacity 0.20",
+  "structure_representation": "NewCartoon 0.3 20 4.1 0; secondary-structure colors; AOChalky copy",
   "modified_sites": "Licorice 0.22 12 12; modified heavy atoms colored by Name; AOChalky opacity 1.00",
-  "cartoon_opacity": 0.2,
+  "theme_display": {
+    "light": {
+      "cartoon_opacity": 0.2,
+      "text_color": "#294755",
+      "outline_on_text": false
+    },
+    "dark": {
+      "cartoon_opacity": 0.45,
+      "text_color": "#edf5ff",
+      "outline_on_text": false
+    }
+  },
+  "dark_colors": {
+    "cartoon_colors": {
+      "0.650 0.000 0.650": "1.000 0.500 0.900",
+      "0.250 0.750 0.750": "0.250 1.000 1.000",
+      "1.000 1.000 1.000": "0.940 0.970 1.000",
+      "0.000 0.000 1.000": "0.400 0.670 1.000"
+    },
+    "atom_colors": {
+      "0.6 0.6 0.6": "0.82 0.86 0.93",
+      "0 0 1": "0.38 0.63 1",
+      "1 0 0": "1 0.38 0.28"
+    },
+    "geometry_checks": {
+      "0": {
+        "geometry_sha256": "16cbe1662e181a1699e3b6b8aa33022b10e0668c2094b799a083eac1c386abf7",
+        "cartoon_opacity": 0.45,
+        "source_scene_sha256": "215e89a169da93745a5fe7ec5e15796553d39af783e5273ecb72dc657ea9e3c0"
+      },
+      "25": {
+        "geometry_sha256": "79c8635821b8bc272980a6f4601b8745638da23bb683832058324bac9291ae99",
+        "cartoon_opacity": 0.45,
+        "source_scene_sha256": "e1c8e3736d98d380e9a98c08e9cf0c00c489b0b78c0444773631e642d5746677"
+      },
+      "50": {
+        "geometry_sha256": "a89c089dd5b23f1dc930571b563fd4bc04c717150f94b9a23f2b620d67529727",
+        "cartoon_opacity": 0.45,
+        "source_scene_sha256": "4edd33e2049a5b3e07a0b3df3a47f78fb7442ea4d4ad9636dee5eee88810ba6d"
+      },
+      "75": {
+        "geometry_sha256": "2bbab00aa4494406d669933ced4f986b2432b1ee7cb3a21cc2ad7855be39ca44",
+        "cartoon_opacity": 0.45,
+        "source_scene_sha256": "49fb262fd7595c26a4cfcda1babfee1bbfafa3c873f5387b13eb567aeefd22f0"
+      },
+      "100": {
+        "geometry_sha256": "b71acaa4dda2676f2fb5f69171fccdf7b37fa5f3295308ec28da91ddd7a11ff4",
+        "cartoon_opacity": 0.45,
+        "source_scene_sha256": "dcbeae22b50f9b22d49a0d6f023ef490134cdd520067fffcb207b307091fe721"
+      }
+    }
+  },
   "modified_residue_opacity": 1.0,
   "camera": {
     "yaw": 180.0,
@@ -102,93 +153,182 @@
   ],
   "image_processing": "Independent transmittance alpha; common crop and isotropic downsampling only for workflow panels; no upsampling",
   "transparency": {
-    "method": "Unlit geometry transmittance on white, preserving actual representation opacities; recover straight RGBA from black color pass",
+    "method": "Unlit geometry transmittance on white; recover straight RGBA from black color pass",
     "color_threshold_used": false,
-    "alpha_qa": {
-      "0": {
-        "alpha_min": 0.0,
-        "alpha_max": 0.36000609397888184,
-        "alpha_fractional_pixels": 581511,
-        "alpha_nonzero_pixels": 581511,
-        "alpha_bbox": [
-          1213,
-          379,
-          2696,
-          1850
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.021692986121739588,
-        "rgba8_recompose_black_mae": 5.587925261352211e-05,
-        "rgba8_recompose_black_p99": 0.0009150803089141846,
-        "rgba8_recompose_black_max": 0.06192108988761902
+    "alpha_qa_by_theme": {
+      "light": {
+        "0": {
+          "alpha_min": 0.0,
+          "alpha_max": 0.36000609397888184,
+          "alpha_fractional_pixels": 581511,
+          "alpha_nonzero_pixels": 581511,
+          "alpha_bbox": [
+            1213,
+            379,
+            2696,
+            1850
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.021692986121739588,
+          "rgba8_recompose_black_mae": 5.587925261352211e-05,
+          "rgba8_recompose_black_p99": 0.0009150803089141846,
+          "rgba8_recompose_black_max": 0.06192108988761902
+        },
+        "25": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 569648,
+          "alpha_nonzero_pixels": 603103,
+          "alpha_bbox": [
+            1161,
+            359,
+            2742,
+            1856
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.01832467533185321,
+          "rgba8_recompose_black_mae": 5.4984680900815874e-05,
+          "rgba8_recompose_black_p99": 0.0009592920541763306,
+          "rgba8_recompose_black_max": 0.1607843041419983
+        },
+        "50": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 554156,
+          "alpha_nonzero_pixels": 621382,
+          "alpha_bbox": [
+            1187,
+            337,
+            2757,
+            1863
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.012286054847635324,
+          "rgba8_recompose_black_mae": 4.853490099776536e-05,
+          "rgba8_recompose_black_p99": 0.000992313027381897,
+          "rgba8_recompose_black_max": 0.17442584037780762
+        },
+        "75": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 549114,
+          "alpha_nonzero_pixels": 647005,
+          "alpha_bbox": [
+            1195,
+            296,
+            2759,
+            1869
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.010815475408484735,
+          "rgba8_recompose_black_mae": 5.106752723804675e-05,
+          "rgba8_recompose_black_p99": 0.0010288357734680176,
+          "rgba8_recompose_black_max": 0.1607843041419983
+        },
+        "100": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 539487,
+          "alpha_nonzero_pixels": 669066,
+          "alpha_bbox": [
+            1158,
+            315,
+            2767,
+            1863
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.010044848589924861,
+          "rgba8_recompose_black_mae": 5.372522718971595e-05,
+          "rgba8_recompose_black_p99": 0.0010701864957809448,
+          "rgba8_recompose_black_max": 0.16659796237945557
+        }
       },
-      "25": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 569648,
-        "alpha_nonzero_pixels": 603103,
-        "alpha_bbox": [
-          1161,
-          359,
-          2742,
-          1856
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.01832467533185321,
-        "rgba8_recompose_black_mae": 5.4984680900815874e-05,
-        "rgba8_recompose_black_p99": 0.0009592920541763306,
-        "rgba8_recompose_black_max": 0.1607843041419983
-      },
-      "50": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 554156,
-        "alpha_nonzero_pixels": 621382,
-        "alpha_bbox": [
-          1187,
-          337,
-          2757,
-          1863
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.012286054847635324,
-        "rgba8_recompose_black_mae": 4.853490099776536e-05,
-        "rgba8_recompose_black_p99": 0.000992313027381897,
-        "rgba8_recompose_black_max": 0.17442584037780762
-      },
-      "75": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 549114,
-        "alpha_nonzero_pixels": 647005,
-        "alpha_bbox": [
-          1195,
-          296,
-          2759,
-          1869
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.010815475408484735,
-        "rgba8_recompose_black_mae": 5.106752723804675e-05,
-        "rgba8_recompose_black_p99": 0.0010288357734680176,
-        "rgba8_recompose_black_max": 0.1607843041419983
-      },
-      "100": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 539487,
-        "alpha_nonzero_pixels": 669066,
-        "alpha_bbox": [
-          1158,
-          315,
-          2767,
-          1863
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.010044848589924861,
-        "rgba8_recompose_black_mae": 5.372522718971595e-05,
-        "rgba8_recompose_black_p99": 0.0010701864957809448,
-        "rgba8_recompose_black_max": 0.16659796237945557
+      "dark": {
+        "0": {
+          "alpha_min": 0.0,
+          "alpha_max": 0.6975051164627075,
+          "alpha_fractional_pixels": 581511,
+          "alpha_nonzero_pixels": 581511,
+          "alpha_bbox": [
+            1213,
+            379,
+            2696,
+            1850
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.012797121063344746,
+          "rgba8_recompose_black_mae": 6.524563650600612e-05,
+          "rgba8_recompose_black_p99": 0.001313626766204834,
+          "rgba8_recompose_black_max": 0.0633401870727539
+        },
+        "25": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 569648,
+          "alpha_nonzero_pixels": 603103,
+          "alpha_bbox": [
+            1161,
+            359,
+            2742,
+            1856
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.011162272447658194,
+          "rgba8_recompose_black_mae": 6.58184799249284e-05,
+          "rgba8_recompose_black_p99": 0.0013509392738342285,
+          "rgba8_recompose_black_max": 0.1607843041419983
+        },
+        "50": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 554156,
+          "alpha_nonzero_pixels": 621382,
+          "alpha_bbox": [
+            1187,
+            337,
+            2757,
+            1863
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.009591523410719976,
+          "rgba8_recompose_black_mae": 6.542110349982977e-05,
+          "rgba8_recompose_black_p99": 0.0013846904039382935,
+          "rgba8_recompose_black_max": 0.17296099662780762
+        },
+        "75": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 549114,
+          "alpha_nonzero_pixels": 647005,
+          "alpha_bbox": [
+            1195,
+            296,
+            2759,
+            1869
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.007644454061406017,
+          "rgba8_recompose_black_mae": 6.758754898328334e-05,
+          "rgba8_recompose_black_p99": 0.0014159679412841797,
+          "rgba8_recompose_black_max": 0.1607843041419983
+        },
+        "100": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 539487,
+          "alpha_nonzero_pixels": 669066,
+          "alpha_bbox": [
+            1158,
+            315,
+            2767,
+            1863
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.006486654530345287,
+          "rgba8_recompose_black_mae": 6.940097955521196e-05,
+          "rgba8_recompose_black_p99": 0.001442492357455194,
+          "rgba8_recompose_black_max": 0.16632330417633057
+        }
       }
     }
   },
@@ -199,10 +339,6 @@
     1899
   ],
   "output_dimensions_px": {
-    "hsa_workflow.png": [
-      4800,
-      1580
-    ],
     "hsa_0_4k.png": [
       3840,
       2160
@@ -222,66 +358,139 @@
     "hsa_100_4k.png": [
       3840,
       2160
+    ],
+    "hsa_workflow.png": [
+      4800,
+      1580
+    ],
+    "hsa_0_4k_dark.png": [
+      3840,
+      2160
+    ],
+    "hsa_25_4k_dark.png": [
+      3840,
+      2160
+    ],
+    "hsa_50_4k_dark.png": [
+      3840,
+      2160
+    ],
+    "hsa_75_4k_dark.png": [
+      3840,
+      2160
+    ],
+    "hsa_100_4k_dark.png": [
+      3840,
+      2160
+    ],
+    "hsa_workflow_dark.png": [
+      4800,
+      1580
     ]
   },
   "output_sha256": {
     "banner.svg": "d4e2e0e83d73c49b1b0f261388a09be0671b5eb25f4aaa0b5f6a65e8199f6400",
     "banner_dark.svg": "9507c44f1093e3596ec539a4dedbced1887838c1ec5af2f1357b96758ec0998d",
-    "hsa_workflow.png": "67a715d8286b060ef96b5ca590e19388ab2184df7a296454b534224c8c3f9072",
-    "hsa_0_4k.png": "0f71ab9ff6b9060428fe65bec6eb6416c664b67ba34a3d1af11d888f492b286c",
-    "hsa_25_4k.png": "e7382e0f9cbffa8072feefa1450d91fdaf7374264a3794da510251ef0316eb42",
-    "hsa_50_4k.png": "64dbf360eebf9edc5acbb57b8919042cae129d04cdc590f8e1a73202c790b843",
-    "hsa_75_4k.png": "0152ee47aa0c08091e7aef687d314481df0de37bf20c775eb88cc7520486c3b3",
-    "hsa_100_4k.png": "4aea3fe9eb195d9557a6f01c732853b287f0979d628a5d6a407fdc73fd16bf7f"
+    "hsa_0_4k.png": "0536a7a71eb131110462a58ea5eaa7179be9566fb437a56b51669af131dce321",
+    "hsa_25_4k.png": "66c892f69e70b8f3ca0488495456634e671ae67a6ff34d227a5a25d631134ab1",
+    "hsa_50_4k.png": "344f2c64c0c890e501847d6dbad516ba6aef56c377d18ca43753fb87dd257cae",
+    "hsa_75_4k.png": "bab701b74d223d6094083da3bf22ef7f42a988eea0afaaa53a9ee0017818b749",
+    "hsa_100_4k.png": "6c28fe68ae2e2d222a63017c2cddc0227c645067a8b29a1346ba4821f9279c8a",
+    "hsa_workflow.png": "ab55e290bd1ded184d192d35c73c372849d32303e07f0211420e649f404b5aba",
+    "hsa_0_4k_dark.png": "2fd2528a15cf4c3c6b46c54c12bbb2215f103a760b9f736d0d6ada0cf3f875bc",
+    "hsa_25_4k_dark.png": "16244e979b37f9c9c38a9efecd1d50f85c414db5dcb10c667989b654d517428c",
+    "hsa_50_4k_dark.png": "709738ca48ff0c1449d3ae3e8227c07ee6ce412275aab1964c1e12a0983bab9b",
+    "hsa_75_4k_dark.png": "6e9201cee51e3efaa67faf6d851df0b612536d7fece81382c735777c7b8f14f8",
+    "hsa_100_4k_dark.png": "a1bcd740095e690fd0eb2595f5bef513f0c5bb5a4754a776193ac0a99757587f",
+    "hsa_workflow_dark.png": "0caeb2601daf645a2f545dbec8535d22c6f4c825f9da1b1b74d90e24c91f1672"
   },
   "output_bytes": {
     "banner.svg": 42102,
     "banner_dark.svg": 42102,
-    "hsa_workflow.png": 2240491,
-    "hsa_0_4k.png": 862227,
-    "hsa_25_4k.png": 992089,
-    "hsa_50_4k.png": 1109396,
-    "hsa_75_4k.png": 1212999,
-    "hsa_100_4k.png": 1327435
+    "hsa_0_4k.png": 823552,
+    "hsa_25_4k.png": 949919,
+    "hsa_50_4k.png": 1068227,
+    "hsa_75_4k.png": 1172443,
+    "hsa_100_4k.png": 1287649,
+    "hsa_workflow.png": 2173349,
+    "hsa_0_4k_dark.png": 1232678,
+    "hsa_25_4k_dark.png": 1343353,
+    "hsa_50_4k_dark.png": 1449494,
+    "hsa_75_4k_dark.png": 1558328,
+    "hsa_100_4k_dark.png": 1661920,
+    "hsa_workflow_dark.png": 2845618
   },
   "scene_sha256": {
-    "0": "215e89a169da93745a5fe7ec5e15796553d39af783e5273ecb72dc657ea9e3c0",
-    "25": "e1c8e3736d98d380e9a98c08e9cf0c00c489b0b78c0444773631e642d5746677",
-    "50": "4edd33e2049a5b3e07a0b3df3a47f78fb7442ea4d4ad9636dee5eee88810ba6d",
-    "75": "49fb262fd7595c26a4cfcda1babfee1bbfafa3c873f5387b13eb567aeefd22f0",
-    "100": "dcbeae22b50f9b22d49a0d6f023ef490134cdd520067fffcb207b307091fe721"
+    "light": {
+      "0": "215e89a169da93745a5fe7ec5e15796553d39af783e5273ecb72dc657ea9e3c0",
+      "25": "e1c8e3736d98d380e9a98c08e9cf0c00c489b0b78c0444773631e642d5746677",
+      "50": "4edd33e2049a5b3e07a0b3df3a47f78fb7442ea4d4ad9636dee5eee88810ba6d",
+      "75": "49fb262fd7595c26a4cfcda1babfee1bbfafa3c873f5387b13eb567aeefd22f0",
+      "100": "dcbeae22b50f9b22d49a0d6f023ef490134cdd520067fffcb207b307091fe721"
+    },
+    "dark": {
+      "0": "371c7f8f24573056814f98e92dd4b5102a970c2b7d8b43d031798977358960dc",
+      "25": "de002e87f110511db3c29588677eb10b2ed7268bffac9aeb788a4b8672fe268f",
+      "50": "812de5061ed75d985200ccf57bf6482a325c755226a617b4e881146c293982d3",
+      "75": "2b5357e930200724a5033eac407f539298e33db2c029224918db3bbfd9200aeb",
+      "100": "5b83e47cdc86ab48a16581abf464b07b405366403c78ea7df528acd4acdf814c"
+    }
   },
   "raw_render_sha256": {
-    "0": {
-      "black": "ef6161885a7c572693096c941720108b28f766ecf7a0d0f76d7857c87d750dbe",
-      "coverage": "207b1a6a2da72c830acd18272885343429be2d4c7c1e6bb5565e3020089f2c3c"
+    "light": {
+      "0": {
+        "black": "ef6161885a7c572693096c941720108b28f766ecf7a0d0f76d7857c87d750dbe",
+        "coverage": "207b1a6a2da72c830acd18272885343429be2d4c7c1e6bb5565e3020089f2c3c"
+      },
+      "25": {
+        "black": "851f0c0ed029c5e804d531f482d327950b9c3f54de41b61f6ff7c8898b169fcb",
+        "coverage": "93741391b3d04baf1313ee24aed3a20a537c9845c6781b27d5be41b5e8a125d6"
+      },
+      "50": {
+        "black": "c9cede7a0830c3e4cd24669900e304461077c7cfd4cbd4ec095c07553c60b5bc",
+        "coverage": "5c27f1069f6f6e2a64406ed4444b30aaad008e32c607b671adad1b26e9b69e03"
+      },
+      "75": {
+        "black": "7614170c4b088be3ee0b688698c8084a26ca477c7e393da021c505b403538477",
+        "coverage": "82213b1777d9b71c3a28a4e398de33bd239f18a928f94f501662e6843434bf93"
+      },
+      "100": {
+        "black": "059fb1ef64c9468818b0c1f9fdbde66a3a1a6f3376460292a25622a9c53ac52e",
+        "coverage": "c11072406fc50295182dcc7d82d9a8309d0941e5e6d3ec470f43816e5ebd7c6d"
+      }
     },
-    "25": {
-      "black": "851f0c0ed029c5e804d531f482d327950b9c3f54de41b61f6ff7c8898b169fcb",
-      "coverage": "93741391b3d04baf1313ee24aed3a20a537c9845c6781b27d5be41b5e8a125d6"
-    },
-    "50": {
-      "black": "c9cede7a0830c3e4cd24669900e304461077c7cfd4cbd4ec095c07553c60b5bc",
-      "coverage": "5c27f1069f6f6e2a64406ed4444b30aaad008e32c607b671adad1b26e9b69e03"
-    },
-    "75": {
-      "black": "7614170c4b088be3ee0b688698c8084a26ca477c7e393da021c505b403538477",
-      "coverage": "82213b1777d9b71c3a28a4e398de33bd239f18a928f94f501662e6843434bf93"
-    },
-    "100": {
-      "black": "059fb1ef64c9468818b0c1f9fdbde66a3a1a6f3376460292a25622a9c53ac52e",
-      "coverage": "c11072406fc50295182dcc7d82d9a8309d0941e5e6d3ec470f43816e5ebd7c6d"
+    "dark": {
+      "0": {
+        "black": "f2950ed841bdb9b30aedadf7617cae2b1757b4bb5409865faa25e575c0506f46",
+        "coverage": "e9e6b57b45c147c03f52db28731e9828f729dad70d9bad3cbaf09eb943d2d5b0"
+      },
+      "25": {
+        "black": "ae5534fb688ab7454a4d76499a4559913109e4f4a49aa9cf2aec65ac038f69f2",
+        "coverage": "c61d6e4d3e46c36716a1d0c224790a66367051d588bea807e3e25c2bada0f3d2"
+      },
+      "50": {
+        "black": "d64d19f9fab65fd032cf97fa55d96381722633aa13cfdea142d52d9fd6b913dc",
+        "coverage": "231902acda1591de2f38183c8ed2bb2b828a25275a8299c062a9898bd36a9489"
+      },
+      "75": {
+        "black": "46252faa9e41ec54eaa6ac25445f3ed10c52d0f03e451f043c4e557277702aed",
+        "coverage": "830a77096077e53b5f88d283455cf104c26fea44030857d64a339079fb0bdfd3"
+      },
+      "100": {
+        "black": "247a32e501cfbf5d6a5fc49539c83ac8cea3b79b7b6d5e607f7ec141bbc68603",
+        "coverage": "f6831b24d2ef7d13d93517ac9d95ce8cfe8d16223ff7e2f758b75726d8e71c72"
+      }
     }
   },
   "vmd_log": ".development/hsa_workflow/final_vmd.log",
   "reproducibility_scripts": [
     ".development/prepare_hsa_workflow.py",
+    ".development/prepare_dark_hsa.py",
     ".development/render_hsa_workflow.py",
     ".development/recover_hsa_rgba.py",
-    ".development/compose_hsa_workflow.py",
-    ".development/banner_art.py"
+    ".development/compose_hsa_workflow.py"
   ],
   "qa_previews": ".development/hsa_workflow/qa",
-  "visual_qa": "Inspected static workflow on white and dark backgrounds; central cleft visible, cartoon ghosted, modified sites opaque; all annotations within canvas. Vector banners use separate light/dark colors.",
+  "visual_qa": "Inspected completed light and dark workflows: central cleft visible, transparent cartoon and opaque modified residues, brighter dark palette, plain text without white outlines. All annotations fit within the canvas.",
   "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability"
 }

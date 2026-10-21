@@ -206,5 +206,5 @@ def apply_native_states(structure, changes, parameters_dir, force_field='ff14SB'
                 heavy_and_external_graph_exact=True,introduced_ammonium_groups_retained=len(final_amines),
                 native_terminal_states_held=True,
                 method='Explicit OpenMM hydrogen-parent variants; generic H-only placement, then complete force-field reassignment',
-                next_required_step='Minimize with the selected force field and repeat the two-control PROPKA audit.')
+                next_required_step='Minimize with the selected force field and repeat both PROPKA calculations.')
     return typed,system,record

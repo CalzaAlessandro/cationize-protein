@@ -44,7 +44,7 @@ The CSV flags pKa values within 0.5 of the chosen pH for review.
 The program updates histidine residue labels and adds or removes the required
 ring hydrogens. Existing heavy-atom coordinates and identifiers are retained.
 Other native side-chain and terminal states remain as supplied during this
-step. The cationization workflow audits supported native protonation changes
+step. The cationization workflow checks supported native protonation changes
 after minimization and after each chemical modification. Introduced ammonium
 groups stay +1.
 
@@ -77,8 +77,8 @@ force-field minimization is needed before interpreting their conformations.
 | Ligands, solvent, ions, caps or nonstandard residues | Prepare a separate protein-only input |
 | Truncated records or non-finite coordinates | Recover a correctly formatted coordinate file |
 
-PDBFixer is used only on native input. Cationized residues are rejected rather
-than replaced by standard amino acids. Missing sequence cannot be inferred
+PDBFixer is used only on native input. Cationized residues stop preparation;
+their chemical identities are preserved. Missing sequence cannot be inferred
 reliably from coordinate numbering alone. Without SEQRES or an external
 sequence, completeness beyond the supplied residues remains undetermined.
 

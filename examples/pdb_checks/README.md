@@ -42,7 +42,7 @@ cationize-protein run \
   --formats amber openmm gromacs
 ```
 
-This performs real serial minimization and PROPKA auditing. The peptide has
+This runs serial minimization and checks protonation with PROPKA. The peptide has
 three candidate carboxyl groups. Rounded checkpoint counts are 0, 1, 2, 2 and
 3 at 0/25/50/75/100%; 50% and 75% therefore share a chemical state in this tiny
 example. Larger proteins generally have finer percentage resolution.

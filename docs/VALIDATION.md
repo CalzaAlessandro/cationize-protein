@@ -121,7 +121,7 @@ the source repository.
 14 HIE and two HIP states. The predicted pKas were 8.12 for His67 and 7.42 for
 His247. His247 is close to the selected pH and is flagged as borderline; its
 binary assignment represents the slightly more populated state from this
-single-structure estimate. The later minimized workflow audit remains separate.
+single-structure estimate. The workflow checks protonation again after minimization.
 The existing minimized campaign structures were not changed.
 
 The 585-residue HSA example includes the five existing minimized PDB/topology/
@@ -202,17 +202,20 @@ The README's 16 command examples parse with the current CLI, and 20 documented
 `run` defaults were checked against argparse. The current HSA figure shows
 five cumulative minimized structures in a static workflow, below a compact
 light/dark vector banner. A shared orthographic camera uses yaw 180° and
-pitch 30°. The Structure-colored NewCartoon has opacity 0.20; modified-residue
-sticks retain opacity 1.00 and atom-name colors. AOChalky is retained, and
+pitch 30°. The Structure-colored NewCartoon has opacity 0.20 in the light
+version and 0.45 in the dark version. Dark-theme colors are brighter;
+modified-residue sticks retain opacity 1.00 and atom-name colors in both
+versions. AOChalky is retained, and
 `.vmdrc` is bypassed.
 
-Five downloadable PNGs keep the genuine 3840 × 2160 render grid. Tachyon uses
+Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. Tachyon uses
 24 antialiasing samples and the recorded lighting/transparency settings.
-The 4800 × 1580 workflow uses native-resolution crops and downsampling only.
+Both 4800 × 1580 workflows use native-resolution crops and downsampling only.
 Its alpha comes from independent geometry-transmittance passes that retain
 the actual representation opacities. White molecular features are preserved.
 The completed workflow was inspected on white and dark backgrounds. The
-source structures and accepted parameters are unchanged. Render settings,
+source structures and accepted parameters are unchanged. Text has no outline,
+and the README selects the image matching the browser color scheme. Render settings,
 alpha checks and file hashes are recorded in
 [HSA_PREVIEW.json](images/HSA_PREVIEW.json).
 

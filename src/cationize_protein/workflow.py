@@ -539,7 +539,7 @@ def _minimize(structure,config,reference_positions,directory=None):
 def _protonate(structure,directory,config,reference,previous=None):
     """Audit one chemical step; rebuild only supported persistent native changes."""
     if config.protonation=='fixed':return structure,dict(mode='fixed',history={})
-    LOG.info('Auditing native protonation at pH %.2f; introduced ammonium groups remain +1',config.pH)
+    LOG.info('Checking native protonation with PROPKA at pH %.2f; introduced ammonium groups remain +1',config.pH)
     from .protonation import audit
     from .native_states import apply_native_states,supported_native_contexts
     directory=Path(directory)

@@ -4,7 +4,10 @@ This folder contains the existing **585-residue HSA series** at five
 cationization levels. The structures were minimized with the APBS-guided
 protocol and renamed using the current residue names. They were produced in the HSA campaign before this CLI release.
 
-![Five minimized HSA structures](../../docs/images/hsa_workflow.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/hsa_workflow_dark.png">
+  <img src="../../docs/images/hsa_workflow.png" width="100%" alt="Five aligned, minimized HSA structures from 0 to 100 percent cationization">
+</picture>
 
 ## Files
 
@@ -87,7 +90,7 @@ modified residues appear as heavy-atom sticks. Native backbone aliases are
 used only in visualization copies so VMD can recognize the modified residues.
 The original example PDB names remain unchanged.
 
-The GIF switches between the five minimized chemical checkpoints. Its frame
-sequence represents increasing cationization, not elapsed MD time. Rendering
-and alignment details are in
+The figure shows five minimized structures at increasing cationization levels.
+Cartoon opacity is 20% in the light version and 45% in the dark version;
+modified residues remain opaque. Rendering and alignment details are in
 [HSA_PREVIEW.json](../../docs/images/HSA_PREVIEW.json).

@@ -19,15 +19,22 @@ to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 
 ## How it works
 
-![Progressive HSA cationization from 0 to 100 percent and the repeated site-selection, modification, minimization and protonation cycle](docs/images/hsa_workflow.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/hsa_workflow_dark.png">
+  <img src="docs/images/hsa_workflow.png" width="100%" alt="Progressive HSA cationization from 0 to 100 percent, with electrostatic site selection, amidation, minimization and a PROPKA protonation check">
+</picture>
 
-*Five aligned, minimized HSA checkpoints. The cartoon is shown at 20% opacity;
-modified residues are opaque sticks. Every checkpoint retains the earlier
-modifications. The cycle below the structures is repeated for each site.*
+*Five aligned, minimized HSA structures. Cartoon colors indicate secondary
+structure; opaque sticks show the modified residues. Cartoon opacity is 20%
+on a light background and 45% on a dark background. Each structure retains
+all earlier modifications. The cycle below is repeated for every site.*
 
-4K structures: [0%](docs/images/hsa_0_4k.png) ·
+4K structures, light: [0%](docs/images/hsa_0_4k.png) ·
 [25%](docs/images/hsa_25_4k.png) · [50%](docs/images/hsa_50_4k.png) ·
 [75%](docs/images/hsa_75_4k.png) · [100%](docs/images/hsa_100_4k.png).
+Dark: [0%](docs/images/hsa_0_4k_dark.png) ·
+[25%](docs/images/hsa_25_4k_dark.png) · [50%](docs/images/hsa_50_4k_dark.png) ·
+[75%](docs/images/hsa_75_4k_dark.png) · [100%](docs/images/hsa_100_4k_dark.png).
 
 ## Install
 
@@ -350,7 +357,7 @@ a Poisson–Boltzmann calculation.
 | <code>--pbsa</code> | Path to an installed PBSA executable; used with `--solver pbsa`. | Private installation, PATH, then a saved executable path |
 | <code>--force-field</code> | Protein parameters: `ff14SB`, `ff19SB` or `ff99SBildn`. Included through OpenMM; Amber executables are not needed to assign/export them. | `ff14SB`* |
 | <code>--formats</code> | Parameter exports: `amber`, `openmm`, `gromacs`; multiple values are accepted. Export does not require the corresponding engine. PDB and OpenMM XML/JSON are always retained. | `amber` |
-| <code>--protonation</code> | `propka` audits native protonation at baseline and after each chemical step; `fixed` retains supplied states. PROPKA is included. Introduced ammonium groups remain +1 in both modes. | `propka` |
+| <code>--protonation</code> | `propka` checks native protonation before cationization and after each chemical step; `fixed` retains supplied states. PROPKA is included. Introduced ammonium groups remain +1 in both modes. | `propka` |
 | <code>--ph</code> | Target pH, from 0 to 14; use the same value in `prepare` and `run`. | `7.4` |
 | <code>--probe-radius</code> | Positive probe Lennard-Jones half-Rmin in Å; separate from the PB electrolyte ion radius. | `1.369` Å |
 | <code>--parameters</code> | Custom validated residue library directory. | Bundled library |
@@ -414,7 +421,7 @@ for cloning, saving changes and granting collaborator access.
 |---|---|---|
 | [OpenMM](https://openmm.org/) | Minimization, molecular systems and hydrogen placement | Included in the Python runtime |
 | [PDBFixer](https://github.com/openmm/pdbfixer) | Default repair of missing atoms in native residues | Included |
-| [PROPKA](https://github.com/jensengroup/propka) | Initial histidines and stepwise protonation audit | Included |
+| [PROPKA](https://github.com/jensengroup/propka) | Initial histidine states and protonation checks after each modification | Included |
 | [ParmEd](https://parmed.github.io/ParmEd/html/index.html) | Topology handling and export | Included |
 | [Amber / AmberTools](https://ambermd.org/) | Optional Amber minimization and PBSA electrostatics | Separate |
 | [GROMACS](https://www.gromacs.org/) | Run exported GROMACS systems | Separate |

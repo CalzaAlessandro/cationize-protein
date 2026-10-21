@@ -83,8 +83,9 @@ prediction of chemical reaction rates.
 
 ## Native protonation and full parameters
 
-PROPKA audits the baseline and each substitution at pH7.4 using generic-amine
-and fixed+1 controls. Native changes require consensus at least one pH unit
+PROPKA checks protonation before cationization and after each substitution at
+pH 7.4, using generic-amine and fixed +1 controls. Native changes require
+consensus at least one pH unit
 from the target and persistence over two chemical steps. Compatible changes
 rebuild side-chain hydrogens, reassign charges/parameters, minimize again and
 repeat the diagnostic. Introduced ammonium and native terminal states are held;
