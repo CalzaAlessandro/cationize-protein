@@ -70,6 +70,10 @@ def fetch(output, *, pdb_id=None, uniprot_id=None):
             raise ValueError('The UniProt response does not contain a valid protein sequence') from None
         accession = record.get('primaryAccession', uniprot_id)
         files['uniprot.json'], sources['uniprot.json'] = raw, url
+        from .uniprot_disulfides import annotation_rows, ANNOTATION_FIELDS
+        disulfides = annotation_rows(record)
+        files['disulfides.csv'] = _csv(disulfides, ANNOTATION_FIELDS)
+        messages.append(f'UniProt disulfides: {len(disulfides)} annotations saved with canonical numbering and evidence.')
         files['sequence.fasta'] = f'>{accession} canonical sequence\n{sequence}\n'.encode()
         regions = []
         for feature in record.get('features', []):

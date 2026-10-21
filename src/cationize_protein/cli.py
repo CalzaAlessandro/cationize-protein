@@ -50,6 +50,7 @@ def parser():
     prepare.add_argument('--output',type=Path,required=True,help='New directory for original.pdb, protein.pdb and preparation.log')
     prepare.add_argument('--ph',type=float,default=7.4,help='Initial histidine PROPKA pH (default: 7.4)')
     prepare.add_argument('--protonation',choices=['propka','fixed'],default='propka',help='Default: PROPKA assigns histidine charge; fixed retains supplied states')
+    prepare.add_argument('--uniprot-record',type=Path,help='Optional local uniprot.json from fetch: map exact intrachain disulfides by sequence, verify SG geometry and write CYX/SSBOND/CONECT')
     doctor=subcommands.add_parser('doctor',help='Report Python dependencies and optional external programs')
     doctor.add_argument('--json',action='store_true',help='Print the dependency report as JSON; write no files')
     execute = subcommands.add_parser('run', help='Create or automatically resume a verified progressive run')
@@ -218,7 +219,8 @@ def main(argv=None):
     if args.command=='prepare':
         from .preparation import prepare_pdb
         try:
-            report=prepare_pdb(args.pdb,args.output,pH=args.ph,protonation=args.protonation)
+            report=prepare_pdb(args.pdb,args.output,pH=args.ph,protonation=args.protonation,
+                               uniprot_record=args.uniprot_record)
         except (ValueError,RuntimeError,OSError,ImportError) as exc:
             print(f'PDB preparation: FAIL\nERROR: {exc}',file=sys.stderr)
             return 1

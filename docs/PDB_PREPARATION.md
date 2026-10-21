@@ -106,7 +106,62 @@ establish pairing in a distorted or newly predicted structure. Sulfur-bound
 HG hydrogens can also prevent automatic recognition and must be consistent
 with the intended chemical state.
 
+## Disulfides from UniProt
+
+```sh
+cationize-protein fetch --uniprot P02768 --output hsa_reference
+cationize-protein prepare input.pdb --uniprot-record hsa_reference/uniprot.json \
+  --output prepared
+```
+
+The reference is an ordinary local UniProt JSON record. `prepare` makes no
+network request. It maps each continuous PDB chain to a unique, exact
+contiguous region of the canonical sequence. PDB residue numbers and insertion
+codes are retained. A mature HSA chain maps to UniProt positions 25–609, so
+the canonical Cys77–Cys86 annotation becomes Cys53–Cys62 in a PDB numbered
+from the mature N terminus. No fixed offset is assumed by the program.
+
+For every mapped pair, both cysteine SG atoms must be present after atom
+repair, and their distance must be between 1.7 and 2.5 Å. The prepared copy
+uses CYX labels and explicit SSBOND/CONECT records. Thiol HG hydrogens on
+these cysteines, including associated connectivity records, are removed;
+the log reports their number. Supplied heavy coordinates are unchanged.
+OpenMM reads the resulting PDB, and each annotated sulfur must have exactly
+its expected SG partner in the bond graph.
+
+| Additional output | Contents |
+|---|---|
+| `uniprot.json` | Unchanged reference record, whose SHA256 is recorded in the log |
+| `uniprot_mapping.csv` | Canonical UniProt position mapped to PDB chain, residue number and insertion code |
+| `disulfides.csv` | Canonical and PDB pairs, SG distance, verification status and annotation evidence |
+| `preparation.log` | Sequence ranges, mapped pairs, removed thiol H and graph verification |
+
+Existing matching SSBOND records are retained. A different declared partner,
+ambiguous sequence match, mutation, unsupported interchain/uncertain annotation,
+or incompatible geometry stops preparation without creating an output
+directory. Automatic assignment accepts unqualified annotations or the label
+`Intrachain`; free-text qualifications such as alternative partners or
+condition-dependent bonds require review. Atom serials must be globally
+unique so CONECT records and hydrogen removal are unambiguous. Separate
+chain blocks are never merged merely because they share a chain identifier.
+A pair entirely outside the supplied construct is recorded as
+`outside_construct`; a pair with only one partner present requires review.
+Multiple identical chains can receive separate intrachain pairs. Heteromers,
+gapped sequence alignments, engineered variants and interchain disulfides
+need a separately reviewed assignment; this option does not infer them or
+move cysteines together to repair a distorted bridge.
+
+With no `--uniprot-record`, the existing preparation behavior is unchanged.
+Database annotations establish the source of an assignment; they do not
+determine the oxidation state under a user's experimental conditions.
+
+Source: [UniProt HSA annotation](https://rest.uniprot.org/uniprotkb/P02768.json),
+[PDB SSBOND format](https://www.wwpdb.org/documentation/file-format-content/format33/sect6.html#SSBOND).
+
 ## Optional complete models
+
+Preserve any experimentally assigned disulfide pairs before modeling. The
+UniProt option above can verify known pairs on the resulting candidate.
 
 MODELLER and ESMFold2 are separately selected with `cationize-protein model`;
 they do not replace the default PDBFixer preparation or run automatically when

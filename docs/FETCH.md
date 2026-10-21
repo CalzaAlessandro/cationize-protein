@@ -49,6 +49,7 @@ directories are never overwritten.
 | `sequence.fasta` | UniProt | Canonical sequence, which may include a signal peptide or propeptide |
 | `mature.fasta` | UniProt, when uniquely annotated | Separately extracted chain with exact annotated boundaries |
 | `sequence_regions.csv` | UniProt | Annotated chains, signal peptides and propeptides |
+| `disulfides.csv` | UniProt | Annotated disulfide pairs in canonical numbering, with location qualifiers and source evidence |
 | `pdb_candidates.csv` | UniProt | Linked experimental PDB entries, methods, resolutions and chain mappings |
 | `FETCH.json` | Every fetch | Requested identifiers, source URLs, SHA256 hashes and retrieval messages |
 | `fetch.log` | Every fetch | Human-readable retrieval messages |
@@ -61,6 +62,12 @@ assembly before preparing a native protein-only PDB.
 Retrieval does not rebuild missing residues or normalize an experimental
 structure. Use `prepare` for missing atoms, or the separately selected
 [optional modeling workflow](MODELING.md) for a full structural candidate.
+
+To apply known intrachain disulfides, pass `uniprot.json` to
+`prepare --uniprot-record downloaded/uniprot.json`. Preparation maps the
+sequence to the PDB and checks sulfur geometry; downloading both records
+alone does not establish that correspondence. See
+[disulfide preparation](PDB_PREPARATION.md#disulfides-from-uniprot).
 
 ## HTTPS certificates
 

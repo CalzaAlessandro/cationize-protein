@@ -1,5 +1,6 @@
 """Fetch preserves downloaded records and does not guess a structural model."""
 import importlib
+import csv
 import json
 from pathlib import Path
 import tempfile
@@ -71,3 +72,17 @@ class FetchTests(unittest.TestCase):
         self.assertIn('fetch',choices)
         args=parser().parse_args(['fetch','--pdb','1N5U','--uniprot','P02768','--output','native'])
         self.assertEqual(args.pdb,'1N5U');self.assertEqual(args.uniprot,'P02768')
+
+    def test_uniprot_disulfide_table_retains_canonical_positions_and_evidence(self):
+        module=self.module()
+        raw=json.dumps({'primaryAccession':'TEST01','sequence':{'value':'MCCK'},'features':[
+            {'type':'Disulfide bond','location':{'start':{'value':2,'modifier':'EXACT'},
+                                               'end':{'value':3,'modifier':'EXACT'}},
+             'evidences':[{'evidenceCode':'ECO:0000269','source':'PubMed','id':'123'}]}]}).encode()
+        with tempfile.TemporaryDirectory() as tmp,patch.object(module,'download',return_value=raw):
+            dest=Path(tmp)/'fetch';result=module.fetch(dest,uniprot_id='TEST01')
+            self.assertTrue((dest/'disulfides.csv').is_file(), 'Export the UniProt disulfide annotations')
+            with (dest/'disulfides.csv').open() as handle:rows=list(csv.DictReader(handle))
+            self.assertEqual([(r['uniprot_start'],r['uniprot_end']) for r in rows],[('2','3')])
+            self.assertIn('PubMed',rows[0]['evidence'])
+            self.assertIn('disulfides.csv',result['files_sha256'])

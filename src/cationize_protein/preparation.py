@@ -8,6 +8,9 @@ from __future__ import annotations
 
 import importlib.metadata
 import io
+import csv
+import hashlib
+import json
 import math
 from pathlib import Path
 import tempfile
@@ -15,7 +18,7 @@ import tempfile
 from .preflight import _NATIVE_PARENT, _SIDE, check_pdb
 
 
-def prepare_pdb(source, output, *, pH=7.4, protonation='propka'):
+def prepare_pdb(source, output, *, pH=7.4, protonation='propka', uniprot_record=None):
     """Add missing atoms in existing native residues to a new output directory.
 
     PDBFixer builds candidate coordinates; only added heavy atoms are copied
@@ -31,6 +34,10 @@ def prepare_pdb(source, output, *, pH=7.4, protonation='propka'):
     if output.exists() or output.is_symlink():
         raise ValueError('Preparation requires a new directory; existing output cannot be overwritten')
     raw = source.read_bytes()
+    uniprot_raw = Path(uniprot_record).read_bytes() if uniprot_record is not None else None
+    reference = json.loads(uniprot_raw) if uniprot_raw is not None else None
+    if uniprot_raw is not None and not isinstance(reference, dict):
+        raise ValueError('Provide a UniProt JSON object downloaded with fetch')
     before = check_pdb(source)
     for residue in before['residues']:
         if _NATIVE_PARENT.get(residue['residue_name'], residue['residue_name']) not in _SIDE:
@@ -106,11 +113,16 @@ def prepare_pdb(source, output, *, pH=7.4, protonation='propka'):
     prepared = ''.join(line + ('' if line.endswith(('\n', '\r')) or i not in additions else '\n') +
                        ''.join(additions.get(i, [])) for i, line in enumerate(lines, 1))
     # Verify before creating persistent output; invalid inputs leave no directory.
-    histidines=[];audit_files={};histidine_csv=None
+    histidines=[];audit_files={};histidine_csv=None;disulfides=None
     with tempfile.TemporaryDirectory(prefix='cationize-prepare-') as tmp:
         candidate = Path(tmp)/'protein.pdb'
         candidate.write_bytes(prepared.encode('utf-8'))
         after = check_pdb(candidate)
+        if after['ok'] and reference is not None:
+            from .uniprot_disulfides import assign_disulfides
+            prepared,disulfides=assign_disulfides(candidate,reference)
+            candidate.write_text(prepared)
+            after=check_pdb(candidate)
         if after['ok'] and protonation=='propka':
             from .initial_histidines import assign_histidines
             prepared,histidines=assign_histidines(candidate,Path(tmp)/'histidine_assignment',pH=pH)
@@ -143,6 +155,9 @@ def prepare_pdb(source, output, *, pH=7.4, protonation='propka'):
            'Added atoms require the subsequent force-field minimization before structural interpretation.']
     log += [f'ADDED: {a["chain_id"] or "(blank)"}:{a["residue_id"]} '
             f'{a["residue_name"]} {a["atom_name"]}' for a in added_atoms]
+    if disulfides is not None:
+        log += [f'UniProt record SHA256: {hashlib.sha256(uniprot_raw).hexdigest()}']
+        log += disulfides['messages']
     log += [f'HISTIDINE: {r["chain_id"] or "(blank)"}:{r["residue_id"]} '
             f'pKa={r["pKa"]:.2f}, pH={pH:g}, {r["source_state"]} -> {r["state"]}; '
             f'{r["neutral_tautomer_method"]}'+(' (pKa within 0.5 of pH)' if r['borderline'] else '')
@@ -153,9 +168,16 @@ def prepare_pdb(source, output, *, pH=7.4, protonation='propka'):
     (output/'original.pdb').write_bytes(raw)
     (output/'protein.pdb').write_bytes(prepared.encode('utf-8'))
     (output/'preparation.log').write_text('\n'.join(log) + '\n')
+    if disulfides is not None:
+        from .uniprot_disulfides import BOND_FIELDS, MAPPING_FIELDS
+        (output/'uniprot.json').write_bytes(uniprot_raw)
+        for filename,rows,fields in [('disulfides.csv',disulfides['rows'],BOND_FIELDS),
+                                     ('uniprot_mapping.csv',disulfides['mapping'],MAPPING_FIELDS)]:
+            with (output/filename).open('w',newline='') as handle:
+                writer=csv.DictWriter(handle,fieldnames=fields);writer.writeheader();writer.writerows(rows)
     if histidine_csv is not None:
         (output/'histidines.csv').write_bytes(histidine_csv)
         (output/'protonation').mkdir()
         for name,content in audit_files.items():(output/'protonation'/name).write_bytes(content)
     return dict(pdb=str(output/'protein.pdb'), added_atoms=added_atoms, messages=log,
-                source_sha256=before['source_sha256'], histidines=histidines, ok=True)
+                source_sha256=before['source_sha256'], histidines=histidines, disulfides=disulfides, ok=True)
