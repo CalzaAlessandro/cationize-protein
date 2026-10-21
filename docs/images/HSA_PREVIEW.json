@@ -361,7 +361,7 @@
     ],
     "hsa_workflow.png": [
       4800,
-      1580
+      1740
     ],
     "hsa_0_4k_dark.png": [
       3840,
@@ -385,40 +385,40 @@
     ],
     "hsa_workflow_dark.png": [
       4800,
-      1580
+      1740
     ]
   },
   "output_sha256": {
     "banner.svg": "d4e2e0e83d73c49b1b0f261388a09be0671b5eb25f4aaa0b5f6a65e8199f6400",
     "banner_dark.svg": "9507c44f1093e3596ec539a4dedbced1887838c1ec5af2f1357b96758ec0998d",
-    "hsa_0_4k.png": "0536a7a71eb131110462a58ea5eaa7179be9566fb437a56b51669af131dce321",
-    "hsa_25_4k.png": "66c892f69e70b8f3ca0488495456634e671ae67a6ff34d227a5a25d631134ab1",
-    "hsa_50_4k.png": "344f2c64c0c890e501847d6dbad516ba6aef56c377d18ca43753fb87dd257cae",
-    "hsa_75_4k.png": "bab701b74d223d6094083da3bf22ef7f42a988eea0afaaa53a9ee0017818b749",
-    "hsa_100_4k.png": "6c28fe68ae2e2d222a63017c2cddc0227c645067a8b29a1346ba4821f9279c8a",
-    "hsa_workflow.png": "ab55e290bd1ded184d192d35c73c372849d32303e07f0211420e649f404b5aba",
-    "hsa_0_4k_dark.png": "2fd2528a15cf4c3c6b46c54c12bbb2215f103a760b9f736d0d6ada0cf3f875bc",
-    "hsa_25_4k_dark.png": "16244e979b37f9c9c38a9efecd1d50f85c414db5dcb10c667989b654d517428c",
-    "hsa_50_4k_dark.png": "709738ca48ff0c1449d3ae3e8227c07ee6ce412275aab1964c1e12a0983bab9b",
-    "hsa_75_4k_dark.png": "6e9201cee51e3efaa67faf6d851df0b612536d7fece81382c735777c7b8f14f8",
-    "hsa_100_4k_dark.png": "a1bcd740095e690fd0eb2595f5bef513f0c5bb5a4754a776193ac0a99757587f",
-    "hsa_workflow_dark.png": "0caeb2601daf645a2f545dbec8535d22c6f4c825f9da1b1b74d90e24c91f1672"
+    "hsa_0_4k.png": "99fbc24d7a4e2d4c1a6aca0d38746d29318f8e0aa7aaa6e7d94dd3e00792f398",
+    "hsa_25_4k.png": "00f579f0f70f933344c8109df382ed294d36536ab46afff43f403da246a755c0",
+    "hsa_50_4k.png": "457fa00cc29359ca149e0dd3e354899d7bc50931267284a88bcedb0dcdafd3d6",
+    "hsa_75_4k.png": "8937612bc584df706f0a0539acb35ca91760df5df2dc960b5838d7006d66bbde",
+    "hsa_100_4k.png": "9520d75f16e1ac37f36d667aed341413159c16c5fc22700d8fffc5c32fcf6ed8",
+    "hsa_workflow.png": "4f76293c7fb81f9f83c21833263be1c673b71df644cb42aa2eeaa94ad4efb915",
+    "hsa_0_4k_dark.png": "5e0defe19943118f9ce78c38ca5cd2ea64b3a4a982c2da5c3c299300baae8256",
+    "hsa_25_4k_dark.png": "a07249003cc02b3a7406fa0087fd276bb12c28f466cde744cd7444a87bfd2d1b",
+    "hsa_50_4k_dark.png": "7c03fe1aaafbf5c2440f4af593feb6c6865b6425925c002fcf85fc4786fb7a9e",
+    "hsa_75_4k_dark.png": "45302b782395d141b88413a629323b71673e6073fb8b6287e296d529d38e6def",
+    "hsa_100_4k_dark.png": "a5b98b98750adc0bc77fc264ac9859684fad49fa2da36f4c389d3a16fcfd7a61",
+    "hsa_workflow_dark.png": "33e7e74903e94952344a43b659142bdb888df47a45f3b31432d400bb5b409f07"
   },
   "output_bytes": {
     "banner.svg": 42102,
     "banner_dark.svg": 42102,
-    "hsa_0_4k.png": 823552,
-    "hsa_25_4k.png": 949919,
-    "hsa_50_4k.png": 1068227,
-    "hsa_75_4k.png": 1172443,
-    "hsa_100_4k.png": 1287649,
-    "hsa_workflow.png": 2173349,
-    "hsa_0_4k_dark.png": 1232678,
-    "hsa_25_4k_dark.png": 1343353,
-    "hsa_50_4k_dark.png": 1449494,
-    "hsa_75_4k_dark.png": 1558328,
-    "hsa_100_4k_dark.png": 1661920,
-    "hsa_workflow_dark.png": 2845618
+    "hsa_0_4k.png": 838922,
+    "hsa_25_4k.png": 966388,
+    "hsa_50_4k.png": 1084647,
+    "hsa_75_4k.png": 1188649,
+    "hsa_100_4k.png": 1303827,
+    "hsa_workflow.png": 2231794,
+    "hsa_0_4k_dark.png": 1247640,
+    "hsa_25_4k_dark.png": 1360483,
+    "hsa_50_4k_dark.png": 1466724,
+    "hsa_75_4k_dark.png": 1574376,
+    "hsa_100_4k_dark.png": 1678628,
+    "hsa_workflow_dark.png": 2904727
   },
   "scene_sha256": {
     "light": {
@@ -491,6 +491,18 @@
     ".development/compose_hsa_workflow.py"
   ],
   "qa_previews": ".development/hsa_workflow/qa",
-  "visual_qa": "Inspected completed light and dark workflows: central cleft visible, transparent cartoon and opaque modified residues, brighter dark palette, plain text without white outlines. All annotations fit within the canvas.",
-  "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability"
+  "visual_qa": "Inspected enlarged text on light and dark backgrounds. All annotations fit; workflow labels use 110 px text and modified-site counts/charges use 80 px. Molecular coordinates, camera, colors and opacities are unchanged.",
+  "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability",
+  "workflow_text_sizes_px": {
+    "percent": 110,
+    "modified_residue_count": 80,
+    "charge": 80,
+    "cycle_title": 76,
+    "step_labels": 110
+  },
+  "full_resolution_text_sizes_px": {
+    "title": 110,
+    "subtitle": 70,
+    "representation_note": 65
+  }
 }

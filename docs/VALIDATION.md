@@ -210,7 +210,7 @@ versions. AOChalky is retained, and
 
 Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. Tachyon uses
 24 antialiasing samples and the recorded lighting/transparency settings.
-Both 4800 × 1580 workflows use native-resolution crops and downsampling only.
+Both 4800 × 1740 workflows use native-resolution crops and downsampling only.
 Its alpha comes from independent geometry-transmittance passes that retain
 the actual representation opacities. White molecular features are preserved.
 The completed workflow was inspected on white and dark backgrounds. The
