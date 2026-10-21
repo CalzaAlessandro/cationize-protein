@@ -10,9 +10,10 @@
   ],
   "source_example": "examples/HSA/<percent>/minimized.pdb",
   "software": "VMD 1.9.4a57 / STRIDE / Tachyon / Pillow",
-  "structure_representation": "NewCartoon colored by secondary structure; AOChalky",
+  "structure_representation": "NewCartoon colored by secondary structure using standard VMD colors; AOChalky",
   "modified_sites": "Licorice, heavy atoms colored by atom name",
   "personal_vmdrc_ignored": true,
+  "secondary_structure_palette": "Standard VMD Structure colors; no custom overrides",
   "alignment": "Common 585 CA least-squares fit to native minimum",
   "view": "Domain I left, Domain III right, Domain II below; basis from native domain CA centers",
   "visualization_only_aliases": "Native backbone atom aliases and parent residue names for cartoon/STRIDE recognition; originals preserved",
@@ -20,7 +21,7 @@
   "crop": [
     31,
     90,
-    1023,
+    1024,
     1052
   ],
   "gif_frame_duration_ms": 1800,
@@ -40,11 +41,11 @@
     1100
   ],
   "raw_render_sha256": {
-    "0": "a6bf9cf66dd636fe2cae0a7d3aab755cf536523e0cdfac001a7e0be763b07cc4",
-    "25": "bcdce44780b7bf86edac7366f594e7f2510f45be4d0e5ffa53c97b9518b0c0cc",
-    "50": "fe199db1cfbf4d0c432c39b8ee15936bdcb5e1ab1436226be2558a96c5d13bf1",
-    "75": "092a1f4769b1b436cf3a753bbdc9b9956b1ca4e7b85bf88411053fd1514c88d0",
-    "100": "d53e6dce0462cda4d81b281b83cec526552cd31b25744a7889c8bbe7c6689352"
+    "0": "c941a72defdba47ff33bfac96f2002d2d78ecf5f26b2c2a6330022533cf1e37d",
+    "25": "83c9997931ace0f8baae732aeb9e4ba1fac5efe32e2e6c405a071db162aa9e8c",
+    "50": "56c8a5b17ff61acbf40e21f458487cf6499d226e2fd321e6c6673a1961b150c2",
+    "75": "327b0f7cbce6a43e13fc94b277c01be72ea5bf7d3120538c70672a900f4ae266",
+    "100": "c26a9669318263cb8b591f724a2851f08985cb10393e00a53d81e111c1afd253"
   },
   "source_sha256": {
     "0": "7b0ead70a323891665f6159658d68e4447f96c0186ce3a8b826fda7f1b7510db",

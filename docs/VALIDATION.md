@@ -13,7 +13,7 @@ calculations still require an installed solver; no alternative model is
 silently selected. Conda and venv recipes install the same project, but creation
 of a new Conda environment was not executed in this validation.
 
-The installed package passed **246 tests, with no skips**, including initial
+The installed package passed **265 tests, with no skips**, including initial
 PDB repair, PROPKA histidine assignment, residue-library export, retrieval and
 optional modeling interfaces. The earlier Linux run passed 202 tests before PDBFixer
 preparation was added; the new preparation tests have currently run on macOS.
@@ -160,3 +160,28 @@ accuracy for full HSA or arbitrary missing loops. The full ESMFold2 checkpoint,
 MSA conditioning and mixed-precision inference remain untested. Automatic
 local grafting of predicted loops is not implemented; the optional command
 generates an explicitly identified full native candidate.
+
+## UniProt disulfide assignment
+
+The installed `prepare --uniprot-record` command was tested on the native
+585-residue HSA model with all CYX labels changed to CYS and the supplied
+SSBOND/CONECT records removed in a private test copy. Exact sequence matching
+mapped the chain to canonical UniProt P02768 positions 25–609. All 17 annotated
+pairs were recovered, including canonical Cys77–Cys86 mapped to mature
+Cys53–Cys62. The output contained 34 CYX residues, retained every supplied heavy
+coordinate and preserved the original input and reference bytes. Default
+PROPKA assignment covered 16 histidines; subsequent ff14SB assignment passed.
+
+Eighteen focused tests cover sequence ambiguity/mismatch, partial constructs,
+insertion codes, homomers, matching and conflicting supplied SSBOND records,
+sulfur geometry, thiol H removal, uncertain/qualified annotations, malformed
+records, duplicate atom serials and noncontiguous chain blocks. Final graph
+verification checks sulfur partners and actual topology-chain identity.
+Independent review findings were reproduced and fixed before the installed
+full suite was run.
+
+The README's 21 command examples parse with the current CLI, and 20 documented
+`run` defaults were checked against argparse. HSA PNG/GIF previews were rendered
+again with NewCartoon, standard VMD Structure colors and AOChalky; the personal
+`.vmdrc` was bypassed, STRIDE completed without errors, and source structure
+hashes were unchanged.

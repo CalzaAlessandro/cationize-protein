@@ -18,11 +18,11 @@
     "amber_bundle.py": "8faa653cfa5067d8f979faec3bf3d3d9261e3582197f0f674e4b6f42b372cc8d",
     "builder.py": "61c3b7f391d9395450b389095ad8e5a28a8eee7594d09e95f7f4be9bf68b7d9a",
     "catalog.py": "a179a241924b08eef1db65a6f3a17ba32f3c17f343e6dbf48d7027152bc00548",
-    "cli.py": "29e83d57a58a9d9b31c650eda3e36fa8fc423dc82096f72b25fff15f289b4bed",
+    "cli.py": "3c12f89f0fd24edb918267249ad64039c2519348241ead7c8d47b5641e49a83a",
     "dependencies.py": "428227915c7c391e349641b0af4e8d52e7b53490fa1096c39b0741545bf97036",
     "electrostatics.py": "d9824166454447fcaf531b4969dc73b30643a99649c539a17072423385b57692",
     "exports.py": "8ea018cc3343859b2d5211e3ac251fd49b6874c3dd39fb63e9dfd4f3e3ed3f25",
-    "fetch.py": "4ba4d253583ea75ac04e50e9c8d7e8a4d46b577b24ca80a85f7b3d41d578bae4",
+    "fetch.py": "5a5f9cdaca4dc1f38985c38296d37abe8bc5825b3b8ef2ba7d803ce201f0068a",
     "forcefields.py": "116c560e2886476c458ad6fcf8e5edb40a9a2fcafc881561bdf4736174a61ea1",
     "gromacs_export.py": "63319c91915a9124b6b7474d5c745a95fc76b36a023581125d2a42acb238a738",
     "initial_histidines.py": "fd3774bea9c2dd57026eee699d1988926f40707ac936d2236736eec6fde3b5fc",
@@ -43,7 +43,7 @@
     "parameter_validation.py": "202781caa100a30a9bbade4c07243b24201ba8e6ac0b83a435a486c98de4d951",
     "potential_solvers.py": "fea030acd179993bd59567e00e52fb39d3248783c532d16364288689a16a6f19",
     "preflight.py": "f66dc6a50ce555a236ea098ce980d87e029b4c8fcd317c208296340b3a865cb6",
-    "preparation.py": "ebc155eaddeab3b620bca8ba8a38769f09a1fa5b795fd7e01277fe803b824408",
+    "preparation.py": "ce6bb0cdd8b4d46ceb983d29d54b105dbcb22715efacee68c3a41c8aea3b445c",
     "protonation.py": "7f37dac8f62d5e1d2e5bb622afb6b8ca7d91d97077f13d14fb6c33724affefed",
     "qm.py": "fc21c8dd145a524ee34dfd47bbd83f07db6cde90b1f85e2a7e3d640416da087b",
     "rename.py": "4332f368c3449c4d2a73b45c47922da56133fe096cd9fa7b53399dd4cf47f6d7",
@@ -52,6 +52,7 @@
     "resp.py": "bbbe904307f301b8fe9fc74ffc00735ca837afc4339544d7d8e382caf427f6f3",
     "sterics.py": "d0455dc20e0bb2912cfa180146ce5177cca08a90a0828782e51969e4654223f8",
     "topology.py": "b87ed4b199dcbe909472aa63b649fdcef419fcf9e5a01b14fd752801a18cc5a4",
+    "uniprot_disulfides.py": "6a90ca7fbb1785322368ef7dbeae42d60942ebbf77555c3463258596bf61eef7",
     "workflow.py": "fb787e24edd5bf4de3bac016d627c5a95290ec911b38f527ab1ef475e6f4c4ac"
   },
   "accepted_parameter_bytes_unchanged": true,
@@ -126,7 +127,7 @@
   },
   "tests": {
     "macos": {
-      "count": 246,
+      "count": 265,
       "skips": 0,
       "passed": true
     },
@@ -362,9 +363,10 @@
     "GIF_caption_removed": "Minimized chemical checkpoint",
     "image_style": "NewCartoon / Structure / AOChalky; modified residues Licorice / Name / AOChalky",
     "preview_hashes": {
-      "hsa_comparison.png": "658bdaf88d62b609e535b5cd548578e5d3df5228c5c24dd78c64ad681442cb56",
-      "hsa_progressive.gif": "ad5339504cfbb1f0b03e710612e4c4825b8c1d79d3b7f329d9364ff723521b76"
-    }
+      "hsa_comparison.png": "66485dd389cb10f77b86e4f28db2278703a49499c3b671303d97e248b522af70",
+      "hsa_progressive.gif": "a3db4ba94fee13779eed6922834a11f6790264744e7df263b8b2bbcf67fe9ef8"
+    },
+    "secondary_structure_palette": "Standard VMD Structure colors"
   },
   "venv_activation_short_command_tested": true,
   "MODELLER_required": false,
@@ -430,5 +432,44 @@
     "pdb_candidates": 189,
     "TLS_verification": true,
     "macos_CA_bundle": "/etc/ssl/cert.pem"
+  },
+  "uniprot_disulfides": {
+    "installed_CLI_passed": true,
+    "source_record": "UniProt P02768",
+    "record_sha256": "788d86479e30b2c19168d3c71bbba066c3c81ede382d277218995a108feaeb91",
+    "mapping": "Unique exact contiguous mapping for each continuous PDB chain",
+    "canonical_positions": [
+      25,
+      609
+    ],
+    "PDB_residues": 585,
+    "verified_pairs": 17,
+    "first_canonical_pair": [
+      77,
+      86
+    ],
+    "first_PDB_pair": [
+      53,
+      62
+    ],
+    "native_heavy_coordinates_preserved": true,
+    "original_records_preserved": true,
+    "default_PROPKA_histidines": 16,
+    "ff14SB_assignment_passed": true,
+    "independent_code_review_completed": true,
+    "annotation_policy": "Exact unqualified intrachain pairs; alternative/conditional/interchain annotations require review",
+    "atom_serials_must_be_unique": true,
+    "actual_topology_chain_identity_checked": true,
+    "focused_tests": 18,
+    "network_required_during_prepare": false
+  },
+  "README_options": {
+    "columns": [
+      "Flag",
+      "Purpose, accepted values and requirements",
+      "Default"
+    ],
+    "command_examples_parsed": 21,
+    "run_defaults_checked": 20
   }
 }

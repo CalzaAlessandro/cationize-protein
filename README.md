@@ -8,7 +8,8 @@ parameters for Amber, OpenMM or GROMACS.
 </p>
 
 *Progressive HSA cationization: 0%, 25%, 50%, 75% and 100%.
-Modified residues are shown as sticks.*
+HSA is shown in VMD NewCartoon, colored by secondary structure with AOChalky
+material. Modified residues are shown in Licorice, colored by atom name.*
 
 The program converts carboxyl groups into `–C(=O)–NH–CH₂–CH₂–NH₃⁺`.
 It selects one site at a time from the electrostatic potential, rotates the
@@ -224,6 +225,23 @@ For inspection without changes, use `cationize-protein check input.pdb`.
 See [PDB preparation](docs/PDB_PREPARATION.md) and the
 [broken-input examples](examples/pdb_checks/README.md).
 
+To check known disulfide pairs against UniProt, use the downloaded JSON record:
+
+```sh
+cationize-protein fetch --uniprot P02768 --output hsa_reference
+cationize-protein prepare input.pdb --uniprot-record hsa_reference/uniprot.json \
+  --output prepared_with_disulfides
+```
+
+The sequence is mapped to the PDB before applying the annotations; residue
+numbers are not assumed to match. For mature HSA, UniProt Cys77–Cys86 maps to
+Cys53–Cys62. Verified pairs are written as CYX, SSBOND and CONECT records;
+thiol HG hydrogens on those pairs are removed. Heavy coordinates are retained.
+The output includes `disulfides.csv`, `uniprot_mapping.csv` and the reference
+JSON. Ambiguous sequences, conflicting partners and incompatible sulfur
+geometry stop preparation. Qualified or alternative-partner annotations require
+review; atom serials must be unique. See [supported disulfide assignments](docs/PDB_PREPARATION.md#disulfides-from-uniprot).
+
 ### Optional structure modeling
 
 PDBFixer remains the default. If whole residues are missing, an optional
@@ -354,19 +372,73 @@ a Poisson–Boltzmann calculation.
 
 ## Options
 
-| Option | Purpose |
-|---|---|
-| `--percentages 25 28 35` | Save a custom cumulative series |
-| `--ph 7.4` | Target pH; use the same value in `prepare` and `run` |
-| `--engine openmm` | Minimize with OpenMM; `amber`, `sander` and `pmemd` select installed serial Amber |
-| `--solver apbs` | Choose `apbs`, `pbsa` or the `coulomb` approximation |
-| `--force-field ff14SB` | Choose ff14SB, ff19SB or ff99SBildn |
-| `--formats amber openmm gromacs` | Choose output formats; Amber is the default |
-| `--probe-radius 1.369` | Positive probe LJ half-Rmin in Å |
-| `--protonation fixed` | Retain supplied protonation states |
+### Cationization: `run`
 
-Use `cationize-protein --help`, `prepare --help`, `model --help` or `run --help` for the full
-command descriptions. Advanced settings, installation troubleshooting and
+| Flag | Purpose, accepted values and requirements | Default |
+|---|---|---|
+| `--pdb FILE` | Native protein PDB; use this or `--topology`, not both. Prepare histidines and incomplete atoms first. | Required unless `--topology` is supplied |
+| `--topology FILE` | Protein-only Amber `parm7`/`prmtop`; requires `--coordinates`. Reading it does not require Amber executables. | Not used |
+| `--coordinates FILE` | Amber `rst7`/`inpcrd` coordinates for `--topology`. | Required with `--topology` |
+| `--output DIR` | New output directory, or the same verified run to resume. Existing results are checked before reuse. | Required |
+| `--percentages VALUES…` | Saved cumulative levels, for example `25 28 35`; values must be unique and between 0 and 100. Baseline 0% is always saved. | `25 50 75 100` |
+| `--engine NAME` | Minimizer: `openmm` is included; `amber` finds an installed serial `sander` or `pmemd`. `sander` and `pmemd` select that executable directly. | `openmm`* |
+| `--engine-executable FILE` | Path to serial `sander` or `pmemd` for the Amber engine. Requires an existing Amber/AmberTools installation. | Search PATH and AMBERHOME |
+| `--solver NAME` | Potential: `apbs` requires APBS; `pbsa` requires AmberTools/PBSA. `coulomb` is an included screened-Coulomb approximation. | `apbs`* |
+| `--apbs FILE` | Path to an installed APBS executable; used with `--solver apbs`. | Private installation, PATH, then a saved executable path |
+| `--pbsa FILE` | Path to an installed PBSA executable; used with `--solver pbsa`. | Private installation, PATH, then a saved executable path |
+| `--force-field NAME` | Protein parameters: `ff14SB`, `ff19SB` or `ff99SBildn`. Included through OpenMM; Amber executables are not needed to assign/export them. | `ff14SB`* |
+| `--formats VALUES…` | Parameter exports: `amber`, `openmm`, `gromacs`; multiple values are accepted. Export does not require the corresponding engine. PDB and OpenMM XML/JSON are always retained. | `amber` |
+| `--protonation NAME` | `propka` audits native protonation at baseline and after each chemical step; `fixed` retains supplied states. PROPKA is included. Introduced ammonium groups remain +1 in both modes. | `propka` |
+| `--ph VALUE` | Target pH, from 0 to 14; use the same value in `prepare` and `run`. | `7.4` |
+| `--probe-radius VALUE` | Positive probe Lennard-Jones half-Rmin in Å; separate from the PB electrolyte ion radius. | `1.369` Å |
+| `--parameters DIR` | Custom validated residue library directory. | Bundled library |
+
+*For a new interactive run, omitted engine, solver and force field are selected
+at a prompt. The table shows fresh-install defaults; saved preferences can
+override them. A resumed run uses its recorded settings. External programs
+are not installed when a flag is selected: follow [Connect optional software](#connect-optional-software).
+
+### Preparation, retrieval and modeling
+
+| Flag | Purpose, accepted values and requirements | Default |
+|---|---|---|
+| `prepare --uniprot-record FILE` | Local `uniprot.json` from `fetch`; maps and verifies known intrachain disulfides. No network access is needed during preparation. | Not used; supplied disulfides and geometric detection remain available |
+| `prepare --protonation NAME` | `propka` assigns histidine charge states; `fixed` retains supplied states. PDBFixer, OpenMM and PROPKA are included. | `propka` |
+| `prepare --ph VALUE` | pH for initial histidine assignment, from 0 to 14. | `7.4` |
+| `fetch --pdb ID` | Download deposited PDB coordinates; internet access is required. Can be combined with `--uniprot`. | No PDB downloaded unless requested |
+| `fetch --uniprot ID` | Download a UniProt sequence, annotations and disulfide table; internet access is required. Can be used alone. | No UniProt record downloaded unless requested |
+| `model --method NAME` | `modeller` requires an installed MODELLER and its licence; `esmfold` requires a separate ESMFold2/PyTorch environment and model weights. | Required |
+| `model --fasta FILE` | Complete native sequence of one chain. | Required |
+| `model --pdb FILE` | Incomplete native template for MODELLER. | Required for `modeller`; unused for `esmfold` |
+| `model --python FILE` | Python interpreter containing the chosen optional modeler. | Explicit environment variable, then discovery in the active Python and PATH |
+| `model --esmfold-model NAME` | ESMFold2 checkpoint: `fast` or `full`; both currently use the single-sequence interface. | `fast` |
+| `model --model-revision VALUE` | Hugging Face revision; a commit hash pins the weights. | `main` |
+| `model --device NAME` | `auto`, `cpu` or `cuda`; CUDA requires compatible PyTorch and an available NVIDIA GPU. | `auto`: CUDA if available, otherwise CPU |
+| `--output DIR` | Required for `prepare`, `fetch` and `model`; each needs a new directory. | Required |
+
+### Advanced `run` settings
+
+| Flag | Purpose, accepted values and requirements | Default |
+|---|---|---|
+| `--platform NAME` | OpenMM platform: `CPU`, `Reference`, `CUDA` or `OpenCL`. GPU platforms require the matching hardware and OpenMM platform. | `CPU` |
+| `--temperature VALUE` | Temperature of the electrostatic calculation, in K. | `298` K |
+| `--solute-dielectric VALUE` | Protein interior dielectric for PB. | `2` |
+| `--solvent-dielectric VALUE` | Solvent dielectric for PB. | `78.5` |
+| `--salt VALUE` | Monovalent salt concentration for potential ranking, in M. Minimization uses unscreened GBn2. | `0.15` M |
+| `--pb-ion-radius VALUE` | Electrolyte ion radius for PB, in Å. | `2` Å |
+| `--pb-spacing VALUE` | Maximum fine-grid spacing for PB, in Å. | `0.75` Å |
+| `--sampling-spacing VALUE` | Spacing of the local probe lattice, in Å. | `1` Å |
+| `--pbsa-nonlinear` | Use nonlinear PBSA; requires `--solver pbsa` and installed PBSA. APBS already uses nonlinear PB. | Off; PBSA uses linear ICCG |
+| `--keep-maps` | Keep potential DX maps produced at each APBS step. | Off |
+| `--beam-width VALUE` | Number of steric-search candidates retained. | `8` |
+| `--max-iterations VALUE` | Maximum iterations per minimization. | `20000` |
+| `--restraint VALUE` | Native backbone/disulfide positional restraint strength, in kcal/(mol Å²). | `10` kcal/(mol Å²) |
+| `--tolerance VALUE` | Minimization RMS force target, in kcal/(mol Å). | `0.1` kcal/(mol Å) |
+| `--verbose` | Print additional diagnostic messages. | Off |
+
+Use `cationize-protein --help` to list commands, or
+`cationize-protein COMMAND --help` for a specific command, for example
+`cationize-protein prepare --help`. Installation troubleshooting and
 scientific qualification are documented in
 [installation](docs/INSTALL.md), [methods](docs/METHODS.md),
 [force fields](docs/FORCE_FIELDS.md) and [validation](docs/VALIDATION.md).
