@@ -147,6 +147,27 @@ class ModelingTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, 'validation'):
                 module._validate_candidate(path, 'CC', [[0,1]])
 
+    def test_written_disulfide_records_pass_the_same_preparation_checker(self):
+        module=self.module()
+        from test_preflight import atom
+        from cationize_protein.preflight import check_pdb
+        coordinates=[{'N':(0.,0.,0.),'CA':(1.45,0.,0.),'C':(2.6,.8,0.),
+                      'O':(3.7,.4,0.),'CB':(1.45,-1.5,0.),'SG':(1.45,-3.3,0.)},
+                     {'N':(3.8,1.4,0.),'CA':(5.2,1.4,0.),'C':(6.2,2.4,0.),
+                      'O':(7.4,2.2,0.),'CB':(4.3,-1.,0.),'SG':(3.5,-3.3,0.)}]
+        with tempfile.TemporaryDirectory() as tmp:
+            path=Path(tmp)/'candidate.pdb';rows=[]
+            for number,atoms in enumerate(coordinates,1):
+                for name,xyz in atoms.items():
+                    rows.append(atom(len(rows)+1,name,'CYS',number,'A',xyz,
+                                     element='S' if name=='SG' else name[0]))
+            path.write_text('\n'.join(rows)+'\nEND\n')
+            result,_=module._validate_candidate(path,'CC',[[0,1]])
+            final=Path(tmp)/'protein.pdb';final.write_text(result)
+            checked=check_pdb(final)
+            self.assertTrue(checked['ok'],checked['messages'])
+            self.assertEqual(checked['ssbond_declarations'][0]['residue_ordinals'],[1,2])
+
     def test_template_alignment_retains_explicit_sequence_mapping(self):
         module=self.module()
         self.assertEqual(module.template_mapping('DL','DGL'), [0,2])
@@ -216,6 +237,33 @@ class ModelerDiscoveryTests(unittest.TestCase):
             self.assertFalse(found['esmfold']['available'])
             self.assertIn('probe',found['esmfold']['reason'])
 
+    def test_optional_modeler_can_be_found_in_a_different_python_on_path(self):
+        module=self.module()
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); binary=root/'python3.15'
+            binary.write_text('#!/bin/sh\nprintf \'%s\\n\' \'{"available":true,"version":"separate-runtime"}\'\n')
+            binary.chmod(0o755)
+            found=module.inspect_modelers(python='/missing/default-python',environ={'PATH':str(root)})
+            self.assertTrue(found['modeller']['available'])
+            self.assertEqual(found['modeller']['python'],str(binary))
+
+    def test_discovered_python_stays_usable_after_the_worker_changes_directory(self):
+        module=self.module()
+        import os
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); binary=root/'runtime/bin/python3.15';binary.parent.mkdir(parents=True)
+            binary.write_text('#!/bin/sh\nprintf \'%s\\n\' \'{"available":true,"version":"relative-runtime"}\'\n')
+            binary.chmod(0o755); staging=root/'worker';staging.mkdir()
+            previous=Path.cwd()
+            try:
+                os.chdir(root)
+                found=module.inspect_modelers(python='/missing/default-python',environ={'PATH':'runtime/bin'})
+                result=subprocess.run([found['modeller']['python'],'-c','ignored'],cwd=staging,
+                                      capture_output=True,text=True)
+                self.assertEqual(result.returncode,0)
+                self.assertTrue(json.loads(result.stdout)['available'])
+            finally:os.chdir(previous)
+
 
 class WorkerContractTests(unittest.TestCase):
     """API fixtures exercise adapters; they are not physical folding tests."""
@@ -281,3 +329,30 @@ class WorkerContractTests(unittest.TestCase):
                 self.assertIn('best.pdb',Path('candidates.csv').read_text())
             finally:
                 os.chdir(previous)
+
+    def test_esmfold_cuda_keeps_consistent_float32_for_normalization(self):
+        worker=self.worker()
+        class Model:
+            config=SimpleNamespace(_commit_hash='revision')
+            @classmethod
+            def from_pretrained(cls,name,**kwargs):
+                if kwargs['dtype'] != 'float32':
+                    raise AssertionError('The tested ESMFold2 profile requires float32 normalization weights')
+                return cls()
+            def eval(self):return self
+            def infer_protein_as_pdb(self,sequence):return REFERENCE.read_text()
+        torch=SimpleNamespace(__version__='fixture',cuda=SimpleNamespace(
+            is_available=lambda:True,is_bf16_supported=lambda:True),float32='float32',bfloat16='bfloat16',
+            manual_seed=lambda seed:None,inference_mode=contextlib.nullcontext)
+        transformers=SimpleNamespace(__version__='fixture',EsmFold2Model=Model)
+        with tempfile.TemporaryDirectory() as tmp,patch.dict(sys.modules,{'torch':torch,'transformers':transformers}):
+            previous=Path.cwd()
+            try:
+                import os
+                os.chdir(tmp)
+                with contextlib.redirect_stdout(io.StringIO()):
+                    metadata=worker.esmfold_model(dict(device='cuda',seed=0,checkpoint='biohub/ESMFold2-Fast',
+                                                      revision='pinned',sequence='DDL'))
+                self.assertEqual(metadata['dtype'],'float32')
+                self.assertTrue(Path('candidate.pdb').is_file())
+            finally:os.chdir(previous)

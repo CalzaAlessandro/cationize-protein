@@ -50,7 +50,10 @@ def esmfold_model(request):
         device = 'cuda' if torch.cuda.is_available() else 'cpu'
     if device == 'cuda' and not torch.cuda.is_available():
         raise RuntimeError('CUDA was requested but is unavailable in the ESMFold2 Python')
-    dtype = torch.bfloat16 if device=='cuda' and torch.cuda.is_bf16_supported() else torch.float32
+    # Transformers 5.20.1 ESMFold2 normalizes activations in float32. Loading
+    # every weight in bfloat16 produces a LayerNorm dtype error on real CUDA.
+    # Keep the model consistently float32 until a mixed-precision profile is qualified.
+    dtype = torch.float32
     torch.manual_seed(request['seed'])
     print(f'ESMFold2: checkpoint={request["checkpoint"]}; device={device}; dtype={dtype}', flush=True)
     print('Loading local cached weights or downloading the public checkpoint on this explicit modeling request.', flush=True)

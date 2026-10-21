@@ -85,6 +85,27 @@ sequence, completeness beyond the supplied residues remains undetermined.
 Declared disulfides and CYX labels are retained. The checker verifies sulfur
 identities and geometry; the workflow then verifies the prepared bond graph.
 
+OpenMM, used by PDBFixer and the parameter-assignment step, can identify S–S
+bonds from cysteine sulfur proximity. During parameter assignment, bonded
+cysteines are represented as CYX and the declared SSBOND/CYX identities are
+checked against actual SG–SG topology bonds. Proximity alone is not an
+experimental assignment of oxidation state; review inferred pairs, especially
+in a newly predicted model. `pdb4amber` can still be used externally for an
+Amber preparation route, but is not required for the PDBFixer/OpenMM route.
+See [OpenMM disulfide detection](https://docs.openmm.org/latest/api-python/generated/openmm.app.topology.Topology.html#openmm.app.topology.Topology.createDisulfideBonds).
+
+A FASTA file identifies cysteine positions but does not specify disulfide
+partners. UniProt annotations or an experimentally assigned structure can
+supply known pairs, provided their residue numbering is mapped to the input
+construct. A CYX label alone also does not identify its partner.
+
+As a geometry check, native HSA was loaded after changing all CYX labels to
+CYS and removing SSBOND/CONECT records from an in-memory copy. OpenMM recovered
+the same 17 SG–SG pairs as the supplied native topology. This check does not
+establish pairing in a distorted or newly predicted structure. Sulfur-bound
+HG hydrogens can also prevent automatic recognition and must be consistent
+with the intended chemical state.
+
 ## Optional complete models
 
 MODELLER and ESMFold2 are separately selected with `cationize-protein model`;

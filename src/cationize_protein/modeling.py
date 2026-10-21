@@ -126,7 +126,7 @@ def _validate_candidate(path, sequence, disulfides):
                 residue = residues[index]
                 line[start:start+3] = 'CYS'; line[start+4] = residue['chain_id'] or ' '
                 line[start+6:start+10] = f'{int(residue["original_id"]):4d}'
-            declarations.append(''.join(line).rstrip())
+            declarations.append(''.join(line))
         raw = '\n'.join(declarations) + '\n' + raw
     return raw, report
 
@@ -181,6 +181,10 @@ def build_model(fasta, output, *, method, template=None, esmfold_model='fast', d
                 raise ValueError('Optional modeling failed; see modeling.log for licence, weights, API or hardware errors')
             raw, checked = _validate_candidate(staging/'candidate.pdb', sequence, disulfides)
             (staging/'protein.pdb').write_text(raw)
+            serialized = check_pdb(staging/'protein.pdb')
+            if not serialized['ok']:
+                raise ValueError('Written model failed PDB validation: ' + ' '.join(
+                    issue['message'] for issue in serialized['issues'] if issue['severity']=='error'))
             rows = [line for line in raw.splitlines() if line.startswith(('ATOM  ','HETATM')) and line[12:16].strip()=='CA']
             if method == 'esmfold':
                 confidence = io.StringIO(newline=''); table = csv.writer(confidence)

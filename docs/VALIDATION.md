@@ -1,4 +1,4 @@
-# Implementation validation — 20 October 2026
+# Implementation validation — 21 October 2026
 
 Tests use short peptides, synthetic systems and the initial 585-residue HSA model. No HSA production was submitted
 or restarted. Original structures and accepted fitted RESP libraries were
@@ -13,7 +13,7 @@ calculations still require an installed solver; no alternative model is
 silently selected. Conda and venv recipes install the same project, but creation
 of a new Conda environment was not executed in this validation.
 
-The installed package passed **242 tests, with no skips**, including initial
+The installed package passed **246 tests, with no skips**, including initial
 PDB repair, PROPKA histidine assignment, residue-library export, retrieval and
 optional modeling interfaces. The earlier Linux run passed 202 tests before PDBFixer
 preparation was added; the new preparation tests have currently run on macOS.
@@ -134,8 +134,29 @@ bad probe output, FASTA validation, template mapping, DOPE candidate selection,
 the ESMFold2 API contract, sequence/geometry rejection and failed-run diagnostics.
 The standalone worker tests use external API fixtures.
 
-Neither a licensed MODELLER calculation nor a real ESMFold2 prediction was
-executed. These modelers and their numerical results remain unqualified in
-this package. No MODELLER key, folding environment or model weights were
-installed. Automatic local grafting of predicted loops is not implemented;
-the optional command generates an explicitly identified full native candidate.
+MODELLER 10.8 from the existing Homebrew installation completed two real
+native-fragment tests: one deleted residue was rebuilt in HSA fragments of
+30 and 16 residues, with five scored models per run. The latter preserved a
+disulfide and passed PDBFixer preparation and subsequent ff14SB assignment
+(16 residues, 217 atoms, one SG–SG topology bond). The actual test identified
+and corrected a truncated SSBOND serialization error. A regression test now
+checks that written disulfide records pass the preparation checker.
+
+Optional modeling software can be discovered in another Python on PATH,
+including Homebrew's Python 3.15, without changing the main Python 3.12
+runtime. Explicit interpreter overrides remain authoritative.
+
+The isolated cluster environment contains PyTorch 2.11.0+cu128, Transformers
+5.20.1 and Accelerate 1.15.0, with the public ESMFold2-Fast checkpoint revision
+`45fe8656f5b3ef493c17fcf9abe9a2968902e712`. A first CUDA run failed because
+bfloat16 model weights conflicted with float32 LayerNorm activations. The
+adapter now uses float32, covered by a regression test. The second real CLI
+run completed on an NVIDIA L40S (Slurm 1268030, 17 seconds) and produced a
+30-residue native HSA-fragment candidate that passed the sequence/geometry
+checks and included per-residue confidence.
+
+These short-fragment runs establish interface operation, not prediction
+accuracy for full HSA or arbitrary missing loops. The full ESMFold2 checkpoint,
+MSA conditioning and mixed-precision inference remain untested. Automatic
+local grafting of predicted loops is not implemented; the optional command
+generates an explicitly identified full native candidate.

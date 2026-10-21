@@ -50,29 +50,45 @@ def inspect_modelers(python=None, environ=None):
     """Find code without importing modelers, testing licences or loading weights.
 
     Explicit external interpreters never fall back to the package environment.
+    Otherwise, other Python interpreters on PATH are checked after the active one.
     The executable path is not resolved through symlinks, to retain venv identity.
     """
     env = os.environ if environ is None else environ
     report = {}
     for method, spec in SOFTWARE.items():
         configured = env.get(spec['environment'])
-        executable = configured or str(python or sys.executable)
-        found = shutil.which(os.path.expanduser(executable), path=env.get('PATH', ''))
-        entry = dict(name=spec['name'], url=spec['url'], python=found or executable,
-                     available=False, version=None, optional=True,
-                     license_validated=None, weights_available=None)
-        if not found:
-            entry['reason'] = f'Optional {spec["name"]} Python interpreter was not found: {executable}'
-        else:
-            try:
-                result = subprocess.run([found, '-I', '-B', '-c', _PROBE, method],
-                    capture_output=True, text=True, timeout=20, env=dict(env))
-                data = json.loads(result.stdout)
-                if result.returncode or not isinstance(data, dict) or not isinstance(data.get('available'), bool):
-                    raise ValueError
-                entry.update(available=data['available'], version=data.get('version'),
-                             reason=data.get('reason', 'Python code detected; calculation not tested'))
-            except (OSError, ValueError, subprocess.TimeoutExpired):
-                entry['reason'] = f'Optional {spec["name"]} interpreter could not complete its read-only probe'
-        report[method] = entry
+        candidates = [configured or str(python or sys.executable)]
+        if not configured:
+            candidates += [found for name in ('python3.15','python3.14','python3.13','python3.12',
+                                              'python3.11','python3.10','python3','python')
+                           if (found := shutil.which(name, path=env.get('PATH', '')))]
+        checked = set()
+        for executable in candidates:
+            found = shutil.which(os.path.expanduser(executable), path=env.get('PATH', ''))
+            if found:
+                found = os.path.abspath(found)
+            if (found or executable) in checked:
+                continue
+            checked.add(found or executable)
+            entry = dict(name=spec['name'], url=spec['url'], python=found or executable,
+                         available=False, version=None, optional=True,
+                         license_validated=None, weights_available=None)
+            if not found:
+                entry['reason'] = f'Optional {spec["name"]} Python interpreter was not found: {executable}'
+            else:
+                try:
+                    result = subprocess.run([found, '-I', '-B', '-c', _PROBE, method],
+                        capture_output=True, text=True, timeout=20, env=dict(env))
+                    data = json.loads(result.stdout)
+                    if result.returncode or not isinstance(data, dict) or not isinstance(data.get('available'), bool):
+                        raise ValueError
+                    entry.update(available=data['available'], version=data.get('version'),
+                                 reason=data.get('reason', 'Python code detected; calculation not tested'))
+                except (OSError, ValueError, subprocess.TimeoutExpired):
+                    entry['reason'] = f'Optional {spec["name"]} interpreter could not complete its read-only probe'
+            if method not in report or entry['available']:
+                report[method] = entry
+            if entry['available']:
+                break
+        report[method]['interpreters_checked'] = len(checked)
     return report

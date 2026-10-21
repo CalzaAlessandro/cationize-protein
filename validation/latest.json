@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "date": "2026-10-20",
+  "date": "2026-10-21",
   "package": "cationize-protein",
   "version": "0.1.0",
   "runtime_versions": {
@@ -28,13 +28,13 @@
     "initial_histidines.py": "fd3774bea9c2dd57026eee699d1988926f40707ac936d2236736eec6fde3b5fc",
     "library_report.py": "fe671396ac537d0284211faf2251a5d409a4ea3b7281aa046d6c491e972d6944",
     "minimization.py": "211970758a707f90618d474567e8f1e8c1b8bee462ccbe588c90fd9195dcaf6b",
-    "modeling.py": "e46fe4c9f76629216517dba141bc81efa93fecc4ed42a5c576425c994fd161e1",
-    "modeling_worker.py": "153e82090b970611c358b435e6638fc38da545caf93154f1c2b019c66680d318",
+    "modeling.py": "fbc134b16101f42d26b05f1d44b5aaa76e65a69c4035bc387f0665bc7a968305",
+    "modeling_worker.py": "d9386a4afbaadede03a2778e48705c67b249e09f56a3ed485bfec6a3c219fac8",
     "models.py": "aa7c3c105cdc74033ffd01caa26b8548d34a710cab41738997fdf72659678e32",
     "native_states.py": "98e69fed0e3605e9d3b926c2a974a5969b380bbe50c4dc758d52a5651d321589",
     "off.py": "b0c17afb0ce4ea0860b9a40aa17525a5284a1545d21d8b0b4c939f180922ab5f",
     "openmm_backend.py": "baf6d289e91990f4cf25112e311f2939cc33837d885b13eb9fe30f10d25063fb",
-    "optional_modelers.py": "aaebd712e4b1beaced90d3634ba63009f662023b867818c2d0dcaddaaeef3d5f",
+    "optional_modelers.py": "0f9423b24013bccda9c1a140f6242b013bd0727adc1b88cdf74c40b321112327",
     "parameter_assignment.py": "0a7356d1f564ef7a64f1cc689c389362bd4d57bbe5097fd4ce54d324c07c72b1",
     "parameter_batch.py": "1ba2549c3cd3821ee5a92a323fa94beac886f97ee6df4d5006e8eb8399aff199",
     "parameter_jobs.py": "5b0d6687a4a51406d6e62708e51a89a0d644bbe2c180621dc33e60c24735cbec",
@@ -126,7 +126,7 @@
   },
   "tests": {
     "macos": {
-      "count": 242,
+      "count": 246,
       "skips": 0,
       "passed": true
     },
@@ -146,7 +146,8 @@
     "native_heavy_atoms_only": true,
     "repaired_CA_parameter_assignment_passed": true,
     "original_records_preserved": true,
-    "malformed_input_refused_without_output": true
+    "malformed_input_refused_without_output": true,
+    "HSA_without_CYX_or_SSBOND_recovered_native_pairs": 17
   },
   "cumulative_demos": {
     "original_peptide": true,
@@ -357,7 +358,13 @@
     },
     "modified_charge_agreement_max_e": 2.7e-09,
     "GIF_frames": 5,
-    "figure_kind": "Aligned minimized chemical checkpoints"
+    "figure_kind": "Aligned minimized chemical checkpoints",
+    "GIF_caption_removed": "Minimized chemical checkpoint",
+    "image_style": "NewCartoon / Structure / AOChalky; modified residues Licorice / Name / AOChalky",
+    "preview_hashes": {
+      "hsa_comparison.png": "658bdaf88d62b609e535b5cd548578e5d3df5228c5c24dd78c64ad681442cb56",
+      "hsa_progressive.gif": "ad5339504cfbb1f0b03e710612e4c4825b8c1d79d3b7f329d9364ff723521b76"
+    }
   },
   "venv_activation_short_command_tested": true,
   "MODELLER_required": false,
@@ -368,15 +375,47 @@
       "esmfold"
     ],
     "esmfold_default_checkpoint": "biohub/ESMFold2-Fast",
-    "numerical_MODELLER_tested": false,
-    "numerical_ESMFold2_tested": false,
-    "weights_downloaded": false,
-    "modelers_installed": false,
+    "numerical_MODELLER_tested": true,
+    "numerical_ESMFold2_tested": true,
+    "weights_downloaded": true,
+    "modelers_installed": true,
     "missing_dependency_CLI_verified": true,
     "external_API_fixture_tests": true,
     "independent_source_review_completed": true,
     "invalid_SG_diagnostic_regression_passed": true,
-    "automatic_loop_grafting": false
+    "automatic_loop_grafting": false,
+    "MODELLER": {
+      "version": "10.8",
+      "local_installation": "Homebrew, separate Python 3.15",
+      "real_fragment_residues": [
+        30,
+        16
+      ],
+      "models_per_run": 5,
+      "missing_residue_reconstruction": true,
+      "disulfide_preserved": true,
+      "PDBFixer_followed_by_ff14SB_assignment": true,
+      "scope": "Short native HSA fragments"
+    },
+    "ESMFold2": {
+      "checkpoint": "biohub/ESMFold2-Fast",
+      "revision": "45fe8656f5b3ef493c17fcf9abe9a2968902e712",
+      "torch": "2.11.0+cu128",
+      "transformers": "5.20.1",
+      "accelerate": "1.15.0",
+      "gpu": "NVIDIA L40S",
+      "dtype": "float32",
+      "slurm_job": "1268030",
+      "elapsed_s": 17,
+      "residues": 30,
+      "full_CLI_passed": true,
+      "scope": "Functional test; no full-HSA predictive accuracy qualification"
+    },
+    "software_discovery_on_PATH": true,
+    "SSBOND_serialization_regression_passed": true,
+    "float32_CUDA_profile_regression_passed": true,
+    "relative_PATH_interpreter_regression_passed": true,
+    "latest_code_review": "Relative interpreter path issue corrected; regression test passed"
   },
   "fetch": {
     "real_RCSB_PDB": "1N5U",

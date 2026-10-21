@@ -32,7 +32,9 @@ cationize-protein doctor
 ```
 
 These are paths to Python interpreters, not installation directories. If the
-variable is unset, detection uses the active cationize-protein Python. An
+variable is unset, detection checks the active cationize-protein Python, then
+other Python interpreters found on `PATH`. This supports separate Homebrew
+Python installations without changing the main environment. An
 explicit invalid path produces a missing-interpreter message; it never falls
 back to another environment. For a single modeling command, `--python` can
 select the interpreter without setting an environment variable.
@@ -93,8 +95,10 @@ to reuse a particular published checkpoint revision.
 
 `--device auto` selects CUDA if available, otherwise CPU. GPU execution is
 recommended for practical use; CPU time and memory must be assessed for the
-actual protein. CUDA uses bfloat16 when supported; otherwise the adapter uses
-float32. A requested but unavailable CUDA device is an error.
+actual protein. The adapter uses float32. A real CUDA test of Transformers
+5.20.1 found a LayerNorm dtype mismatch when all weights were loaded as
+bfloat16; mixed precision is therefore not enabled in this profile. A requested
+but unavailable CUDA device is an error.
 
 Public weights are downloaded or loaded from the Hugging Face cache only
 after an explicit `model --method esmfold` request. Neither the installer,
@@ -132,7 +136,20 @@ Modeling is performed before cationization, never after each chemical step.
 
 Discovery, missing-dependency errors, input validation, process adapters,
 candidate selection and output checks are covered by automated interface tests.
-External API fixtures are used for adapter tests. Neither an actual licensed
-MODELLER model nor an ESMFold2 prediction has been run for this integration.
-No folding weights were downloaded. Real numerical qualification remains
-pending until those installations are available.
+External API fixtures are used for adapter regression tests. Actual MODELLER
+10.8 runs reconstructed one removed residue in native HSA fragments of 30 and
+16 residues. Each run produced five scored models. The 16-residue example
+retained its disulfide and passed subsequent PDBFixer preparation and ff14SB
+parameter assignment.
+
+An isolated Linux Python 3.12 environment installed PyTorch 2.11.0+cu128,
+Transformers 5.20.1 and Accelerate 1.15.0, and downloaded the public
+ESMFold2-Fast checkpoint at revision
+`45fe8656f5b3ef493c17fcf9abe9a2968902e712`. A real CUDA run on an NVIDIA L40S
+completed the full CLI workflow for a 30-residue HSA fragment in float32;
+the Slurm allocation lasted 17 seconds. The output passed sequence, heavy-atom,
+coordinate and peptide-geometry checks and included per-residue confidence.
+
+These are functional tests on short fragments. Full-length HSA prediction,
+long-gap accuracy, alternative checkpoint comparisons and mixed-precision
+execution have not been qualified.
