@@ -6,16 +6,21 @@
 Build progressively cationized proteins and export their structures and
 parameters for Amber, OpenMM or GROMACS.
 
-The program converts carboxyl groups into `–C(=O)–NH–CH₂–CH₂–NH₃⁺`.
+The script converts carboxyl groups into `–C(=O)–NH–CH₂–CH₂–NH₃⁺`.
 It ranks accessible sites by electrostatic potential, rotates each new group
 to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 
-[Install](#install) · [How it works](#how-it-works) ·
-[Optional software](#connect-optional-software) ·
-[Get a structure or sequence](#get-a-structure-or-sequence) ·
-[Prepare a protein](#prepare-a-protein) · [Run cationization](#run-cationization) ·
-[Find your files](#find-your-files) · [Add a ligand](#add-a-ligand) ·
-[HSA example](#hsa-example) · [Options](#options) · [Software](#software)
+- [Install](#install)
+- [How it works](#how-it-works)
+- [Optional software](#connect-optional-software)
+- [Get a structure or sequence](#get-a-structure-or-sequence)
+- [Prepare a protein](#prepare-a-protein)
+- [Run cationization](#run-cationization)
+- [Find your files](#find-your-files)
+- [Add a ligand](#add-a-ligand)
+- [HSA example](#hsa-example)
+- [Options](#options)
+- [Software](#software)
 
 ## How it works
 
@@ -25,9 +30,7 @@ to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 </picture>
 
 *Five aligned, minimized HSA structures. Cartoon colors indicate secondary
-structure; opaque sticks show the modified residues. Cartoon opacity is 20%
-on a light background and 45% on a dark background. Each structure retains
-all earlier modifications. The cycle below is repeated for every site.*
+structure; sticks show the modified residues.*
 
 4K structures, light: [0%](docs/images/hsa_0_4k.png) ·
 [25%](docs/images/hsa_25_4k.png) · [50%](docs/images/hsa_50_4k.png) ·
@@ -240,7 +243,7 @@ Percentages refer to carboxyl groups and are rounded to whole groups. The 0%
 baseline is always saved. Introduced ammonium groups remain +1 throughout the
 protocol.
 
-For a new run in an interactive terminal, the program asks for any omitted
+For a new run in an interactive terminal, the script asks for any omitted
 engine, solver and force field. Press Enter to accept the displayed choice.
 Saved installation preferences can change these displayed defaults. A
 noninteractive run uses explicit options, then saved preferences, then the
@@ -263,7 +266,7 @@ cationize-protein run --pdb prepared/protein.pdb --output custom_series \
 This saves 0%, 10%, 25%, 60% and 100%. Each level retains all modifications
 made earlier. Available protein force fields are ff14SB, ff19SB and ff99SBildn.
 
-Run the same command again to resume an interrupted calculation. The program
+Run the same command again to resume an interrupted calculation. The script
 checks the saved inputs and parameters before continuing. Use a new output
 directory when changing the protocol. Execution is serial; Slurm is optional.
 The calculation ends after minimization, before equilibration or MD production.
