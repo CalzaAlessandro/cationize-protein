@@ -64,24 +64,16 @@ GROMACS executables. Gaussian and Amber parameter-development tools are only
 needed to develop new fitted templates. They are not required to use the
 accepted library.
 
-Install external programs separately, then run `cationize-protein doctor`
-again. Detection is repeated, so reinstalling this package is unnecessary.
-MODELLER and ESMFold2 are not installed by the standard installer or Conda
-environment file. Their licence/model weights are not checked by `doctor`.
-See [optional modeling](MODELING.md) for official installation links, separate
-Python environments and commands. MODELLER and ESMFold2-Fast have passed
-short-fragment functional tests; full-protein reconstruction accuracy requires
-separate assessment.
+Follow the [optional software installation tutorial](OPTIONAL_SOFTWARE.md)
+for APBS, AmberTools/Amber, GROMACS, MODELLER and ESMFold2. It provides Conda
+and non-Conda choices, separate modeling environments, hardware choices for
+PyTorch and checks for each installation.
 
-For platforms supported by conda-forge, APBS and GROMACS can be installed with:
-
-```sh
-conda install -c conda-forge apbs gromacs
-```
-
-Without Conda, follow the official [APBS installation guide](https://apbs.readthedocs.io/en/stable/getting/)
-and [GROMACS installation guide](https://manual.gromacs.org/current/install-guide/index.html).
-Amber must be obtained through its [official distribution](https://ambermd.org/).
+After installation, run `cationize-protein doctor` again. Detection is repeated,
+so reinstalling this package is unnecessary. `doctor` checks installed code;
+it does not validate a MODELLER licence, download ESMFold2 weights or prove GPU
+execution. See [optional modeling](MODELING.md) for modeling commands, outputs
+and the limits of the short-fragment functional validation.
 
 A requested solver or engine must be available before that calculation starts.
 The program never substitutes a different electrostatic model automatically.

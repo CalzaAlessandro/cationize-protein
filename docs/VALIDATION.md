@@ -198,16 +198,30 @@ verification checks sulfur partners and actual topology-chain identity.
 Independent review findings were reproduced and fixed before the installed
 full suite was run.
 
-The README's 21 command examples parse with the current CLI, and 20 documented
+The README's 16 command examples parse with the current CLI, and 20 documented
 `run` defaults were checked against argparse. HSA PNG/GIF previews were rendered
 again with NewCartoon, standard VMD Structure colors and AOChalky; the personal
 `.vmdrc` was bypassed, STRIDE completed without errors, and source structure
 hashes were unchanged.
 
-The current previews use a shared frontal orthographic view, with Domain III
-on the left, Domain I on the right and Domain II below. Transparent backgrounds
-come from an independent geometry-coverage render. PNG and animated PNG retain
-full alpha; GIF uses a transparent palette entry. Final images were inspected
-on white and dark backgrounds. White molecular features were retained, and
-all five GIF frames passed coverage-mask checks. Render settings and checksums
-are recorded in [HSA_PREVIEW.json](images/HSA_PREVIEW.json).
+The current previews use a shared frontal orthographic view, with a slight
+rotation that exposes the heart-shaped cleft. Cartoon opacity is 0.50;
+modified-residue sticks remain opaque. Six individual PNGs retain the actual
+3840 × 2160 render grid, including an opaque 100% reference. Tachyon used
+24 antialiasing samples and the requested lighting/transparency settings.
+The 7680 × 2160 comparison uses native-resolution crops and downsampling.
+
+Transparent backgrounds come from an independent geometry-transmittance
+render retaining the actual material opacities. PNG and animated PNG retain
+full alpha; GIF provides a smaller palette-alpha fallback. All five decoded
+APNG frames exactly match their composed RGBA frames, and GIF masks match the
+recorded geometry threshold. Final images were inspected on white and dark
+backgrounds, including white molecular features and annotations. Render
+settings, alpha checks and file hashes are recorded in
+[HSA_PREVIEW.json](images/HSA_PREVIEW.json).
+
+The [optional software tutorial](OPTIONAL_SOFTWARE.md) documents installation
+and discovery for APBS, AmberTools/Amber, GROMACS, MODELLER and ESMFold2.
+Shell blocks passed Bash and Zsh syntax checks; Python snippets and CLI
+options were checked separately. Installation sources were consulted, but
+these programs were not reinstalled for this documentation update.

@@ -386,20 +386,90 @@
     "GIF_caption_removed": "Minimized chemical checkpoint",
     "image_style": "NewCartoon / Structure / AOChalky; modified residues Licorice / Name / AOChalky",
     "preview_hashes": {
-      "hsa_comparison.png": "b1261d04ccd160a3c8e4199007f04f9936299deca14f10f380fd7a79950dfdc1",
-      "hsa_progressive.gif": "cc1ef9b92ce18e752fe3abf429c7334185490ab819acd8d0dac40915633701b7",
-      "hsa_progressive.apng": "e5d38c881477338e635b446b7bf9ea8e6c38506447ea2f2f8833824afe4e41fc"
+      "hsa_comparison.png": "b6551278abf5198e6e0eeddbcbefd7d42a07c4537175605ddc28c6540a80e8e2",
+      "hsa_progressive.gif": "5e015752c443bda3f0bd52820a3387037c90cf0fc871315f8de1452c23b56919",
+      "hsa_progressive.apng": "e7a3f08101fe67d9627d97676797420efb10c57a691d3c7b642c44af684c2d4f",
+      "hsa_0_4k.png": "0699ba7ab112eb117fda3e9df0d383c9b51193fc11e654de0e637da924a7eb97",
+      "hsa_25_4k.png": "d904712e992be1113af58ae52e12338ee0b08cab447d6c640618dc33c6dd1a46",
+      "hsa_50_4k.png": "44544b8463744ff18daec30e4aad2bdf8c6c5c918046d4d453f940846f1cfab2",
+      "hsa_75_4k.png": "2b1dfa3b92f63a554addeec1ce5fd31c2266e71a29f5c1d80faf9938ec258c0f",
+      "hsa_100_4k.png": "9fda2e58c62c198e21875480e8c5ea1ef5d8ea2029636aac7856ff9fd8a9f313",
+      "hsa_100_opaque_4k.png": "d33017547285df053df419c4db237e42fdcf63c3e8c46d8f4c269c85943d7e17"
     },
     "secondary_structure_palette": "Standard VMD Structure colors",
-    "preview_frontal_view": "Domain III left, Domain I right, Domain II below; open heart-shaped face, arm cleft visible",
+    "preview_frontal_view": "Slightly rotated open heart-shaped front face with central cleft; same rigid view for all checkpoints",
     "preview_transparency": {
       "PNG": "full alpha",
       "APNG": "full alpha",
-      "GIF": "palette alpha",
+      "GIF": "palette alpha fallback",
       "coverage_pass_verified": true,
       "white_molecular_pixels_preserved": true,
-      "light_dark_visual_QA": true
-    }
+      "light_dark_visual_QA": true,
+      "cartoon_opacity": 0.5,
+      "modified_residue_opacity": 1.0
+    },
+    "native_render_dimensions_px": [
+      3840,
+      2160
+    ],
+    "preview_dimensions_px": {
+      "hsa_comparison.png": [
+        7680,
+        2160
+      ],
+      "hsa_progressive.gif": [
+        800,
+        850
+      ],
+      "hsa_progressive.apng": [
+        1600,
+        1700
+      ],
+      "hsa_0_4k.png": [
+        3840,
+        2160
+      ],
+      "hsa_25_4k.png": [
+        3840,
+        2160
+      ],
+      "hsa_50_4k.png": [
+        3840,
+        2160
+      ],
+      "hsa_75_4k.png": [
+        3840,
+        2160
+      ],
+      "hsa_100_4k.png": [
+        3840,
+        2160
+      ],
+      "hsa_100_opaque_4k.png": [
+        3840,
+        2160
+      ]
+    },
+    "render_arguments": [
+      "-trans_vmd",
+      "-rescale_lights",
+      "0.3",
+      "-add_skylight",
+      "1.0",
+      "-trans_max_surfaces",
+      "2",
+      "-aasamples",
+      "24",
+      "-res",
+      "3840",
+      "2160",
+      "-skylight_samples",
+      "4",
+      "-numthreads",
+      "12",
+      "-format",
+      "PPM48"
+    ]
   },
   "venv_activation_short_command_tested": true,
   "MODELLER_required": false,
@@ -502,7 +572,7 @@
       "Purpose, accepted values and requirements",
       "Default"
     ],
-    "command_examples_parsed": 21,
+    "command_examples_parsed": 16,
     "run_defaults_checked": 20,
     "single_token_ASCII_flag_labels": 44
   },
@@ -584,5 +654,23 @@
     "independent_review_completed": true,
     "resume_fingerprints_unchanged": true,
     "whole_package_review": false
+  },
+  "optional_software_guide": {
+    "file": "docs/OPTIONAL_SOFTWARE.md",
+    "official_sources_checked": true,
+    "software_installed_during_documentation_update": false,
+    "shell_syntax_checked": [
+      "bash",
+      "zsh"
+    ],
+    "pinned_ESMFold_profile_is_earlier_short_fragment_validation": true,
+    "shell_blocks_checked": 45,
+    "CLI_examples_by_document": {
+      "README.md": 16,
+      "docs/OPTIONAL_SOFTWARE.md": 6,
+      "docs/INSTALL.md": 4,
+      "docs/MODELING.md": 6
+    },
+    "python_snippets_checked": 2
   }
 }

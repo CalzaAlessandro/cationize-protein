@@ -6,21 +6,13 @@ modeler never prevents installation or ordinary PDBFixer preparation.
 
 ## Install the optional software separately
 
-Use the official instructions for the platform and hardware available:
-
-- [MODELLER download and installation](https://salilab.org/modeller/download_installation.html)
-  and [individual licence registration](https://salilab.org/modeller/registration.html).
-  The unrelated PyPI package named `modeller` is not a replacement for the
-  official structural modeling software. This package does not distribute or
-  request a MODELLER key.
-- [ESMFold2](https://huggingface.co/biohub/ESMFold2),
-  [ESMFold2-Fast](https://huggingface.co/biohub/ESMFold2-Fast),
-  [Biohub software](https://github.com/Biohub/esm) and
-  [Transformers ESMFold2 instructions](https://huggingface.co/docs/transformers/main/model_doc/esmfold2).
-  The adapter needs PyTorch, Accelerate and a Transformers release containing
-  `EsmFold2Model`. Follow the upstream instructions for a compatible Python and
-  CPU/CUDA build. If using the development version, retain its commit for
-  reproducibility.
+Follow the [optional software installation tutorial](OPTIONAL_SOFTWARE.md#modeller)
+for MODELLER, or its [ESMFold2 recipe](OPTIONAL_SOFTWARE.md#esmfold2) for a
+separate Python 3.12 environment with CPU/CUDA choices. Both Conda and
+non-Conda routes are provided. MODELLER requires an individual licence from
+the official distribution; the unrelated PyPI package named `modeller` does
+not provide the structural modeling software. This package does not
+distribute or request a MODELLER key.
 
 Separate environments are supported, with or without Conda. Point the program
 to the Python that can import the modeler:
@@ -48,8 +40,8 @@ actually starts.
 ## Choose the complete sequence
 
 Provide one FASTA record containing the 20 canonical amino acids. Use the
-sequence of the intended mature protein or construct, rather than adding a
-signal peptide unintentionally. The first version of this interface accepts
+sequence of the intended mature protein or construct. Include a signal peptide
+only when it belongs to the intended construct. This interface accepts
 one native chain; complexes, noncanonical chemistry and modified residues
 must be prepared separately.
 
@@ -63,8 +55,8 @@ cationize-protein model --method modeller --pdb incomplete.pdb \
 The supplied PDB provides the structural template. Its observed native
 sequence must have one unambiguous mapping onto the complete FASTA, allowing
 missing residues but no substitutions. Repeated sequences that permit
-multiple gap placements are rejected, rather than assigning an arbitrary
-residue map. Use a separately reviewed alignment/model in that case.
+multiple gap placements require a separately reviewed alignment or model.
+The adapter stops when the residue mapping is ambiguous.
 
 The adapter normalizes a copy of the template, writes its alignment, builds
 five comparative models and selects the lowest finite DOPE score among

@@ -4,12 +4,19 @@ Build progressively cationized proteins and export their structures and
 parameters for Amber, OpenMM or GROMACS.
 
 <p align="center">
-  <img src="docs/images/hsa_progressive.gif" width="560" alt="Five aligned minimized HSA structures, with progressively more modified residues shown as sticks">
+  <img src="docs/images/hsa_progressive.apng" width="800" alt="Five aligned minimized HSA structures, with a semitransparent cartoon and progressively more modified residues shown as opaque sticks">
 </p>
 
 *Progressive HSA cationization: 0%, 25%, 50%, 75% and 100%.
-HSA is shown in VMD NewCartoon, colored by secondary structure with AOChalky
-material. Modified residues are shown in Licorice, colored by atom name.*
+HSA is shown in semitransparent VMD NewCartoon, colored by secondary structure
+with AOChalky material. Modified residues are shown in opaque Licorice,
+colored by atom name.*
+
+4K PNGs: [0%](docs/images/hsa_0_4k.png) ·
+[25%](docs/images/hsa_25_4k.png) · [50%](docs/images/hsa_50_4k.png) ·
+[75%](docs/images/hsa_75_4k.png) · [100%](docs/images/hsa_100_4k.png).
+[Opaque 100% comparison](docs/images/hsa_100_opaque_4k.png) ·
+[GIF preview](docs/images/hsa_progressive.gif).
 
 The program converts carboxyl groups into `–C(=O)–NH–CH₂–CH₂–NH₃⁺`.
 It selects one site at a time from the electrostatic potential, rotates the
@@ -70,111 +77,31 @@ not to write its input files. See [installation details](docs/INSTALL.md).
 
 ## Connect optional software
 
-Install only the tools you want to use. PDBFixer, OpenMM, PROPKA and ParmEd
-are already included. After adding any external tool, run:
+PDBFixer, OpenMM, PROPKA and ParmEd are included. Install other tools only
+when you need them. The [optional software tutorial](docs/OPTIONAL_SOFTWARE.md)
+provides installation commands, configuration and checks for each program,
+with Conda and platform-specific alternatives.
+
+| Program | Use | Selection in cationize-protein |
+|---|---|---|
+| APBS | Poisson–Boltzmann potential | `--solver apbs`; optional executable path with `--apbs` |
+| AmberTools / Amber | Serial minimization or PBSA potential | `--engine amber` or `--solver pbsa` |
+| GROMACS | Run exported molecular systems | Run GROMACS separately; exports need no GROMACS installation |
+| MODELLER | Reconstruct a native protein from template and sequence | `model --method modeller`; requires a MODELLER licence |
+| ESMFold2 | Predict a native protein from sequence | `model --method esmfold`; default checkpoint is ESMFold2-Fast |
+
+Executable discovery checks `PATH`, with `AMBERHOME/bin` also checked for Amber
+programs. Separate modeling environments can be selected with
+`CATIONIZE_MODELLER_PYTHON` or `CATIONIZE_ESMFOLD_PYTHON`. Each variable points
+to that environment's Python executable. After connecting a tool, run:
 
 ```sh
 cationize-protein doctor
 ```
 
-Replace `/path/to/...` in the examples below with your installation path.
-The `export` commands apply to the current terminal. Repeat them in a new
-terminal, or add the relevant lines to your shell configuration. On a cluster,
-loading the site's software module may already configure these paths.
-
-### APBS: electrostatic potential
-
-Install [APBS using its official instructions](https://apbs.readthedocs.io/en/stable/getting/),
-then make the executable visible:
-
-```sh
-export PATH="/path/to/apbs/bin:$PATH"
-cationize-protein doctor
-```
-
-The program also checks its project-private `.tools/apbs/bin/apbs`.
-Choose `--solver apbs` to use APBS, and add `--apbs /path/to/apbs` to select
-one executable. A requested APBS calculation stops if APBS is unavailable.
-The fresh-install default, `--solver coulomb`, uses an included
-screened-Coulomb approximation.
-
-### Amber / AmberTools: minimization or PBSA
-
-Obtain [Amber or AmberTools](https://ambermd.org/). Set its installation root:
-
-```sh
-export AMBERHOME="/path/to/amber"
-export PATH="$AMBERHOME/bin:$PATH"
-cationize-protein doctor
-```
-
-If the installation provides `amber.sh`, sourcing it also configures its
-environment: `source "$AMBERHOME/amber.sh"`. Discovery checks `AMBERHOME/bin`
-before `PATH`. Choose `--engine amber` for installed serial `pmemd` or `sander`,
-or `--solver pbsa` for Amber PBSA. Amber is not required to export Amber files.
-
-### GROMACS: run the exported topology
-
-Install [GROMACS](https://manual.gromacs.org/current/install-guide/index.html)
-and load the environment supplied by that installation:
-
-```sh
-source /path/to/gromacs/bin/GMXRC
-cationize-protein doctor
-```
-
-Alternatively, add its executable directory to `PATH` when its libraries are
-already configured. Discovery accepts `gmx` or `gmx_mpi`. GROMACS is used to
-run exported systems; it is not a minimization engine inside this program.
-Writing `system.top`, `forcefield.itp` and `protein.itp` does not require GROMACS.
-
-### MODELLER: template-based structure reconstruction
-
-Follow the [official MODELLER installation](https://salilab.org/modeller/download_installation.html)
-and [licence registration](https://salilab.org/modeller/registration.html).
-Detection first checks the active Python, then other Python interpreters on
-`PATH`. This includes a compatible Python installed by Homebrew.
-To select a particular installation explicitly:
-
-```sh
-export CATIONIZE_MODELLER_PYTHON="/path/to/python-with-modeller"
-cationize-protein doctor
-```
-
-Use the Python executable that can import `modeller`, not the `mod10.x`
-launcher or the installation directory. Detection does not validate a licence;
-the actual modeling command does. The unrelated PyPI package called `modeller`
-is not the official structural modeling software.
-
-### ESMFold2: structure prediction from sequence
-
-Use a separate Python environment for [ESMFold2](https://huggingface.co/biohub/ESMFold2).
-Install a [PyTorch build for your CPU or CUDA hardware](https://pytorch.org/get-started/locally/)
-in that environment, followed by compatible Transformers and Accelerate:
-
-```sh
-python3.12 -m venv .tools/esmfold2-env
-source .tools/esmfold2-env/bin/activate
-# Install the appropriate PyTorch build using the official instructions above.
-python -m pip install "transformers==5.20.1" "accelerate>=1,<2"
-deactivate
-source .venv/bin/activate
-export CATIONIZE_ESMFOLD_PYTHON="$PWD/.tools/esmfold2-env/bin/python"
-cationize-protein doctor
-```
-
-If `venv` reports that `ensurepip` is missing, [uv](https://docs.astral.sh/uv/getting-started/installation/)
-can create the environment with `uv venv --python python3.12 --seed .tools/esmfold2-env`.
-With Conda, create a separate Python environment and point the same variable
-to its Python. Neither approach requires installing the cationization package
-again inside the folding environment. If the main package uses Conda, return
-with `conda activate cationize-protein` instead of `source .venv/bin/activate`.
-
-The default is ESMFold2-Fast, which uses the sequence alone. The full checkpoint
-can also use an MSA upstream; this program currently exposes single-sequence
-prediction for both. Public weights are downloaded on the first explicit
-`model --method esmfold` request. `doctor` downloads nothing and no Biohub API
-key is needed for this local route. See [modeling commands and requirements](docs/MODELING.md).
+`doctor` reports available code and executables. Model weights are downloaded
+only when an ESMFold2 modeling calculation is requested. MODELLER checks its
+licence when modeling starts.
 
 ## Get a structure or sequence
 
