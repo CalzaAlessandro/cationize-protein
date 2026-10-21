@@ -381,49 +381,35 @@
       "100/minimized.rst7": "1123d615b4469872137b844016975a5690e2d64d69194ea5b1d8025a379017d2"
     },
     "modified_charge_agreement_max_e": 2.7e-09,
-    "GIF_frames": 5,
     "figure_kind": "Aligned minimized chemical checkpoints",
-    "GIF_caption_removed": "Minimized chemical checkpoint",
     "image_style": "NewCartoon / Structure / AOChalky; modified residues Licorice / Name / AOChalky",
     "preview_hashes": {
-      "hsa_comparison.png": "b6551278abf5198e6e0eeddbcbefd7d42a07c4537175605ddc28c6540a80e8e2",
-      "hsa_progressive.gif": "5e015752c443bda3f0bd52820a3387037c90cf0fc871315f8de1452c23b56919",
-      "hsa_progressive.apng": "e7a3f08101fe67d9627d97676797420efb10c57a691d3c7b642c44af684c2d4f",
-      "hsa_0_4k.png": "0699ba7ab112eb117fda3e9df0d383c9b51193fc11e654de0e637da924a7eb97",
-      "hsa_25_4k.png": "d904712e992be1113af58ae52e12338ee0b08cab447d6c640618dc33c6dd1a46",
-      "hsa_50_4k.png": "44544b8463744ff18daec30e4aad2bdf8c6c5c918046d4d453f940846f1cfab2",
-      "hsa_75_4k.png": "2b1dfa3b92f63a554addeec1ce5fd31c2266e71a29f5c1d80faf9938ec258c0f",
-      "hsa_100_4k.png": "9fda2e58c62c198e21875480e8c5ea1ef5d8ea2029636aac7856ff9fd8a9f313",
-      "hsa_100_opaque_4k.png": "d33017547285df053df419c4db237e42fdcf63c3e8c46d8f4c269c85943d7e17"
+      "banner.svg": "d4e2e0e83d73c49b1b0f261388a09be0671b5eb25f4aaa0b5f6a65e8199f6400",
+      "banner_dark.svg": "9507c44f1093e3596ec539a4dedbced1887838c1ec5af2f1357b96758ec0998d",
+      "hsa_workflow.png": "67a715d8286b060ef96b5ca590e19388ab2184df7a296454b534224c8c3f9072",
+      "hsa_0_4k.png": "0f71ab9ff6b9060428fe65bec6eb6416c664b67ba34a3d1af11d888f492b286c",
+      "hsa_25_4k.png": "e7382e0f9cbffa8072feefa1450d91fdaf7374264a3794da510251ef0316eb42",
+      "hsa_50_4k.png": "64dbf360eebf9edc5acbb57b8919042cae129d04cdc590f8e1a73202c790b843",
+      "hsa_75_4k.png": "0152ee47aa0c08091e7aef687d314481df0de37bf20c775eb88cc7520486c3b3",
+      "hsa_100_4k.png": "4aea3fe9eb195d9557a6f01c732853b287f0979d628a5d6a407fdc73fd16bf7f"
     },
     "secondary_structure_palette": "Standard VMD Structure colors",
-    "preview_frontal_view": "Slightly rotated open heart-shaped front face with central cleft; same rigid view for all checkpoints",
+    "preview_frontal_view": "Yaw 180 degrees, pitch 30 degrees; shared orthographic front view",
     "preview_transparency": {
       "PNG": "full alpha",
-      "APNG": "full alpha",
-      "GIF": "palette alpha fallback",
-      "coverage_pass_verified": true,
-      "white_molecular_pixels_preserved": true,
-      "light_dark_visual_QA": true,
-      "cartoon_opacity": 0.5,
-      "modified_residue_opacity": 1.0
+      "cartoon_opacity": 0.2,
+      "modified_residue_opacity": 1.0,
+      "independent_transmittance_pass": true,
+      "light_dark_visual_QA": true
     },
     "native_render_dimensions_px": [
       3840,
       2160
     ],
     "preview_dimensions_px": {
-      "hsa_comparison.png": [
-        7680,
-        2160
-      ],
-      "hsa_progressive.gif": [
-        800,
-        850
-      ],
-      "hsa_progressive.apng": [
-        1600,
-        1700
+      "hsa_workflow.png": [
+        4800,
+        1580
       ],
       "hsa_0_4k.png": [
         3840,
@@ -442,10 +428,6 @@
         2160
       ],
       "hsa_100_4k.png": [
-        3840,
-        2160
-      ],
-      "hsa_100_opaque_4k.png": [
         3840,
         2160
       ]
@@ -469,7 +451,8 @@
       "12",
       "-format",
       "PPM48"
-    ]
+    ],
+    "preview_layout": "Static cumulative workflow and compact light/dark vector banner"
   },
   "venv_activation_short_command_tested": true,
   "MODELLER_required": false,

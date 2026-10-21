@@ -1,6 +1,7 @@
 {
-  "description": "Five existing minimized HSA chemical checkpoints; visualization only, not an MD animation",
-  "scientific_scope": "README visualization of supplied minimized checkpoints; no geometry editing, interpolation or MD",
+  "description": "Static progressive HSA cationization workflow from five aligned minimized structures",
+  "scientific_scope": "Existing structures and accepted parameters unchanged; rigid camera changes and rendering only",
+  "source_example": "examples/HSA/<percent>/minimized.pdb",
   "residues": 585,
   "disulfides": 17,
   "percentages": [
@@ -10,7 +11,6 @@
     75,
     100
   ],
-  "source_example": "examples/HSA/<percent>/minimized.pdb",
   "software": {
     "VMD": "1.9.4a57-arm64-Rev12",
     "Tachyon": "0.99.1",
@@ -18,60 +18,15 @@
     "Pillow": "12.3.0"
   },
   "personal_vmdrc_ignored": true,
-  "secondary_structure_palette": "Standard VMD Structure palette, no custom overrides",
-  "structure_representation": "NewCartoon 0.3 20 4.1 0; color Structure; material copied from AOChalky with opacity 0.50",
-  "material_settings_AOChalky": [
-    0,
-    0,
-    0.85,
-    0.53,
-    0,
-    1,
-    0,
-    0,
-    0
-  ],
-  "cartoon_opacity": 0.5,
-  "modified_sites": "Licorice 0.22 12 12; all modified-residue heavy atoms; color Name; C silver, N blue, O red; original AOChalky opacity 1.0",
-  "opaque_reference": "hsa_100_opaque_4k.png; same view and lighting with cartoon opacity 1.00",
-  "renderer_executable": "/Applications/VMD 1.9.4a57-arm64-Rev12.app/Contents/vmd/tachyon_MACOSXARM64",
-  "renderer_arguments": [
-    "-trans_vmd",
-    "-rescale_lights",
-    "0.3",
-    "-add_skylight",
-    "1.0",
-    "-trans_max_surfaces",
-    "2",
-    "-aasamples",
-    "24",
-    "-res",
-    "3840",
-    "2160",
-    "-skylight_samples",
-    "4",
-    "-numthreads",
-    "12",
-    "-format",
-    "PPM48"
-  ],
-  "renderer_lighting": {
-    "ambient_occlusion": true,
-    "skylight_samples": 4,
-    "skylight_strength": 1.0,
-    "direct_light_rescale": 0.3,
-    "transparent_surfaces_max": 2,
-    "antialias_samples": 24,
-    "shadows": true,
-    "depthcue": false
-  },
-  "alignment": "Existing private copies: common 585 CA least-squares fit to native minimum, proper Kabsch rotation; originals byte-identical",
-  "view": "Slightly rotated open heart-shaped front face with central cleft; same rigid view for all checkpoints",
+  "structure_representation": "NewCartoon 0.3 20 4.1 0; Structure colors; AOChalky copy at opacity 0.20",
+  "modified_sites": "Licorice 0.22 12 12; modified heavy atoms colored by Name; AOChalky opacity 1.00",
+  "cartoon_opacity": 0.2,
+  "modified_residue_opacity": 1.0,
   "camera": {
-    "yaw": 195.0,
-    "pitch": 15.0,
+    "yaw": 180.0,
+    "pitch": 30.0,
     "roll": 0,
-    "cartoon_opacity": 0.5,
+    "cartoon_opacity": 0.2,
     "sticks_opacity": 1,
     "scale": 0.024,
     "projection": "Orthographic",
@@ -79,308 +34,7 @@
     "raw_render_dimensions_px": [
       3840,
       2160
-    ],
-    "rotate_matrix": [
-      [
-        -0.965926,
-        0,
-        -0.258819
-      ],
-      [
-        -0.0669873,
-        0.965926,
-        0.25
-      ],
-      [
-        0.25,
-        0.258819,
-        -0.933013
-      ]
-    ],
-    "reflection": false,
-    "same_for_all_checkpoints": true,
-    "center": "Identity center_matrix; common native CA origin in existing aligned visualization copies",
-    "scene_aspect_ratio": 1.7777777777777777
-  },
-  "visualization_only_aliases": "Native backbone atom aliases and parent residue names for cartoon/STRIDE recognition; originals preserved",
-  "reference_image_name": "mmr-29-02-13147-g01.jpg",
-  "reference_image_sha256": "8aa55b208d9c54ce5172742d9285008e4451829ba3ae9d43708a42daab34e1fb",
-  "transparency": {
-    "method": "Independent geometry transmittance pass: all geometry black and unlit on white, retaining original per-representation opacities and identical camera/ray settings",
-    "extraction": "alpha = 1 - transmittance; straight foreground RGB = black-background premultiplied RGB / alpha; solved in gamma=1.0 linear Tachyon render-channel space",
-    "transfer": "No gamma correction in renderer; retain native VMD/Tachyon render-channel encoding, no nonlinear black-white subtraction",
-    "precision": "16-bit PPM48 for color and transmittance; final PNG/APNG 8-bit straight RGBA",
-    "alpha_has_true_partial_transparency": true,
-    "background_pixels_from_geometry": true,
-    "color_threshold_used": false,
-    "white_molecular_pixels_preserved": true,
-    "raw_passes_px": [
-      3840,
-      2160
-    ],
-    "primary_color": "Black background",
-    "coverage_material": "Ambient 0 Diffuse 0 Specular 0; all vertex/object colors 0; actual cartoon opacity 0.50 and stick opacity 1.0 preserved",
-    "pilot_black_white_validation": {
-      "alpha_min": 0.0,
-      "alpha_max": 1.0,
-      "alpha_fractional_pixels": 41039,
-      "alpha_nonzero_pixels": 45751,
-      "alpha_bbox": [
-        300,
-        86,
-        682,
-        480
-      ],
-      "transparent_pixel_rgb_nonzero": 0,
-      "foreground_channel_clip_fraction": 0.004196629581867063,
-      "black_white_independent_alpha_mae": 1.7242489775526337e-05,
-      "black_white_independent_alpha_p99": 1.52587890625e-05,
-      "black_white_independent_alpha_max": 0.19732964038848877,
-      "black_white_difference_transmittance_mae": 1.724240428302437e-05
-    },
-    "per_frame_qa": {
-      "0": {
-        "alpha_min": 0.0,
-        "alpha_max": 0.7500114440917969,
-        "alpha_fractional_pixels": 570156,
-        "alpha_nonzero_pixels": 570156,
-        "alpha_bbox": [
-          1250,
-          401,
-          2673,
-          1872
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.004516892452825777,
-        "rgba8_recompose_black_mae": 4.529273064690642e-05,
-        "rgba8_recompose_black_p99": 0.0013385415077209473,
-        "rgba8_recompose_black_max": 0.054901957511901855
-      },
-      "25": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 561490,
-        "alpha_nonzero_pixels": 595116,
-        "alpha_bbox": [
-          1247,
-          363,
-          2714,
-          1906
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.00430728350999357,
-        "rgba8_recompose_black_mae": 4.7449615522054955e-05,
-        "rgba8_recompose_black_p99": 0.0013850927352905273,
-        "rgba8_recompose_black_max": 0.17349505424499512
-      },
-      "50": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 543991,
-        "alpha_nonzero_pixels": 612392,
-        "alpha_bbox": [
-          1231,
-          358,
-          2732,
-          1914
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.0023155103267188336,
-        "rgba8_recompose_black_mae": 4.7253324737539515e-05,
-        "rgba8_recompose_black_p99": 0.0014164447784423828,
-        "rgba8_recompose_black_max": 0.1607843041419983
-      },
-      "75": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 532587,
-        "alpha_nonzero_pixels": 631550,
-        "alpha_bbox": [
-          1230,
-          340,
-          2737,
-          1930
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.002500197925738263,
-        "rgba8_recompose_black_mae": 4.982072641723789e-05,
-        "rgba8_recompose_black_p99": 0.0014455914497375488,
-        "rgba8_recompose_black_max": 0.17074841260910034
-      },
-      "100": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 524789,
-        "alpha_nonzero_pixels": 655315,
-        "alpha_bbox": [
-          1199,
-          347,
-          2724,
-          1919
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.0028423989480885785,
-        "rgba8_recompose_black_mae": 5.287844032864086e-05,
-        "rgba8_recompose_black_p99": 0.001476585865020752,
-        "rgba8_recompose_black_max": 0.16981762647628784
-      },
-      "100_opaque": {
-        "alpha_min": 0.0,
-        "alpha_max": 1.0,
-        "alpha_fractional_pixels": 55069,
-        "alpha_nonzero_pixels": 655315,
-        "alpha_bbox": [
-          1199,
-          347,
-          2724,
-          1919
-        ],
-        "transparent_pixel_rgb_nonzero": 0,
-        "foreground_channel_clip_fraction": 0.0010834484179364124,
-        "rgba8_recompose_black_mae": 5.58261017431505e-05,
-        "rgba8_recompose_black_p99": 0.0015869438648223877,
-        "rgba8_recompose_black_max": 0.16981762647628784
-      }
-    },
-    "png": "Full RGBA alpha; independent full-size source render",
-    "apng": "Full RGBA alpha, full frames, source blend 0 and background disposal 1",
-    "gif": "Binary alpha fallback; geometry alpha >= 26/255; shared 255-color palette with transparent index 255; no dithering; disposal 2",
-    "gif_frame_alpha_counts": [
-      {
-        "opaque_pixels": 111484,
-        "transparent_pixels": 568516,
-        "retained_bright_pixels": 12991
-      },
-      {
-        "opaque_pixels": 116656,
-        "transparent_pixels": 563344,
-        "retained_bright_pixels": 12876
-      },
-      {
-        "opaque_pixels": 119916,
-        "transparent_pixels": 560084,
-        "retained_bright_pixels": 12003
-      },
-      {
-        "opaque_pixels": 123384,
-        "transparent_pixels": 556616,
-        "retained_bright_pixels": 12072
-      },
-      {
-        "opaque_pixels": 127971,
-        "transparent_pixels": 552029,
-        "retained_bright_pixels": 12184
-      }
     ]
-  },
-  "image_processing": "Common alpha-union crop for composed views; isotropic downsampling only; 4K PNGs retain native render grid; no upsampling or color-based background removal",
-  "annotation_theme_treatment": "Dark/colored lettering with opaque white halo on transparent canvas; white and GitHub dark QA",
-  "crop": [
-    1159,
-    300,
-    2777,
-    1970
-  ],
-  "comparison_molecule_dimensions_px": [
-    [
-      1424,
-      1470
-    ],
-    [
-      1424,
-      1470
-    ],
-    [
-      1424,
-      1470
-    ],
-    [
-      1424,
-      1470
-    ],
-    [
-      1424,
-      1470
-    ]
-  ],
-  "gif_frame_duration_ms": 1800,
-  "gif_frames": 5,
-  "gif_loop": 0,
-  "gif_labels": "HSA cationization percentage, modified-residue count, and protein charge",
-  "raw_render_dimensions_px": [
-    3840,
-    2160
-  ],
-  "output_dimensions_px": {
-    "hsa_comparison.png": [
-      7680,
-      2160
-    ],
-    "hsa_progressive.gif": [
-      800,
-      850
-    ],
-    "hsa_progressive.apng": [
-      1600,
-      1700
-    ],
-    "hsa_0_4k.png": [
-      3840,
-      2160
-    ],
-    "hsa_25_4k.png": [
-      3840,
-      2160
-    ],
-    "hsa_50_4k.png": [
-      3840,
-      2160
-    ],
-    "hsa_75_4k.png": [
-      3840,
-      2160
-    ],
-    "hsa_100_4k.png": [
-      3840,
-      2160
-    ],
-    "hsa_100_opaque_4k.png": [
-      3840,
-      2160
-    ]
-  },
-  "output_frames": {
-    "hsa_comparison.png": 1,
-    "hsa_progressive.gif": 5,
-    "hsa_progressive.apng": 5,
-    "hsa_0_4k.png": 1,
-    "hsa_25_4k.png": 1,
-    "hsa_50_4k.png": 1,
-    "hsa_75_4k.png": 1,
-    "hsa_100_4k.png": 1,
-    "hsa_100_opaque_4k.png": 1
-  },
-  "output_bytes": {
-    "hsa_comparison.png": 5375339,
-    "hsa_progressive.gif": 464674,
-    "hsa_progressive.apng": 4839361,
-    "hsa_0_4k.png": 959339,
-    "hsa_25_4k.png": 1068721,
-    "hsa_50_4k.png": 1175902,
-    "hsa_75_4k.png": 1258109,
-    "hsa_100_4k.png": 1358399,
-    "hsa_100_opaque_4k.png": 1355349
-  },
-  "output_sha256": {
-    "hsa_comparison.png": "b6551278abf5198e6e0eeddbcbefd7d42a07c4537175605ddc28c6540a80e8e2",
-    "hsa_progressive.gif": "5e015752c443bda3f0bd52820a3387037c90cf0fc871315f8de1452c23b56919",
-    "hsa_progressive.apng": "e7a3f08101fe67d9627d97676797420efb10c57a691d3c7b642c44af684c2d4f",
-    "hsa_0_4k.png": "0699ba7ab112eb117fda3e9df0d383c9b51193fc11e654de0e637da924a7eb97",
-    "hsa_25_4k.png": "d904712e992be1113af58ae52e12338ee0b08cab447d6c640618dc33c6dd1a46",
-    "hsa_50_4k.png": "44544b8463744ff18daec30e4aad2bdf8c6c5c918046d4d453f940846f1cfab2",
-    "hsa_75_4k.png": "2b1dfa3b92f63a554addeec1ce5fd31c2266e71a29f5c1d80faf9938ec258c0f",
-    "hsa_100_4k.png": "9fda2e58c62c198e21875480e8c5ea1ef5d8ea2029636aac7856ff9fd8a9f313",
-    "hsa_100_opaque_4k.png": "d33017547285df053df419c4db237e42fdcf63c3e8c46d8f4c269c85943d7e17"
   },
   "source_sha256": {
     "0": "7b0ead70a323891665f6159658d68e4447f96c0186ce3a8b826fda7f1b7510db",
@@ -389,15 +43,7 @@
     "75": "63ed62c0588decbf8e4f892dd12f743787dab9c42f8b6a54b6355e44f5efe84a",
     "100": "aa3dbbd63308327792eaa6471bba587664da89661a4b8054448aed08770e0b5e"
   },
-  "source_visualization_copies_sha256": {
-    "0": "61a13e7703b542dccec0dcc864990ec56712b9df49a72b511e1489c4a087f2f4",
-    "25": "faae13cd653ef4accafa4a079a00835a18fa3ba508a37621ee6165e9f2e837e5",
-    "50": "1e380c809226f7f69b3c73c0c1450a9d86df0205d2040e83ec236d441d4993f2",
-    "75": "dfe0a57e0bec938b1e8f0134ffe72a6e73205a3d04438ce946a556c91ff31782",
-    "100": "aa6fff3a3c3e384d038a32d1dc0d215acb5385024ded485b9ec70c5ec92e1754"
-  },
-  "source_tree_files": 87,
-  "source_tree_byte_identical": true,
+  "source_structures_and_parameters_unchanged": true,
   "rigid_geometry_qa": {
     "0": {
       "atom_count": 9228,
@@ -430,62 +76,212 @@
       "rotation_determinant": 0.9999999999999999
     }
   },
-  "raw_render_sha256": {
-    "0": {
-      "black": "57194ac58f4efd1dc78be93e0657f26e95e0a34e9e2b3ede6d506af61a13bba6",
-      "coverage": "6e825fd9666d8d6604c2ec0e1cd5c1fe15ce56a149a4675254af501123c3b1f3"
-    },
-    "25": {
-      "black": "d829b670c623aead0ebd7ac584b218878c9a2e95b2bf3bad89df48c22b1d7d90",
-      "coverage": "924a203e460b92ecb4448aa6b3e8e05451887f759f9fe2a9ee081af6914489ee"
-    },
-    "50": {
-      "black": "ca22117fc79779c31ad1353b6fb76b819898da4306699c560c3b8a606d30f9e3",
-      "coverage": "57c487ec0ef1ce46cdf0e307663285f106afe91ab8bcd1a4be710f054ee56966"
-    },
-    "75": {
-      "black": "7a59892d05146768900dc7acecb2427a42d0443cac7091215c38d0a5476a47bc",
-      "coverage": "81e1e47c220b358f87f4b58cefcbdddfff667531877a0035f6c1e61b00c5f559"
-    },
-    "100": {
-      "black": "ed1a1c365ba3d23a67e70d776ec8693dd7eb4c8895e15a457476e98b9f5e663c",
-      "coverage": "009ad0c72e86a39856d641b94e07323b26b52a36c9311bb7d1f42839d1d9b4ef"
-    },
-    "100_opaque": {
-      "black": "8be0e73a21ca25d6dcb5bae3e478284bcacd1bcc30f00a8522875ccf1a2bedfc",
-      "coverage": "0639d21b60333c409cebb297901bbefb521c98b005315fae54b396b117b08ae3"
+  "renderer_arguments": [
+    "-trans_vmd",
+    "-rescale_lights",
+    "0.3",
+    "-add_skylight",
+    "1.0",
+    "-trans_max_surfaces",
+    "2",
+    "-aasamples",
+    "24",
+    "-res",
+    "3840",
+    "2160",
+    "-skylight_samples",
+    "4",
+    "-numthreads",
+    "12",
+    "-format",
+    "PPM48"
+  ],
+  "raw_render_dimensions_px": [
+    3840,
+    2160
+  ],
+  "image_processing": "Independent transmittance alpha; common crop and isotropic downsampling only for workflow panels; no upsampling",
+  "transparency": {
+    "method": "Unlit geometry transmittance on white, preserving actual representation opacities; recover straight RGBA from black color pass",
+    "color_threshold_used": false,
+    "alpha_qa": {
+      "0": {
+        "alpha_min": 0.0,
+        "alpha_max": 0.36000609397888184,
+        "alpha_fractional_pixels": 581511,
+        "alpha_nonzero_pixels": 581511,
+        "alpha_bbox": [
+          1213,
+          379,
+          2696,
+          1850
+        ],
+        "transparent_pixel_rgb_nonzero": 0,
+        "foreground_channel_clip_fraction": 0.021692986121739588,
+        "rgba8_recompose_black_mae": 5.587925261352211e-05,
+        "rgba8_recompose_black_p99": 0.0009150803089141846,
+        "rgba8_recompose_black_max": 0.06192108988761902
+      },
+      "25": {
+        "alpha_min": 0.0,
+        "alpha_max": 1.0,
+        "alpha_fractional_pixels": 569648,
+        "alpha_nonzero_pixels": 603103,
+        "alpha_bbox": [
+          1161,
+          359,
+          2742,
+          1856
+        ],
+        "transparent_pixel_rgb_nonzero": 0,
+        "foreground_channel_clip_fraction": 0.01832467533185321,
+        "rgba8_recompose_black_mae": 5.4984680900815874e-05,
+        "rgba8_recompose_black_p99": 0.0009592920541763306,
+        "rgba8_recompose_black_max": 0.1607843041419983
+      },
+      "50": {
+        "alpha_min": 0.0,
+        "alpha_max": 1.0,
+        "alpha_fractional_pixels": 554156,
+        "alpha_nonzero_pixels": 621382,
+        "alpha_bbox": [
+          1187,
+          337,
+          2757,
+          1863
+        ],
+        "transparent_pixel_rgb_nonzero": 0,
+        "foreground_channel_clip_fraction": 0.012286054847635324,
+        "rgba8_recompose_black_mae": 4.853490099776536e-05,
+        "rgba8_recompose_black_p99": 0.000992313027381897,
+        "rgba8_recompose_black_max": 0.17442584037780762
+      },
+      "75": {
+        "alpha_min": 0.0,
+        "alpha_max": 1.0,
+        "alpha_fractional_pixels": 549114,
+        "alpha_nonzero_pixels": 647005,
+        "alpha_bbox": [
+          1195,
+          296,
+          2759,
+          1869
+        ],
+        "transparent_pixel_rgb_nonzero": 0,
+        "foreground_channel_clip_fraction": 0.010815475408484735,
+        "rgba8_recompose_black_mae": 5.106752723804675e-05,
+        "rgba8_recompose_black_p99": 0.0010288357734680176,
+        "rgba8_recompose_black_max": 0.1607843041419983
+      },
+      "100": {
+        "alpha_min": 0.0,
+        "alpha_max": 1.0,
+        "alpha_fractional_pixels": 539487,
+        "alpha_nonzero_pixels": 669066,
+        "alpha_bbox": [
+          1158,
+          315,
+          2767,
+          1863
+        ],
+        "transparent_pixel_rgb_nonzero": 0,
+        "foreground_channel_clip_fraction": 0.010044848589924861,
+        "rgba8_recompose_black_mae": 5.372522718971595e-05,
+        "rgba8_recompose_black_p99": 0.0010701864957809448,
+        "rgba8_recompose_black_max": 0.16659796237945557
+      }
     }
   },
-  "scene_sha256": {
-    "0": "8557387a33ff3f83a251e17bc25ce0596971acdae422b98662e4e464f8c1a1f3",
-    "25": "9399da09e8317d85924f1537670e0ee35fdb9d67f7f11b45d9b1f6116a3256e7",
-    "50": "f7a07981acc73dfc4c55fc820de4e533c801e9b84e0661cd0304af8cbc29a128",
-    "75": "819600054834e9d30c66adb1a7424db3473186b76b47707bf76125ee98c7c3dd",
-    "100": "ea29714dd38dee0af1f29d720c8ea6908f38f4a1ef3f9f560893fb0d8971cf25"
+  "workflow_crop": [
+    1128,
+    266,
+    2797,
+    1899
+  ],
+  "output_dimensions_px": {
+    "hsa_workflow.png": [
+      4800,
+      1580
+    ],
+    "hsa_0_4k.png": [
+      3840,
+      2160
+    ],
+    "hsa_25_4k.png": [
+      3840,
+      2160
+    ],
+    "hsa_50_4k.png": [
+      3840,
+      2160
+    ],
+    "hsa_75_4k.png": [
+      3840,
+      2160
+    ],
+    "hsa_100_4k.png": [
+      3840,
+      2160
+    ]
   },
-  "apng_decoded_frames_exact": [
-    true,
-    true,
-    true,
-    true,
-    true
-  ],
-  "gif_decoded_frame_alpha_matches_coverage": [
-    true,
-    true,
-    true,
-    true,
-    true
-  ],
-  "original_assets_backup": ".development/hsa_assets_before_4k",
+  "output_sha256": {
+    "banner.svg": "d4e2e0e83d73c49b1b0f261388a09be0671b5eb25f4aaa0b5f6a65e8199f6400",
+    "banner_dark.svg": "9507c44f1093e3596ec539a4dedbced1887838c1ec5af2f1357b96758ec0998d",
+    "hsa_workflow.png": "67a715d8286b060ef96b5ca590e19388ab2184df7a296454b534224c8c3f9072",
+    "hsa_0_4k.png": "0f71ab9ff6b9060428fe65bec6eb6416c664b67ba34a3d1af11d888f492b286c",
+    "hsa_25_4k.png": "e7382e0f9cbffa8072feefa1450d91fdaf7374264a3794da510251ef0316eb42",
+    "hsa_50_4k.png": "64dbf360eebf9edc5acbb57b8919042cae129d04cdc590f8e1a73202c790b843",
+    "hsa_75_4k.png": "0152ee47aa0c08091e7aef687d314481df0de37bf20c775eb88cc7520486c3b3",
+    "hsa_100_4k.png": "4aea3fe9eb195d9557a6f01c732853b287f0979d628a5d6a407fdc73fd16bf7f"
+  },
+  "output_bytes": {
+    "banner.svg": 42102,
+    "banner_dark.svg": 42102,
+    "hsa_workflow.png": 2240491,
+    "hsa_0_4k.png": 862227,
+    "hsa_25_4k.png": 992089,
+    "hsa_50_4k.png": 1109396,
+    "hsa_75_4k.png": 1212999,
+    "hsa_100_4k.png": 1327435
+  },
+  "scene_sha256": {
+    "0": "215e89a169da93745a5fe7ec5e15796553d39af783e5273ecb72dc657ea9e3c0",
+    "25": "e1c8e3736d98d380e9a98c08e9cf0c00c489b0b78c0444773631e642d5746677",
+    "50": "4edd33e2049a5b3e07a0b3df3a47f78fb7442ea4d4ad9636dee5eee88810ba6d",
+    "75": "49fb262fd7595c26a4cfcda1babfee1bbfafa3c873f5387b13eb567aeefd22f0",
+    "100": "dcbeae22b50f9b22d49a0d6f023ef490134cdd520067fffcb207b307091fe721"
+  },
+  "raw_render_sha256": {
+    "0": {
+      "black": "ef6161885a7c572693096c941720108b28f766ecf7a0d0f76d7857c87d750dbe",
+      "coverage": "207b1a6a2da72c830acd18272885343429be2d4c7c1e6bb5565e3020089f2c3c"
+    },
+    "25": {
+      "black": "851f0c0ed029c5e804d531f482d327950b9c3f54de41b61f6ff7c8898b169fcb",
+      "coverage": "93741391b3d04baf1313ee24aed3a20a537c9845c6781b27d5be41b5e8a125d6"
+    },
+    "50": {
+      "black": "c9cede7a0830c3e4cd24669900e304461077c7cfd4cbd4ec095c07553c60b5bc",
+      "coverage": "5c27f1069f6f6e2a64406ed4444b30aaad008e32c607b671adad1b26e9b69e03"
+    },
+    "75": {
+      "black": "7614170c4b088be3ee0b688698c8084a26ca477c7e393da021c505b403538477",
+      "coverage": "82213b1777d9b71c3a28a4e398de33bd239f18a928f94f501662e6843434bf93"
+    },
+    "100": {
+      "black": "059fb1ef64c9468818b0c1f9fdbde66a3a1a6f3376460292a25622a9c53ac52e",
+      "coverage": "c11072406fc50295182dcc7d82d9a8309d0941e5e6d3ec470f43816e5ebd7c6d"
+    }
+  },
+  "vmd_log": ".development/hsa_workflow/final_vmd.log",
   "reproducibility_scripts": [
-    ".development/prepare_hsa_4k.py",
-    ".development/render_hsa_4k.py",
+    ".development/prepare_hsa_workflow.py",
+    ".development/render_hsa_workflow.py",
     ".development/recover_hsa_rgba.py",
-    ".development/compose_hsa_4k.py"
+    ".development/compose_hsa_workflow.py",
+    ".development/banner_art.py"
   ],
-  "vmd_log": ".development/hsa_views_4k/final_vmd.log",
-  "stride_error_scan": "No STRIDE error or VMD ERROR) found",
-  "qa_previews": ".development/hsa_views_4k/qa",
-  "visual_qa": "Inspected final full-resolution native and cationized images, opaque reference and decoded animation frames on white and GitHub dark backgrounds; heart cleft visible, annotations inside canvas, opaque modified sites retained"
+  "qa_previews": ".development/hsa_workflow/qa",
+  "visual_qa": "Inspected static workflow on white and dark backgrounds; central cleft visible, cartoon ghosted, modified sites opaque; all annotations within canvas. Vector banners use separate light/dark colors.",
+  "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability"
 }

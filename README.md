@@ -1,33 +1,33 @@
-# cationize-protein
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.svg">
+  <img src="docs/images/banner.svg" width="100%" alt="cationize-protein — progressive protein cationization">
+</picture>
 
 Build progressively cationized proteins and export their structures and
 parameters for Amber, OpenMM or GROMACS.
 
-<p align="center">
-  <img src="docs/images/hsa_progressive.apng" width="800" alt="Five aligned minimized HSA structures, with a semitransparent cartoon and progressively more modified residues shown as opaque sticks">
-</p>
+The program converts carboxyl groups into `–C(=O)–NH–CH₂–CH₂–NH₃⁺`.
+It ranks accessible sites by electrostatic potential, rotates each new group
+to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 
-*Progressive HSA cationization: 0%, 25%, 50%, 75% and 100%.
-HSA is shown in semitransparent VMD NewCartoon, colored by secondary structure
-with AOChalky material. Modified residues are shown in opaque Licorice,
-colored by atom name.*
+[Install](#install) · [How it works](#how-it-works) ·
+[Optional software](#connect-optional-software) ·
+[Get a structure or sequence](#get-a-structure-or-sequence) ·
+[Prepare a protein](#prepare-a-protein) · [Run cationization](#run-cationization) ·
+[Find your files](#find-your-files) · [Add a ligand](#add-a-ligand) ·
+[HSA example](#hsa-example) · [Options](#options) · [Software](#software)
 
-4K PNGs: [0%](docs/images/hsa_0_4k.png) ·
+## How it works
+
+![Progressive HSA cationization from 0 to 100 percent and the repeated site-selection, modification, minimization and protonation cycle](docs/images/hsa_workflow.png)
+
+*Five aligned, minimized HSA checkpoints. The cartoon is shown at 20% opacity;
+modified residues are opaque sticks. Every checkpoint retains the earlier
+modifications. The cycle below the structures is repeated for each site.*
+
+4K structures: [0%](docs/images/hsa_0_4k.png) ·
 [25%](docs/images/hsa_25_4k.png) · [50%](docs/images/hsa_50_4k.png) ·
 [75%](docs/images/hsa_75_4k.png) · [100%](docs/images/hsa_100_4k.png).
-[Opaque 100% comparison](docs/images/hsa_100_opaque_4k.png) ·
-[GIF preview](docs/images/hsa_progressive.gif).
-
-The program converts carboxyl groups into `–C(=O)–NH–CH₂–CH₂–NH₃⁺`.
-It selects one site at a time from the electrostatic potential, rotates the
-new group to reduce clashes, minimizes the structure and checks protonation
-with PROPKA. Each checkpoint retains the modifications made earlier.
-
-[Install](#install) · [Connect optional software](#connect-optional-software) ·
-[Get a structure or sequence](#get-a-structure-or-sequence) · [Prepare a protein](#prepare-a-protein) ·
-[Run cationization](#run-cationization) · [Find your files](#find-your-files) ·
-[Add a ligand](#add-a-ligand) · [HSA example](#hsa-example) ·
-[Options](#options) · [Software](#software)
 
 ## Install
 
@@ -319,7 +319,7 @@ series** at 0%, 25%, 50%, 75% and 100%, with a PDB, Amber topology and restart
 for each minimized structure. Tables list the modified sites and protein
 charges. The 17 disulfide bonds are retained at every level.
 
-![Aligned views of the five minimized HSA structures](docs/images/hsa_comparison.png)
+[View the cumulative HSA workflow](docs/images/hsa_workflow.png).
 
 To try the default workflow, use the small peptide example:
 

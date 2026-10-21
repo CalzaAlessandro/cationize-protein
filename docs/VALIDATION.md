@@ -199,25 +199,21 @@ Independent review findings were reproduced and fixed before the installed
 full suite was run.
 
 The README's 16 command examples parse with the current CLI, and 20 documented
-`run` defaults were checked against argparse. HSA PNG/GIF previews were rendered
-again with NewCartoon, standard VMD Structure colors and AOChalky; the personal
-`.vmdrc` was bypassed, STRIDE completed without errors, and source structure
-hashes were unchanged.
+`run` defaults were checked against argparse. The current HSA figure shows
+five cumulative minimized structures in a static workflow, below a compact
+light/dark vector banner. A shared orthographic camera uses yaw 180° and
+pitch 30°. The Structure-colored NewCartoon has opacity 0.20; modified-residue
+sticks retain opacity 1.00 and atom-name colors. AOChalky is retained, and
+`.vmdrc` is bypassed.
 
-The current previews use a shared frontal orthographic view, with a slight
-rotation that exposes the heart-shaped cleft. Cartoon opacity is 0.50;
-modified-residue sticks remain opaque. Six individual PNGs retain the actual
-3840 × 2160 render grid, including an opaque 100% reference. Tachyon used
-24 antialiasing samples and the requested lighting/transparency settings.
-The 7680 × 2160 comparison uses native-resolution crops and downsampling.
-
-Transparent backgrounds come from an independent geometry-transmittance
-render retaining the actual material opacities. PNG and animated PNG retain
-full alpha; GIF provides a smaller palette-alpha fallback. All five decoded
-APNG frames exactly match their composed RGBA frames, and GIF masks match the
-recorded geometry threshold. Final images were inspected on white and dark
-backgrounds, including white molecular features and annotations. Render
-settings, alpha checks and file hashes are recorded in
+Five downloadable PNGs keep the genuine 3840 × 2160 render grid. Tachyon uses
+24 antialiasing samples and the recorded lighting/transparency settings.
+The 4800 × 1580 workflow uses native-resolution crops and downsampling only.
+Its alpha comes from independent geometry-transmittance passes that retain
+the actual representation opacities. White molecular features are preserved.
+The completed workflow was inspected on white and dark backgrounds. The
+source structures and accepted parameters are unchanged. Render settings,
+alpha checks and file hashes are recorded in
 [HSA_PREVIEW.json](images/HSA_PREVIEW.json).
 
 The [optional software tutorial](OPTIONAL_SOFTWARE.md) documents installation

@@ -4,7 +4,7 @@ This folder contains the existing **585-residue HSA series** at five
 cationization levels. The structures were minimized with the APBS-guided
 protocol and renamed using the current residue names. They were produced in the HSA campaign before this CLI release.
 
-![Five minimized HSA structures](../../docs/images/hsa_comparison.png)
+![Five minimized HSA structures](../../docs/images/hsa_workflow.png)
 
 ## Files
 
