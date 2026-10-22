@@ -198,9 +198,9 @@ verification checks sulfur partners and actual topology-chain identity.
 Independent review findings were reproduced and fixed before the installed
 full suite was run.
 
-The README's 16 command examples parse with the current CLI, and 20 documented
-`run` defaults were checked against argparse. The current HSA figure shows
-five cumulative minimized structures in a static workflow, below a compact
+The previously checked README command examples parse with the CLI, and 20 documented
+`run` defaults were checked against argparse. The HSA preview uses
+five cumulative minimized structures, below a compact
 light/dark vector banner. A shared orthographic camera uses yaw 180° and
 pitch 30°. The Structure-colored NewCartoon has opacity 0.20 in the light
 version and 0.45 in the dark version. Dark-theme colors are brighter;
@@ -210,14 +210,17 @@ versions. AOChalky is retained, and
 
 Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. Tachyon uses
 24 antialiasing samples and the recorded lighting/transparency settings.
-Both 4800 × 1740 workflows use native-resolution crops and downsampling only.
-Cycle labels use 76 px text, matched to the cycle heading; the existing
-percentage, residue-count and charge labels retain their sizes.
-Its alpha comes from independent geometry-transmittance passes that retain
-the actual representation opacities. White molecular features are preserved.
-The completed workflow was inspected on white and dark backgrounds. The
-source structures and accepted parameters are unchanged. Text has no outline,
-and the README selects the image matching the browser color scheme. Render settings,
+The 22 October README update uses a closed four-step cycle beside the five saved
+HSA checkpoints. Each 1600 × 900 GIF has 20 frames and a 19.5 s loop; cycle phases
+are schematic and the protein coordinates come from the saved minimized
+structures. Protein crops are downsampled without upsampling. GIF frames are
+composited on the matching light/dark background with one palette per theme;
+the companion static PNG retains alpha transparency. The underlying render
+alpha comes from independent geometry-transmittance passes that retain the
+actual representation opacities. White molecular features are preserved.
+The final diagrams and sampled GIF frames were inspected on light and dark
+backgrounds. Source structures and accepted parameters are unchanged. Text has
+no outline, and the README selects the matching browser color scheme. Render settings,
 alpha checks and file hashes are recorded in
 [HSA_PREVIEW.json](images/HSA_PREVIEW.json).
 

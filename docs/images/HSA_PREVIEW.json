@@ -1,5 +1,5 @@
 {
-  "description": "Static progressive HSA cationization workflow with light/dark display palettes",
+  "description": "Closed schematic cationization cycle with discrete saved HSA structures, light/dark GIFs and static PNGs",
   "scientific_scope": "Existing structures and accepted parameters unchanged; display colors, opacity and text only",
   "source_example": "examples/HSA/<percent>/minimized.pdb",
   "residues": 585,
@@ -151,7 +151,7 @@
     3840,
     2160
   ],
-  "image_processing": "Independent transmittance alpha; common crop and isotropic downsampling only for workflow panels; no upsampling",
+  "image_processing": "Existing independent-transmittance molecular renders; common crop and isotropic downsampling; schematic cycle drawn at output resolution",
   "transparency": {
     "method": "Unlit geometry transmittance on white; recover straight RGBA from black color pass",
     "color_threshold_used": false,
@@ -360,8 +360,8 @@
       2160
     ],
     "hsa_workflow.png": [
-      4800,
-      1740
+      1600,
+      900
     ],
     "hsa_0_4k_dark.png": [
       3840,
@@ -384,8 +384,16 @@
       2160
     ],
     "hsa_workflow_dark.png": [
-      4800,
-      1740
+      1600,
+      900
+    ],
+    "hsa_workflow.gif": [
+      1600,
+      900
+    ],
+    "hsa_workflow_dark.gif": [
+      1600,
+      900
     ]
   },
   "output_sha256": {
@@ -396,13 +404,15 @@
     "hsa_50_4k.png": "457fa00cc29359ca149e0dd3e354899d7bc50931267284a88bcedb0dcdafd3d6",
     "hsa_75_4k.png": "8937612bc584df706f0a0539acb35ca91760df5df2dc960b5838d7006d66bbde",
     "hsa_100_4k.png": "9520d75f16e1ac37f36d667aed341413159c16c5fc22700d8fffc5c32fcf6ed8",
-    "hsa_workflow.png": "d975dc4e43bae0482cd2a0af7ffefc9f2c7dad632e4fe11406132bec9a1c35d7",
+    "hsa_workflow.png": "34160d3dc2c881712686ca121fcd98b40a07f8767fdbfb992aa474e142715c26",
     "hsa_0_4k_dark.png": "5e0defe19943118f9ce78c38ca5cd2ea64b3a4a982c2da5c3c299300baae8256",
     "hsa_25_4k_dark.png": "a07249003cc02b3a7406fa0087fd276bb12c28f466cde744cd7444a87bfd2d1b",
     "hsa_50_4k_dark.png": "7c03fe1aaafbf5c2440f4af593feb6c6865b6425925c002fcf85fc4786fb7a9e",
     "hsa_75_4k_dark.png": "45302b782395d141b88413a629323b71673e6073fb8b6287e296d529d38e6def",
     "hsa_100_4k_dark.png": "a5b98b98750adc0bc77fc264ac9859684fad49fa2da36f4c389d3a16fcfd7a61",
-    "hsa_workflow_dark.png": "3aaecbaaa1c6c2f570875967cc74559b8bb5ad83a2c48f1c2d3b76eb063495fc"
+    "hsa_workflow_dark.png": "17d4390bc2c28405c64944bcefcdf3ef45c4f8292ddfda3d517b3ff74204bf0a",
+    "hsa_workflow.gif": "c408e849ee64788a2d18700be46cd2b8cd7e3be43117840984e410c9ca013217",
+    "hsa_workflow_dark.gif": "9af6a99edae8d0b29393908940b5d19dd196c430b6ef78e640d56fe5830dd933"
   },
   "output_bytes": {
     "banner.svg": 42102,
@@ -412,13 +422,15 @@
     "hsa_50_4k.png": 1084647,
     "hsa_75_4k.png": 1188649,
     "hsa_100_4k.png": 1303827,
-    "hsa_workflow.png": 2216728,
+    "hsa_workflow.png": 361892,
     "hsa_0_4k_dark.png": 1247640,
     "hsa_25_4k_dark.png": 1360483,
     "hsa_50_4k_dark.png": 1466724,
     "hsa_75_4k_dark.png": 1574376,
     "hsa_100_4k_dark.png": 1678628,
-    "hsa_workflow_dark.png": 2889951
+    "hsa_workflow_dark.png": 412169,
+    "hsa_workflow.gif": 623131,
+    "hsa_workflow_dark.gif": 855247
   },
   "scene_sha256": {
     "light": {
@@ -488,21 +500,81 @@
     ".development/prepare_dark_hsa.py",
     ".development/render_hsa_workflow.py",
     ".development/recover_hsa_rgba.py",
-    ".development/compose_hsa_workflow.py"
+    ".development/compose_hsa_workflow.py",
+    ".development/compose_hsa_cycle.py"
   ],
   "qa_previews": ".development/hsa_workflow/qa",
-  "visual_qa": "Inspected final workflow at 1150 px width on white and dark backgrounds; no clipped labels or white text outlines.",
+  "visual_qa": "Inspected static diagram and sampled GIF frames at README width on light/dark backgrounds; Unicode chemical labels, loop arrows and text separation checked.",
   "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability",
   "workflow_text_sizes_px": {
-    "percent": 110,
-    "modified_residue_count": 80,
-    "charge": 80,
-    "cycle_title": 76,
-    "step_labels": 76
+    "figure_title": 46,
+    "cycle_title": 34,
+    "step_labels": 31,
+    "percent": 56,
+    "modified_residue_count": 32,
+    "charge": 31
   },
   "full_resolution_text_sizes_px": {
     "title": 110,
     "subtitle": 70,
     "representation_note": 65
+  },
+  "closed_cycle_animation": {
+    "light": {
+      "frames": 20,
+      "size_px": [
+        1600,
+        900
+      ],
+      "duration_ms": 19500,
+      "cycle_order": [
+        "Electrostatic ranking",
+        "Amidation + rotation",
+        "Energy minimization",
+        "PROPKA protonation"
+      ],
+      "closed_loop": true,
+      "schematic": "Method cycle highlights; protein images are saved minimized percentage checkpoints, not intermediate step coordinates",
+      "source_levels": [
+        0,
+        25,
+        50,
+        75,
+        100
+      ],
+      "rgba_static": true,
+      "gif_background": "#ffffff",
+      "gif_palette": "Shared 256-color palette",
+      "gif_bytes": 623131,
+      "gif_sha256": "c408e849ee64788a2d18700be46cd2b8cd7e3be43117840984e410c9ca013217"
+    },
+    "dark": {
+      "frames": 20,
+      "size_px": [
+        1600,
+        900
+      ],
+      "duration_ms": 19500,
+      "cycle_order": [
+        "Electrostatic ranking",
+        "Amidation + rotation",
+        "Energy minimization",
+        "PROPKA protonation"
+      ],
+      "closed_loop": true,
+      "schematic": "Method cycle highlights; protein images are saved minimized percentage checkpoints, not intermediate step coordinates",
+      "source_levels": [
+        0,
+        25,
+        50,
+        75,
+        100
+      ],
+      "rgba_static": true,
+      "gif_background": "#0d1117",
+      "gif_palette": "Shared 256-color palette",
+      "gif_bytes": 855247,
+      "gif_sha256": "9af6a99edae8d0b29393908940b5d19dd196c430b6ef78e640d56fe5830dd933"
+    }
   }
 }

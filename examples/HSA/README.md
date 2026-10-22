@@ -5,8 +5,8 @@ cationization levels. The structures were minimized with the APBS-guided
 protocol and renamed using the current residue names. They were produced in the HSA campaign before this CLI release.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/hsa_workflow_dark.png">
-  <img src="../../docs/images/hsa_workflow.png" width="100%" alt="Five aligned, minimized HSA structures from 0 to 100 percent cationization">
+  <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/hsa_workflow_dark.gif">
+  <img src="../../docs/images/hsa_workflow.gif" width="100%" alt="Closed method cycle alongside the saved minimized HSA structures from 0 to 100 percent cationization">
 </picture>
 
 ## Files

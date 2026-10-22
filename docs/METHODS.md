@@ -1,5 +1,8 @@
 # Parameterization and electrostatic ranking
 
+See the [residue-parameter guide](PARAMETERS.md) for library files, capped-model
+construction and instructions for extending the chemical-state catalog.
+
 ## Chemistry and charge states
 
 The target reaction replaces one carboxylate oxygen by an ethylenediamine

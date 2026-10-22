@@ -21,16 +21,17 @@ to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 - [HSA example](#hsa-example)
 - [Options](#options)
 - [Software](#software)
+- [Residue parameters](#residue-parameters)
 
 ## How it works
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/hsa_workflow_dark.png">
-  <img src="docs/images/hsa_workflow.png" width="100%" alt="Progressive HSA cationization from 0 to 100 percent, with electrostatic site selection, amidation, minimization and a PROPKA protonation check">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/hsa_workflow_dark.gif">
+  <img src="docs/images/hsa_workflow.gif" width="100%" alt="Closed cationization cycle: electrostatic ranking, amidation and rotation, minimization, PROPKA, and return to ranking; alongside the saved 0 to 100 percent HSA structures">
 </picture>
 
-*Five aligned, minimized HSA structures. Cartoon colors indicate secondary
-structure; sticks show the modified residues.*
+*Schematic site-modification cycle beside the saved HSA structures. Cartoon
+colors indicate secondary structure; sticks show the modified residues.*
 
 4K structures, light: [0%](docs/images/hsa_0_4k.png) ·
 [25%](docs/images/hsa_25_4k.png) · [50%](docs/images/hsa_50_4k.png) ·
@@ -329,7 +330,7 @@ series** at 0%, 25%, 50%, 75% and 100%, with a PDB, Amber topology and restart
 for each minimized structure. Tables list the modified sites and protein
 charges. The 17 disulfide bonds are retained at every level.
 
-[View the cumulative HSA workflow](docs/images/hsa_workflow.png).
+[View the animated HSA workflow](docs/images/hsa_workflow.gif).
 
 To try the default workflow, use the small peptide example:
 
@@ -432,8 +433,31 @@ for cloning, saving changes and granting collaborator access.
 | [MODELLER](https://salilab.org/modeller/) | Optional template-based native modeling | Separate; individual licence required |
 | [ESMFold2 / ESMFold2-Fast](https://huggingface.co/biohub/ESMFold2) | Optional prediction of native structures from sequence | Separate; [PyTorch](https://pytorch.org/) and compatible [Transformers](https://huggingface.co/docs/transformers/main/model_doc/esmfold2) |
 
-[NumPy](https://numpy.org/) and [SciPy](https://scipy.org/) are included for
-numerical calculations. Parameter development can additionally use
-[Gaussian](https://gaussian.com/) and AmberTools RESP; neither is needed to use
-the bundled residue library. The HSA preview was rendered with
-[VMD](https://www.ks.uiuc.edu/Research/vmd/).
+## Residue parameters
+
+The bundled library contains **32 chemical states**, covering modified Asp/Glu
+side chains and C termini, with separate terminal, histidine and cysteine
+contexts. Four accepted HSA templates (`ASC`, `GLC`, `ASX`, `LET`) retain their
+original fitted charges. The other 28 states were developed with capped
+amino-acid models:
+
+| Component | How it was obtained |
+|---|---|
+| Quantum model | ACE/NME caps reproduce the peptide context; disulfide variants include an explicit partner |
+| Geometry and electrostatic potential | Two constrained backbone conformations optimized at HF/6-31G(d), with Merz–Kollman ESP samples |
+| Partial charges | Joint two-stage RESP fitting, with fixed cap charges and the specified integer residue charge |
+| Bonded and Lennard-Jones terms | Amber protein atom types and transfer by chemical analogy |
+
+The introduced ammonium remains +1. The ff14SB, ff19SB and ff99SBildn profiles
+share the custom RESP charges and use their corresponding native protein
+contexts. New torsional parameters were not fitted.
+
+Each template was checked for connectivity, stereochemistry, charge and
+parameter completeness. Fitted capped models were also checked with OpenMM
+in vacuum and GBn2. The [validation table](parameters/validation_summary.csv)
+records the numerical results.
+
+To extend the library, develop and validate a separate template for each new
+chemical state, then supply a complete custom library with `--parameters`.
+The [parameter guide](docs/PARAMETERS.md) describes the models, files,
+development commands and code changes needed for new chemistry.
