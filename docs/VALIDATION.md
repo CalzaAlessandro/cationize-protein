@@ -210,21 +210,34 @@ versions. AOChalky is retained, and
 
 Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. Tachyon uses
 24 antialiasing samples and the recorded lighting/transparency settings.
-The 22 October README update uses an illustrated four-step cycle beside the five
-saved HSA checkpoints, with no step numbers or central reaction formula. Each
-1900 × 1100 GIF has 20 frames and a 24 s loop. The cycle insets show a native-HSA
-screened-Coulomb surface, a real Asp-to-ASC modification and restrained OpenMM
-minimization in an Asp–Asp–Leu peptide, and a native-HSA His3 PROPKA result at
-pH 7.4. These local examples are separate from the five saved whole-HSA
-checkpoints. The surface uses the current screened-Coulomb function with
-topology charges, dielectric 78.5, 0.15 M salt and 298 K; its 3 Å display grid
-does not alter the runtime ranking grid. The peptide energy decreased from
-−1063.18 to −1098.56 kJ/mol with the same energy function, and its final RMS
-force passed the minimization threshold. PROPKA predicted pKa 5.777 for His3,
-consistent with retaining the native neutral HIE state at pH 7.4.
+The 23 October README animation keeps a text-only, colored cycle on the left
+and shows the molecular images successively on the right. There are no step
+numbers or central reaction formula in the cycle. Each 1600 × 900 GIF has
+24 frames and a 67 s loop. Each percentage begins with its saved HSA structure,
+followed by its electrostatic surface, last chemical modification, local
+minimization and archived final PROPKA result. The 0% reference has no chemical
+modification page, and its minimization page shows the saved native minimum.
 
-The new molecular insets were rendered at 3840 × 2160 with VMD/Tachyon.
-Protein and inset crops are downsampled without upsampling. GIF frames are
+Five screened-Coulomb fields were calculated with the current function and
+the respective checkpoint coordinates and topology charges, using dielectric
+78.5, 0.15 M salt and 298 K. All fields share a 3 Å grid and a display range
+of −5 to +5 kBT/e. This display calculation does not change the runtime ranking
+grid or the original APBS-guided series.
+
+The four chemical examples use original HSA steps 25, 50, 74 and 99, at Leu585,
+Glu376, Glu442 and Asp249. Their minimization overlays use the original starting
+and converged coordinates from `pmemd.cuda`, with ff14SB, the custom RESP
+parameters, `igb=5` and backbone restraints. At step 99 the saved rotamer
+correction is the starting geometry for the successful minimization. Restart
+and topology hashes match the corresponding completion records, and each
+selected minimization has RMS gradient below 0.1 kcal/(mol Å). Local fitting
+is rigid; displacements are not amplified. The final PROPKA prediction files
+were matched to their original source minima. His3 remains HIE at every
+checkpoint, with pKa 5.78, 6.02, 5.96, 5.53 and 5.93, respectively; the displayed
+values also agree with the archived fixed-amine sensitivity control.
+
+The percentage-specific molecular images were rendered at 3840 × 2160 with
+VMD/Tachyon. Protein crops are downsampled without upsampling. GIF frames are
 composited on the matching light/dark background with one palette per theme;
 the companion static PNG retains alpha transparency. The underlying render
 alpha comes from independent geometry-transmittance passes that retain the

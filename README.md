@@ -27,12 +27,12 @@ to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/hsa_workflow_dark.gif">
-  <img src="docs/images/hsa_workflow.gif" width="100%" alt="Illustrated cycle showing an electrostatic surface, Asp amidation, energy minimization and a PROPKA histidine check beside the saved HSA cationization series">
+  <img src="docs/images/hsa_workflow.gif" width="100%" alt="Text-only colored cycle on the left; on the right, each HSA percentage is followed by its electrostatic surface, chemical modification, local minimization and PROPKA images">
 </picture>
 
-*The cycle shows a native HSA electrostatic surface, Asp amidation and local
-minimization in a small peptide, and a histidine protonation check. The saved
-HSA series appears at right. [View the step illustrations](examples/HSA/README.md#figure).*
+*Each HSA checkpoint is followed by its electrostatic surface, a saved
+chemical-step example, the corresponding local minimization and the final
+PROPKA check. [View the image details](examples/HSA/README.md#figure).*
 
 4K structures, light: [0%](docs/images/hsa_0_4k.png) ·
 [25%](docs/images/hsa_25_4k.png) · [50%](docs/images/hsa_50_4k.png) ·
