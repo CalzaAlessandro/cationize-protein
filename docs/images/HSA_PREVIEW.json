@@ -1,6 +1,6 @@
 {
-  "description": "Closed schematic cationization cycle with discrete saved HSA structures, light/dark GIFs and static PNGs",
-  "scientific_scope": "Existing structures and accepted parameters unchanged; display colors, opacity and text only",
+  "description": "Illustrated closed cationization cycle beside saved HSA structures, with light/dark GIFs and transparent static PNGs",
+  "scientific_scope": "Saved HSA structures, runtime code and accepted parameters unchanged; new display calculations and peptide illustration only",
   "source_example": "examples/HSA/<percent>/minimized.pdb",
   "residues": 585,
   "disulfides": 17,
@@ -151,7 +151,7 @@
     3840,
     2160
   ],
-  "image_processing": "Existing independent-transmittance molecular renders; common crop and isotropic downsampling; schematic cycle drawn at output resolution",
+  "image_processing": "Independent-transmittance molecular renders; isotropic downsampling; per-step molecular insets; closed cycle drawn at output resolution",
   "transparency": {
     "method": "Unlit geometry transmittance on white; recover straight RGBA from black color pass",
     "color_threshold_used": false,
@@ -360,8 +360,8 @@
       2160
     ],
     "hsa_workflow.png": [
-      1600,
-      900
+      1900,
+      1100
     ],
     "hsa_0_4k_dark.png": [
       3840,
@@ -384,16 +384,48 @@
       2160
     ],
     "hsa_workflow_dark.png": [
-      1600,
-      900
+      1900,
+      1100
     ],
     "hsa_workflow.gif": [
-      1600,
-      900
+      1900,
+      1100
     ],
     "hsa_workflow_dark.gif": [
-      1600,
-      900
+      1900,
+      1100
+    ],
+    "cycle_step_amidation.png": [
+      900,
+      520
+    ],
+    "cycle_step_amidation_dark.png": [
+      900,
+      520
+    ],
+    "cycle_step_minimization.png": [
+      900,
+      520
+    ],
+    "cycle_step_minimization_dark.png": [
+      900,
+      520
+    ],
+    "cycle_step_potential.png": [
+      900,
+      520
+    ],
+    "cycle_step_potential_dark.png": [
+      900,
+      520
+    ],
+    "cycle_step_protonation.png": [
+      900,
+      520
+    ],
+    "cycle_step_protonation_dark.png": [
+      900,
+      520
     ]
   },
   "output_sha256": {
@@ -404,15 +436,23 @@
     "hsa_50_4k.png": "457fa00cc29359ca149e0dd3e354899d7bc50931267284a88bcedb0dcdafd3d6",
     "hsa_75_4k.png": "8937612bc584df706f0a0539acb35ca91760df5df2dc960b5838d7006d66bbde",
     "hsa_100_4k.png": "9520d75f16e1ac37f36d667aed341413159c16c5fc22700d8fffc5c32fcf6ed8",
-    "hsa_workflow.png": "34160d3dc2c881712686ca121fcd98b40a07f8767fdbfb992aa474e142715c26",
+    "hsa_workflow.png": "320c86e2ebe2aa08ea73c570bcab3de07aff5a02ecdc5cbeb8a286ca9a1fea9e",
     "hsa_0_4k_dark.png": "5e0defe19943118f9ce78c38ca5cd2ea64b3a4a982c2da5c3c299300baae8256",
     "hsa_25_4k_dark.png": "a07249003cc02b3a7406fa0087fd276bb12c28f466cde744cd7444a87bfd2d1b",
     "hsa_50_4k_dark.png": "7c03fe1aaafbf5c2440f4af593feb6c6865b6425925c002fcf85fc4786fb7a9e",
     "hsa_75_4k_dark.png": "45302b782395d141b88413a629323b71673e6073fb8b6287e296d529d38e6def",
     "hsa_100_4k_dark.png": "a5b98b98750adc0bc77fc264ac9859684fad49fa2da36f4c389d3a16fcfd7a61",
-    "hsa_workflow_dark.png": "17d4390bc2c28405c64944bcefcdf3ef45c4f8292ddfda3d517b3ff74204bf0a",
-    "hsa_workflow.gif": "c408e849ee64788a2d18700be46cd2b8cd7e3be43117840984e410c9ca013217",
-    "hsa_workflow_dark.gif": "9af6a99edae8d0b29393908940b5d19dd196c430b6ef78e640d56fe5830dd933"
+    "hsa_workflow_dark.png": "81863d55f0d2bc9b770960a65f454aa61425456eb08374f53c547d97461b89c0",
+    "hsa_workflow.gif": "2f8c6c138bdeeae666bb1a3b697203964a79cc9fc34b64590a5ff289a721b630",
+    "hsa_workflow_dark.gif": "6c1c35b6493415ca3e7cc2f3ffbce2930a2df0de2825ff1a233b00e1acabf575",
+    "cycle_step_amidation.png": "e4185acd6f28c9f17fbc6bef3744c681d52fe4a8e63b2e9ba4e91bd60c798eef",
+    "cycle_step_amidation_dark.png": "f625e34e609a7f149a3d9b87b425531b6bcbb3fa76895f177f274f9f51d1557b",
+    "cycle_step_minimization.png": "7c8f0b17ec01dfe36cfe7b43494cc5ada46c695f5a43bf0739733f1c96b9c8ca",
+    "cycle_step_minimization_dark.png": "fc3c11cb8518f9a1d917c78a70062f421d512d837606bc827715ccc3429f138a",
+    "cycle_step_potential.png": "fcb6c4bada5c7e106c687de275551139739853691035e5342c6ec8ec1c8d7e9a",
+    "cycle_step_potential_dark.png": "e484e2a46b4e7629a951ba90f5d9ccf960a49158ec68e699f2eb46da9b325419",
+    "cycle_step_protonation.png": "d6cad3269e53c8da2fb49ad495e5a32deaf8cc346ef7df51cc6579040bf4513f",
+    "cycle_step_protonation_dark.png": "1069007a7045764fe164a2a3006036b8fed26f7f00ccdbb703912813a70a7fa7"
   },
   "output_bytes": {
     "banner.svg": 42102,
@@ -422,15 +462,23 @@
     "hsa_50_4k.png": 1084647,
     "hsa_75_4k.png": 1188649,
     "hsa_100_4k.png": 1303827,
-    "hsa_workflow.png": 361892,
+    "hsa_workflow.png": 559662,
     "hsa_0_4k_dark.png": 1247640,
     "hsa_25_4k_dark.png": 1360483,
     "hsa_50_4k_dark.png": 1466724,
     "hsa_75_4k_dark.png": 1574376,
     "hsa_100_4k_dark.png": 1678628,
-    "hsa_workflow_dark.png": 412169,
-    "hsa_workflow.gif": 623131,
-    "hsa_workflow_dark.gif": 855247
+    "hsa_workflow_dark.png": 640841,
+    "hsa_workflow.gif": 1675046,
+    "hsa_workflow_dark.gif": 1401319,
+    "cycle_step_amidation.png": 63080,
+    "cycle_step_amidation_dark.png": 62872,
+    "cycle_step_minimization.png": 100179,
+    "cycle_step_minimization_dark.png": 99985,
+    "cycle_step_potential.png": 168310,
+    "cycle_step_potential_dark.png": 168222,
+    "cycle_step_protonation.png": 52710,
+    "cycle_step_protonation_dark.png": 52423
   },
   "scene_sha256": {
     "light": {
@@ -501,18 +549,20 @@
     ".development/render_hsa_workflow.py",
     ".development/recover_hsa_rgba.py",
     ".development/compose_hsa_workflow.py",
-    ".development/compose_hsa_cycle.py"
+    ".development/compose_hsa_cycle.py",
+    ".development/prepare_cycle_step_data.py",
+    ".development/render_cycle_step_images.py"
   ],
   "qa_previews": ".development/hsa_workflow/qa",
-  "visual_qa": "Inspected static diagram and sampled GIF frames at README width on light/dark backgrounds; Unicode chemical labels, loop arrows and text separation checked.",
+  "visual_qa": "Closed cycle and enlarged step panels inspected at README scale on light and dark backgrounds; step numbers and central reaction removed; source labels and color scales checked",
   "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability",
   "workflow_text_sizes_px": {
-    "figure_title": 46,
-    "cycle_title": 34,
-    "step_labels": 31,
-    "percent": 56,
-    "modified_residue_count": 32,
-    "charge": 31
+    "figure_title": 48,
+    "cycle_title": 36,
+    "step_labels": 32,
+    "percent": 62,
+    "modified_residue_count": 34,
+    "charge": 32
   },
   "full_resolution_text_sizes_px": {
     "title": 110,
@@ -523,10 +573,10 @@
     "light": {
       "frames": 20,
       "size_px": [
-        1600,
-        900
+        1900,
+        1100
       ],
-      "duration_ms": 19500,
+      "duration_ms": 24000,
       "cycle_order": [
         "Electrostatic ranking",
         "Amidation + rotation",
@@ -534,7 +584,10 @@
         "PROPKA protonation"
       ],
       "closed_loop": true,
-      "schematic": "Method cycle highlights; protein images are saved minimized percentage checkpoints, not intermediate step coordinates",
+      "numbered_steps": false,
+      "central_reaction": false,
+      "schematic": "Illustrated method cycle; right-hand HSA images are saved minimized percentage checkpoints",
+      "molecular_insets": "Native HSA screened-Coulomb surface and His3 PROPKA check; real Asp-Asp-Leu modification/minimization example",
       "source_levels": [
         0,
         25,
@@ -545,16 +598,16 @@
       "rgba_static": true,
       "gif_background": "#ffffff",
       "gif_palette": "Shared 256-color palette",
-      "gif_bytes": 623131,
-      "gif_sha256": "c408e849ee64788a2d18700be46cd2b8cd7e3be43117840984e410c9ca013217"
+      "gif_bytes": 1675046,
+      "gif_sha256": "2f8c6c138bdeeae666bb1a3b697203964a79cc9fc34b64590a5ff289a721b630"
     },
     "dark": {
       "frames": 20,
       "size_px": [
-        1600,
-        900
+        1900,
+        1100
       ],
-      "duration_ms": 19500,
+      "duration_ms": 24000,
       "cycle_order": [
         "Electrostatic ranking",
         "Amidation + rotation",
@@ -562,7 +615,10 @@
         "PROPKA protonation"
       ],
       "closed_loop": true,
-      "schematic": "Method cycle highlights; protein images are saved minimized percentage checkpoints, not intermediate step coordinates",
+      "numbered_steps": false,
+      "central_reaction": false,
+      "schematic": "Illustrated method cycle; right-hand HSA images are saved minimized percentage checkpoints",
+      "molecular_insets": "Native HSA screened-Coulomb surface and His3 PROPKA check; real Asp-Asp-Leu modification/minimization example",
       "source_levels": [
         0,
         25,
@@ -573,8 +629,201 @@
       "rgba_static": true,
       "gif_background": "#0d1117",
       "gif_palette": "Shared 256-color palette",
-      "gif_bytes": 855247,
-      "gif_sha256": "9af6a99edae8d0b29393908940b5d19dd196c430b6ef78e640d56fe5830dd933"
+      "gif_bytes": 1401319,
+      "gif_sha256": "6c1c35b6493415ca3e7cc2f3ffbce2930a2df0de2825ff1a233b00e1acabf575"
+    }
+  },
+  "step_illustrations": {
+    "native_potential": {
+      "model": "Default screened Coulomb / Debye-Huckel; uniform dielectric",
+      "units": "kBT/e",
+      "temperature_K": 298.0,
+      "dielectric": 78.5,
+      "salt_M": 0.15,
+      "grid_spacing_A": 3.0,
+      "grid_shape": [
+        36,
+        36,
+        24
+      ],
+      "purpose": "Display illustration; not a new site-selection calculation",
+      "source_sha256": {
+        "examples/HSA/0/protein.parm7": "a9df53f8ec8e66b8a57815651a1e1f3ccea65583aadcf5338a055a18fad73d40",
+        "examples/HSA/0/minimized.rst7": "adacce988da9cca153254f8aca4360f1d62a965a47f897460d5e247c939b4acb",
+        "examples/HSA/0/minimized.pdb": "7b0ead70a323891665f6159658d68e4447f96c0186ce3a8b826fda7f1b7510db"
+      },
+      "wall_seconds": 2.8468711376190186,
+      "field_sha256": "b7775bab9a3ce9743c17ea894a2bf2522bb4f4a046f5436dcdd0e11bbb18d2a8"
+    },
+    "surface_display": {
+      "representation": "VMD QuickSurf 1.0 0.5 1.0 1.0; AOChalky",
+      "palette": "Red-negative, white-zero, blue-positive",
+      "limits_kBT_per_e": [
+        -2,
+        2
+      ]
+    },
+    "amidation": {
+      "sequence": "Asp-Asp-Leu",
+      "modified_residue_ordinal": 2,
+      "native": "ASP",
+      "product": "ASC",
+      "context": "Protein-bound side chain; hydrogens omitted",
+      "parameters": "Distributed ff14SB + custom RESP library",
+      "source_sha256": {
+        ".development/prepared_series/0/exports/system.parm7": "b72ddb9e85e968618e0ccdfd4bfc125fd2f554302e200fe4389667eca240ca2f",
+        ".development/prepared_series/0/exports/system.rst7": "3e4b34db0efcaa11658ac7e4bbcd4c223b86c0132b2b3757c5f688c4404dc643",
+        "parameters/ASC.lib": "ea5b6047b6c48747c6d7afac936eb7003c5e6a331b6a588b1087ae0080f1d353"
+      }
+    },
+    "minimization": {
+      "source": "Same modified peptide, before and after the actual OpenMM minimization",
+      "model": "ff14SB + custom RESP; OpenMM GBn2; backbone restraint 10 kcal/(mol A^2)",
+      "energies_kJ_mol": [
+        -1063.1784586116883,
+        -1098.5605197733278
+      ],
+      "result": {
+        "backend": "OpenMM GBn2",
+        "force_field": "ff14SB",
+        "implicit_salt_M": 0.0,
+        "platform": "CPU",
+        "threads": 1,
+        "restraint_kcal_mol_A2": 10.0,
+        "RMS_force_kcal_mol_A": 0.09627711438150692,
+        "target_RMS_force": 0.1,
+        "potential_energy_kJ_mol": -1098.560519773327
+      },
+      "display_fit": "Local N1/C1/C2 backbone; no deformation or displacement amplification"
+    },
+    "protonation": {
+      "protein": "Native HSA, 585 residues, saved 0% model",
+      "pH": 7.4,
+      "prediction": {
+        "residue_ordinal": 3,
+        "chain_id": "chain1",
+        "chain_ordinal": 1,
+        "original_id": "2",
+        "source_state": "HIE",
+        "native_state": "HIE",
+        "context": "internal",
+        "modified_groups": [],
+        "modified_residue": false,
+        "mapped_chain_id": "A",
+        "group": "HIS",
+        "atom": "CG",
+        "pKa": 5.777028606919759,
+        "source_atom": "CG",
+        "introduced_amine": false,
+        "protonated_fraction_HH": 0.023270353300905645
+      },
+      "displayed_native_state": "HIE",
+      "introduced_ammonium": "Held at +1 by the cationization protocol; not refitted by PROPKA"
+    },
+    "render": {
+      "renderer": "VMD/Tachyon",
+      "dimensions_px": [
+        3840,
+        2160
+      ],
+      "potential_scale_kBT_per_e": [
+        -2,
+        2
+      ],
+      "molecular_sources": "Native HSA for potential and histidine; Asp-Asp-Leu for chemical modification and minimization",
+      "alpha": {
+        "amidation_native": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 4317,
+          "alpha_nonzero_pixels": 324492,
+          "alpha_bbox": [
+            1124,
+            648,
+            2560,
+            1473
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.0005793671338584619,
+          "rgba8_recompose_black_mae": 3.620088318712078e-05,
+          "rgba8_recompose_black_p99": 0.0014038681983947754,
+          "rgba8_recompose_black_max": 0.13453876972198486
+        },
+        "amidation_product": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 4352,
+          "alpha_nonzero_pixels": 205709,
+          "alpha_bbox": [
+            1156,
+            743,
+            2527,
+            1347
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.0008539571271391463,
+          "rgba8_recompose_black_mae": 2.2689597244607285e-05,
+          "rgba8_recompose_black_p99": 0.0010833740234375,
+          "rgba8_recompose_black_max": 0.1439231038093567
+        },
+        "minimization": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 4552,
+          "alpha_nonzero_pixels": 215867,
+          "alpha_bbox": [
+            1158,
+            728,
+            2525,
+            1345
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.00012353285433469065,
+          "rgba8_recompose_black_mae": 2.54252790909959e-05,
+          "rgba8_recompose_black_p99": 0.0012054592370986938,
+          "rgba8_recompose_black_max": 0.06063932180404663
+        },
+        "protonation": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 5057,
+          "alpha_nonzero_pixels": 315257,
+          "alpha_bbox": [
+            1166,
+            681,
+            2563,
+            1409
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.001059453081136977,
+          "rgba8_recompose_black_mae": 3.323252167319879e-05,
+          "rgba8_recompose_black_p99": 0.0013427734375,
+          "rgba8_recompose_black_max": 0.1469901204109192
+        },
+        "potential_surface": {
+          "alpha_min": 0.0,
+          "alpha_max": 1.0,
+          "alpha_fractional_pixels": 6074,
+          "alpha_nonzero_pixels": 1472409,
+          "alpha_bbox": [
+            1159,
+            310,
+            2760,
+            1910
+          ],
+          "transparent_pixel_rgb_nonzero": 0,
+          "foreground_channel_clip_fraction": 0.0004167773130065537,
+          "rgba8_recompose_black_mae": 0.00013147448771633208,
+          "rgba8_recompose_black_p99": 0.0018157958984375,
+          "rgba8_recompose_black_max": 0.1454795002937317
+        }
+      }
+    },
+    "source_json_sha256": {
+      "peptide.json": "4bc2defb5bce06a9f87ef950ae2f38c063a5d5ee1eea83a7e9e4c3d2b332debf",
+      "potential.json": "eef773e26def77fba01afbf6a705cae17de842dc180cbcf7510b7c33fb5f906b",
+      "protonation_example.json": "38a0a2af016e41895573e1c7964501de79476407699f085f1a8c7a3b5de74ae1",
+      "RENDER.json": "6dcb3ea148c468c050c8513210baecdd3327a175137a85df64a92cf9824419d6"
     }
   }
 }

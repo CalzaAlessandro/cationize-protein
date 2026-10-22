@@ -210,10 +210,21 @@ versions. AOChalky is retained, and
 
 Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. Tachyon uses
 24 antialiasing samples and the recorded lighting/transparency settings.
-The 22 October README update uses a closed four-step cycle beside the five saved
-HSA checkpoints. Each 1600 × 900 GIF has 20 frames and a 19.5 s loop; cycle phases
-are schematic and the protein coordinates come from the saved minimized
-structures. Protein crops are downsampled without upsampling. GIF frames are
+The 22 October README update uses an illustrated four-step cycle beside the five
+saved HSA checkpoints, with no step numbers or central reaction formula. Each
+1900 × 1100 GIF has 20 frames and a 24 s loop. The cycle insets show a native-HSA
+screened-Coulomb surface, a real Asp-to-ASC modification and restrained OpenMM
+minimization in an Asp–Asp–Leu peptide, and a native-HSA His3 PROPKA result at
+pH 7.4. These local examples are separate from the five saved whole-HSA
+checkpoints. The surface uses the current screened-Coulomb function with
+topology charges, dielectric 78.5, 0.15 M salt and 298 K; its 3 Å display grid
+does not alter the runtime ranking grid. The peptide energy decreased from
+−1063.18 to −1098.56 kJ/mol with the same energy function, and its final RMS
+force passed the minimization threshold. PROPKA predicted pKa 5.777 for His3,
+consistent with retaining the native neutral HIE state at pH 7.4.
+
+The new molecular insets were rendered at 3840 × 2160 with VMD/Tachyon.
+Protein and inset crops are downsampled without upsampling. GIF frames are
 composited on the matching light/dark background with one palette per theme;
 the companion static PNG retains alpha transparency. The underlying render
 alpha comes from independent geometry-transmittance passes that retain the

@@ -6,7 +6,7 @@ protocol and renamed using the current residue names. They were produced in the 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/hsa_workflow_dark.gif">
-  <img src="../../docs/images/hsa_workflow.gif" width="100%" alt="Closed method cycle alongside the saved minimized HSA structures from 0 to 100 percent cationization">
+  <img src="../../docs/images/hsa_workflow.gif" width="100%" alt="Four molecular illustrations in a closed cycle beside the saved minimized HSA structures from 0 to 100 percent cationization">
 </picture>
 
 ## Files
@@ -91,6 +91,58 @@ used only in visualization copies so VMD can recognize the modified residues.
 The original example PDB names remain unchanged.
 
 The figure shows five minimized structures at increasing cationization levels.
-Cartoon opacity is 20% in the light version and 45% in the dark version;
-modified residues remain opaque. Rendering and alignment details are in
+The four cycle insets illustrate separate operations. The electrostatic and
+protonation examples use native HSA. The amidation and minimization examples
+use an Asp–Asp–Leu peptide with the distributed ASC parameters.
+
+### Electrostatic ranking
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_potential_dark.png">
+  <img src="../../docs/images/cycle_step_potential.png" width="650" alt="Native HSA surface colored by screened-Coulomb electrostatic potential, from minus 2 to plus 2 kBT per elementary charge">
+</picture>
+
+The surface is colored by a screened-Coulomb calculation using the native
+topology charges, a solvent dielectric of 78.5, 0.15 M monovalent salt and
+298 K. Red indicates negative potential and blue positive potential. The
+display uses a 3 Å grid and a fixed range of −2 to +2 kBT/e. This illustrates
+the default solver; the saved HSA cationization series was guided by APBS.
+
+### Amidation and rotation
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_amidation_dark.png">
+  <img src="../../docs/images/cycle_step_amidation.png" width="650" alt="Asp side-chain fragment before modification and the corresponding ASC fragment with its aminoethylamide group">
+</picture>
+
+The Asp side-chain carboxyl is converted into an aminoethylamide. The views
+show the same protein-bound site before modification and after local
+relaxation. The script samples rotations of the added group to reduce steric
+overlap before minimization. Hydrogen atoms are omitted in this view.
+
+### Energy minimization
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_minimization_dark.png">
+  <img src="../../docs/images/cycle_step_minimization.png" width="650" alt="Overlay of the actual modified peptide side-chain coordinates before and after restrained OpenMM energy minimization">
+</picture>
+
+The overlay compares the modified side chain immediately before minimization
+(orange) and after convergence (green), fitted on the local backbone. The
+calculation used ff14SB, the custom RESP parameters and OpenMM GBn2 with
+backbone restraints. Both geometries were evaluated with the same energy
+function; the energy decreased by 35.4 kJ/mol.
+
+### PROPKA protonation
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_protonation_dark.png">
+  <img src="../../docs/images/cycle_step_protonation.png" width="650" alt="Native HSA His3 in the neutral HIE state, with a PROPKA pKa of 5.78 at pH 7.4">
+</picture>
+
+PROPKA predicts a pKa of 5.78 for His3 in the native HSA example. At pH 7.4,
+the neutral HIE state is retained. The introduced terminal amines remain
+fixed at +1 under the cationization protocol.
+
+Rendering, source hashes and calculation details are recorded in
 [HSA_PREVIEW.json](../../docs/images/HSA_PREVIEW.json).
