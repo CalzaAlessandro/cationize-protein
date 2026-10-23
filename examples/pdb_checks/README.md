@@ -31,7 +31,7 @@ cationize-protein run \
 
 It exits with an error and does not create `rejected_example`. The explicit
 Coulomb model makes this input-validation example independent of APBS; it is
-not a statement that Coulomb and Poisson–Boltzmann are equivalent.
+not a statement that Coulomb and Poisson-Boltzmann are equivalent.
 
 An optional complete small-peptide demonstration is:
 

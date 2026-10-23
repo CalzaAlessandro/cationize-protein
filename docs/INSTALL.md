@@ -1,6 +1,6 @@
 # Installation
 
-Use Python 3.12 if available. The package supports Python 3.10–3.14 subject
+Use Python 3.12 if available. The package supports Python 3.10-3.14 subject
 to compatible dependency wheels. Choose either the local venv or Conda route.
 
 ## Python with a local venv
@@ -44,7 +44,7 @@ Use `conda deactivate` to leave it.
 Both installation methods include the default calculation: OpenMM
 minimization, screened-Coulomb site ranking and ff14SB parameters.
 Screened Coulomb is an approximation. Choose APBS or PBSA explicitly when
-you need Poisson–Boltzmann electrostatics.
+you need Poisson-Boltzmann electrostatics.
 
 ## External programs
 
@@ -53,8 +53,8 @@ Python installation completes even if the following programs are absent:
 | Program | Needed for | Search locations |
 |---|---|---|
 | Amber `sander` or `pmemd` | Optional serial Amber minimization | `AMBERHOME/bin`, then `PATH` |
-| Amber `pbsa` | Optional Poisson–Boltzmann solver | `AMBERHOME/bin`, then `PATH` |
-| APBS | Optional Poisson–Boltzmann solver | Project `.tools/apbs/bin/apbs`, then `PATH` |
+| Amber `pbsa` | Optional Poisson-Boltzmann solver | `AMBERHOME/bin`, then `PATH` |
+| APBS | Optional Poisson-Boltzmann solver | Project `.tools/apbs/bin/apbs`, then `PATH` |
 | GROMACS `gmx` or `gmx_mpi` | Running GROMACS calculations | `PATH` |
 | MODELLER | Optional native comparative model from PDB + FASTA | Explicit Python variable, otherwise active Python and Python interpreters on `PATH` |
 | ESMFold2 | Optional native prediction from FASTA | Explicit Python variable, otherwise active Python and Python interpreters on `PATH` |

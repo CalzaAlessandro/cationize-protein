@@ -85,10 +85,10 @@ sequence, completeness beyond the supplied residues remains undetermined.
 Declared disulfides and CYX labels are retained. The checker verifies sulfur
 identities and geometry; the workflow then verifies the prepared bond graph.
 
-OpenMM, used by PDBFixer and the parameter-assignment step, can identify S–S
+OpenMM, used by PDBFixer and the parameter-assignment step, can identify S-S
 bonds from cysteine sulfur proximity. During parameter assignment, bonded
 cysteines are represented as CYX and the declared SSBOND/CYX identities are
-checked against actual SG–SG topology bonds. Proximity alone is not an
+checked against actual SG-SG topology bonds. Proximity alone is not an
 experimental assignment of oxidation state; review inferred pairs, especially
 in a newly predicted model. `pdb4amber` can still be used externally for an
 Amber preparation route, but is not required for the PDBFixer/OpenMM route.
@@ -101,7 +101,7 @@ construct. A CYX label alone also does not identify its partner.
 
 As a geometry check, native HSA was loaded after changing all CYX labels to
 CYS and removing SSBOND/CONECT records from an in-memory copy. OpenMM recovered
-the same 17 SG–SG pairs as the supplied native topology. This check does not
+the same 17 SG-SG pairs as the supplied native topology. This check does not
 establish pairing in a distorted or newly predicted structure. Sulfur-bound
 HG hydrogens can also prevent automatic recognition and must be consistent
 with the intended chemical state.
@@ -117,8 +117,8 @@ cationize-protein prepare input.pdb --uniprot-record hsa_reference/uniprot.json 
 The reference is an ordinary local UniProt JSON record. `prepare` makes no
 network request. It maps each continuous PDB chain to a unique, exact
 contiguous region of the canonical sequence. PDB residue numbers and insertion
-codes are retained. A mature HSA chain maps to UniProt positions 25–609, so
-the canonical Cys77–Cys86 annotation becomes Cys53–Cys62 in a PDB numbered
+codes are retained. A mature HSA chain maps to UniProt positions 25-609, so
+the canonical Cys77-Cys86 annotation becomes Cys53-Cys62 in a PDB numbered
 from the mature N terminus. No fixed offset is assumed by the program.
 
 For every mapped pair, both cysteine SG atoms must be present after atom
@@ -179,7 +179,7 @@ cationize-protein prepare examples/pdb_checks/wrong_columns.pdb \
   --output invalid_example
 ```
 
-The first command adds one missing CA to a synthetic ASP–ASP–LEU peptide. The
+The first command adds one missing CA to a synthetic ASP-ASP-LEU peptide. The
 second reports a truncated coordinate record and creates no output directory.
 See [the examples](../examples/pdb_checks/README.md) for the files and logs.
 

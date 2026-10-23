@@ -62,7 +62,7 @@ quit
 Run `tleap -s -f complex.in` in that directory. Inspect `tleap.log` and resolve
 missing parameters, type conflicts and unexpected close contacts. LEaP's
 `combine` retains component coordinates and existing bonds; it adds no
-protein–ligand bond.
+protein-ligand bond.
 This recipe uses the protein coordinates stored in `protein.lib`. If you
 move the protein during ligand placement, update its coordinate inputs in
 the matching atom order before assembly. Opening another PDB does not update
@@ -83,7 +83,7 @@ This route uses the installed ParmEd dependency and converts both components
 in one pass. Supply `protein.parm7`/`protein.rst7` copied from the same export,
 and an independently parameterized `ligand.parm7`/`ligand.rst7`. Both restarts
 must already contain the intended complex pose. The ligand parameters must
-use a compatible Amber nonbonded model and 1–4 treatment. This script does
+use a compatible Amber nonbonded model and 1-4 treatment. This script does
 not fit ligand parameters or place the ligand.
 
 Save this as `make_complex.py` in a new directory with those four files,
@@ -164,7 +164,7 @@ Avoid the reserved `CP_` prefix for ligand types.
 
 Keep exactly one `[ defaults ]` block. All global atom types and other
 parameter types must precede **every** `[ moleculetype ]`. Do not include a
-second stock `*.ff/forcefield.itp`. The protein export can use explicit 1–4
+second stock `*.ff/forcefield.itp`. The protein export can use explicit 1-4
 Lennard-Jones pairs with `gen-pairs = no` and `fudgeLJ = 1`; a ligand expecting
 automatically generated pairs and `fudgeLJ = 0.5` needs conversion. Deleting
 its `[ defaults ]` block alone does not make it compatible. The [GROMACS
@@ -185,7 +185,7 @@ gmx grompp -f your_protocol.mdp -c complex.gro -p complex.top \
 ```
 
 Resolve preprocessing warnings and inspect `processed.top`. Compare the
-converted charges, Lennard-Jones parameters, exclusions and 1–4 interactions
+converted charges, Lennard-Jones parameters, exclusions and 1-4 interactions
 with the source, then compare single-point energies at identical coordinates.
 Successful file parsing alone does not validate a ligand force field or an
 MD protocol.

@@ -1,12 +1,12 @@
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.svg">
-  <img src="docs/images/banner.svg" width="100%" alt="cationize-protein — progressive protein cationization">
+  <img src="docs/images/banner.svg" width="100%" alt="cationize-protein - progressive protein cationization">
 </picture>
 
 Build progressively cationized proteins and export their structures and
 parameters for Amber, OpenMM or GROMACS.
 
-The script converts carboxyl groups into `–C(=O)–NH–CH₂–CH₂–NH₃⁺`.
+The script converts carboxyl groups into `-C(=O)-NH-CH₂-CH₂-NH₃⁺`.
 It ranks accessible sites by electrostatic potential, rotates each new group
 to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 
@@ -78,13 +78,13 @@ dependencies without creating a nested `.venv`.
 
 Both methods include everything needed for the default OpenMM minimization,
 screened-Coulomb site ranking and ff14SB parameters. Screened Coulomb is an
-approximation; choose APBS or PBSA explicitly for Poisson–Boltzmann calculations.
+approximation; choose APBS or PBSA explicitly for Poisson-Boltzmann calculations.
 
 Amber, GROMACS, APBS, MODELLER and ESMFold2 are optional, separate installations.
 Installation and `doctor` report whether their code is present; you can add them
 later. Neither MODELLER nor ESMFold2 is downloaded by the standard installer.
 APBS or Amber PBSA is needed for
-Poisson–Boltzmann calculations. GROMACS is only needed to run GROMACS jobs,
+Poisson-Boltzmann calculations. GROMACS is only needed to run GROMACS jobs,
 not to write its input files. See [installation details](docs/INSTALL.md).
 
 ## Connect optional software
@@ -96,7 +96,7 @@ with Conda and platform-specific alternatives.
 
 | Program | Use | Selection in cationize-protein |
 |---|---|---|
-| APBS | Poisson–Boltzmann potential | `--solver apbs`; optional executable path with `--apbs` |
+| APBS | Poisson-Boltzmann potential | `--solver apbs`; optional executable path with `--apbs` |
 | AmberTools / Amber | Serial minimization or PBSA potential | `--engine amber` or `--solver pbsa` |
 | GROMACS | Run exported molecular systems | Run GROMACS separately; exports need no GROMACS installation |
 | MODELLER | Reconstruct a native protein from template and sequence | `model --method modeller`; requires a MODELLER licence |
@@ -189,8 +189,8 @@ cationize-protein prepare input.pdb --uniprot-record hsa_reference/uniprot.json 
 ```
 
 The sequence is mapped to the PDB before applying the annotations; residue
-numbers are not assumed to match. For mature HSA, UniProt Cys77–Cys86 maps to
-Cys53–Cys62. Verified pairs are written as CYX, SSBOND and CONECT records;
+numbers are not assumed to match. For mature HSA, UniProt Cys77-Cys86 maps to
+Cys53-Cys62. Verified pairs are written as CYX, SSBOND and CONECT records;
 thiol HG hydrogens on those pairs are removed. Heavy coordinates are retained.
 The output includes `disulfides.csv`, `uniprot_mapping.csv` and the reference
 JSON. Ambiguous sequences, conflicting partners and incompatible sulfur
@@ -342,7 +342,7 @@ cationize-protein run --pdb examples/pdb_checks/reference_peptide.pdb \
 ```
 
 This uses the included screened-Coulomb approximation. Use APBS or PBSA for
-a Poisson–Boltzmann calculation.
+a Poisson-Boltzmann calculation.
 
 ## Options
 
@@ -430,7 +430,7 @@ for cloning, saving changes and granting collaborator access.
 | [ParmEd](https://parmed.github.io/ParmEd/html/index.html) | Topology handling and export | Included |
 | [Amber / AmberTools](https://ambermd.org/) | Optional Amber minimization and PBSA electrostatics | Separate |
 | [GROMACS](https://www.gromacs.org/) | Run exported GROMACS systems | Separate |
-| [APBS](https://www.poissonboltzmann.org/) | Poisson–Boltzmann electrostatics | Separate |
+| [APBS](https://www.poissonboltzmann.org/) | Poisson-Boltzmann electrostatics | Separate |
 | [MODELLER](https://salilab.org/modeller/) | Optional template-based native modeling | Separate; individual licence required |
 | [ESMFold2 / ESMFold2-Fast](https://huggingface.co/biohub/ESMFold2) | Optional prediction of native structures from sequence | Separate; [PyTorch](https://pytorch.org/) and compatible [Transformers](https://huggingface.co/docs/transformers/main/model_doc/esmfold2) |
 
@@ -445,7 +445,7 @@ amino-acid models:
 | Component | How it was obtained |
 |---|---|
 | Quantum model | ACE/NME caps reproduce the peptide context; disulfide variants include an explicit partner |
-| Geometry and electrostatic potential | Two constrained backbone conformations optimized at HF/6-31G(d), with Merz–Kollman ESP samples |
+| Geometry and electrostatic potential | Two constrained backbone conformations optimized at HF/6-31G(d), with Merz-Kollman ESP samples |
 | Partial charges | Joint two-stage RESP fitting, with fixed cap charges and the specified integer residue charge |
 | Bonded and Lennard-Jones terms | Amber protein atom types and transfer by chemical analogy |
 

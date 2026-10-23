@@ -6,7 +6,7 @@ construction and instructions for extending the chemical-state catalog.
 ## Chemistry and charge states
 
 The target reaction replaces one carboxylate oxygen by an ethylenediamine
-amide, yielding `–C(=O)–NH–CH2–CH2–NH3+`. The introduced ammonium is held
+amide, yielding `-C(=O)-NH-CH2-CH2-NH3+`. The introduced ammonium is held
 protonated. Carboxylates on Asp/Glu side chains and biological C termini
 are distinct candidate groups. N-terminal, C-terminal, histidine-tautomer,
 thiolate and disulfide contexts have separate templates where needed.
@@ -25,15 +25,15 @@ are rejected.
 Native geometry, atom types and cap charges are read from the installed
 Amber definitions. Internal residues use ACE/NME caps, N-terminal residues
 use NME, and C-terminal residues use ACE. For the disulfide variant an
-explicit neutral ACE–CYX–NME partner preserves the S–S bond. Caps and this
+explicit neutral ACE-CYX-NME partner preserves the S-S bond. Caps and this
 partner retain their standard charges during fitting. Existing four HSA
 fits are preserved exactly under the renamed identifiers.
 
 For each new template, two initial backbone conformations are optimized
 with Gaussian at HF/6-31G(d), using a frozen backbone torsion and frozen
-heteroatom–H bond lengths to preserve the selected protonation state.
+heteroatom-H bond lengths to preserve the selected protonation state.
 These constraints are part of this implementation's model; the resulting
-geometries are not fully unconstrained gas-phase minima. Merz–Kollman ESP
+geometries are not fully unconstrained gas-phase minima. Merz-Kollman ESP
 samples feed two-stage, two-conformer RESP. Equivalent atom charges are
 shared across conformers. Element identities in RESP inputs are checked
 against explicit atomic numbers, independently of the exported atom names.
@@ -62,10 +62,10 @@ of broad transferability.
 ## Progressive site ranking and steric relaxation
 
 The default screened-Coulomb solver evaluates the current atomic charges in
-a uniform solvent dielectric with Debye–Hückel screening. Its defaults are
+a uniform solvent dielectric with Debye-Hückel screening. Its defaults are
 298 K, dielectric 78.5 and 0.15 M monovalent salt. This approximation omits
 the protein dielectric boundary and reaction field and runs entirely in Python.
-APBS and Amber PBSA provide optional Poisson–Boltzmann calculations; APBS uses
+APBS and Amber PBSA provide optional Poisson-Boltzmann calculations; APBS uses
 the nonlinear equation with solute/solvent dielectric constants 2/78.5.
 Solver identity and settings are recorded for every run, and an existing run
 retains its recorded solver on resumption. The models can rank sites differently.

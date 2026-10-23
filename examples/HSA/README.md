@@ -86,7 +86,7 @@ modify the example files or launch MD.
 
 All structures are fitted on the same 585 Cα atoms and displayed with one
 camera and scale. The camera is rolled to place the native IIB heart-tip axis
-(residues 292–383) vertically. Protein cartoons are colored by secondary structure;
+(residues 292-383) vertically. Protein cartoons are colored by secondary structure;
 modified residues appear as heavy-atom sticks. Native backbone aliases are
 used only in visualization copies so VMD can recognize the modified residues.
 The original example PDB names remain unchanged.
@@ -107,7 +107,7 @@ their percentage labels. Native HSA has no amidation page.
 
 The surface is colored by a screened-Coulomb calculation using the native
 topology charges, a solvent dielectric of 78.5, 0.15 M monovalent salt and
-298 K. Blue indicates negative potential, gold zero and red positive potential. The
+298 K. Blue indicates negative potential, silver gray zero and red positive potential. The
 display uses the same 3 Å grid and fixed range of −5 to +5 kBT/e for all five
 percentages. Each field is calculated from its own checkpoint coordinates
 and topology charges. The figure uses screened Coulomb; the saved HSA

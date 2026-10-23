@@ -1,7 +1,7 @@
 # Residue parameters
 
 The library describes carboxyl amidation with ethylenediamine. The product is
-`–C(=O)–NH–CH₂–CH₂–NH₃⁺`, with the introduced ammonium fixed at +1.
+`-C(=O)-NH-CH₂-CH₂-NH₃⁺`, with the introduced ammonium fixed at +1.
 The complete residue charge also includes its other ionizable groups and
 terminal charges. Separate templates describe internal, N-terminal and
 C-terminal contexts.
@@ -30,9 +30,9 @@ The cap arrangement preserves the chemical context of the residue:
 
 | Residue context | Quantum model |
 |---|---|
-| Internal residue | ACE–modified residue–NME |
-| N-terminal residue | Modified residue–NME |
-| C-terminal residue | ACE–modified residue |
+| Internal residue | ACE-modified residue-NME |
+| N-terminal residue | Modified residue-NME |
+| C-terminal residue | ACE-modified residue |
 | Disulfide-linked cysteine | An explicit disulfide partner with ACE/NME caps |
 
 ACE and NME represent the neighboring peptide groups. Their standard charges
@@ -44,8 +44,8 @@ terminal state, peptide connections and disulfide chemistry.
 
 Two starting backbone conformations, α-like and extended, are optimized with
 [Gaussian](https://gaussian.com/) at **HF/6-31G(d)**. A backbone torsion and
-heteroatom–hydrogen bond lengths are held fixed to retain the chosen
-conformation and protonation state. Merz–Kollman electrostatic-potential samples
+heteroatom-hydrogen bond lengths are held fixed to retain the chosen
+conformation and protonation state. Merz-Kollman electrostatic-potential samples
 are calculated for the resulting geometries.
 
 ### 3. Fit the partial charges with RESP

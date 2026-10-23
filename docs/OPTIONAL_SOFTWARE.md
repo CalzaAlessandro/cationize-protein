@@ -10,7 +10,7 @@ Install the tools below only for the additional calculation you need.
 
 | Software | Use in this package |
 |---|---|
-| APBS | Poisson–Boltzmann potential, `--solver apbs` |
+| APBS | Poisson-Boltzmann potential, `--solver apbs` |
 | AmberTools | Serial `sander` minimization and `pbsa` potential |
 | Amber | Optional serial `pmemd` minimization |
 | GROMACS | Run exported GROMACS systems |
@@ -151,7 +151,7 @@ cationize-protein doctor
 ```
 
 Choose `--engine sander` for AmberTools minimization, or `--solver pbsa` for
-Poisson–Boltzmann potential. `--engine amber` selects available serial Amber
+Poisson-Boltzmann potential. `--engine amber` selects available serial Amber
 software automatically. `--engine-executable /absolute/path/to/sander` and
 `--pbsa /absolute/path/to/pbsa` select executables explicitly. Discovery checks
 `AMBERHOME/bin` before `PATH`.

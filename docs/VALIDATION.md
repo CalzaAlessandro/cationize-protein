@@ -1,4 +1,4 @@
-# Implementation validation — 21 October 2026
+# Implementation validation - 21 October 2026
 
 Tests use short peptides, synthetic systems and the initial 585-residue HSA model. No HSA production was submitted
 or restarted. Original structures and accepted fitted RESP libraries were
@@ -28,7 +28,7 @@ residues and existing output directories were rejected. A separate console
 example demonstrates one missing CA repaired and a truncated record rejected
 without an output directory.
 
-A real ASP–ASP–LEU demonstration completed cumulative 0/25/50/75/100% checkpoints
+A real ASP-ASP-LEU demonstration completed cumulative 0/25/50/75/100% checkpoints
 with OpenMM minimization, PROPKA and all three export formats. A second complete
 run started from the PDBFixer-repaired peptide. Both demonstrations selected
 screened-Coulomb ranking explicitly; they do not test a new APBS installation.
@@ -50,7 +50,7 @@ tests. No ligand-combination utility is provided.
 
 Three previously generated peptide systems were exported again using the
 current split ITP writer. ParmEd reloaded these files and OpenMM compared the
-physical graph, charges, LJ, exclusions, 1–4 terms, CMAP, energy and forces at
+physical graph, charges, LJ, exclusions, 1-4 terms, CMAP, energy and forces at
 identical original coordinates. All checks passed:
 
 | Profile | GROMACS round-trip energy error, kJ/mol | CMAP terms |
@@ -88,7 +88,7 @@ nine decimal places to remove ordinary GRO rounding.
 
 The ff19SB XML/JSON reconstruction retained its 24 × 24 CMAP and passed energy
 and force comparison. A conventional frcmod alone does not encode CMAP.
-Complete exports include actual 1–4 scaling derived from physical exceptions;
+Complete exports include actual 1-4 scaling derived from physical exceptions;
 these can differ from bare ParmEd torsion defaults.
 
 Earlier serial integration also covered APBS/PROPKA, Amber minimization,
@@ -139,7 +139,7 @@ An activated venv resolves the short cationize-protein command.
 
 The actual `fetch` command downloaded public RCSB 1N5U and UniProt P02768
 records. It preserved the deposited PDB and canonical 609-residue sequence,
-extracted the uniquely annotated mature chain at positions 25–609 (585
+extracted the uniquely annotated mature chain at positions 25-609 (585
 residues), and listed 189 linked PDB candidates. This macOS Python had no
 configured CA file; the network check used the trusted system bundle via
 `SSL_CERT_FILE=/etc/ssl/cert.pem`. TLS verification remained enabled.
@@ -156,7 +156,7 @@ MODELLER 10.8 from the existing Homebrew installation completed two real
 native-fragment tests: one deleted residue was rebuilt in HSA fragments of
 30 and 16 residues, with five scored models per run. The latter preserved a
 disulfide and passed PDBFixer preparation and subsequent ff14SB assignment
-(16 residues, 217 atoms, one SG–SG topology bond). The actual test identified
+(16 residues, 217 atoms, one SG-SG topology bond). The actual test identified
 and corrected a truncated SSBOND serialization error. A regression test now
 checks that written disulfide records pass the preparation checker.
 
@@ -184,9 +184,9 @@ generates an explicitly identified full native candidate.
 The installed `prepare --uniprot-record` command was tested on the native
 585-residue HSA model with all CYX labels changed to CYS and the supplied
 SSBOND/CONECT records removed in a private test copy. Exact sequence matching
-mapped the chain to canonical UniProt P02768 positions 25–609. All 17 annotated
-pairs were recovered, including canonical Cys77–Cys86 mapped to mature
-Cys53–Cys62. The output contained 34 CYX residues, retained every supplied heavy
+mapped the chain to canonical UniProt P02768 positions 25-609. All 17 annotated
+pairs were recovered, including canonical Cys77-Cys86 mapped to mature
+Cys53-Cys62. The output contained 34 CYX residues, retained every supplied heavy
 coordinate and preserved the original input and reference bytes. Default
 PROPKA assignment covered 16 histidines; subsequent ff14SB assignment passed.
 
@@ -203,7 +203,7 @@ The previously checked README command examples parse with the CLI, and 20 docume
 five cumulative minimized structures, below a compact
 light/dark vector banner. A shared orthographic camera uses yaw 180° and
 pitch 30°. A camera roll of −15.8436° aligns the projected native IIB Cα axis
-(residues 292–383) vertically. The roll changes the camera Updir only;
+(residues 292-383) vertically. The roll changes the camera Updir only;
 scene coordinates, normals, materials and lights are preserved. The same
 correction is used for the full-protein cartoons and potential surfaces.
 The Structure-colored NewCartoon has opacity 0.20 in the light
@@ -217,20 +217,21 @@ Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. T
 The 23 October README animation keeps a text-only, colored cycle on the left
 and shows the molecular images successively on the right. There are no step
 numbers or central reaction formula in the cycle. Each 1600 × 900 GIF has
-24 frames and a 67 s loop. HSA structures and potential surfaces remain
+24 frames and a 45 s loop. HSA structures and potential surfaces remain
 specific to each percentage. Three fixed operation illustrations are reused
 for amidation, minimization and PROPKA, with the heading "Cationization workflow"
 and no percentage-specific result labels. The 0% reference has no amidation
 page. The cycle uses equal calculated clearances at arrow endpoints and a
-centered three-line "Amidation / + / rotation" label.
+centered three-line "Amidation / + / rotation" label. The amidation illustration
+uses two equally sized cells centered on its horizontal axis. PROPKA is shown
+with one heading, the two chemical states and their pH-dependent preferences.
 
 Five screened-Coulomb fields were calculated with the current function and
 the respective checkpoint coordinates and topology charges, using dielectric
 78.5, 0.15 M salt and 298 K. All fields share a 3 Å grid and a display range
 of −5 to +5 kBT/e. The fields and molecular geometry are unchanged by the new
-blue–gold–red display scale. The colorbar is read directly from VMD's
-actual 1024-color lookup table. Saturated controls replace the previous muted
-scale. Both themes use the same scale, and 65 scale colors are
+blue-silver-red display scale. The colorbar is read directly from VMD's
+actual 1024-color lookup table. Negative and positive values use vivid blue and red, with a neutral silver midpoint. Both themes use the same scale, and 65 scale colors are
 reserved in the GIF palette.
 
 The operation illustrations reuse one archived example: Asp249 modification

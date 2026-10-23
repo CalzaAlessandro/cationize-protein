@@ -103,11 +103,11 @@ service.
 The original PDB, when supplied, and FASTA are preserved. A successful model
 contains `protein.pdb`, `MODEL.json`, `modeling.log` and the adapter's source
 records. MODELLER also saves candidate scores and a source-to-target residue
-map. ESMFold2 saves `confidence.csv`; pLDDT follows its documented 0–1 scale.
+map. ESMFold2 saves `confidence.csv`; pLDDT follows its documented 0-1 scale.
 Model residue numbering can differ from the source PDB.
 
 The result is checked for exact target sequence, heavy-atom completeness,
-finite coordinates, one continuous chain, peptide C–N geometry and mapped
+finite coordinates, one continuous chain, peptide C-N geometry and mapped
 template disulfides. These checks do not establish experimental accuracy,
 complete stereochemical quality or force-field readiness. A failed calculation
 keeps `MODELING_FAILED.json` and diagnostic records, but no successful
