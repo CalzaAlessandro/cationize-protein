@@ -217,28 +217,27 @@ Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. T
 The 23 October README animation keeps a text-only, colored cycle on the left
 and shows the molecular images successively on the right. There are no step
 numbers or central reaction formula in the cycle. Each 1600 × 900 GIF has
-24 frames and a 67 s loop. Each percentage begins with its saved HSA structure,
-followed by its electrostatic surface, last chemical modification, local
-minimization and archived final PROPKA result. The 0% reference has no chemical
-modification page, and its minimization page shows the saved native minimum.
+24 frames and a 67 s loop. HSA structures and potential surfaces remain
+specific to each percentage. Three fixed operation illustrations are reused
+for amidation, minimization and PROPKA, with the heading "Method illustration"
+and no percentage-specific result labels. The 0% reference has no amidation
+page. The cycle uses equal calculated clearances at arrow endpoints and a
+centered three-line "Amidation / + / rotation" label.
 
 Five screened-Coulomb fields were calculated with the current function and
 the respective checkpoint coordinates and topology charges, using dielectric
 78.5, 0.15 M salt and 298 K. All fields share a 3 Å grid and a display range
-of −5 to +5 kBT/e. This display calculation does not change the runtime ranking
-grid or the original APBS-guided series.
+of −5 to +5 kBT/e. The fields and molecular geometry are unchanged by the new
+orange–gray–violet display scale. The colorbar is read directly from VMD's
+actual 1024-color lookup table. The scale's neutral gray improves visibility
+against white. Both themes use the same scale, and 65 scale colors are
+reserved in the GIF palette.
 
-The four chemical examples use original HSA steps 25, 50, 74 and 99, at Leu585,
-Glu376, Glu442 and Asp249. Their minimization overlays use the original starting
-and converged coordinates from `pmemd.cuda`, with ff14SB, the custom RESP
-parameters, `igb=5` and backbone restraints. At step 99 the saved rotamer
-correction is the starting geometry for the successful minimization. Restart
-and topology hashes match the corresponding completion records, and each
-selected minimization has RMS gradient below 0.1 kcal/(mol Å). Local fitting
-is rigid; displacements are not amplified. The final PROPKA prediction files
-were matched to their original source minima. His3 remains HIE at every
-checkpoint, with pKa 5.78, 6.02, 5.96, 5.53 and 5.93, respectively; the displayed
-values also agree with the archived fixed-amine sensitivity control.
+The operation illustrations reuse one archived example: Asp249 modification
+and local minimization from step 99, and an HIE imidazole fragment. These
+images explain operations throughout the cycle. The minimization overlay
+retains its rigid local fit and original displacement scale. Percentage-specific
+residue identities and pKa values are omitted from these illustrative pages.
 
 The percentage-specific molecular images were rendered at 3840 × 2160 with
 VMD/Tachyon. Protein crops are downsampled without upsampling. GIF frames are

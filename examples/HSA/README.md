@@ -6,7 +6,7 @@ protocol and renamed using the current residue names. They were produced in the 
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/hsa_workflow_dark.gif">
-  <img src="../../docs/images/hsa_workflow.gif" width="100%" alt="A text-only cycle at left and a molecular slideshow at right, showing the saved HSA structure and step images separately for each percentage">
+  <img src="../../docs/images/hsa_workflow.gif" width="100%" alt="A colored cycle beside real HSA structures and potential surfaces, with fixed illustrations of the three local operations">
 </picture>
 
 ## Files
@@ -92,21 +92,11 @@ used only in visualization copies so VMD can recognize the modified residues.
 The original example PDB names remain unchanged.
 
 The left panel contains the four text labels and highlights the active phase.
-The right panel shows each percentage in turn: the saved HSA structure,
-its electrostatic surface, a chemical-step example, the corresponding local
-minimization and the final PROPKA check. Native HSA has no amidation page.
-
-The chemical examples are the last sites added before each percentage
-checkpoint. Their coordinates come from the original HSA campaign, including
-the saved starting placement and local minimization. These local steps
-preceded the final solvated minimization of the complete checkpoint.
-
-| Checkpoint | Chemical step | Site modified | Product |
-|---|---:|---|---|
-| 25% | 25/99 | Leu585, C-terminal carboxyl | LET |
-| 50% | 50/99 | Glu376, side-chain carboxyl | GLC |
-| 75% | 74/99 | Glu442, side-chain carboxyl | GLC |
-| 100% | 99/99 | Asp249, side-chain carboxyl | ASC |
+The right panel alternates the saved HSA structures and their calculated
+potential surfaces with fixed illustrations of amidation, minimization and
+protonation. The same three operation examples are repeated in the cycles.
+Their heading is **Method illustration**. HSA structures and surfaces retain
+their percentage labels. Native HSA has no amidation page.
 
 ### Electrostatic ranking
 
@@ -117,10 +107,10 @@ preceded the final solvated minimization of the complete checkpoint.
 
 The surface is colored by a screened-Coulomb calculation using the native
 topology charges, a solvent dielectric of 78.5, 0.15 M monovalent salt and
-298 K. Red indicates negative potential and blue positive potential. The
+298 K. Orange indicates negative potential, gray zero and violet positive potential. The
 display uses the same 3 Å grid and fixed range of −5 to +5 kBT/e for all five
 percentages. Each field is calculated from its own checkpoint coordinates
-and topology charges. This illustrates the default solver; the saved HSA
+and topology charges. The figure uses screened Coulomb; the saved HSA
 cationization series was guided by APBS. Native HSA is shown above; the
 animation includes all five surfaces.
 
@@ -128,42 +118,36 @@ animation includes all five surfaces.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_amidation_dark.png">
-  <img src="../../docs/images/cycle_step_amidation.png" width="650" alt="HSA Asp249 before modification and after conversion to ASC in chemical step 99, reaching the 100 percent checkpoint">
+  <img src="../../docs/images/cycle_step_amidation.png" width="650" alt="Fixed molecular illustration showing conversion of a carboxyl group into an aminoethylamide">
 </picture>
 
-The example shows Asp249 before modification and after conversion to ASC
-at step 99. The views use the saved HSA coordinates, fitted on the local
-fragment. Rotations of the added group reduce steric overlap before
-minimization. Hydrogen atoms are omitted. The animation uses the respective
-sites listed in the table for the other checkpoints.
+The local example illustrates conversion of a carboxyl group into an
+aminoethylamide. Rotations of the added group reduce steric overlap before
+minimization. Hydrogen atoms are omitted. This illustration is reused for
+all cationization levels.
 
 ### Energy minimization
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_minimization_dark.png">
-  <img src="../../docs/images/cycle_step_minimization.png" width="650" alt="HSA ASC249 immediately before and after its actual restrained Amber local minimization at step 99">
+  <img src="../../docs/images/cycle_step_minimization.png" width="650" alt="Fixed before-and-after example illustrating local energy minimization">
 </picture>
 
-The overlay compares the modified side chain immediately before minimization
-(orange) and after convergence (green), fitted on the local backbone. The
-archived HSA calculation used `pmemd.cuda`, ff14SB, the custom RESP parameters,
-implicit solvent (`igb=5`, 0.15 M salt) and backbone restraints of
-10 kcal/(mol Å²). At step 99, the starting geometry is the saved rotamer
-correction used before the successful minimization. Displacements are shown
-at their actual scale. Native HSA is displayed as its minimized reference.
+The same before-and-after overlay illustrates local relaxation in every cycle.
+Orange shows the starting geometry and green the relaxed geometry, fitted on
+the local backbone. The illustrative coordinates come from a saved local
+minimization; displacements retain their original scale.
 
 ### PROPKA protonation
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_protonation_dark.png">
-  <img src="../../docs/images/cycle_step_protonation.png" width="650" alt="His3 in 100 percent cationized HSA, with its saved neutral HIE geometry and original PROPKA pKa of 5.93 at pH 7.4">
+  <img src="../../docs/images/cycle_step_protonation.png" width="650" alt="Fixed histidine illustration showing native protonation assignment with PROPKA at pH 7.4 and fixed positive introduced amines">
 </picture>
 
-Each frame uses the His3 geometry and archived PROPKA result for that
-percentage. Predicted pKa values are 5.78, 6.02, 5.96, 5.53 and 5.93 at
-0%, 25%, 50%, 75% and 100%, respectively. The neutral HIE state is retained
-at pH 7.4. Introduced terminal amines remain fixed at +1. The enlarged
-example above shows the 100% checkpoint.
+An imidazole group illustrates a native titratable site. PROPKA checks native
+protonation at pH 7.4; introduced terminal amines remain fixed at +1. This
+operation illustration is the same in every cycle.
 
 Rendering, source hashes and calculation details are recorded in
 [HSA_PREVIEW.json](../../docs/images/HSA_PREVIEW.json).
