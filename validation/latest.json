@@ -398,16 +398,16 @@
       "hsa_75_4k_dark.png": "2540056785712e65bda931667b98a03c49a4ec1093de1e2d893a5721a9daeb0f",
       "hsa_100_4k_dark.png": "a28eb2d785fc471879a85168a05b6835fe694c6f8b1d75cb4d63575f68bfd159",
       "hsa_workflow_dark.png": "63e182da9e934e8185cca21599af56df32c45ca6aee65a557b17df60056c5db4",
-      "hsa_workflow.gif": "ac9cb463cb4cde1cd373f20fd173cf54e5bc29dd627b62af110156a031f61e86",
-      "hsa_workflow_dark.gif": "144b1f806a908185733fa7d9821449785e0c8211fbd3cb319c9c0b318cdf0b4e",
+      "hsa_workflow.gif": "8183684741970ce91b61f234301e3f1b1ab8443af5455a4a50e58d45c5250185",
+      "hsa_workflow_dark.gif": "6e5a015bd90b74c94d5c706e250844149f2a8f50957f60ebbf9190614c757607",
       "cycle_step_amidation.png": "9ae2de62b9d10f1644cc2f98f516e6824a40caa24b923f2a24025fb14e657d93",
       "cycle_step_amidation_dark.png": "6d686be6efac78d8129a0c8713681eceaa412deb4f34701fa6cfcfb6d14aad8a",
       "cycle_step_minimization.png": "1f1b2fdd7abeb010c9c9f153352c1604d93ed85433c37c0e12420a5c59e1a8bf",
       "cycle_step_minimization_dark.png": "3263f825ae2bf6c3450b4d05afdac0400e864c60c66d3cbfd8f6db32508523d9",
       "cycle_step_potential.png": "e934036bfc51caf3565943be77094fe32bc2745db5e5e1aebb4ff8d1b4b99d2d",
       "cycle_step_potential_dark.png": "7615d324495037aad753b6340fd0c63b62ad54c9de792f057dc2f936126dd202",
-      "cycle_step_protonation.png": "ef8273be979c31bd6baaabddac1730d0d7bea5ca6538dd4b93835f9fe3d439fa",
-      "cycle_step_protonation_dark.png": "0359112671cee4095f623588ed0c71d76bbf1233146cbd23cdf217c901a3ddaf"
+      "cycle_step_protonation.png": "95374481e17ef723e89886306477da4bbfefa19c377950ec34e8cb06307715c9",
+      "cycle_step_protonation_dark.png": "d804a34842e4c2111c0242925457104330a744d90942c21faf9c8908de6face1"
     },
     "secondary_structure_palette": "VMD Structure categories; brighter colors for the dark theme",
     "preview_frontal_view": "Yaw 180 degrees, pitch 30 degrees, shared camera roll; projected IIB heart-tip axis upright",
@@ -555,7 +555,7 @@
           1600,
           900
         ],
-        "duration_ms": 45000,
+        "duration_ms": 32000,
         "cycle_order": [
           "Electrostatic ranking",
           "Amidation + rotation",
@@ -604,168 +604,168 @@
             "percent": 0,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 0,
             "percent": 0,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 0,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 0,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": 25,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": 25,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": 50,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": 50,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": 75,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": 75,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": 100,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": 100,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           }
         ],
         "molecular_sources": "Real saved 585-residue HSA structures and unchanged computed fields; fixed operation examples reused across cycles",
@@ -780,8 +780,8 @@
         "rgba_static": true,
         "gif_background": "#ffffff",
         "gif_palette": "Shared 256-color palette; 65 reserved blue-silver-red scale colors; exact theme and phase colors; no error-diffusion dithering",
-        "gif_bytes": 1064967,
-        "gif_sha256": "ac9cb463cb4cde1cd373f20fd173cf54e5bc29dd627b62af110156a031f61e86"
+        "gif_bytes": 1057005,
+        "gif_sha256": "8183684741970ce91b61f234301e3f1b1ab8443af5455a4a50e58d45c5250185"
       },
       "dark": {
         "frames": 24,
@@ -789,7 +789,7 @@
           1600,
           900
         ],
-        "duration_ms": 45000,
+        "duration_ms": 32000,
         "cycle_order": [
           "Electrostatic ranking",
           "Amidation + rotation",
@@ -838,168 +838,168 @@
             "percent": 0,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 0,
             "percent": 0,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 0,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 0,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": 25,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": 25,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 25,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": 50,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": 50,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 50,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": 75,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": 75,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 75,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": 100,
             "page": "HSA structure",
             "kind": "real HSA",
-            "duration_ms": 1400
+            "duration_ms": 1080
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": 100,
             "page": "Electrostatic potential",
             "kind": "real HSA",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": null,
             "page": "Amidation and rotation",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": null,
             "page": "Energy minimization",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           },
           {
             "cycle_checkpoint_percent": 100,
             "percent": null,
             "page": "Protonation assignment",
             "kind": "fixed illustration",
-            "duration_ms": 2000
+            "duration_ms": 1400
           }
         ],
         "molecular_sources": "Real saved 585-residue HSA structures and unchanged computed fields; fixed operation examples reused across cycles",
@@ -1014,8 +1014,8 @@
         "rgba_static": true,
         "gif_background": "#0d1117",
         "gif_palette": "Shared 256-color palette; 65 reserved blue-silver-red scale colors; exact theme and phase colors; no error-diffusion dithering",
-        "gif_bytes": 1201386,
-        "gif_sha256": "144b1f806a908185733fa7d9821449785e0c8211fbd3cb319c9c0b318cdf0b4e"
+        "gif_bytes": 1185413,
+        "gif_sha256": "6e5a015bd90b74c94d5c706e250844149f2a8f50957f60ebbf9190614c757607"
       }
     },
     "step_illustrations_checked": {

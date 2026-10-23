@@ -217,32 +217,35 @@ Each theme has five downloadable PNGs at the genuine 3840 × 2160 render grid. T
 The 23 October README animation keeps a text-only, colored cycle on the left
 and shows the molecular images successively on the right. There are no step
 numbers or central reaction formula in the cycle. Each 1600 × 900 GIF has
-24 frames and a 45 s loop. HSA structures and potential surfaces remain
+24 frames and a 32 s loop. HSA structures and potential surfaces remain
 specific to each percentage. Three fixed operation illustrations are reused
 for amidation, minimization and PROPKA, with the heading "Cationization workflow"
 and no percentage-specific result labels. The 0% reference has no amidation
 page. The cycle uses equal calculated clearances at arrow endpoints and a
 centered three-line "Amidation / + / rotation" label. The amidation illustration
-uses two equally sized cells centered on its horizontal axis. PROPKA is shown
-with one heading, the two chemical states and their pH-dependent preferences.
+uses two equally sized cells centered on its horizontal axis. PROPKA uses a
+generic histidine titration curve with the midpoint at pKa.
+The plot shows the pH-pKa relation; it contains no site-specific measurements.
 
 Five screened-Coulomb fields were calculated with the current function and
 the respective checkpoint coordinates and topology charges, using dielectric
 78.5, 0.15 M salt and 298 K. All fields share a 3 Å grid and a display range
 of −5 to +5 kBT/e. The fields and molecular geometry are unchanged by the new
 blue-silver-red display scale. The colorbar is read directly from VMD's
-actual 1024-color lookup table. Negative and positive values use vivid blue and red, with a neutral silver midpoint. Both themes use the same scale, and 65 scale colors are
+actual 1024-color lookup table. Negative and positive values use vivid blue and
+red, with a neutral silver midpoint. Both themes use the same scale, and
+65 scale colors are
 reserved in the GIF palette.
 
 The operation illustrations reuse one archived example: Asp249 modification
-and local minimization from step 99, plus a chemical histidine protonation scheme. These
+and local minimization from step 99, plus a schematic histidine titration curve. These
 images explain operations throughout the cycle. The minimization overlay
 retains its rigid local fit and original displacement scale. Percentage-specific
-residue identities and pKa values are omitted from these pages. The two
-histidine drawings have the same heavy-atom graph, formal charges 0 and +1,
-and differ by exactly one proton. Their atom positions match between states.
-The scheme distinguishes the pH-dependent native groups from the fixed +1
-introduced amines. Repeated local-example labels have been removed.
+residue identities and pKa values are omitted from these pages. The titration
+curve uses a protonated fraction of 1 / (1 + 10**(pH - pKa)),
+with a relative pH range of −3 to +3 and no displayed site-specific pKa.
+The native histidine states have charges +1 and 0, while introduced amines
+remain fixed at +1.
 
 The percentage-specific molecular images were rendered at 3840 × 2160 with
 VMD/Tachyon. Protein crops are downsampled without upsampling. GIF frames are

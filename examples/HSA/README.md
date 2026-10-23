@@ -142,14 +142,16 @@ minimization; displacements retain their original scale.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_protonation_dark.png">
-  <img src="../../docs/images/cycle_step_protonation.png" width="650" alt="PROPKA predicts pKa; a histidine side chain is shown in neutral and protonated forms, with pH-dependent preferences and separately fixed positive added amines">
+  <img src="../../docs/images/cycle_step_protonation.png" width="650" alt="Schematic histidine titration curve: the protonated form predominates below pKa and the neutral form above pKa; introduced amines remain +1">
 </picture>
 
-PROPKA estimates pKa from the protein structure. The histidine example compares
-the neutral form (0) with the protonated form (+1). Neutral histidine is favored
-when pH is above its pKa; the positive form is favored below it. The scheme
-uses pH 7.4, and R marks the connection to the protein backbone. Introduced
-amines remain fixed at +1, as shown separately below the equilibrium.
+PROPKA estimates pKa from the protein structure. The schematic histidine
+curve shows the protonated fraction as pH increases relative to pKa. The
+positive form (+1) predominates below pKa; the neutral form predominates
+above it. The midpoint marks pKa. Each predicted pKa is compared with the
+selected pH, here 7.4, to assign native ionization states. Introduced amines
+remain fixed at +1. The curve illustrates this relation and contains no
+site-specific pKa measurements.
 
 Rendering, source hashes and calculation details are recorded in
 [HSA_PREVIEW.json](../../docs/images/HSA_PREVIEW.json).
