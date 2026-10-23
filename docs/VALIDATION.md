@@ -219,7 +219,7 @@ and shows the molecular images successively on the right. There are no step
 numbers or central reaction formula in the cycle. Each 1600 × 900 GIF has
 24 frames and a 67 s loop. HSA structures and potential surfaces remain
 specific to each percentage. Three fixed operation illustrations are reused
-for amidation, minimization and PROPKA, with the heading "Method illustration"
+for amidation, minimization and PROPKA, with the heading "Cationization workflow"
 and no percentage-specific result labels. The 0% reference has no amidation
 page. The cycle uses equal calculated clearances at arrow endpoints and a
 centered three-line "Amidation / + / rotation" label.
@@ -228,16 +228,20 @@ Five screened-Coulomb fields were calculated with the current function and
 the respective checkpoint coordinates and topology charges, using dielectric
 78.5, 0.15 M salt and 298 K. All fields share a 3 Å grid and a display range
 of −5 to +5 kBT/e. The fields and molecular geometry are unchanged by the new
-orange–gray–violet display scale. The colorbar is read directly from VMD's
-actual 1024-color lookup table. The scale's neutral gray improves visibility
-against white. Both themes use the same scale, and 65 scale colors are
+blue–gold–red display scale. The colorbar is read directly from VMD's
+actual 1024-color lookup table. Saturated controls replace the previous muted
+scale. Both themes use the same scale, and 65 scale colors are
 reserved in the GIF palette.
 
 The operation illustrations reuse one archived example: Asp249 modification
-and local minimization from step 99, and an HIE imidazole fragment. These
+and local minimization from step 99, plus a chemical histidine protonation scheme. These
 images explain operations throughout the cycle. The minimization overlay
 retains its rigid local fit and original displacement scale. Percentage-specific
-residue identities and pKa values are omitted from these illustrative pages.
+residue identities and pKa values are omitted from these pages. The two
+histidine drawings have the same heavy-atom graph, formal charges 0 and +1,
+and differ by exactly one proton. Their atom positions match between states.
+The scheme distinguishes the pH-dependent native groups from the fixed +1
+introduced amines. Repeated local-example labels have been removed.
 
 The percentage-specific molecular images were rendered at 3840 × 2160 with
 VMD/Tachyon. Protein crops are downsampled without upsampling. GIF frames are

@@ -95,7 +95,7 @@ The left panel contains the four text labels and highlights the active phase.
 The right panel alternates the saved HSA structures and their calculated
 potential surfaces with fixed illustrations of amidation, minimization and
 protonation. The same three operation examples are repeated in the cycles.
-Their heading is **Method illustration**. HSA structures and surfaces retain
+Their heading is **Cationization workflow**. HSA structures and surfaces retain
 their percentage labels. Native HSA has no amidation page.
 
 ### Electrostatic ranking
@@ -107,7 +107,7 @@ their percentage labels. Native HSA has no amidation page.
 
 The surface is colored by a screened-Coulomb calculation using the native
 topology charges, a solvent dielectric of 78.5, 0.15 M monovalent salt and
-298 K. Orange indicates negative potential, gray zero and violet positive potential. The
+298 K. Blue indicates negative potential, gold zero and red positive potential. The
 display uses the same 3 Å grid and fixed range of −5 to +5 kBT/e for all five
 percentages. Each field is calculated from its own checkpoint coordinates
 and topology charges. The figure uses screened Coulomb; the saved HSA
@@ -142,12 +142,14 @@ minimization; displacements retain their original scale.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="../../docs/images/cycle_step_protonation_dark.png">
-  <img src="../../docs/images/cycle_step_protonation.png" width="650" alt="Fixed histidine illustration showing native protonation assignment with PROPKA at pH 7.4 and fixed positive introduced amines">
+  <img src="../../docs/images/cycle_step_protonation.png" width="650" alt="PROPKA predicts pKa; a histidine side chain is shown in neutral and protonated forms, with pH-dependent preferences and separately fixed positive added amines">
 </picture>
 
-An imidazole group illustrates a native titratable site. PROPKA checks native
-protonation at pH 7.4; introduced terminal amines remain fixed at +1. This
-operation illustration is the same in every cycle.
+PROPKA estimates pKa from the protein structure. The histidine example compares
+the neutral form (0) with the protonated form (+1). Neutral histidine is favored
+when pH is above its pKa; the positive form is favored below it. The scheme
+uses pH 7.4, and R marks the connection to the protein backbone. Introduced
+amines remain fixed at +1, as shown separately below the equilibrium.
 
 Rendering, source hashes and calculation details are recorded in
 [HSA_PREVIEW.json](../../docs/images/HSA_PREVIEW.json).
