@@ -386,31 +386,31 @@
     "preview_hashes": {
       "banner.svg": "d4e2e0e83d73c49b1b0f261388a09be0671b5eb25f4aaa0b5f6a65e8199f6400",
       "banner_dark.svg": "9507c44f1093e3596ec539a4dedbced1887838c1ec5af2f1357b96758ec0998d",
-      "hsa_0_4k.png": "99fbc24d7a4e2d4c1a6aca0d38746d29318f8e0aa7aaa6e7d94dd3e00792f398",
-      "hsa_25_4k.png": "00f579f0f70f933344c8109df382ed294d36536ab46afff43f403da246a755c0",
-      "hsa_50_4k.png": "457fa00cc29359ca149e0dd3e354899d7bc50931267284a88bcedb0dcdafd3d6",
-      "hsa_75_4k.png": "8937612bc584df706f0a0539acb35ca91760df5df2dc960b5838d7006d66bbde",
-      "hsa_100_4k.png": "9520d75f16e1ac37f36d667aed341413159c16c5fc22700d8fffc5c32fcf6ed8",
-      "hsa_workflow.png": "4d71e9ce3ed078d71a3d1da191934c5bb40972de3e21439a5d38020988541558",
-      "hsa_0_4k_dark.png": "5e0defe19943118f9ce78c38ca5cd2ea64b3a4a982c2da5c3c299300baae8256",
-      "hsa_25_4k_dark.png": "a07249003cc02b3a7406fa0087fd276bb12c28f466cde744cd7444a87bfd2d1b",
-      "hsa_50_4k_dark.png": "7c03fe1aaafbf5c2440f4af593feb6c6865b6425925c002fcf85fc4786fb7a9e",
-      "hsa_75_4k_dark.png": "45302b782395d141b88413a629323b71673e6073fb8b6287e296d529d38e6def",
-      "hsa_100_4k_dark.png": "a5b98b98750adc0bc77fc264ac9859684fad49fa2da36f4c389d3a16fcfd7a61",
-      "hsa_workflow_dark.png": "8e0b78a231e0a4e26200b3551c39766868298b2b8a11dccc6aab93232aa8bd5a",
-      "hsa_workflow.gif": "7a27bc9b690914348157322aa7872958c0a4b282d09dad3bd96b40764554ae5b",
-      "hsa_workflow_dark.gif": "8b7f64812782788fe07dbe77c439cc0f987f49174eb5af44f966c9033337529e",
+      "hsa_0_4k.png": "0643f0972153a0408937d9f3a9124622c46470f57f1874c88d314e4c51673ede",
+      "hsa_25_4k.png": "e528303dd3a331070a84355920dae00736e6953d6948ec97e9d4c02e7f478328",
+      "hsa_50_4k.png": "79a93be9e93179c1284f3df94230bd0d8899e2a1446e75dab605556575c51bad",
+      "hsa_75_4k.png": "9ebf82c56d5a862a8ac0cc53dce74dc003dacc17eb39da8fa091f81cfa75ac20",
+      "hsa_100_4k.png": "0dc53ab7b5e2ee54d199bb3e3cd0ec44c6eeb38d33d320a5526ebaedd9764743",
+      "hsa_workflow.png": "fa56ed05079b37f557dc1a66fcb47e67d6a865c2be0d2418fc4f1ef43b8832ad",
+      "hsa_0_4k_dark.png": "ba1028c26a012ef0382eca550facdc2c714c3ffe8b2492cda9b694d4fdeaf2e1",
+      "hsa_25_4k_dark.png": "886f1977046378123480a467925663908f0e70508e0ec5cea7b4a8ed059bffc1",
+      "hsa_50_4k_dark.png": "bcd4e7f60174c3188d5cc2281f079678f71716e57b86dd58c0c47913bef54d84",
+      "hsa_75_4k_dark.png": "2540056785712e65bda931667b98a03c49a4ec1093de1e2d893a5721a9daeb0f",
+      "hsa_100_4k_dark.png": "a28eb2d785fc471879a85168a05b6835fe694c6f8b1d75cb4d63575f68bfd159",
+      "hsa_workflow_dark.png": "fca95bf1a2be24c2483fce2bf38a0c7b70a28c10a671ea042e2fab53b3e1ea19",
+      "hsa_workflow.gif": "327c09971479f02800a76519e5dbe9ceb7fc8f1223ea0811479fbee9ea21e55b",
+      "hsa_workflow_dark.gif": "e22216ca2ed577f6cc7f03a3497f5c5794f9b69fd2b2ba4cbe13edcdc1100a6b",
       "cycle_step_amidation.png": "142f128c6d47d4b8a6bac8c8b47468209235d2f2ffa6c7107044d3c299547a3b",
       "cycle_step_amidation_dark.png": "71aca191b0a37195a3f1be273fa8c8baa195e266a2bf30a61e4fe47590544665",
       "cycle_step_minimization.png": "70127bccce18a2f6582bd109ec1d6616ef223a09dfc9d449e932a2f47111de18",
       "cycle_step_minimization_dark.png": "da2daa2b112ab737babdf9b6d8452f0e059e3395aa6ba5a69f7660a8f1d34b08",
-      "cycle_step_potential.png": "43ffac02d74e93100998c5682f76ffbae93cfab044973bd056ae4922f9ef2380",
-      "cycle_step_potential_dark.png": "843e318a99b28a77053241546677a82110c09b3c8fd48b8f7d7a044f8ce8053b",
+      "cycle_step_potential.png": "4140026fe54a971708bc3dff16c4783de01f81352de368a5db71157f084e9085",
+      "cycle_step_potential_dark.png": "41ed97f10482b0d7ce7efec88912741e9a129f816e00f267dbc781c436be4dd9",
       "cycle_step_protonation.png": "5c5fcc09a88dd0007b8f316613122ab79caac24f5db6ca9c375004b49d53b43f",
       "cycle_step_protonation_dark.png": "5cba70008a21b5e4905262ccf7432d2d2e9badd2631db10cf3e6460fe313d2e9"
     },
     "secondary_structure_palette": "VMD Structure categories; brighter colors for the dark theme",
-    "preview_frontal_view": "Yaw 180 degrees, pitch 30 degrees; shared orthographic front view",
+    "preview_frontal_view": "Yaw 180 degrees, pitch 30 degrees, shared camera roll; projected IIB heart-tip axis upright",
     "preview_transparency": {
       "PNG": "full alpha",
       "modified_residue_opacity": 1.0,
@@ -700,8 +700,8 @@
         "rgba_static": true,
         "gif_background": "#ffffff",
         "gif_palette": "Shared 256-color palette; 65 reserved red-white-blue scale colors; exact theme and phase colors; no error-diffusion dithering",
-        "gif_bytes": 1033665,
-        "gif_sha256": "7a27bc9b690914348157322aa7872958c0a4b282d09dad3bd96b40764554ae5b"
+        "gif_bytes": 1054089,
+        "gif_sha256": "327c09971479f02800a76519e5dbe9ceb7fc8f1223ea0811479fbee9ea21e55b"
       },
       "dark": {
         "frames": 24,
@@ -855,8 +855,8 @@
         "rgba_static": true,
         "gif_background": "#0d1117",
         "gif_palette": "Shared 256-color palette; 65 reserved red-white-blue scale colors; exact theme and phase colors; no error-diffusion dithering",
-        "gif_bytes": 1138578,
-        "gif_sha256": "8b7f64812782788fe07dbe77c439cc0f987f49174eb5af44f966c9033337529e"
+        "gif_bytes": 1175309,
+        "gif_sha256": "e22216ca2ed577f6cc7f03a3497f5c5794f9b69fd2b2ba4cbe13edcdc1100a6b"
       }
     },
     "step_illustrations_checked": {
@@ -893,6 +893,23 @@
       "introduced_amines_fixed_charge_e": 1,
       "left_panel_molecular_images": false,
       "source_structures_and_parameters_preserved": true
+    },
+    "upright_camera": {
+      "reference": "Native 585-residue HSA, saved frontal display copy",
+      "axis": "Leading projected CA axis of the heart tip, subdomain IIB (292-383)",
+      "old_camera_up": [
+        0,
+        1,
+        0
+      ],
+      "new_camera_up": [
+        0.27301162851414545,
+        0.9620107331501319,
+        -0.0
+      ],
+      "camera_up_rotation_deg": -15.843555185566746,
+      "projected_axis_after_roll_x": 0.0,
+      "operation": "Camera roll only; frontal yaw/pitch and all scene coordinates preserved"
     }
   },
   "venv_activation_short_command_tested": true,

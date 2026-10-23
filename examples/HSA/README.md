@@ -85,7 +85,8 @@ modify the example files or launch MD.
 ## Figure
 
 All structures are fitted on the same 585 Cα atoms and displayed with one
-camera and scale. Protein cartoons are colored by secondary structure;
+camera and scale. The camera is rolled to place the native IIB heart-tip axis
+(residues 292–383) vertically. Protein cartoons are colored by secondary structure;
 modified residues appear as heavy-atom sticks. Native backbone aliases are
 used only in visualization copies so VMD can recognize the modified residues.
 The original example PDB names remain unchanged.

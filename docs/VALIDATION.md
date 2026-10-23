@@ -202,7 +202,11 @@ The previously checked README command examples parse with the CLI, and 20 docume
 `run` defaults were checked against argparse. The HSA preview uses
 five cumulative minimized structures, below a compact
 light/dark vector banner. A shared orthographic camera uses yaw 180° and
-pitch 30°. The Structure-colored NewCartoon has opacity 0.20 in the light
+pitch 30°. A camera roll of −15.8436° aligns the projected native IIB Cα axis
+(residues 292–383) vertically. The roll changes the camera Updir only;
+scene coordinates, normals, materials and lights are preserved. The same
+correction is used for the full-protein cartoons and potential surfaces.
+The Structure-colored NewCartoon has opacity 0.20 in the light
 version and 0.45 in the dark version. Dark-theme colors are brighter;
 modified-residue sticks retain opacity 1.00 and atom-name colors in both
 versions. AOChalky is retained, and
