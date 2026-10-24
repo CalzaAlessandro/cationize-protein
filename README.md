@@ -1,8 +1,8 @@
 <h1 align="center">cationize-protein</h1>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.png">
-  <img src="docs/images/banner.png" width="100%" alt="Native and cationized HSA with the conversion of a carboxylate into an aminoethyl amide">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.svg">
+  <img src="docs/images/banner.svg" width="100%" alt="Abstract progressive cationization: negative surface sites become positive while the protein outline is retained; the carboxylate-to-aminoethyl-amide scheme is shown below">
 </picture>
 
 Build progressively cationized proteins and export their structures and
