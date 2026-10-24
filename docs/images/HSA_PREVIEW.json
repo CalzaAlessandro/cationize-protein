@@ -435,8 +435,6 @@
     ]
   },
   "output_sha256": {
-    "banner.svg": "e4c973dc029e250b42b054e301cc58e820b783cd774fbe3eed2421e3e7285d7a",
-    "banner_dark.svg": "1efd23c15c640ef7ed4a47def66b3a5eb00ca75aef102c72a00c5c9b5eb9ca3e",
     "hsa_0_4k.png": "0643f0972153a0408937d9f3a9124622c46470f57f1874c88d314e4c51673ede",
     "hsa_25_4k.png": "e528303dd3a331070a84355920dae00736e6953d6948ec97e9d4c02e7f478328",
     "hsa_50_4k.png": "79a93be9e93179c1284f3df94230bd0d8899e2a1446e75dab605556575c51bad",
@@ -458,11 +456,11 @@
     "cycle_step_potential.png": "e934036bfc51caf3565943be77094fe32bc2745db5e5e1aebb4ff8d1b4b99d2d",
     "cycle_step_potential_dark.png": "7615d324495037aad753b6340fd0c63b62ad54c9de792f057dc2f936126dd202",
     "cycle_step_protonation.png": "95374481e17ef723e89886306477da4bbfefa19c377950ec34e8cb06307715c9",
-    "cycle_step_protonation_dark.png": "d804a34842e4c2111c0242925457104330a744d90942c21faf9c8908de6face1"
+    "cycle_step_protonation_dark.png": "d804a34842e4c2111c0242925457104330a744d90942c21faf9c8908de6face1",
+    "banner.png": "1dee250204abbeeebaf6cc2585b5f8752d8a079234d279744f02b767b3007ca4",
+    "banner_dark.png": "9110aac014edcc56ae7eccc493293d4d69600683e497208f7e875f7d80363dfe"
   },
   "output_bytes": {
-    "banner.svg": 49585,
-    "banner_dark.svg": 49585,
     "hsa_0_4k.png": 838429,
     "hsa_25_4k.png": 961202,
     "hsa_50_4k.png": 1082285,
@@ -484,7 +482,9 @@
     "cycle_step_potential.png": 234676,
     "cycle_step_potential_dark.png": 234588,
     "cycle_step_protonation.png": 40352,
-    "cycle_step_protonation_dark.png": 40524
+    "cycle_step_protonation_dark.png": 40524,
+    "banner.png": 602603,
+    "banner_dark.png": 753608
   },
   "scene_sha256": {
     "light": {
@@ -568,7 +568,7 @@
   ],
   "qa_previews": ".development/hsa_cycle; actual GIF pages and enlarged source pages",
   "visual_qa": "Arrow clearances, symmetric amidation cells and schematic histidine titration page checked in both themes; 32 s loop; unchanged real HSA fields",
-  "banner_rendering": "Restored original teal charge motif, outlined lettering and compact chemical scheme; centered project title kept separately in the README",
+  "banner_rendering": "Transparent high-resolution molecular banner: existing frontal VMD/Tachyon HSA renders and a minimal, aligned chemical scheme; project title remains in the README",
   "workflow_text_sizes_px": {
     "figure_title": 44,
     "cycle_title": 34,
@@ -1472,20 +1472,90 @@
     "loop_duration_ms": 32000
   },
   "banner_chemistry": {
-    "reactant": "Protein-C(=O)-O-",
-    "product": "Protein-C(=O)-NH-CH2-CH2-NH3+",
-    "description": "Compact aminoethyl-amidation scheme with explicitly written methylene groups",
+    "reactant": "R-C(=O)-O-",
+    "product": "R-C(=O)-NH-CH2-CH2-NH3+",
+    "description": "One connected aminoethyl amide; two implicit methylene vertices in the skeletal ethylene segment",
     "visible_project_title": false,
     "scale_bars": false,
     "dimensions_px": [
-      1600,
-      280
+      3200,
+      700
     ],
     "terminal_group_charges_e": {
       "carboxylate": -1,
       "aminoethyl_amide": 1
     },
-    "formal_charge_change_e": 2,
-    "reference_style_commit": "111592b"
+    "formal_charge_change_e": 2
+  },
+  "banner_composition": {
+    "sources_sha256": {
+      "hsa_0_4k.png": "0643f0972153a0408937d9f3a9124622c46470f57f1874c88d314e4c51673ede",
+      "hsa_100_4k.png": "0dc53ab7b5e2ee54d199bb3e3cd0ec44c6eeb38d33d320a5526ebaedd9764743",
+      "hsa_0_4k_dark.png": "ba1028c26a012ef0382eca550facdc2c714c3ffe8b2492cda9b694d4fdeaf2e1",
+      "hsa_100_4k_dark.png": "a28eb2d785fc471879a85168a05b6835fe694c6f8b1d75cb4d63575f68bfd159"
+    },
+    "source_crops_and_placement": {
+      "hsa_0_4k.png": {
+        "source_crop_px": [
+          1110,
+          389,
+          2754,
+          1943
+        ],
+        "placed_box_px": [
+          119,
+          16,
+          622,
+          588
+        ]
+      },
+      "hsa_100_4k.png": {
+        "source_crop_px": [
+          1110,
+          389,
+          2754,
+          1943
+        ],
+        "placed_box_px": [
+          2459,
+          16,
+          622,
+          588
+        ]
+      },
+      "hsa_0_4k_dark.png": {
+        "source_crop_px": [
+          1110,
+          389,
+          2754,
+          1943
+        ],
+        "placed_box_px": [
+          119,
+          16,
+          622,
+          588
+        ]
+      },
+      "hsa_100_4k_dark.png": {
+        "source_crop_px": [
+          1110,
+          389,
+          2754,
+          1943
+        ],
+        "placed_box_px": [
+          2459,
+          16,
+          622,
+          588
+        ]
+      }
+    },
+    "source_processing": "Crop molecular content from existing transparent 4K assets; isotropic Lanczos reduction; no changes to protein geometry, colors or opacity",
+    "chemical_art": "Vector bonds and outlined glyphs rasterized at twice the 1600 x 350 layout resolution",
+    "background": "Transparent RGBA; separate light and dark palettes",
+    "native_percent": 0,
+    "cationized_percent": 100
   }
 }
