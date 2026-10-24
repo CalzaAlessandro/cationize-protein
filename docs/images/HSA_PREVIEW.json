@@ -457,8 +457,8 @@
     "cycle_step_potential_dark.png": "7615d324495037aad753b6340fd0c63b62ad54c9de792f057dc2f936126dd202",
     "cycle_step_protonation.png": "95374481e17ef723e89886306477da4bbfefa19c377950ec34e8cb06307715c9",
     "cycle_step_protonation_dark.png": "d804a34842e4c2111c0242925457104330a744d90942c21faf9c8908de6face1",
-    "banner.svg": "83da76d866700000c10a187e8da0891bb63cff85c04ee81d901de6e52fc7fac3",
-    "banner_dark.svg": "1da4d1e547c5a1b3a92bfdebdf271c0432370d80e0c1d43bdd7ac33c87d7a7f3"
+    "banner.svg": "2f2a36ba9f71b31d3c8657f0c433f8822d7fb02522ed3383a5266cded34e078b",
+    "banner_dark.svg": "35a1f54603b1f427056be252daf875f00cc9ecc70354f998163ebbf8c3bc23fc"
   },
   "output_bytes": {
     "hsa_0_4k.png": 838429,
@@ -483,8 +483,8 @@
     "cycle_step_potential_dark.png": 234588,
     "cycle_step_protonation.png": 40352,
     "cycle_step_protonation_dark.png": 40524,
-    "banner.svg": 18667,
-    "banner_dark.svg": 18667
+    "banner.svg": 17915,
+    "banner_dark.svg": 17915
   },
   "scene_sha256": {
     "light": {
@@ -568,7 +568,7 @@
   ],
   "qa_previews": ".development/hsa_cycle; actual GIF pages and enlarged source pages",
   "visual_qa": "Arrow clearances, symmetric amidation cells and schematic histidine titration page checked in both themes; 32 s loop; unchanged real HSA fields",
-  "banner_rendering": "Transparent SVG: three abstract folded shapes with progressively converted surface-charge markers; a compact chemical scheme below; no real protein structures, molecular renders or field data",
+  "banner_rendering": "Transparent SVG: a continuous abstract folded chain repeated over three cationization stages, without an outer envelope; compact chemical scheme below; no real structure or field data",
   "workflow_text_sizes_px": {
     "figure_title": 44,
     "cycle_title": 34,
@@ -1488,7 +1488,7 @@
     "formal_charge_change_e": 2
   },
   "banner_composition": {
-    "representation": "Authored abstract curves; three schematic conversion stages",
+    "representation": "Selected option A: continuous abstract folded chain; three schematic conversion stages",
     "real_structure_data_used": false,
     "electrostatic_field_data_used": false,
     "markers": {
@@ -1501,7 +1501,7 @@
       "negative": "Warm red circle with minus sign",
       "positive": "Blue circle with plus sign"
     },
-    "protein_outline": "Identical authored outline in every stage; does not depict a conformational prediction",
+    "chain_geometry": "Identical authored folded chain in every stage; no outer outline or filled envelope",
     "background": "Transparent light and dark SVG variants",
     "visible_prose": false
   }
