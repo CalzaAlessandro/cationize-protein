@@ -1,6 +1,8 @@
+<h1 align="center">cationize-protein</h1>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.svg">
-  <img src="docs/images/banner.svg" width="100%" alt="cationize-protein - progressive protein cationization">
+  <img src="docs/images/banner.svg" width="100%" alt="Protein carboxylate and the cationized aminoethyl amide with its protonated terminal amine">
 </picture>
 
 Build progressively cationized proteins and export their structures and

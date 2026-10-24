@@ -435,8 +435,8 @@
     ]
   },
   "output_sha256": {
-    "banner.svg": "d4e2e0e83d73c49b1b0f261388a09be0671b5eb25f4aaa0b5f6a65e8199f6400",
-    "banner_dark.svg": "9507c44f1093e3596ec539a4dedbced1887838c1ec5af2f1357b96758ec0998d",
+    "banner.svg": "3af82a0923349cf4d14fcfd190332a42f03f850008f82b64fcd2a6a341a7dc4c",
+    "banner_dark.svg": "ad76d60cc02a01a9a6be45be368d5c63f9f83c9272ac7e8f684e8829d426f4f2",
     "hsa_0_4k.png": "0643f0972153a0408937d9f3a9124622c46470f57f1874c88d314e4c51673ede",
     "hsa_25_4k.png": "e528303dd3a331070a84355920dae00736e6953d6948ec97e9d4c02e7f478328",
     "hsa_50_4k.png": "79a93be9e93179c1284f3df94230bd0d8899e2a1446e75dab605556575c51bad",
@@ -461,8 +461,8 @@
     "cycle_step_protonation_dark.png": "d804a34842e4c2111c0242925457104330a744d90942c21faf9c8908de6face1"
   },
   "output_bytes": {
-    "banner.svg": 42102,
-    "banner_dark.svg": 42102,
+    "banner.svg": 2725,
+    "banner_dark.svg": 2725,
     "hsa_0_4k.png": 838429,
     "hsa_25_4k.png": 961202,
     "hsa_50_4k.png": 1082285,
@@ -568,7 +568,7 @@
   ],
   "qa_previews": ".development/hsa_cycle; actual GIF pages and enlarged source pages",
   "visual_qa": "Arrow clearances, symmetric amidation cells and schematic histidine titration page checked in both themes; 32 s loop; unchanged real HSA fields",
-  "banner_rendering": "Light/dark transparent SVG; outlined lettering and manually placed chemical subscripts for browser and converter portability",
+  "banner_rendering": "Transparent SVG chemical structures with the project title centered separately in the README",
   "workflow_text_sizes_px": {
     "figure_title": 44,
     "cycle_title": 34,
@@ -1470,5 +1470,21 @@
     ],
     "protonation": "Generic histidine titration curve, pH-pKa comparison and fixed added-amine charge annotation",
     "loop_duration_ms": 32000
+  },
+  "banner_chemistry": {
+    "reactant": "Protein-C(=O)-O-",
+    "product": "Protein-C(=O)-NH-CH2-CH2-NH3+",
+    "description": "Generic chemical illustration of the implemented aminoethyl amidation; implicit carbon vertices in the product chain",
+    "visible_project_title": false,
+    "scale_bars": false,
+    "dimensions_px": [
+      1600,
+      310
+    ],
+    "terminal_group_charges_e": {
+      "carboxylate": -1,
+      "aminoethyl_amide": 1
+    },
+    "formal_charge_change_e": 2
   }
 }
