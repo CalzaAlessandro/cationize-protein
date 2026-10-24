@@ -1474,7 +1474,7 @@
   "banner_chemistry": {
     "reactant": "Protein-C(=O)-O-",
     "product": "Protein-C(=O)-NH-CH2-CH2-NH3+",
-    "description": "Generic chemical illustration of the implemented aminoethyl amidation; implicit carbon vertices in the product chain",
+    "description": "Compact aminoethyl-amidation scheme with explicitly written methylene groups",
     "visible_project_title": false,
     "scale_bars": false,
     "dimensions_px": [
