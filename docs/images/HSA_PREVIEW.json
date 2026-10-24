@@ -435,8 +435,8 @@
     ]
   },
   "output_sha256": {
-    "banner.svg": "3af82a0923349cf4d14fcfd190332a42f03f850008f82b64fcd2a6a341a7dc4c",
-    "banner_dark.svg": "ad76d60cc02a01a9a6be45be368d5c63f9f83c9272ac7e8f684e8829d426f4f2",
+    "banner.svg": "e4c973dc029e250b42b054e301cc58e820b783cd774fbe3eed2421e3e7285d7a",
+    "banner_dark.svg": "1efd23c15c640ef7ed4a47def66b3a5eb00ca75aef102c72a00c5c9b5eb9ca3e",
     "hsa_0_4k.png": "0643f0972153a0408937d9f3a9124622c46470f57f1874c88d314e4c51673ede",
     "hsa_25_4k.png": "e528303dd3a331070a84355920dae00736e6953d6948ec97e9d4c02e7f478328",
     "hsa_50_4k.png": "79a93be9e93179c1284f3df94230bd0d8899e2a1446e75dab605556575c51bad",
@@ -461,8 +461,8 @@
     "cycle_step_protonation_dark.png": "d804a34842e4c2111c0242925457104330a744d90942c21faf9c8908de6face1"
   },
   "output_bytes": {
-    "banner.svg": 2725,
-    "banner_dark.svg": 2725,
+    "banner.svg": 49585,
+    "banner_dark.svg": 49585,
     "hsa_0_4k.png": 838429,
     "hsa_25_4k.png": 961202,
     "hsa_50_4k.png": 1082285,
@@ -568,7 +568,7 @@
   ],
   "qa_previews": ".development/hsa_cycle; actual GIF pages and enlarged source pages",
   "visual_qa": "Arrow clearances, symmetric amidation cells and schematic histidine titration page checked in both themes; 32 s loop; unchanged real HSA fields",
-  "banner_rendering": "Transparent SVG chemical structures with the project title centered separately in the README",
+  "banner_rendering": "Restored original teal charge motif, outlined lettering and compact chemical scheme; centered project title kept separately in the README",
   "workflow_text_sizes_px": {
     "figure_title": 44,
     "cycle_title": 34,
@@ -1479,12 +1479,13 @@
     "scale_bars": false,
     "dimensions_px": [
       1600,
-      310
+      280
     ],
     "terminal_group_charges_e": {
       "carboxylate": -1,
       "aminoethyl_amide": 1
     },
-    "formal_charge_change_e": 2
+    "formal_charge_change_e": 2,
+    "reference_style_commit": "111592b"
   }
 }

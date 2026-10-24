@@ -2,7 +2,7 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.svg">
-  <img src="docs/images/banner.svg" width="100%" alt="Protein carboxylate and the cationized aminoethyl amide with its protonated terminal amine">
+  <img src="docs/images/banner.svg" width="100%" alt="Progressive cationization with a teal charge motif and the aminoethyl-amide chemical scheme">
 </picture>
 
 Build progressively cationized proteins and export their structures and
