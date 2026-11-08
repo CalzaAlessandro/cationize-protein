@@ -89,15 +89,28 @@ class FetchTests(unittest.TestCase):
 
     def test_pdb_dbref_extracts_uniprot_and_auto_fetches_unique_accession(self):
         module=self.module()
-        pdb_bytes=(b'DBREF  1AKI A    1   129  UNP    P00698   LYSC_CHICK      19    147\n'
+        pdb_bytes=(b'DBREF  1IOT A    1   129  UNP    P00698   LYSC_CHICK      19    147\n'
+                   b'SEQADV 1IOT LEU A   12  UNP  P00698    MET    30 ENGINEERED MUTATION\n'
                    + (ROOT/'examples/pdb_checks/reference_peptide.pdb').read_bytes())
-        uniprot_bytes=json.dumps({'primaryAccession':'P00698','sequence':{'value':'KVFGR'},'features':[]}).encode()
+        uniprot_bytes=json.dumps({
+            'primaryAccession':'P00698',
+            'sequence':{'value':'KVFGR'},
+            'features':[],
+            'uniProtKBCrossReferences':[{'database':'PDB','id':'1IOT','properties':[{'key':'Method','value':'X-ray'},{'key':'Resolution','value':'1.75 A'},{'key':'Chains','value':'A=19-147'}]}],
+        }).encode()
+        rcsb_meta={'1IOT':{'mutation_count':'1','mutations':'M12L','ligands':'NA, CL'}}
         def fake_download(url):
             return pdb_bytes if url.endswith('.pdb') else uniprot_bytes
-        with tempfile.TemporaryDirectory() as tmp,patch.object(module,'download',side_effect=fake_download):
-            dest=Path(tmp)/'fetch';result=module.fetch(dest,pdb_id='1AKI')
+        with tempfile.TemporaryDirectory() as tmp, \
+             patch.object(module,'download',side_effect=fake_download), \
+             patch.object(module,'_rcsb_pdb_metadata',return_value=rcsb_meta):
+            dest=Path(tmp)/'fetch';result=module.fetch(dest,pdb_id='1IOT')
             self.assertEqual(result['uniprot_id'],'P00698')
             self.assertTrue((dest/'uniprot_candidates.csv').is_file())
+            self.assertTrue((dest/'pdb_mutations.csv').is_file())
             self.assertTrue((dest/'uniprot.json').is_file())
             self.assertIn('P00698',(dest/'uniprot_candidates.csv').read_text())
+            self.assertIn('ENGINEERED MUTATION',(dest/'pdb_mutations.csv').read_text())
+            self.assertIn('M12L',(dest/'pdb_candidates.csv').read_text())
+
 

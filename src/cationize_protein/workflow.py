@@ -231,6 +231,10 @@ def _normalize_labels(structure):
                  for atom in (bond.atom1, bond.atom2)}
     for residue in structure.residues:
         residue.name = LEGACY_ALIASES.get(residue.name, residue.name)
+        if residue.chain and len(str(residue.chain).strip()) > 1:
+            residue.chain = str(residue.chain).strip()[0]
+        if residue.insertion_code and len(str(residue.insertion_code).strip()) > 1:
+            residue.insertion_code = ''
         if residue.name == 'HIS':
             hydrogens = {atom.name for atom in residue.atoms} & {'HD1', 'HE2'}
             if not hydrogens:
@@ -306,15 +310,98 @@ def _verify_declared_disulfides(pdb,report):
             raise WorkflowError(f'Declared disulfide {pair} is absent from the prepared graph; review its SG coordinates/connectivity')
 
 
-def _initial_structure(config):
+def _load_topology_and_coordinates(topology_path, coordinates_path):
+    """Load Amber (.parm7/.prmtop), GROMACS (.top), CHARMM (.psf) or OpenMM (.xml) topology with coordinates."""
     import parmed
-    from openmm.app import NoCutoff
+    from openmm import XmlSerializer, unit
+    from openmm.app import PDBFile
+    top_path = Path(topology_path)
+    crd_path = Path(coordinates_path)
+    if top_path.suffix.lower() == '.xml':
+        system = XmlSerializer.deserialize(top_path.read_text())
+        if crd_path.suffix.lower() == '.json':
+            data = json.loads(crd_path.read_text())
+            if 'graph' in data and isinstance(data['graph'], dict):
+                graph = data['graph']
+                untyped = parmed.Structure()
+                for source in graph['residues']:
+                    residue = parmed.Residue(
+                        source['name'], source['source_number'], chain=source.get('chain', ''),
+                        insertion_code=source.get('insertion_code', ''), segid=source.get('segid', ''),
+                        list=untyped.residues,
+                    )
+                    untyped.residues.append(residue)
+                masses = data.get('masses') or [0.0] * len(graph['atoms'])
+                for atom, mass in zip(graph['atoms'], masses):
+                    created = parmed.Atom(name=atom['name'], atomic_number=atom['atomic_number'], mass=mass)
+                    untyped.residues[atom['residue']].add_atom(created)
+                    untyped.atoms.append(created)
+                for edge in graph['bonds']:
+                    i, j = edge[0], edge[1]
+                    order = edge[2] if len(edge) > 2 else 1.0
+                    untyped.bonds.append(parmed.Bond(untyped.atoms[i], untyped.atoms[j], order=order))
+                structure = parmed.openmm.load_topology(
+                    untyped.topology, system, xyz=np.array(graph['coordinates_A']) * unit.angstrom
+                )
+                for source, residue in zip(graph['residues'], structure.residues):
+                    residue.name = source['name']
+                    residue.number = source['source_number']
+                    residue.chain = source.get('chain', '')
+                return structure
+            elif 'coordinates_A' in data and 'atoms' in data:
+                pdb_candidate = crd_path.with_name('protein.pdb')
+                if pdb_candidate.is_file():
+                    pdb = PDBFile(str(pdb_candidate))
+                    return parmed.openmm.load_topology(
+                        pdb.topology, system, xyz=np.array(data['coordinates_A']) * unit.angstrom
+                    )
+                untyped = parmed.Structure()
+                res_map = {}
+                for atom in data['atoms']:
+                    r_idx = int(atom['residue_index'])
+                    if r_idx not in res_map:
+                        res = parmed.Residue(atom['residue'], r_idx + 1, chain='A', list=untyped.residues)
+                        untyped.residues.append(res)
+                        res_map[r_idx] = res
+                    created = parmed.Atom(name=atom['name'], atomic_number=int(atom['atomic_number']))
+                    res_map[r_idx].add_atom(created)
+                    untyped.atoms.append(created)
+                for i, j in data.get('bonds', []):
+                    untyped.bonds.append(parmed.Bond(untyped.atoms[int(i)], untyped.atoms[int(j)], order=1.0))
+                return parmed.openmm.load_topology(
+                    untyped.topology, system, xyz=np.array(data['coordinates_A']) * unit.angstrom
+                )
+            raise WorkflowError(f'Unsupported JSON coordinate format in {crd_path}')
+        elif crd_path.suffix.lower() in {'.pdb', '.ent'}:
+            pdb = PDBFile(str(crd_path))
+            return parmed.openmm.load_topology(pdb.topology, system, xyz=pdb.positions)
+        else:
+            loaded_crd = parmed.load_file(str(crd_path))
+            if hasattr(loaded_crd, 'topology') and len(getattr(loaded_crd, 'atoms', [])) == system.getNumParticles():
+                return parmed.openmm.load_topology(
+                    loaded_crd.topology, system, xyz=np.asarray(loaded_crd.coordinates) * unit.angstrom
+                )
+            raise WorkflowError('OpenMM XML topology requires a coordinate file with residue/atom topology (.pdb, .gro or state.json)')
+    try:
+        return parmed.load_file(str(top_path), xyz=str(crd_path))
+    except Exception:
+        structure = parmed.load_file(str(top_path))
+        crd = parmed.load_file(str(crd_path))
+        coords = getattr(crd, 'coordinates', None)
+        if coords is None:
+            raise
+        structure.coordinates = np.asarray(coords)
+        return structure
+
+
+def _initial_structure(config):
     if config.pdb_path is not None:
         return _pdb_structure(config.pdb_path, config.parameters_dir,config.force_field,config.pH)
-    structure = _normalize_labels(parmed.load_file(str(config.topology_path), xyz=str(config.coordinates_path)))
-    info = inspect_structure(structure)
+    structure = _normalize_labels(_load_topology_and_coordinates(config.topology_path, config.coordinates_path))
+    typed, system = parameter_assignment.parameterize(structure,config.parameters_dir,force_field=config.force_field)
+    info = inspect_structure(typed)
     _used_templates(info, config.parameters_dir)
-    return parameter_assignment.parameterize(structure,config.parameters_dir,force_field=config.force_field)
+    return typed, system
 
 
 def _native_reference(info):

@@ -110,14 +110,16 @@ Step-by-step installation and connection instructions for each tool are in
 Skip this step if you already have your input files. `fetch` downloads records
 from RCSB PDB and UniProt ([details](docs/FETCH.md)):
 
-- **Have only a PDB ID?** `fetch --pdb 1AKI` downloads `1AKI.pdb`, extracts the
-  UniProt cross-references from the PDB `DBREF` header into `uniprot_candidates.csv`,
-  and—when the PDB maps to a single UniProt entry—automatically downloads
-  `uniprot.json`, `sequence.fasta`, `mature.fasta` and `disulfides.csv`.
+- **Have only a PDB ID?** `fetch --pdb 1AKI` downloads `1AKI.pdb`, extracts
+  any `SEQADV` sequence mutations/differences into `pdb_mutations.csv` and
+  `DBREF` UniProt cross-references into `uniprot_candidates.csv`, and—when the
+  PDB maps to a single UniProt entry—automatically downloads `uniprot.json`,
+  `sequence.fasta`, `mature.fasta` and `disulfides.csv`.
 - **Have only a UniProt ID?** `fetch --uniprot P02768` downloads the UniProt
   sequence, disulfide annotations (`uniprot.json`, `disulfides.csv`) and a list
   of all experimental PDB structures linked to that protein (`pdb_candidates.csv`,
-  with resolution and chain bounds) so you can pick which PDB to download.
+  including method, resolution, chain bounds, engineered mutations and ligands)
+  so you can pick which PDB to download.
 
 ```sh
 # Download from PDB ID (auto-fetches unique mapped UniProt record)
@@ -305,8 +307,8 @@ time. Further documentation: [installation](docs/INSTALL.md),
 | Flag | Purpose, accepted values and requirements | Default |
 |---|---|---|
 | `--pdb` | Native protein PDB; use this or `--topology`, not both. | Required unless `--topology` is supplied |
-| `--topology` | Start from an existing protein-only Amber `parm7`/`prmtop` topology instead of a PDB (requires `--coordinates`). | Not used |
-| `--coordinates` | Amber `rst7`/`inpcrd` coordinates matching `--topology`. | Required with `--topology` |
+| `--topology` | Start from an existing protein-only topology instead of a PDB: Amber (`.parm7`/`.prmtop`), GROMACS (`.top`), CHARMM (`.psf`) or OpenMM (`.xml`) (requires `--coordinates`). | Not used |
+| `--coordinates` | Coordinates matching `--topology`: Amber (`.rst7`/`.inpcrd`), GROMACS (`.gro`), CHARMM (`.crd`/`.pdb`) or OpenMM (`state.json`/`.pdb`). | Required with `--topology` |
 | `--output` | New output directory, or the same verified run to resume. | Required |
 | `--percentages` | Saved cumulative levels (0–100); baseline 0% is always saved. | `25 50 75 100` |
 | `--engine` | Minimizer: `openmm`, `amber`, `sander` or `pmemd`. | `openmm`* |

@@ -48,13 +48,14 @@ directories are never overwritten.
 | Output | Created for | Meaning |
 |---|---|---|
 | `1N5U.pdb` | PDB | Deposited coordinates; filename follows the requested PDB ID |
+| `pdb_mutations.csv` | PDB | Sequence differences and engineered mutations parsed from PDB `SEQADV` records |
 | `uniprot_candidates.csv` | PDB (when `DBREF` is present) | UniProt accessions and chain/residue ranges referenced in the PDB header |
 | `uniprot.json` | UniProt (or PDB with unique `DBREF`) | Complete UniProt response |
 | `sequence.fasta` | UniProt | Canonical sequence, which may include a signal peptide or propeptide |
 | `mature.fasta` | UniProt, when uniquely annotated | Separately extracted chain with exact annotated boundaries |
 | `sequence_regions.csv` | UniProt | Annotated chains, signal peptides and propeptides |
 | `disulfides.csv` | UniProt | Annotated disulfide pairs in canonical numbering, with location qualifiers and source evidence |
-| `pdb_candidates.csv` | UniProt | Linked experimental PDB entries, methods, resolutions and chain mappings |
+| `pdb_candidates.csv` | UniProt | Linked experimental PDB entries, methods, resolutions, chain mappings, engineered mutations (`mutation_count`, `mutations`) and nonpolymer ligands (`ligands`) |
 | `FETCH.json` | Every fetch | Requested identifiers, source URLs, SHA256 hashes and retrieval messages |
 | `fetch.log` | Every fetch | Human-readable retrieval messages |
 

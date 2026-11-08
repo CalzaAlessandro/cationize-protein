@@ -55,9 +55,9 @@ def parser():
     doctor.add_argument('--json',action='store_true',help='Print the dependency report as JSON; write no files')
     execute = subcommands.add_parser('run', help='Create or automatically resume a verified progressive run')
     source = execute.add_mutually_exclusive_group(required=True)
-    source.add_argument('--topology', type=Path, help='Prepared protein-only Amber parm7/prmtop')
+    source.add_argument('--topology', type=Path, help='Prepared protein-only topology: Amber (.parm7/.prmtop), GROMACS (.top), CHARMM (.psf) or OpenMM (.xml)')
     source.add_argument('--pdb', type=Path, help='Native PDB with complete heavy atoms and explicit histidine states')
-    execute.add_argument('--coordinates', type=Path, help='Amber rst7/inpcrd, required with --topology')
+    execute.add_argument('--coordinates', type=Path, help='Coordinates matching --topology (.rst7/.inpcrd, .gro, .crd/.pdb or state.json), required with --topology')
     execute.add_argument('--parameters', type=Path, default=default_parameters(), help='Residue libraries; default: bundled validated library')
     execute.add_argument('--output', type=Path, required=True, help='New output directory or the same verified run to resume')
     execute.add_argument('--probe-radius', type=float, default=DEFAULT_PROBE_RADIUS_A,

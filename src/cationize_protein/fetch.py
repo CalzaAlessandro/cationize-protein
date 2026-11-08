@@ -64,6 +64,102 @@ def _pdb_uniprot_candidates(pdb_text):
     return rows
 
 
+def _pdb_seqadv_mutations(pdb_text):
+    """Extract SEQADV sequence differences and mutations from a PDB header."""
+    rows = []
+    for line in pdb_text.splitlines():
+        if line.startswith('SEQADV') and len(line) >= 49:
+            rows.append(dict(
+                pdb_id=line[7:11].strip(),
+                chain=line[16:17].strip(),
+                pdb_residue=line[12:15].strip(),
+                pdb_seq_num=line[18:22].strip(),
+                database=line[24:28].strip(),
+                db_accession=line[29:38].strip(),
+                db_residue=line[39:42].strip(),
+                db_seq_num=line[43:48].strip(),
+                conflict=line[49:].strip(),
+            ))
+    return rows
+
+
+def _rcsb_pdb_metadata(pdb_ids, uniprot_accession=None):
+    """Query RCSB GraphQL API in batches for mutation counts, mutation strings and ligands."""
+    if not pdb_ids:
+        return {}
+    query = """
+    query($ids: [String!]!) {
+      entries(entry_ids: $ids) {
+        rcsb_id
+        polymer_entities {
+          rcsb_polymer_entity_container_identifiers {
+            uniprot_ids
+          }
+          entity_poly {
+            rcsb_mutation_count
+          }
+          rcsb_polymer_entity {
+            pdbx_mutation
+          }
+        }
+        nonpolymer_entities {
+          nonpolymer_comp {
+            chem_comp {
+              id
+            }
+          }
+        }
+      }
+    }
+    """
+    result = {}
+    unique_ids = [pid.upper() for pid in dict.fromkeys(pdb_ids) if pid]
+    try:
+        for start in range(0, len(unique_ids), 100):
+            batch = unique_ids[start:start + 100]
+            payload = json.dumps({'query': query, 'variables': {'ids': batch}}).encode()
+            req = Request(
+                'https://data.rcsb.org/graphql',
+                data=payload,
+                headers={'Content-Type': 'application/json', 'User-Agent': 'cationize-protein/0.1'},
+            )
+            with urlopen(req, timeout=20) as resp:
+                data = json.loads(resp.read(10 * 1024 * 1024))
+            for entry in (data.get('data') or {}).get('entries') or []:
+                rcsb_id = (entry.get('rcsb_id') or '').upper()
+                if not rcsb_id:
+                    continue
+                polymers = entry.get('polymer_entities') or []
+                matched = [
+                    p for p in polymers
+                    if uniprot_accession and uniprot_accession.upper() in [
+                        u.upper() for u in ((p.get('rcsb_polymer_entity_container_identifiers') or {}).get('uniprot_ids') or [])
+                    ]
+                ] or polymers
+                mut_count = 0
+                mut_details = []
+                for poly in matched:
+                    cnt = (poly.get('entity_poly') or {}).get('rcsb_mutation_count')
+                    if isinstance(cnt, int):
+                        mut_count += cnt
+                    mut_str = (poly.get('rcsb_polymer_entity') or {}).get('pdbx_mutation')
+                    if mut_str:
+                        mut_details.append(str(mut_str).strip())
+                ligands = []
+                for nonpoly in entry.get('nonpolymer_entities') or []:
+                    comp_id = (((nonpoly.get('nonpolymer_comp') or {}).get('chem_comp') or {}).get('id') or '').strip()
+                    if comp_id and comp_id not in ligands:
+                        ligands.append(comp_id)
+                result[rcsb_id] = dict(
+                    mutation_count=str(mut_count),
+                    mutations='; '.join(dict.fromkeys(mut_details)),
+                    ligands=', '.join(ligands),
+                )
+    except Exception:
+        return result
+    return result
+
+
 def fetch(output, *, pdb_id=None, uniprot_id=None):
     """Save downloaded bytes without choosing a model or altering a sequence."""
     output = Path(output)
@@ -94,6 +190,12 @@ def fetch(output, *, pdb_id=None, uniprot_id=None):
         name = f'{pdb_id}.pdb'
         files[name], sources[name] = raw, url
         messages.append(f'PDB: {pdb_id}; deposited chains, models and heterogens retained.')
+        seqadv = _pdb_seqadv_mutations(text)
+        files['pdb_mutations.csv'] = _csv(
+            seqadv,
+            ['pdb_id', 'chain', 'pdb_residue', 'pdb_seq_num', 'database', 'db_accession', 'db_residue', 'db_seq_num', 'conflict'],
+        )
+        messages.append(f'PDB SEQADV sequence differences/mutations: {len(seqadv)} recorded in pdb_mutations.csv.')
         unp_rows = _pdb_uniprot_candidates(text)
         if unp_rows:
             files['uniprot_candidates.csv'] = _csv(
@@ -149,8 +251,17 @@ def fetch(output, *, pdb_id=None, uniprot_id=None):
                 continue
             properties = {p.get('key'): p.get('value') for p in entry.get('properties', [])}
             candidates.append(dict(pdb_id=entry.get('id', ''), method=properties.get('Method', ''),
-                resolution=properties.get('Resolution', ''), chains=properties.get('Chains', '')))
-        files['pdb_candidates.csv'] = _csv(candidates, ['pdb_id', 'method', 'resolution', 'chains'])
+                resolution=properties.get('Resolution', ''), chains=properties.get('Chains', ''),
+                mutation_count='', mutations='', ligands=''))
+        rcsb_meta = _rcsb_pdb_metadata([c['pdb_id'] for c in candidates], uniprot_accession=accession)
+        for cand in candidates:
+            meta = rcsb_meta.get(cand['pdb_id'].upper())
+            if meta:
+                cand.update(meta)
+        files['pdb_candidates.csv'] = _csv(
+            candidates,
+            ['pdb_id', 'method', 'resolution', 'chains', 'mutation_count', 'mutations', 'ligands'],
+        )
         messages.append(f'UniProt: {accession}; canonical sequence {len(sequence)} residues; '
                         f'{len(candidates)} PDB candidates. No structure was selected automatically.')
     record = dict(schema_version=1, pdb_id=pdb_id, uniprot_id=uniprot_id,

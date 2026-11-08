@@ -189,6 +189,38 @@ class WorkflowTests(unittest.TestCase):
             with self.assertRaises(WorkflowError):
                 verify_artifacts(root, {'../elsewhere': 'bad'})
 
+    def test_initial_structure_loads_amber_gromacs_charmm_and_openmm_topologies(self):
+        import parmed
+        from cationize_protein.exports import export_system
+        from cationize_protein.resources import default_parameters
+        from cationize_protein.workflow import _initial_structure
+        root_dir = Path(__file__).resolve().parents[1]
+        ref_pdb = root_dir / 'examples/pdb_checks/reference_peptide.pdb'
+        params = default_parameters()
+        with tempfile.TemporaryDirectory() as temp:
+            tmp = Path(temp)
+            structure, _ = _pdb_structure(ref_pdb, params)
+            exp_dir = tmp / 'exports'
+            export_system(structure, exp_dir, formats=('amber', 'openmm', 'gromacs'), force_field='ff14SB')
+            st_parm = parmed.load_file(str(exp_dir / 'system.parm7'), xyz=str(exp_dir / 'system.rst7'))
+            st_parm.save(str(tmp / 'input.psf'))
+            st_parm.save(str(tmp / 'input.crd'))
+            for top, crd in [
+                (exp_dir / 'system.parm7', exp_dir / 'system.rst7'),
+                (exp_dir / 'system.top', exp_dir / 'system.gro'),
+                (tmp / 'input.psf', tmp / 'input.crd'),
+                (exp_dir / 'system.xml', exp_dir / 'state.json'),
+                (exp_dir / 'system.xml', exp_dir / 'protein.pdb'),
+            ]:
+                cfg = WorkflowConfig(
+                    output_dir=tmp / 'out', parameters_dir=params,
+                    apbs=APBSConfig(executable=sys.executable), probe_radius_A=1.369,
+                    topology_path=top, coordinates_path=crd, protonation='fixed',
+                )
+                loaded, sys_obj = _initial_structure(cfg)
+                self.assertEqual(len(loaded.atoms), len(structure.atoms))
+                self.assertEqual(sys_obj.getNumParticles(), len(structure.atoms))
+
 
 if __name__ == '__main__':
     unittest.main()
