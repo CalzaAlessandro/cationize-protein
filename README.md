@@ -461,22 +461,27 @@ scientific qualification are documented in
 [installation](docs/INSTALL.md), [methods](docs/METHODS.md),
 [force fields](docs/FORCE_FIELDS.md) and [validation](docs/VALIDATION.md).
 
-This repository is private during development. See [GitHub instructions](docs/GITHUB.md)
-for cloning, saving changes and granting collaborator access.
+## Software and references
 
-## Software
+| Software | Role | Installation | Primary reference |
+|---|---|---|---|
+| [OpenMM](https://openmm.org/) | Minimization, molecular systems and hydrogen placement | Included in the Python runtime | Eastman et al., *J. Phys. Chem. B* 2024 ([10.1021/acs.jpcb.3c06662](https://doi.org/10.1021/acs.jpcb.3c06662)) |
+| [PDBFixer](https://github.com/openmm/pdbfixer) | Default repair of missing atoms in native residues | Included | Eastman et al., *PLOS Comput. Biol.* 2017 ([10.1371/journal.pcbi.1005659](https://doi.org/10.1371/journal.pcbi.1005659)) |
+| [PROPKA](https://github.com/jensengroup/propka) | Initial histidine states and protonation checks after each modification | Included | Olsson et al., *J. Chem. Theory Comput.* 2011 ([10.1021/ct100578z](https://doi.org/10.1021/ct100578z)); Søndergaard et al., *J. Chem. Theory Comput.* 2011 ([10.1021/ct200133y](https://doi.org/10.1021/ct200133y)) |
+| [ParmEd](https://parmed.github.io/ParmEd/html/index.html) | Topology handling and export | Included | Shirts et al., *J. Comput.-Aided Mol. Des.* 2017 ([10.1007/s10822-016-9977-1](https://doi.org/10.1007/s10822-016-9977-1)) |
+| [Amber / AmberTools](https://ambermd.org/) | Optional Amber minimization and PBSA electrostatics | Separate | Case et al., *J. Chem. Inf. Model.* 2023 ([10.1021/acs.jcim.3c01153](https://doi.org/10.1021/acs.jcim.3c01153)) |
+| [GROMACS](https://www.gromacs.org/) | Run exported GROMACS systems | Separate | Abraham et al., *SoftwareX* 2015 ([10.1016/j.softx.2015.06.001](https://doi.org/10.1016/j.softx.2015.06.001)) |
+| [APBS](https://www.poissonboltzmann.org/) | Poisson-Boltzmann electrostatics | Separate | Jurrus et al., *Protein Sci.* 2018 ([10.1002/pro.3280](https://doi.org/10.1002/pro.3280)) |
+| [MODELLER](https://salilab.org/modeller/) | Optional template-based native modeling | Separate; individual licence required | Webb & Sali, *Curr. Protoc. Bioinform.* 2016 ([10.1002/cpbi.3](https://doi.org/10.1002/cpbi.3)) |
+| [ESMFold2 / ESMFold2-Fast](https://huggingface.co/biohub/ESMFold2) | Optional prediction of native structures from sequence | Separate; [PyTorch](https://pytorch.org/) and compatible [Transformers](https://huggingface.co/docs/transformers/main/model_doc/esmfold2) | Lin et al., *Science* 2023 ([10.1126/science.ade2574](https://doi.org/10.1126/science.ade2574)) |
 
-| Software and official link | Role | Installation |
-|---|---|---|
-| [OpenMM](https://openmm.org/) | Minimization, molecular systems and hydrogen placement | Included in the Python runtime |
-| [PDBFixer](https://github.com/openmm/pdbfixer) | Default repair of missing atoms in native residues | Included |
-| [PROPKA](https://github.com/jensengroup/propka) | Initial histidine states and protonation checks after each modification | Included |
-| [ParmEd](https://parmed.github.io/ParmEd/html/index.html) | Topology handling and export | Included |
-| [Amber / AmberTools](https://ambermd.org/) | Optional Amber minimization and PBSA electrostatics | Separate |
-| [GROMACS](https://www.gromacs.org/) | Run exported GROMACS systems | Separate |
-| [APBS](https://www.poissonboltzmann.org/) | Poisson-Boltzmann electrostatics | Separate |
-| [MODELLER](https://salilab.org/modeller/) | Optional template-based native modeling | Separate; individual licence required |
-| [ESMFold2 / ESMFold2-Fast](https://huggingface.co/biohub/ESMFold2) | Optional prediction of native structures from sequence | Separate; [PyTorch](https://pytorch.org/) and compatible [Transformers](https://huggingface.co/docs/transformers/main/model_doc/esmfold2) |
+### Force fields and physical models
+
+- **Amber ff14SB**: Maier et al., *J. Chem. Theory Comput.* 2015 ([10.1021/acs.jctc.5b00255](https://doi.org/10.1021/acs.jctc.5b00255)).
+- **Amber ff19SB**: Tian et al., *J. Chem. Theory Comput.* 2020 ([10.1021/acs.jctc.9b00591](https://doi.org/10.1021/acs.jctc.9b00591)).
+- **Amber ff99SB-ILDN**: Lindorff-Larsen et al., *Proteins* 2010 ([10.1002/prot.22711](https://doi.org/10.1002/prot.22711)).
+- **GBn2 implicit solvent**: Nguyen, Roe & Simmerling, *J. Chem. Theory Comput.* 2013 ([10.1021/ct3010485](https://doi.org/10.1021/ct3010485)).
+- **RESP charge fitting**: Bayly et al., *J. Phys. Chem.* 1993 ([10.1021/j100142a004](https://doi.org/10.1021/j100142a004)).
 
 ## Residue parameters
 

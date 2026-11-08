@@ -94,10 +94,24 @@ def prepare_pdb(source, output, *, pH=7.4, protonation='propka', uniprot_record=
     serial = max(serials, default=0)
     additions, added_atoms = {}, []
     present = [{a['name'] for a in residue['atoms']} for residue in before['residues']]
+    res_coords = {(a.residue.index, a.name): (float(rec[30:38]), float(rec[38:46]), float(rec[46:54]))
+                  for a, rec in zip(atoms, generated)}
     for atom, record in zip(atoms, generated):
         index = atom.residue.index
         if atom.name in present[index] or atom.element is None or atom.element.atomic_number == 1:
             continue
+        if atom.name == 'OXT' and all((index, k) in res_coords for k in ('CA', 'C', 'O')):
+            ca, c, o = (res_coords[index, k] for k in ('CA', 'C', 'O'))
+            v_ca = tuple(ca[i] - c[i] for i in range(3))
+            v_o = tuple(o[i] - c[i] for i in range(3))
+            n_ca = math.sqrt(sum(x * x for x in v_ca))
+            n_o = math.sqrt(sum(x * x for x in v_o))
+            if n_ca > 1e-6 and n_o > 1e-6:
+                bis = tuple(v_ca[i] / n_ca + v_o[i] / n_o for i in range(3))
+                n_bis = math.sqrt(sum(x * x for x in bis))
+                if n_bis > 1e-6:
+                    oxt = tuple(c[i] - 1.25 * bis[i] / n_bis for i in range(3))
+                    record = record[:30] + f'{oxt[0]:8.3f}{oxt[1]:8.3f}{oxt[2]:8.3f}' + record[54:]
         residue = before['residues'][index]
         original = lines[residue['atoms'][0]['line'] - 1]
         serial += 1

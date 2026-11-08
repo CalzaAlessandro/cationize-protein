@@ -147,6 +147,23 @@ class PreparationTests(unittest.TestCase):
         self.assertIn('pdbfixer',PYTHON_PACKAGES)
         self.assertIn('pdbfixer>=1.12', (ROOT/'requirements.txt').read_text())
 
+    def test_added_terminal_oxt_with_histidine_passes_propka_bond_check(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp); source=root/'his_no_oxt.pdb'; output=root/'prepared'
+            lines=[]
+            for line in REFERENCE.read_text().splitlines():
+                if line.startswith('ATOM') and line[12:16].strip()=='OXT':
+                    continue
+                if line.startswith('ATOM') and line[22:26].strip()=='1' and line[12:16].strip() in {'N','CA','C','O','CB'}:
+                    lines.append(line[:17]+'HIS'+line[20:])
+                elif line.startswith('ATOM') and line[22:26].strip()!='1':
+                    lines.append(line)
+            source.write_text('\n'.join(lines)+'\nEND\n')
+            result=self.prepare(source, output)
+            self.assertIn('OXT', {a['atom_name'] for a in result['added_atoms']})
+            repaired=check_pdb(output/'protein.pdb')
+            self.assertTrue(repaired['ok'], repaired['messages'])
+
 
 if __name__=='__main__':
     unittest.main()
