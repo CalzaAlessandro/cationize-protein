@@ -11,8 +11,10 @@ cationize-protein fetch --pdb 1N5U --output downloaded_pdb
 ```
 
 This saves the deposited coordinates as `1N5U.pdb`, including all supplied
-chains, models and ligands. It also writes `FETCH.json` and `fetch.log`.
-It does not retrieve a UniProt sequence.
+chains, models and ligands, and extracts any `DBREF` UniProt cross-references
+into `uniprot_candidates.csv`. When the PDB maps to a single unambiguous
+UniProt accession, `fetch` also downloads the corresponding `uniprot.json`,
+sequences (`sequence.fasta`, `mature.fasta`) and `disulfides.csv` automatically.
 
 ## UniProt only
 
@@ -21,9 +23,10 @@ cationize-protein fetch --uniprot P02768 --output downloaded_sequence
 ```
 
 This saves the UniProt record, its canonical sequence, sequence annotations
-and a table of linked PDB entries. It saves `mature.fasta` only when the record
-annotates one mature chain with exact boundaries. Linked PDB entries are
-listed for review; their coordinates are not downloaded automatically.
+and a table of linked PDB entries (`pdb_candidates.csv`). It saves `mature.fasta`
+only when the record annotates one mature chain with exact boundaries. Linked
+PDB entries are listed for review; their coordinates are not downloaded
+automatically.
 
 ## PDB and UniProt together
 
@@ -45,7 +48,8 @@ directories are never overwritten.
 | Output | Created for | Meaning |
 |---|---|---|
 | `1N5U.pdb` | PDB | Deposited coordinates; filename follows the requested PDB ID |
-| `uniprot.json` | UniProt | Complete UniProt response |
+| `uniprot_candidates.csv` | PDB (when `DBREF` is present) | UniProt accessions and chain/residue ranges referenced in the PDB header |
+| `uniprot.json` | UniProt (or PDB with unique `DBREF`) | Complete UniProt response |
 | `sequence.fasta` | UniProt | Canonical sequence, which may include a signal peptide or propeptide |
 | `mature.fasta` | UniProt, when uniquely annotated | Separately extracted chain with exact annotated boundaries |
 | `sequence_regions.csv` | UniProt | Annotated chains, signal peptides and propeptides |

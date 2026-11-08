@@ -86,3 +86,18 @@ class FetchTests(unittest.TestCase):
             self.assertEqual([(r['uniprot_start'],r['uniprot_end']) for r in rows],[('2','3')])
             self.assertIn('PubMed',rows[0]['evidence'])
             self.assertIn('disulfides.csv',result['files_sha256'])
+
+    def test_pdb_dbref_extracts_uniprot_and_auto_fetches_unique_accession(self):
+        module=self.module()
+        pdb_bytes=(b'DBREF  1AKI A    1   129  UNP    P00698   LYSC_CHICK      19    147\n'
+                   + (ROOT/'examples/pdb_checks/reference_peptide.pdb').read_bytes())
+        uniprot_bytes=json.dumps({'primaryAccession':'P00698','sequence':{'value':'KVFGR'},'features':[]}).encode()
+        def fake_download(url):
+            return pdb_bytes if url.endswith('.pdb') else uniprot_bytes
+        with tempfile.TemporaryDirectory() as tmp,patch.object(module,'download',side_effect=fake_download):
+            dest=Path(tmp)/'fetch';result=module.fetch(dest,pdb_id='1AKI')
+            self.assertEqual(result['uniprot_id'],'P00698')
+            self.assertTrue((dest/'uniprot_candidates.csv').is_file())
+            self.assertTrue((dest/'uniprot.json').is_file())
+            self.assertIn('P00698',(dest/'uniprot_candidates.csv').read_text())
+

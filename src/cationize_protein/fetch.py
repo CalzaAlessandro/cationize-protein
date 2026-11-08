@@ -29,6 +29,41 @@ def _csv(rows, fields):
     return stream.getvalue().encode()
 
 
+def _pdb_uniprot_candidates(pdb_text):
+    """Extract UniProt cross-references from PDB DBREF / DBREF1 / DBREF2 records."""
+    rows = []
+    lines = pdb_text.splitlines()
+    for index, line in enumerate(lines):
+        if line.startswith('DBREF ') and len(line) >= 42 and line[26:32].strip() == 'UNP':
+            rows.append(dict(
+                chain=line[12:13].strip(),
+                pdb_start=line[14:18].strip(),
+                pdb_end=line[20:24].strip(),
+                uniprot_accession=line[33:41].strip(),
+                uniprot_id=line[42:54].strip(),
+                uniprot_start=line[55:60].strip(),
+                uniprot_end=line[62:67].strip(),
+            ))
+        elif line.startswith('DBREF1') and len(line) >= 47 and line[26:32].strip() == 'UNP':
+            acc = line[47:67].strip()
+            unp_start, unp_end = '', ''
+            if index + 1 < len(lines) and lines[index + 1].startswith('DBREF2'):
+                nxt = lines[index + 1]
+                acc = nxt[18:40].strip() or acc
+                unp_start = nxt[45:55].strip()
+                unp_end = nxt[57:67].strip()
+            rows.append(dict(
+                chain=line[12:13].strip(),
+                pdb_start=line[14:18].strip(),
+                pdb_end=line[20:24].strip(),
+                uniprot_accession=acc,
+                uniprot_id=line[33:47].strip(),
+                uniprot_start=unp_start,
+                uniprot_end=unp_end,
+            ))
+    return rows
+
+
 def fetch(output, *, pdb_id=None, uniprot_id=None):
     """Save downloaded bytes without choosing a model or altering a sequence."""
     output = Path(output)
@@ -47,7 +82,8 @@ def fetch(output, *, pdb_id=None, uniprot_id=None):
     if pdb_id:
         url = f'https://files.rcsb.org/download/{pdb_id}.pdb'
         raw = download(url)
-        atoms = [line for line in raw.decode('utf-8').splitlines()
+        text = raw.decode('utf-8')
+        atoms = [line for line in text.splitlines()
                  if line.startswith(('ATOM  ', 'HETATM'))]
         try:
             if not atoms or any(len(line) < 54 or not all(math.isfinite(float(line[a:b]))
@@ -58,6 +94,17 @@ def fetch(output, *, pdb_id=None, uniprot_id=None):
         name = f'{pdb_id}.pdb'
         files[name], sources[name] = raw, url
         messages.append(f'PDB: {pdb_id}; deposited chains, models and heterogens retained.')
+        unp_rows = _pdb_uniprot_candidates(text)
+        if unp_rows:
+            files['uniprot_candidates.csv'] = _csv(
+                unp_rows,
+                ['chain', 'pdb_start', 'pdb_end', 'uniprot_accession', 'uniprot_id', 'uniprot_start', 'uniprot_end'],
+            )
+            accessions = sorted({r['uniprot_accession'] for r in unp_rows if r['uniprot_accession']})
+            messages.append(f'PDB DBREF UniProt mappings: {", ".join(accessions)} (saved in uniprot_candidates.csv).')
+            if not uniprot_id and len(accessions) == 1:
+                uniprot_id = accessions[0].upper()
+                messages.append(f'Automatically retrieving unique mapped UniProt record: {uniprot_id}.')
     if uniprot_id:
         url = f'https://rest.uniprot.org/uniprotkb/{uniprot_id}.json'
         raw = download(url)

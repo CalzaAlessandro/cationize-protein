@@ -8,19 +8,37 @@
 Build progressively cationized proteins and export their structures and
 parameters for Amber, OpenMM or GROMACS.
 
-The script converts carboxyl groups into `-C(=O)-NH-CH₂-CH₂-NH₃⁺`.
-It ranks accessible sites by electrostatic potential, rotates each new group
-to reduce clashes, minimizes the structure and checks protonation with PROPKA.
-
 ### Quick navigation
 
-- **Getting started:** [How it works](#how-it-works) · [Install](#install) · [Optional software](#connect-optional-software)
+- **Getting started:** [How it works](#how-it-works) · [Install](#install) · [Optional external software](#optional-external-software)
 - **Workflow:** [Get a structure or sequence](#get-a-structure-or-sequence) · [Prepare a protein](#prepare-a-protein) · [Run cationization](#run-cationization)
 - **Outputs & ligands:** [Find your files](#find-your-files) · [Add a ligand](#add-a-ligand)
 - **Examples:** [HSA example](#hsa-example) · [Lysozyme walkthrough](#lysozyme-walkthrough)
 - **Reference:** [CLI options](#options) · [Software and references](#software-and-references) · [Residue parameters](#residue-parameters) · [Acknowledgements](#acknowledgements) · [License](#license)
 
 ## How it works
+
+Chemical cationization reacts carboxylic acid groups (`Asp` and `Glu` side
+chains and the biological C-terminus) with ethylenediamine to form positively
+charged aminoethyl-amides (`-C(=O)-NH-CH₂-CH₂-NH₃⁺`), shifting each modified
+site from `-1` to `+1` (`Δq = +2 e`).
+
+At each step, `cationize-protein` repeats four operations until all requested
+modification percentages (by default `0%`, `25%`, `50%`, `75%` and `100%`) are
+reached:
+
+1. **Electrostatic ranking:** computes the electrostatic potential around every
+   unmodified carboxyl group and selects the site with the most negative
+   accessible potential.
+2. **Amidation & steric search:** replaces the selected carboxylate with the
+   corresponding validated RESP aminoethyl-amide template and rotates torsional
+   bonds to remove steric clashes while preserving the protein backbone and
+   disulfides.
+3. **Energy minimization:** relaxes the modified structure in implicit solvent
+   (GBn2) with positional restraints on the native backbone.
+4. **Protonation check:** re-evaluates native titratable residues (`His`, `Asp`,
+   `Glu`, `Cys`, `Lys`, `Tyr`) with PROPKA at the target pH while keeping
+   introduced ammonium groups protonated (`+1`).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/hsa_workflow_dark.gif">
@@ -31,9 +49,14 @@ to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 level. Amidation, minimization and protonation use fixed illustrative examples.
 [View the image details](examples/HSA/README.md#figure).*
 
+---
+
 ## Install
 
-Python 3.12 is recommended. Choose one installation method ([full details](docs/INSTALL.md)).
+The core installation is self-contained and includes **OpenMM**, **PDBFixer**,
+**PROPKA**, **ParmEd**, the screened-Coulomb electrostatic solver, and the
+validated **ff14SB / ff19SB / ff99SBildn** residue libraries. Python 3.12 is
+recommended ([full installation guide](docs/INSTALL.md)).
 
 ```sh
 # Option A: Python with a local venv
@@ -59,40 +82,50 @@ Activate with `conda activate cationize-protein` in each new terminal (`conda de
 
 </details>
 
-Both methods include OpenMM minimization, PDBFixer, PROPKA, ParmEd, screened-Coulomb
-site ranking and the `ff14SB` / `ff19SB` / `ff99SBildn` parameter profiles.
-Choose APBS or PBSA explicitly when you need Poisson-Boltzmann calculations.
+---
 
-## Connect optional software
+## Optional external software
 
-OpenMM, PDBFixer, PROPKA and ParmEd are included. Install external tools only
-when needed — see the [optional software tutorial](docs/OPTIONAL_SOFTWARE.md)
-for Conda and native installation commands.
+You do **not** need any external software to run the default workflow or to
+export Amber, OpenMM and GROMACS topologies. Install external programs only if
+you specifically need Poisson-Boltzmann electrostatics (`APBS` or `PBSA`),
+serial Amber minimization (`sander` / `pmemd`), or missing-residue modeling
+(`MODELLER` / `ESMFold2`).
 
-| Program | Use | Selection in `cationize-protein` |
-|---|---|---|
-| [APBS](docs/OPTIONAL_SOFTWARE.md#apbs) | Poisson-Boltzmann potential | `--solver apbs` (optional `--apbs /path/to/apbs`) |
-| [AmberTools / Amber](docs/OPTIONAL_SOFTWARE.md#ambertools-and-amber) | Serial minimization or PBSA potential | `--engine amber` or `--solver pbsa` |
-| [GROMACS](docs/OPTIONAL_SOFTWARE.md#gromacs) | Run exported molecular systems | Exports need no GROMACS installation |
-| [MODELLER](docs/OPTIONAL_SOFTWARE.md#modeller) | Reconstruct native protein from template + sequence | `model --method modeller` (licence required) |
-| [ESMFold2](docs/OPTIONAL_SOFTWARE.md#esmfold2) | Predict native protein from sequence | `model --method esmfold` (default `ESMFold2-Fast`) |
+Step-by-step installation and connection instructions for each tool are in
+[**docs/OPTIONAL_SOFTWARE.md**](docs/OPTIONAL_SOFTWARE.md):
 
-Discovery checks `PATH` (plus `AMBERHOME/bin` for Amber and `.tools/apbs/bin/apbs` for APBS)
-and `CATIONIZE_MODELLER_PYTHON` / `CATIONIZE_ESMFOLD_PYTHON` for separate modeling
-environments. Run `cationize-protein doctor` at any time to verify detected tools.
+| Program | When you need it | How to select it in `cationize-protein` | Setup guide |
+|---|---|---|---|
+| **APBS** | Nonlinear Poisson-Boltzmann site ranking | `run --solver apbs` | [Install APBS](docs/OPTIONAL_SOFTWARE.md#apbs) |
+| **AmberTools / Amber** | PBSA electrostatics or serial `sander`/`pmemd` minimization | `run --solver pbsa` or `run --engine amber` | [Install AmberTools](docs/OPTIONAL_SOFTWARE.md#ambertools-and-amber) |
+| **GROMACS** | Run MD simulations on exported `.top`/`.gro` files | Exports work without GROMACS installed | [Install GROMACS](docs/OPTIONAL_SOFTWARE.md#gromacs) |
+| **MODELLER** | Rebuild missing loops/residues from a template PDB + FASTA | `model --method modeller` | [Install MODELLER](docs/OPTIONAL_SOFTWARE.md#modeller) |
+| **ESMFold2** | Predict a 3D structure directly from a FASTA sequence | `model --method esmfold` | [Install ESMFold2](docs/OPTIONAL_SOFTWARE.md#esmfold2) |
+
+---
 
 ## Get a structure or sequence
 
-Skip this step if you already have input files. `fetch` downloads a deposited
-PDB entry, a UniProt sequence/annotation record, or both ([details](docs/FETCH.md)):
+Skip this step if you already have your input files. `fetch` downloads records
+from RCSB PDB and UniProt ([details](docs/FETCH.md)):
+
+- **Have only a PDB ID?** `fetch --pdb 1AKI` downloads `1AKI.pdb`, extracts the
+  UniProt cross-references from the PDB `DBREF` header into `uniprot_candidates.csv`,
+  and—when the PDB maps to a single UniProt entry—automatically downloads
+  `uniprot.json`, `sequence.fasta`, `mature.fasta` and `disulfides.csv`.
+- **Have only a UniProt ID?** `fetch --uniprot P02768` downloads the UniProt
+  sequence, disulfide annotations (`uniprot.json`, `disulfides.csv`) and a list
+  of all experimental PDB structures linked to that protein (`pdb_candidates.csv`,
+  with resolution and chain bounds) so you can pick which PDB to download.
 
 ```sh
-# Download PDB only, UniProt only, or both into a new folder
-cationize-protein fetch --pdb 1N5U --uniprot P02768 --output downloaded
-```
+# Download from PDB ID (auto-fetches unique mapped UniProt record)
+cationize-protein fetch --pdb 1AKI --output downloaded
 
-UniProt retrieval saves `sequence.fasta`, `uniprot.json`, disulfide/domain
-tables, and `mature.fasta` when a single mature chain is annotated.
+# Or specify only UniProt ID (lists available PDBs in pdb_candidates.csv), or both
+cationize-protein fetch --pdb 1N5U --uniprot P02768 --output downloaded_hsa
+```
 
 ## Prepare a protein
 
@@ -100,9 +133,9 @@ tables, and `mature.fasta` when a single mature chain is annotated.
 cationize-protein prepare input.pdb --output prepared
 ```
 
-By default, `prepare` checks the PDB, repairs missing atoms in existing residues
-with PDBFixer, and assigns histidine states with PROPKA at pH 7.4 while
-preserving `original.pdb` ([details](docs/PDB_PREPARATION.md)). Use
+By default, `prepare` checks the PDB, repairs missing heavy atoms in existing
+residues with PDBFixer, and assigns histidine states with PROPKA at pH 7.4
+while preserving `original.pdb` ([details](docs/PDB_PREPARATION.md)). Use
 `cationize-protein check input.pdb` for a read-only check.
 
 <details>
@@ -114,8 +147,7 @@ Map the PDB sequence to a downloaded `uniprot.json` record and write verified
 pairs as `CYX`, `SSBOND` and `CONECT` records:
 
 ```sh
-cationize-protein fetch --uniprot P02768 --output hsa_reference
-cationize-protein prepare input.pdb --uniprot-record hsa_reference/uniprot.json \
+cationize-protein prepare input.pdb --uniprot-record downloaded/uniprot.json \
   --output prepared_with_disulfides
 ```
 
@@ -231,8 +263,8 @@ and progressive cationization (including the buried-site fallback on `Asp66`).
 <summary><b>Show complete Lysozyme commands (1AKI / P00698)</b></summary>
 
 ```sh
-# 1. Download deposited PDB and UniProt sequence/disulfide annotations
-cationize-protein fetch --pdb 1AKI --uniprot P00698 --output lysozyme_fetch
+# 1. Download deposited PDB and automatically retrieve its mapped UniProt record (P00698)
+cationize-protein fetch --pdb 1AKI --output lysozyme_fetch
 
 # 2. Keep protein ATOM/TER/END records (or use an incomplete template)
 grep -E '^(ATOM  |TER|END)' lysozyme_fetch/1AKI.pdb > lysozyme_protein.pdb
@@ -273,8 +305,8 @@ time. Further documentation: [installation](docs/INSTALL.md),
 | Flag | Purpose, accepted values and requirements | Default |
 |---|---|---|
 | `--pdb` | Native protein PDB; use this or `--topology`, not both. | Required unless `--topology` is supplied |
-| `--topology` | Protein-only Amber `parm7`/`prmtop`; requires `--coordinates`. | Not used |
-| `--coordinates` | Amber `rst7`/`inpcrd` coordinates for `--topology`. | Required with `--topology` |
+| `--topology` | Start from an existing protein-only Amber `parm7`/`prmtop` topology instead of a PDB (requires `--coordinates`). | Not used |
+| `--coordinates` | Amber `rst7`/`inpcrd` coordinates matching `--topology`. | Required with `--topology` |
 | `--output` | New output directory, or the same verified run to resume. | Required |
 | `--percentages` | Saved cumulative levels (0–100); baseline 0% is always saved. | `25 50 75 100` |
 | `--engine` | Minimizer: `openmm`, `amber`, `sander` or `pmemd`. | `openmm`* |
@@ -283,7 +315,7 @@ time. Further documentation: [installation](docs/INSTALL.md),
 | `--apbs` / `--pbsa` | Path to installed `apbs` or `pbsa` executable. | Private install, `PATH`, then saved path |
 | `--force-field` | Protein parameters: `ff14SB`, `ff19SB` or `ff99SBildn`. | `ff14SB`* |
 | `--formats` | Parameter exports: `amber`, `openmm`, `gromacs`. | `amber` |
-| `--protonation` | `propka` (dynamic native check) or `fixed` (retain supplied states). | `propka` |
+| `--protonation` | `propka` (re-check native protonation with PROPKA at each step) or `fixed` (keep all residue protonation states frozen as supplied in the input). | `propka` |
 | `--ph` | Target pH (0–14); use the same value in `prepare` and `run`. | `7.4` |
 | `--probe-radius` | Positive probe Lennard-Jones half-Rmin in Å. | `1.369` Å |
 | `--parameters` | Custom validated residue library directory. | Bundled library |
@@ -298,13 +330,13 @@ time. Further documentation: [installation](docs/INSTALL.md),
 | Flag | Command & purpose | Default |
 |---|---|---|
 | `--uniprot-record` | `prepare`: local `uniprot.json` from `fetch` to map and verify intrachain disulfides. | Not used |
-| `--protonation` | `prepare`: `propka` assigns histidine states; `fixed` retains supplied states. | `propka` |
+| `--protonation` | `prepare`: `propka` assigns histidine states (`HID`/`HIE`/`HIP`) at `--ph`; `fixed` keeps the residue names already present in the input PDB without running PROPKA. | `propka` |
 | `--ph` | `prepare`: pH for initial histidine assignment (0–14). | `7.4` |
-| `--pdb` | `fetch`: download deposited PDB coordinates. `model`: incomplete native template for MODELLER. | Optional for `fetch`; required for `modeller` |
-| `--uniprot` | `fetch`: download UniProt sequence, annotations and disulfide table. | Optional |
+| `--pdb` | `fetch`: download deposited PDB coordinates (and auto-fetch unique `DBREF` UniProt record). `model`: incomplete native template for MODELLER. | Optional for `fetch`; required for `modeller` |
+| `--uniprot` | `fetch`: download UniProt sequence, annotations, disulfides and linked PDB list (`pdb_candidates.csv`). | Optional |
 | `--method` | `model`: `modeller` or `esmfold`. | Required |
 | `--fasta` | `model`: complete native sequence of one chain. | Required |
-| `--python` | `model`: Python interpreter containing the chosen optional modeler. | Env variable, then active Python / `PATH` |
+| `--python` | `model`: path to the external Python interpreter where MODELLER or ESMFold2 is installed (when installed in a separate venv/Conda environment). | Env variable, then active Python / `PATH` |
 | `--esmfold-model` | `model`: ESMFold2 checkpoint (`fast` or `full`). | `fast` |
 | `--model-revision` | `model`: Hugging Face commit/branch revision. | `main` |
 | `--device` | `model`: `auto`, `cpu` or `cuda`. | `auto` |
