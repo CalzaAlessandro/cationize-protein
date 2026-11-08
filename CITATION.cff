@@ -1,8 +1,11 @@
 cff-version: 1.2.0
-message: "Private development version; citation details will accompany a versioned release."
-title: cationize-protein
+message: "If you use this software or its residue libraries, please cite this repository."
+title: "cationize-protein"
 type: software
+license: Apache-2.0
+version: "0.1.0"
+repository-code: "https://github.com/CalzaAlessandro/cationize-protein"
 authors:
-  - family-names: Calza
-    given-names: Alessandro
-repository-code: https://github.com/CalzaAlessandro/cationize-protein
+  - family-names: "Calza"
+    given-names: "Alessandro"
+    affiliation: "NanoBio Interface Lab, Dipartimento di Chimica “Giacomo Ciamician,” Alma Mater Studiorum – Università di Bologna, 40129 Bologna, Italy; IRCCS Azienda Ospedaliero – Universitaria di Bologna, Preclinical & Translational Research in Oncology lab (PRO), 40138 Bologna, Italy"

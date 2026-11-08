@@ -21,9 +21,12 @@ to reduce clashes, minimizes the structure and checks protonation with PROPKA.
 - [Find your files](#find-your-files)
 - [Add a ligand](#add-a-ligand)
 - [HSA example](#hsa-example)
+- [Lysozyme walkthrough](#lysozyme-walkthrough)
 - [Options](#options)
 - [Software](#software)
 - [Residue parameters](#residue-parameters)
+- [Acknowledgements](#acknowledgements)
+- [License](#license)
 
 ## How it works
 
@@ -346,6 +349,45 @@ cationize-protein run --pdb examples/pdb_checks/reference_peptide.pdb \
 This uses the included screened-Coulomb approximation. Use APBS or PBSA for
 a Poisson-Boltzmann calculation.
 
+## Lysozyme walkthrough
+
+Hen egg-white lysozyme (`1AKI`, UniProt `P00698`; 129 mature residues, four
+disulfide bonds, one histidine and ten carboxyl groups) provides a compact
+end-to-end test of retrieval, optional missing-residue modeling, PDBFixer atom
+repair, UniProt disulfide assignment, PROPKA protonation and progressive
+cationization:
+
+```sh
+# 1. Download deposited PDB and UniProt sequence/disulfide annotations
+cationize-protein fetch --pdb 1AKI --uniprot P00698 --output lysozyme_fetch
+
+# 2. Keep protein ATOM/TER/END records (or use an incomplete template)
+grep -E '^(ATOM  |TER|END)' lysozyme_fetch/1AKI.pdb > lysozyme_protein.pdb
+
+# 3. Optional: if whole residues/loops are missing, reconstruct with MODELLER
+cationize-protein model --method modeller --pdb lysozyme_protein.pdb \
+  --fasta lysozyme_fetch/mature.fasta --output lysozyme_modeled
+
+# 4. Repair missing heavy atoms (PDBFixer), map UniProt disulfides and assign His (PROPKA)
+cationize-protein prepare lysozyme_protein.pdb \
+  --uniprot-record lysozyme_fetch/uniprot.json \
+  --output lysozyme_prepared --ph 7.4
+
+# 5. Inspect the prepared structure
+cationize-protein check lysozyme_prepared/protein.pdb
+
+# 6. Run 0%, 25%, 50%, 75% and 100% cationization and export Amber, OpenMM and GROMACS
+cationize-protein run --pdb lysozyme_prepared/protein.pdb \
+  --output lysozyme_series --engine openmm --solver coulomb \
+  --force-field ff14SB --formats amber openmm gromacs
+```
+
+If whole residues were rebuilt in step 3, pass `lysozyme_modeled/protein.pdb`
+to `prepare` in step 4. During `run`, accessible carboxyl groups are modified
+first; if the final remaining group (`Asp66`) is sterically occluded at the
+selected probe radius, a warning is logged and the site is ranked and modified
+via the buried-site fallback (`buried_fallback: true` in `ranking.json`).
+
 ## Options
 
 ### Cationization: `run`
@@ -464,3 +506,19 @@ To extend the library, develop and validate a separate template for each new
 chemical state, then supply a complete custom library with `--parameters`.
 The [parameter guide](docs/PARAMETERS.md) describes the models, files,
 development commands and code changes needed for new chemistry.
+
+## Acknowledgements
+
+This work was developed within the **NanoBio Interface Lab** at the Department
+of Chemistry "Giacomo Ciamician," Alma Mater Studiorum – University of Bologna,
+and the Preclinical & Translational Research in Oncology lab (PRO), IRCCS
+Azienda Ospedaliero–Universitaria di Bologna.
+
+## License
+
+This software, its bundled residue parameter libraries, example structures and
+documentation are released under the
+[Apache License, Version 2.0 (Apache-2.0)](LICENSE).
+
+See [CITATION.cff](CITATION.cff) for citation metadata. Third-party software and
+reference force fields retain their original terms and attribution.

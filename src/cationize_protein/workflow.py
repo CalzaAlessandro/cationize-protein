@@ -623,11 +623,34 @@ def _one_step(structure, info, step, total_groups, steps_root, config, reference
     centers = {candidate.candidate_id: info.coordinates[list(candidate.oxygen_indices)] for candidate in info.candidates}
     grid = build_candidate_grid(centers, info.coordinates, info.lj_radii_A,
                                 config.probe_radius_A, spacing_A=config.sampling_spacing_A)
+    buried_fallback = False
+    if len(grid.points) and bool(grid.blocked.all()):
+        buried_fallback = True
+        LOG.warning(
+            'Step %d/%d: no remaining carboxyl group is accessible at probe radius %.4g A (%s); '
+            'proceeding with buried-site fallback',
+            step, total_groups, config.probe_radius_A, ', '.join(sorted(centers)),
+        )
+        grid = build_candidate_grid(centers, info.coordinates, info.lj_radii_A,
+                                    0.0, spacing_A=config.sampling_spacing_A)
+        if bool(grid.blocked.all()):
+            grid = build_candidate_grid(centers, info.coordinates,
+                                        np.full(len(info.lj_radii_A), 0.25),
+                                        0.0, spacing_A=config.sampling_spacing_A)
     scores,pb=solve(structure,info,grid,attempt/'pb',config.apbs,solver=config.solver,
         provenance=dict(step=step,total_carboxyl_groups=total_groups),keep_map=config.keep_maps,
         pbsa_nonlinear=config.pbsa_nonlinear)
     ranking, unavailable = rank_candidates(scores, grid.indices, grid.blocked)
-    _json(attempt / 'ranking.json', dict(rows=[asdict(row) for row in ranking], unavailable=unavailable))
+    if unavailable and not buried_fallback:
+        LOG.warning(
+            'Step %d/%d: %d buried carboxyl group(s) not accessible at probe radius %.4g A (%s); '
+            'ranking accessible sites first',
+            step, total_groups, len(unavailable), config.probe_radius_A, ', '.join(unavailable),
+        )
+    ranking_record = dict(rows=[asdict(row) for row in ranking], unavailable=unavailable)
+    if buried_fallback:
+        ranking_record['buried_fallback'] = True
+    _json(attempt / 'ranking.json', ranking_record)
     if not ranking:
         raise WorkflowError('No accessible unmodified carboxyl group remains')
     by_id = {candidate.candidate_id: candidate for candidate in info.candidates}
