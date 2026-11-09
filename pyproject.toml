@@ -6,6 +6,8 @@ build-backend = "setuptools.build_meta"
 name = "cationize-protein"
 version = "0.1.0"
 description = "Progressive electrostatic-guided protein carboxyl amidation"
+license = "Apache-2.0"
+authors = [{ name = "Alessandro Calza" }]
 requires-python = ">=3.10,<3.15"
 dependencies = ["numpy>=1.26", "scipy>=1.11", "ParmEd>=4.3", "openmm>=8.6", "propka>=3.5", "pdbfixer>=1.12,<2"]
 
