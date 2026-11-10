@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """Run a minimal, self-contained cationize-protein preflight check and progressive cationization.
 
 Uses OpenMM and analytical Coulomb electrostatics; does not require APBS,
@@ -7,9 +6,9 @@ Amber, or GROMACS installations.
 from __future__ import annotations
 
 import argparse
-from pathlib import Path
 import subprocess
 import sys
+from pathlib import Path
 
 
 def parse_args() -> argparse.Namespace:
@@ -40,13 +39,13 @@ def main() -> int:
 
     print(f"[Quickstart] Preflight checking {pdb_path.name}...")
     check_cmd = [*cationize_cmd, "check", str(pdb_path)]
-    res_check = subprocess.run(check_cmd, capture_output=True, text=True)
+    res_check = subprocess.run(check_cmd, capture_output=True, text=True, check=False)
     if res_check.returncode != 0:
         print(f"PDB check failed:\n{res_check.stderr}", file=sys.stderr)
         return res_check.returncode
     print(f"[Quickstart] {res_check.stdout.strip()}")
 
-    print(f"[Quickstart] Running progressive cationization with five checkpoints...")
+    print("[Quickstart] Running progressive cationization with five checkpoints...")
     run_cmd = [
         *cationize_cmd,
         "run",
@@ -65,7 +64,7 @@ def main() -> int:
         "openmm",
         "gromacs",
     ]
-    res_run = subprocess.run(run_cmd, capture_output=True, text=True)
+    res_run = subprocess.run(run_cmd, capture_output=True, text=True, check=False)
     if res_run.returncode != 0:
         print(f"Cationization run failed:\n{res_run.stderr}", file=sys.stderr)
         return res_run.returncode
