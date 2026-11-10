@@ -1,23 +1,23 @@
 <h1 align="center">cationize-protein</h1>
 
+Build progressively cationized proteins and export their structures and
+parameters for Amber, OpenMM or GROMACS.
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Active%20development-9A6700?style=flat" alt="Status: active development">
+  <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.10%E2%80%933.14-58616B?style=flat" alt="Python: 3.10 to 3.14"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-607D8B?style=flat" alt="License: Apache-2.0"></a>
+</p>
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.svg">
   <img src="docs/images/banner.svg" width="100%" alt="A schematic folded chain with negatively charged sites progressively converted into positive sites; the aminoethyl-amide chemical scheme is shown below">
 </picture>
 
-<p align="center">
-  <a href="#"><img src="https://img.shields.io/badge/status-active%20development-orange.svg" alt="Status: Under Active Development"></a>
-  <a href="#"><img src="https://img.shields.io/badge/python-3.10+-blue.svg" alt="Python: >=3.10"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Apache%202.0-blue.svg" alt="License: Apache-2.0"></a>
-</p>
-
 > [!IMPORTANT]
 > **Work in Progress / Active Research Repository**
 > This repository contains the source code, parameterization protocols, and validation toolchains for progressive protein cationization.
 > The project is currently under active scientific development. Force-field parameters, atomic charges, and model topologies are preliminary and subject to revision prior to peer-reviewed publication.
-
-Build progressively cationized proteins and export their structures and
-parameters for Amber, OpenMM or GROMACS.
 
 ### Quick navigation
 
