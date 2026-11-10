@@ -20,7 +20,7 @@ parameters for Amber, OpenMM or GROMACS.
 
 ### Quick navigation
 
-- **Getting started:** [How it works](#how-it-works) · [Install](#install) · [Optional external software](#optional-external-software)
+- **Getting started:** [Quickstart](docs/QUICKSTART.md) · [How it works](#how-it-works) · [Install](#install) · [Optional external software](#optional-external-software)
 - **Workflow:** [Get a structure or sequence](#get-a-structure-or-sequence) · [Prepare a protein](#prepare-a-protein) · [Run cationization](#run-cationization)
 - **Outputs & ligands:** [Find your files](#find-your-files) · [Add a ligand](#add-a-ligand)
 - **Examples:** [HSA example](#hsa-example) · [Lysozyme walkthrough](#lysozyme-walkthrough)

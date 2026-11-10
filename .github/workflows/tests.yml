@@ -1,11 +1,17 @@
 name: Python tests
-on:
+
+'on':
+  push:
+  pull_request:
   workflow_dispatch:
+
 permissions:
   contents: read
+
 jobs:
   unittest:
     runs-on: ubuntu-24.04
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,3 +23,6 @@ jobs:
         env:
           PYTHONDONTWRITEBYTECODE: '1'
         run: python -B -m unittest discover -s tests -v
+
+      - name: Run minimal example
+        run: python examples/quickstart/run_quickstart.py --output-dir "$RUNNER_TEMP/quickstart"

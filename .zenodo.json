@@ -1,0 +1,22 @@
+{
+  "title": "cationize-protein",
+  "description": "Preliminary research software for progressive protein carboxyl amidation and export of structures and parameters for Amber, OpenMM and GROMACS. Parameters and topologies remain preliminary.",
+  "upload_type": "software",
+  "creators": [
+    {
+      "name": "Calza, Alessandro",
+      "affiliation": "NanoBio Interface Lab, Dipartimento di Chimica “Giacomo Ciamician,” Alma Mater Studiorum – Università di Bologna, 40129 Bologna, Italy; IRCCS Azienda Ospedaliero – Universitaria di Bologna, Preclinical & Translational Research in Oncology lab (PRO), 40138 Bologna, Italy"
+    }
+  ],
+  "license": "apache-2.0",
+  "access_right": "open",
+  "version": "0.1.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/CalzaAlessandro/cationize-protein",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "publication_date": "2026-11-10"
+}

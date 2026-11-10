@@ -4,6 +4,7 @@ title: "cationize-protein"
 type: software
 license: Apache-2.0
 version: "0.1.0"
+date-released: "2026-11-10"
 repository-code: "https://github.com/CalzaAlessandro/cationize-protein"
 authors:
   - family-names: "Calza"
