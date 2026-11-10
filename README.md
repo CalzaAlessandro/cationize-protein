@@ -4,6 +4,7 @@ Build progressively cationized proteins and export their structures and
 parameters for Amber, OpenMM or GROMACS.
 
 <p align="center">
+  <a href="https://doi.org/10.5281/zenodo.24119586"><img src="https://img.shields.io/badge/Archive-10.5281%2Fzenodo.24119586-2457A7?style=flat" alt="Archive DOI: 10.5281/zenodo.24119586"></a>
   <a href="https://github.com/CalzaAlessandro/cationize-protein/actions/workflows/tests.yml"><img src="https://img.shields.io/github/actions/workflow/status/CalzaAlessandro/cationize-protein/tests.yml?branch=main&amp;style=flat&amp;label=Tests" alt="Software tests"></a>
   <img src="https://img.shields.io/badge/Status-Active%20development-9A6700?style=flat" alt="Status: active development">
   <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.10%E2%80%933.14-58616B?style=flat" alt="Python: 3.10 to 3.14"></a>
