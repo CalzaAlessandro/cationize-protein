@@ -1,0 +1,50 @@
+name: Bug report
+description: Report an error in cationize-protein.
+title: "[Bug] "
+body:
+  - type: markdown
+    attributes:
+      value: Use a small reproducible input and include the command that failed. Omit credentials and large trajectories.
+  - type: input
+    id: version
+    attributes:
+      label: Version or Git commit
+      placeholder: e.g. 0.1.0 or abc1234
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Python version and operating system
+      placeholder: e.g. Python 3.12 on Ubuntu 24.04
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: Command
+      placeholder: "cationize-protein prepare input.pdb --output prepared"
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: minimal_input
+    attributes:
+      label: Minimal input
+      description: Name the input PDB or paste a small coordinate example that reproduces the error.
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Expected and actual result
+      placeholder: What did you expect, and what happened?
+    validations:
+      required: true
+  - type: textarea
+    id: error_log
+    attributes:
+      label: Error log or traceback
+      render: shell
+    validations:
+      required: false
