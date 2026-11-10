@@ -14,10 +14,9 @@ parameters for Amber, OpenMM or GROMACS.
   <img src="docs/images/banner.svg" width="100%" alt="A schematic folded chain with negatively charged sites progressively converted into positive sites; the aminoethyl-amide chemical scheme is shown below">
 </picture>
 
-> [!IMPORTANT]
-> **Work in Progress / Active Research Repository**
-> This repository contains the source code, parameterization protocols, and validation toolchains for progressive protein cationization.
-> The project is currently under active scientific development. Force-field parameters, atomic charges, and model topologies are preliminary and subject to revision prior to peer-reviewed publication.
+> [!NOTE]
+> Parameters, charges and topologies are preliminary.
+> See the [validation notes](docs/VALIDATION.md) before using them in simulations.
 
 ### Quick navigation
 
