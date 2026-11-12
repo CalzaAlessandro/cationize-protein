@@ -12,8 +12,8 @@ parameters for Amber, OpenMM or GROMACS.
 </p>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.svg">
-  <img src="docs/images/banner.svg" width="100%" alt="A schematic folded chain with negatively charged sites progressively converted into positive sites; the aminoethyl-amide chemical scheme is shown below">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.png">
+  <img src="docs/images/banner.png" width="100%" alt="Illustration of progressive protein cationization with explicit aminoethyl-amide side chains and schematic charge sites">
 </picture>
 
 > [!NOTE]
