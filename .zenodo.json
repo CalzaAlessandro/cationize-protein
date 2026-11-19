@@ -5,7 +5,8 @@
   "creators": [
     {
       "name": "Calza, Alessandro",
-      "affiliation": "NanoBio Interface Lab, Dipartimento di Chimica “Giacomo Ciamician,” Alma Mater Studiorum – Università di Bologna, 40129 Bologna, Italy; IRCCS Azienda Ospedaliero – Universitaria di Bologna, Preclinical & Translational Research in Oncology lab (PRO), 40138 Bologna, Italy"
+      "affiliation": "NanoBio Interface Lab, Dipartimento di Chimica “Giacomo Ciamician,” Alma Mater Studiorum – Università di Bologna, 40129 Bologna, Italy; IRCCS Azienda Ospedaliero – Universitaria di Bologna, Preclinical & Translational Research in Oncology lab (PRO), 40138 Bologna, Italy",
+      "orcid": "0009-0002-3700-3240"
     }
   ],
   "license": "apache-2.0",
