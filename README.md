@@ -12,8 +12,8 @@ for Amber, OpenMM or GROMACS.
 </p>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.png">
-  <img src="docs/images/banner.png" width="100%" alt="Illustration of progressive protein cationization with explicit aminoethyl-amide side chains and schematic charge sites">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/images/banner_dark.webp">
+  <img src="docs/images/banner.webp" width="100%" alt="Illustration of progressive protein cationization with explicit aminoethyl-amide side chains and schematic charge sites">
 </picture>
 
 ## Contents
